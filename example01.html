@@ -1,0 +1,17 @@
+<h3 align=center>Deeplearnjs in your browser:<br> Using: src=unpkg.com/deeplearn in a script tag</h3>
+
+<script src="https://unpkg.com/deeplearn"></script>
+
+<input id="myText01" type=text value=2><br>
+
+<input type=button value="Use GPU math" onclick="{
+    var math = new deeplearn.NDArrayMathGPU()
+     var a = deeplearn.Array1D.new([10,20,30])
+     var b = deeplearn.Scalar.new(2.1)
+     math.scope(function() {
+        var result = math.add(a, b);
+       document.getElementById('myDiv01').innerHTML = result.getValues()     // Float32Array([3, 4, 5])
+  })
+}">
+
+<div id="myDiv01"></div>
