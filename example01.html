@@ -2,7 +2,6 @@
 
 <script src="https://unpkg.com/deeplearn"></script>
 
-<input id="myText01" type=text value=2><br>
 
 <input type=button value="Use GPU math" onclick="{
    var math = new deeplearn.NDArrayMathGPU()
@@ -13,5 +12,21 @@
       document.getElementById('myDiv01').innerHTML = result.getValues()     // Float32Array([3, 4, 5])
   })
 }">
+
+
+
+<input id="myText01" type=text value="[10,20,30]"><br>
+<input id="myText02" type=text value=2.1><br>
+
+<input type=button value="Use GPU math dynamic" onclick="{
+   var math = new deeplearn.NDArrayMathGPU()
+   var a = deeplearn.Array1D.new(document.getElementById('myText01').value)
+   var b = deeplearn.Scalar.new(document.getElementById('myText02').value)
+   math.scope(function() {
+      var result = math.add(a, b);
+      document.getElementById('myDiv01').innerHTML = result.getValues()     // Float32Array([3, 4, 5])
+  })
+}">
+
 
 <div id="myDiv01"></div>
