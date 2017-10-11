@@ -20,7 +20,7 @@
 
 <input type=button value="Use GPU math dynamic" onclick="{
    var math = new deeplearn.NDArrayMathGPU()
-   var a = deeplearn.Array1D.new(document.getElementById('myText01').value)
+   var a = deeplearn.Array1D.new(eval(document.getElementById('myText01').value))
    var b = deeplearn.Scalar.new(document.getElementById('myText02').value)
    math.scope(function() {
       var result = math.add(a, b);
