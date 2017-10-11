@@ -15,8 +15,9 @@
 
 <br><br><br>
 
-<input id="myText01" type=text value="[10,20,30]"><br>
-<input id="myText02" type=text value=2.1><br>
+Array1D:<input id="myText01" type=text value="[10,20,30]"><br>
+Scalar:<input id="myText02" type=text value=2.1><br>
+result.getValues()[]:<input id="myText03" type=text value=0><br>
 
 <input type=button value="Use GPU math dynamic" onclick="{
    var math = new deeplearn.NDArrayMathGPU()
@@ -24,7 +25,7 @@
    var b = deeplearn.Scalar.new(document.getElementById('myText02').value)
    math.scope(function() {
       var result = math.add(a, b);
-      document.getElementById('myDiv01').innerHTML = result.getValues()     // Float32Array([3, 4, 5])
+      document.getElementById('myDiv01').innerHTML = result.getValues()[document.getElementById('myText03').value]     // Float32Array([3, 4, 5])
   })
 }">
 
