@@ -13,19 +13,11 @@
   })
 }"><br>
 
-<div id="myDiv01">...</div><br>
-<textarea cols=120 rows=20 NOWRAP>
+<div id="myDiv01">...1</div><br>
+<textarea cols=120 rows=20 NOWRAP onload="{
+alert()                                          
+}">
 
-
-<input type=button value="Use GPU math" onclick="{
-   var math = new deeplearn.NDArrayMathGPU()
-   var a = deeplearn.Array1D.new([10,20,30])
-   var b = deeplearn.Scalar.new(2.1)
-   math.scope(function() {
-      var result = math.add(a, b);
-      document.getElementById('myDiv01').innerHTML = result.getValues()     // Float32Array([3, 4, 5])
-  })
-}"><br>
 
 
 </textarea>
