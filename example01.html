@@ -13,7 +13,7 @@
   })
 }"><br>
 
-<div id="myDiv01">...</div>
+<div id="myDiv01">...</div><br>
 <textarea cols=70 rows=10 NOWRAP>
 
 
@@ -44,7 +44,7 @@
 
 Array1D:<input id="myText01" type=text value="[10,20,30]"><br>
 Scalar:<input id="myText02" type=text value=2.1><br>
-result.getValues()[<input id="myText03" type=number value=2>] < 0 to show all array values<br>
+result.getValues()[<input id="myText03" type=number value=2>] <= -1 to show all array values<br>
 
 <input type=button value="Use GPU math dynamic" onclick="{
    var math = new deeplearn.NDArrayMathGPU()
@@ -150,7 +150,33 @@ math.scope((keep, track) => {
 
 
 
-<div id="myDiv04">...4c</div>
+<div id="myDiv04">...</div><br>
+
+<textarea cols=70 rows=10 NOWRAP>
+
+const math = new deeplearn.NDArrayMathGPU();
+                                                          
+math.scope((keep, track) => {
+  const a = track(deeplearn.Array2D.new([2, 2], [1.0, 2.0, 3.0, 4.0]));
+  const b = track(deeplearn.Array2D.new([2, 2], [0.0, 2.0, 4.0, 6.0]));
+
+  // Non-blocking math calls.
+  const diff = math.sub(a, b);
+  const squaredDiff = math.elementWiseMul(diff, diff);
+  const sum = math.sum(squaredDiff);
+  const size = deeplearn.Scalar.new(a.size);
+  const average = math.divide(sum, size);
+
+  // Blocking call to actually read the values from average. Waits until the
+  // GPU has finished executing the operations before returning values.
+  // average is a Scalar so we use .get()
+  //console.log(average.get());
+  document.getElementById('myDiv04').innerHTML =  'The average = ' + average.get()
+});   
+
+
+
+</textarea>
 
 <br><br><hr><br>
 
