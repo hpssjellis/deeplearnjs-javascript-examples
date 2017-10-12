@@ -3,7 +3,7 @@
 <script src="https://unpkg.com/deeplearn"></script>
 
 
-<input type=button value="Use GPU math" onclick="{
+<input id="myButton01" type=button value="Use GPU math" onclick="{
    var math = new deeplearn.NDArrayMathGPU()
    var a = deeplearn.Array1D.new([10,20,30])
    var b = deeplearn.Scalar.new(2.1)
@@ -15,9 +15,9 @@
 
 <div id="myDiv01">...1</div><br>
 <textarea cols=120 rows=20 NOWRAP onmouseover="{
-   this.value = document.getElementById('myDiv01').innerHTML                                        
+   this.value = document.getElementById('myButton01').outerHTML                                        
 }">
-wow222
+wow333
 
 
 </textarea>
