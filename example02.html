@@ -5,7 +5,8 @@
 
 
 
-<script src="https://unpkg.com/deeplearn"></script>
+
+<script src="https://unpkg.com/deeplearn-3.0.0"></script>
 
 
 <input id="myButton01" type=button value="Deeplearn version2" onclick="{
@@ -22,3 +23,35 @@ click to see the code2
 </textarea>
 
 <br><br><hr><br>
+
+
+
+
+
+
+
+
+
+
+<input id="myButton01" type=button value="Use GPU math" onclick="{
+   var math = new deeplearn.NDArrayMathGPU()
+   var a = deeplearn.Array1D.new([10,20,30])
+   var b = deeplearn.Scalar.new(2.1)
+   math.scope(function() {
+      var result = math.add(a, b);
+      document.getElementById('myDiv01').innerHTML = result.getValues()     // Float32Array([3, 4, 5])
+  })
+}"><br>
+
+<div id="myDiv01">...</div><br>
+<textarea cols=120 rows=20 NOWRAP onclick="{
+   this.value = document.getElementById('myButton01').outerHTML                                        
+}">
+click to see the code
+
+
+</textarea>
+
+<br><br><hr><br>
+
+
