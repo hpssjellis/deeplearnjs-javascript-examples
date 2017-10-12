@@ -64,7 +64,8 @@ result.getValues()[<input id="myText03" type=number value=0>] -1 to show all val
 
 <input type=button value="mean squared difference" onclick="{
 
-const math = new NDArrayMathGPU();
+//const math = new NDArrayMathGPU();
+var math = new NDArrayMathGPU();
 
 math.scope((keep, track) => {
   const a = track(Array2D.new([2, 2], [1.0, 2.0, 3.0, 4.0]));
@@ -88,7 +89,7 @@ math.scope((keep, track) => {
 
 
 
-<div id="myDiv03">...3</div>
+<div id="myDiv03">...3a</div>
 
 
 
