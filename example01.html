@@ -43,7 +43,7 @@ Array1D:<input id="myText01" type=text value="[10,20,30]"><br>
 Scalar:<input id="myText02" type=text value=2.1><br>
 result.getValues()[<input id="myText03" type=number value=2>] <= -1 to show all array values<br>
 
-<input type=button value="Use GPU math dynamic" onclick="{
+<input id="myButton02" type=button value="Use GPU math dynamic" onclick="{
    var math = new deeplearn.NDArrayMathGPU()
    var a = deeplearn.Array1D.new(eval(document.getElementById('myText01').value))
    var b = deeplearn.Scalar.new(document.getElementById('myText02').value)
@@ -62,6 +62,14 @@ result.getValues()[<input id="myText03" type=number value=2>] <= -1 to show all 
 
 
 <div id="myDiv02">...</div>
+
+<textarea cols=120 rows=20 NOWRAP onclick="{
+   this.value = document.getElementById('myButton02').outerHTML                                        
+}">
+click to see the code
+
+
+</textarea>
 
 <br><br><hr><br>
 
