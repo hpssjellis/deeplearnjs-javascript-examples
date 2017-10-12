@@ -14,7 +14,7 @@
 }"><br>
 
 <div id="myDiv01">...</div><br>
-<textarea cols=120 rows=10 NOWRAP>
+<textarea cols=120 rows=20 NOWRAP>
 
 
 <input type=button value="Use GPU math" onclick="{
@@ -52,8 +52,9 @@ result.getValues()[<input id="myText03" type=number value=2>] <= -1 to show all 
    var b = deeplearn.Scalar.new(document.getElementById('myText02').value)
    math.scope(function() {
       var result = math.add(a, b);
-      var mySize = document.getElementById('myText03').value     
-       if (mySize >= 0 ){                                                  
+      var mySize = document.getElementById('myText03').value  
+       if (mySize == NaN){mySize = -2}
+       if (mySize >= 0 ) {                                                  
           document.getElementById('myDiv02').innerHTML = result.getValues()[mySize]     // Float32Array([3, 4, 5])
       } else {
           document.getElementById('myDiv02').innerHTML = result.getValues()
@@ -98,7 +99,7 @@ math.scope((keep, track) => {
 
 
 <div id="myDiv03">...</div><br>
-<textarea cols=120 rows=10 NOWRAP>
+<textarea cols=120 rows=20 NOWRAP>
 
 <input type=button value="matrix times a vector" onclick="{
 
@@ -174,7 +175,7 @@ math.scope((keep, track) => {
 
 <div id="myDiv04">...</div><br>
 
-<textarea cols=120 rows=10 NOWRAP>
+<textarea cols=120 rows=20 NOWRAP>
 
 const math = new deeplearn.NDArrayMathGPU();
                                                           
@@ -195,6 +196,48 @@ math.scope((keep, track) => {
   //console.log(average.get());
   document.getElementById('myDiv04').innerHTML =  'The average = ' + average.get()
 });   
+
+
+
+</textarea>
+
+<br><br><hr><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+From <a href="https://deeplearnjs.org/docs/tutorials/intro.html">https://deeplearnjs.org/docs/tutorials/intro.html</a><br>
+<input type=button value="" onclick="{
+
+const math = new deeplearn.NDArrayMathGPU();
+                                                          
+                                                      
+
+
+}"><br>
+
+
+
+<div id="myDiv05">...5a</div><br>
+
+<textarea cols=120 rows=20 NOWRAP>
 
 
 
