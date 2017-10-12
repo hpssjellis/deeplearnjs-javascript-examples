@@ -73,15 +73,17 @@ math.scope((keep, track) => {
   const vector = track(deeplearn.Array1D.new([0, 1, 2]));
   const result = math.matrixTimesVector(matrix, vector);
 
-  console.log('result shape:', result.shape);
-  console.log('result', result.getValues());
+  //console.log('result shape:', result.shape);
+  //console.log('result', result.getValues());
+  document.getElementById('myDiv02').innerHTML =    'result shape:'+ result.shape  +   ',  result :'+ result.getValues()                                                 
+                                                          
 });
 
 }">
 
 
 
-<div id="myDiv03">...3g</div>
+<div id="myDiv03">...3h</div>
 
 
 
