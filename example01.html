@@ -122,7 +122,7 @@ mouseover to see the code
 
 
 From <a href="https://deeplearnjs.org/docs/tutorials/intro.html">https://deeplearnjs.org/docs/tutorials/intro.html</a><br>
-<input type=button value="Mean Square Difference" onclick="{
+<input id="myButton04" type=button value="Mean Square Difference" onclick="{
 
 const math = new deeplearn.NDArrayMathGPU();
                                                           
@@ -150,29 +150,10 @@ math.scope((keep, track) => {
 
 
 <div id="myDiv04">...</div><br>
-
-<textarea cols=120 rows=20 NOWRAP>
-
-const math = new deeplearn.NDArrayMathGPU();
-                                                          
-math.scope((keep, track) => {
-  const a = track(deeplearn.Array2D.new([2, 2], [1.0, 2.0, 3.0, 4.0]));
-  const b = track(deeplearn.Array2D.new([2, 2], [0.0, 2.0, 4.0, 6.0]));
-
-  // Non-blocking math calls.
-  const diff = math.sub(a, b);
-  const squaredDiff = math.elementWiseMul(diff, diff);
-  const sum = math.sum(squaredDiff);
-  const size = deeplearn.Scalar.new(a.size);
-  const average = math.divide(sum, size);
-
-  // Blocking call to actually read the values from average. Waits until the
-  // GPU has finished executing the operations before returning values.
-  // average is a Scalar so we use .get()
-  //console.log(average.get());
-  document.getElementById('myDiv04').innerHTML =  'The average = ' + average.get()
-});   
-
+<textarea cols=120 rows=20 NOWRAP onmouseover="{
+   this.value = document.getElementById('myButton04').outerHTML                                        
+}">
+mouseover to see the code
 
 
 </textarea>
