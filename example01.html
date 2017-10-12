@@ -79,7 +79,7 @@ math.scope((keep, track) => {
                                                           
 });
 
-}">
+}"><br>
 
 
 
@@ -120,7 +120,7 @@ math.scope((keep, track) => {
   const diff = math.sub(a, b);
   const squaredDiff = math.elementWiseMul(diff, diff);
   const sum = math.sum(squaredDiff);
-  const size = Scalar.new(a.size);
+  const size = deeplearn.Scalar.new(a.size);
   const average = math.divide(sum, size);
 
   // Blocking call to actually read the values from average. Waits until the
@@ -130,11 +130,11 @@ math.scope((keep, track) => {
 });                                                          
 
 
-}">
+}"><br>
 
 
 
-<div id="myDiv04">...4a</div>
+<div id="myDiv04">...4c</div>
 
 <br><br><hr><br>
 
