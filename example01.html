@@ -69,8 +69,8 @@ const math = new deeplearn.NDArrayMathGPU();
                                                           
 math.scope((keep, track) => {
   const matrixShape = [2, 3];  // 2 rows, 3 columns.
-  const matrix = track(Array2D.new(matrixShape, [10, 20, 30, 40, 50, 60]));
-  const vector = track(Array1D.new([0, 1, 2]));
+  const matrix = track(deeplearn.Array2D.new(matrixShape, [10, 20, 30, 40, 50, 60]));
+  const vector = track(deeplearn.Array1D.new([0, 1, 2]));
   const result = math.matrixTimesVector(matrix, vector);
 
   console.log('result shape:', result.shape);
@@ -81,7 +81,7 @@ math.scope((keep, track) => {
 
 
 
-<div id="myDiv03">...3f</div>
+<div id="myDiv03">...3g</div>
 
 
 
