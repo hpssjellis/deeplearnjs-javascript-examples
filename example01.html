@@ -256,7 +256,49 @@ console.log(outputTensor.shape);
 
 <input type=button value=session onclick="{
 
- alert()                                         
+const learningRate = .00001;
+const batchSize = 3;
+const math = new deeplearn.NDArrayMathGPU();
+
+const session = new deeplearn.Session(g, math);
+const optimizer = new deeplearn.SGDOptimizer(learningRate);
+
+const inputs: Array1D[] = [
+  deeplearn.Array1D.new([1.0, 2.0, 3.0]),
+  deeplearn.Array1D.new([10.0, 20.0, 30.0]),
+  deeplearn.Array1D.new([100.0, 200.0, 300.0])
+];
+
+const labels: Array1D[] = [
+  deeplearn.Array1D.new([4.0]),
+  deeplearn.Array1D.new([40.0]),
+  deeplearn.Array1D.new([400.0])
+];
+
+// Shuffles inputs and labels and keeps them mutually in sync.
+const shuffledInputProviderBuilder =
+  new deeplearn.InCPUMemoryShuffledInputProviderBuilder([inputs, labels]);
+const [inputProvider, labelProvider] =
+  deeplearn.shuffledInputProviderBuilder.getInputProviders();
+
+// Maps tensors to InputProviders.
+const feedEntries: FeedEntry[] = [
+  {tensor: inputTensor, data: inputProvider},
+  {tensor: labelTensor, data: labelProvider}
+];
+
+const NUM_BATCHES = 10;
+for (let i = 0; i < NUM_BATCHES; i++) {
+  // Wrap session.train in a scope so the cost gets cleaned up automatically.
+  math.scope(() => {
+    // Train takes a cost tensor to minimize. Trains one batch. Returns the
+    // average cost as a Scalar.
+    const cost = session.train(
+        costTensor, feedEntries, batchSize, optimizer, CostReduction.MEAN);
+
+    console.log('last average cost (' + i + '): ' + cost.get());
+  });
+}                                        
                                           
 }">
 
@@ -268,7 +310,7 @@ console.log(outputTensor.shape);
 
 
 
-<div id="myDiv05">...5b</div><br>
+<div id="myDiv05">...5ccc</div><br>
 
 <textarea cols=120 rows=20 NOWRAP>
 
