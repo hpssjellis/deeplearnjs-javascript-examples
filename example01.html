@@ -13,11 +13,13 @@
   })
 }">
 
-<br><br><br>
+<div id="myDiv01">...</div>
+
+<br><br><hr><br>
 
 Array1D:<input id="myText01" type=text value="[10,20,30]"><br>
 Scalar:<input id="myText02" type=text value=2.1><br>
-result.getValues()[<input id="myText03" size = 3 type=number value=0>]<br>
+result.getValues()[<input id="myText03" type=number value=0>] -1 to show all values<br>
 
 <input type=button value="Use GPU math dynamic" onclick="{
    var math = new deeplearn.NDArrayMathGPU()
@@ -27,19 +29,19 @@ result.getValues()[<input id="myText03" size = 3 type=number value=0>]<br>
       var result = math.add(a, b);
       var mySize = document.getElementById('myText03').value     
        if (mySize >= 0 ){                                                  
-          document.getElementById('myDiv01').innerHTML = result.getValues()[mySize]     // Float32Array([3, 4, 5])
+          document.getElementById('myDiv02').innerHTML = result.getValues()[mySize]     // Float32Array([3, 4, 5])
       } else {
-          document.getElementById('myDiv01').innerHTML = result.getValues()
+          document.getElementById('myDiv02').innerHTML = result.getValues()
       }
                                                          
   })
 }">
 
 
-<div id="myDiv01"></div>
+<div id="myDiv02">...</div>
 
 
-<br><br><hr>
+<br><br><hr><br>
 
 
 Github: <a href="https://github.com/hpssjellis/deeplearnjs-javascript-examples"> https://github.com/hpssjellis/deeplearnjs-javascript-examples </a><br>
