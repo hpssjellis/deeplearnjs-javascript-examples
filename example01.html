@@ -13,7 +13,7 @@
   })
 }"><br>
 
-<div id="myDiv01">...1</div>
+<div id="myDiv01">...</div>
 
 <br><br><hr><br>
 
@@ -48,7 +48,7 @@ result.getValues()[<input id="myText03" type=number value=0>] -1 to show all val
 }"><br>
 
 
-<div id="myDiv02">...2</div>
+<div id="myDiv02">...</div>
 
 <br><br><hr><br>
 
@@ -75,7 +75,7 @@ math.scope((keep, track) => {
 
   //console.log('result shape:', result.shape);
   //console.log('result', result.getValues());
-  document.getElementById('myDiv02').innerHTML =    'result shape:'+ result.shape  +   ',  result :'+ result.getValues()                                                 
+  document.getElementById('myDiv03').innerHTML =    'result shape:'+ result.shape  +   ',  result :'+ result.getValues()                                                 
                                                           
 });
 
@@ -83,15 +83,75 @@ math.scope((keep, track) => {
 
 
 
-<div id="myDiv03">...3h</div>
-
-
-
-
-
-
+<div id="myDiv03">...</div>
 
 <br><br><hr><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+From <a href="https://deeplearnjs.org/docs/tutorials/intro.html">https://deeplearnjs.org/docs/tutorials/intro.html</a><br>
+<input type=button value="Mean Square Difference" onclick="{
+
+const math = new deeplearn.NDArrayMathGPU();
+                                                          
+math.scope((keep, track) => {
+  const a = track(deeplearn.Array2D.new([2, 2], [1.0, 2.0, 3.0, 4.0]));
+  const b = track(deeplearn.Array2D.new([2, 2], [0.0, 2.0, 4.0, 6.0]));
+
+  // Non-blocking math calls.
+  const diff = math.sub(a, b);
+  const squaredDiff = math.elementWiseMul(diff, diff);
+  const sum = math.sum(squaredDiff);
+  const size = Scalar.new(a.size);
+  const average = math.divide(sum, size);
+
+  // Blocking call to actually read the values from average. Waits until the
+  // GPU has finished executing the operations before returning values.
+  // average is a Scalar so we use .get()
+  console.log(average.get());
+});                                                          
+
+
+}">
+
+
+
+<div id="myDiv04">...4a</div>
+
+<br><br><hr><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Github: <a href="https://github.com/hpssjellis/deeplearnjs-javascript-examples"> https://github.com/hpssjellis/deeplearnjs-javascript-examples </a><br>
