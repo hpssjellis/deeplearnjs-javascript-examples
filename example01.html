@@ -126,7 +126,8 @@ math.scope((keep, track) => {
   // Blocking call to actually read the values from average. Waits until the
   // GPU has finished executing the operations before returning values.
   // average is a Scalar so we use .get()
-  console.log(average.get());
+  //console.log(average.get());
+  document.getElementById('myDiv03').innerHTML =  'The average = ' + average.get()
 });                                                          
 
 
