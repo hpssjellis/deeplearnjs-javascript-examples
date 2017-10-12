@@ -64,19 +64,19 @@ result.getValues()[<input id="myText03" type=number value=0>] -1 to show all val
 
 <input type=button value="mean squared difference" onclick="{
 
-//const math = new NDArrayMathGPU();
-var math = new NDArrayMathGPU();
+const math2 = new NDArrayMathGPU();
+//var math = new NDArrayMathGPU();
 
-math.scope((keep, track) => {
+math2.scope((keep, track) => {
   const a = track(Array2D.new([2, 2], [1.0, 2.0, 3.0, 4.0]));
   const b = track(Array2D.new([2, 2], [0.0, 2.0, 4.0, 6.0]));
 
   // Non-blocking math calls.
-  const diff = math.sub(a, b);
-  const squaredDiff = math.elementWiseMul(diff, diff);
-  const sum = math.sum(squaredDiff);
+  const diff = math2.sub(a, b);
+  const squaredDiff = math2.elementWiseMul(diff, diff);
+  const sum = math2.sum(squaredDiff);
   const size = Scalar.new(a.size);
-  const average = math.divide(sum, size);
+  const average = math2.divide(sum, size);
 
   // Blocking call to actually read the values from average. Waits until the
   // GPU has finished executing the operations before returning values.
@@ -89,7 +89,7 @@ math.scope((keep, track) => {
 
 
 
-<div id="myDiv03">...3a</div>
+<div id="myDiv03">...3b</div>
 
 
 
