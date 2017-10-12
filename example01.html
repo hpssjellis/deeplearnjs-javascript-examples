@@ -64,8 +64,9 @@ result.getValues()[<input id="myText03" type=number value=0>] -1 to show all val
 
 <input type=button value="matrix times a vector" onclick="{
 
-const math = new NDArrayMathGPU();
+const math = new deeplearn.NDArrayMathGPU();
 
+                                                          
 math.scope((keep, track) => {
   const matrixShape = [2, 3];  // 2 rows, 3 columns.
   const matrix = track(Array2D.new(matrixShape, [10, 20, 30, 40, 50, 60]));
@@ -80,7 +81,7 @@ math.scope((keep, track) => {
 
 
 
-<div id="myDiv03">...3e</div>
+<div id="myDiv03">...3f</div>
 
 
 
