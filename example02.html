@@ -27,14 +27,8 @@ myTextGrow(45)
                                                                             
 }"><br>
 
-<div id="myDiv01">..5</div><br>
-<textarea id="myArea01"  style="width:100%" rows=3 NOWRAP onclick="{
-   this.value = document.getElementById('myButton01').outerHTML
-   setTimeout(function() {
-      while (  document.getElementById('myArea01').clientHeight < document.getElementById('myArea01').scrollHeight){                                                                                                                                              
-          document.getElementById('myArea01').rows += 3; 
-      } 
-   }, 100)
+<div id="myDiv01">...</div><br>
+<textarea id="myTextarea01"   style="width:100%"  rows=3 NOWRAP onclick="{myTextGrow('myTextarea01', 'myButton01')}">
   
               
 
@@ -68,8 +62,8 @@ click to see the code
   })
 }"><br>
 
-<div id="myDiv02">...4</div><br>
-<textarea id="myTextarea01"   style="width:100%"  rows=3 NOWRAP onclick="{myTextGrow('myTextarea01', 'myButton02')}">
+<div id="myDiv02">...6</div><br>
+<textarea id="myTextarea02"   style="width:100%"  rows=3 NOWRAP onclick="{myTextGrow('myTextarea02', 'myButton02')}">
 click here to see the code
 
 </textarea>
@@ -79,7 +73,7 @@ click here to see the code
 
 
 
-<!--  Following are just a few helper functions    -->
+<!--  Following is a helper functions  to grow the textareas  -->
 
 <script>
 function myTextGrow(myT, myB){
