@@ -24,21 +24,22 @@
 From: <a href="https://deeplearnjs.org/docs/tutorials/ml_beginners.html">https://deeplearnjs.org/docs/tutorials/ml_beginners.html</a>
 <input id="myButton01" type=button value="y = a * x^2 + b * x + c" onclick="{
 
-        elem = document.getElementById('myArea01') 
-    if (elem.clientHeight < elem.scrollHeight) 
-        alert('The element has a vertical scrollbar!'); 
-    else 
-        alert('The element doesn't have a vertical scrollbar.');                                                                   
+  //      elem = document.getElementById('myArea01') 
+ //   if (elem.clientHeight < elem.scrollHeight) 
+  //      alert('The element has a vertical scrollbar!'); 
+ //   else 
+    //    alert('The element doesn't have a vertical scrollbar.');                                                                   
                                                               
                                                                        
-       // alert(document.getElementById('myArea01').rows)                                                                  
+        alert(document.getElementById('myArea01').clientHeight)                
+        //alert(document.getElementById('myArea01').rows)                                                                  
        // document.getElementById('myArea01').rows = '10';                                                              
                                                                        
                                                                        
                                                                        
 }"><br>
 
-<div id="myDiv01">..9</div><br>
+<div id="myDiv01">..1</div><br>
 <textarea id="myArea01" cols=120 rows=50 NOWRAP onclick="{
    this.value = document.getElementById('myButton01').outerHTML
 
