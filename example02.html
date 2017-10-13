@@ -34,21 +34,21 @@ From: <a href="https://deeplearnjs.org/docs/tutorials/ml_beginners.html">https:/
         alert(document.getElementById('myArea01').scrollHeight)       
         alert(document.getElementById('myArea01').clientHeight)    
                                                                             
-   if (document.getElementById('myArea01').scrollHeight <= document.getElementById('myArea01').clientHeight ){
-       document.getElementById('myArea01').rows = '10'                                                                      
+   if (document.getElementById('myArea01').scrollHeight > document.getElementById('myArea01').clientHeight ){
+       document.getElementById('myArea01').rows = '40'                                                                      
    }                                                                         
                                                                             
                                                                             
                                                                             
                                                                             
         //alert(document.getElementById('myArea01').rows)                                                                  
-       // document.getElementById('myArea01').rows = '10';                                                              
+       // document.getElementById('myArea01').rows = '40';                                                              
                                                                        
                                                                        
                                                                        
 }"><br>
 
-<div id="myDiv01">..4</div><br>
+<div id="myDiv01">..5</div><br>
 <textarea id="myArea01" cols=120 rows=50 NOWRAP onclick="{
    this.value = document.getElementById('myButton01').outerHTML
 
