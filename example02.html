@@ -58,7 +58,7 @@ click to see the code
 
 
 
-<input id="myButton01" type=button value="Use GPU math" onclick="{
+<input id="myButton02" type=button value="Use GPU math" onclick="{
    var math = new deeplearn.NDArrayMathGPU()
    var a = deeplearn.Array1D.new([10,20,30])
    var b = deeplearn.Scalar.new(2.1)
@@ -68,9 +68,9 @@ click to see the code
   })
 }"><br>
 
-<div id="myDiv02">...3</div><br>
-<textarea id="myTextarea01" cols=120 rows=20 NOWRAP onclick="{myTextGrow('myTextarea01')}">
-click to see the code normal
+<div id="myDiv02">...4</div><br>
+<textarea id="myTextarea01"   style="width:100%"  rows=3 NOWRAP onclick="{myTextGrow('myTextarea01', 'myButton02')}">
+click here to see the code
 
 </textarea>
 
@@ -82,8 +82,8 @@ click to see the code normal
 <!--  Following are just a few helper functions    -->
 
 <script>
-function myTextGrow(myT){
-   document.getElementById(myT).value = document.getElementById('myButton01').outerHTML
+function myTextGrow(myT, myB){
+   document.getElementById(myT).value = document.getElementById(myB).outerHTML
    setTimeout(function() {
       while (  document.getElementById(myT).clientHeight < document.getElementById(myT).scrollHeight){                                                                                                                                              
           document.getElementById(myT).rows += 3; 
