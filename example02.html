@@ -40,16 +40,16 @@ hh
                                                                             
 }"><br>
 
-<div id="myDiv01">..1</div><br>
+<div id="myDiv01">..2</div><br>
 <textarea id="myArea01"  style="width:100%" rows=3 NOWRAP onclick="{
    this.value = document.getElementById('myButton01').outerHTML
    setTimeout(function() {
       while (  document.getElementById('myArea01').clientHeight < document.getElementById('myArea01').scrollHeight){                                                                                                                                              
-          this.rows += 3; 
+          document.getElementById('myArea01').rows += 3; 
       } 
    }, 100)
   
-   alert(this.clientHeight)               
+              
 
 }">
 click to see the code
