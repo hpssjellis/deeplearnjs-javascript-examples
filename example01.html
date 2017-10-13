@@ -31,12 +31,8 @@
 }"><br>
 
 <div id="myDiv01">...</div><br>
-<textarea cols=120 rows=20 NOWRAP onclick="{
-   this.value = document.getElementById('myButton01').outerHTML                                        
-}">
+<textarea id="myTextarea01"   style="width:100%"  rows=3 NOWRAP onclick="{myTextGrow('myTextarea01', 'myButton01')}">
 click to see the code
-
-
 </textarea>
 
 <br><br><hr><br>
@@ -75,12 +71,8 @@ result.getValues()[<input id="myText03" type=number value=2>] <= -1 to show all 
 
 <div id="myDiv02">...</div>
 
-<textarea cols=120 rows=20 NOWRAP onclick="{
-   this.value = document.getElementById('myButton02').outerHTML                                        
-}">
+<textarea id="myTextarea02"   style="width:100%"  rows=3 NOWRAP onclick="{myTextGrow('myTextarea02', 'myButton02')}">
 click to see the code
-
-
 </textarea>
 
 <br><br><hr><br>
@@ -116,12 +108,8 @@ math.scope((keep, track) => {
 
 
 <div id="myDiv03">...</div><br>
-<textarea cols=120 rows=20 NOWRAP onClick="{
-   this.value = document.getElementById('myButton03').outerHTML                                        
-}">
-Click to see the code
-
-
+<textarea id="myTextarea03"   style="width:100%"  rows=3 NOWRAP onclick="{myTextGrow('myTextarea03', 'myButton03')}">
+click to see the code
 </textarea>
 
 <br><br><hr><br>
@@ -175,12 +163,8 @@ math.scope((keep, track) => {
 
 
 <div id="myDiv04">...</div><br>
-<textarea cols=120 rows=20 NOWRAP onClick="{
-   this.value = document.getElementById('myButton04').outerHTML                                        
-}">
-Click to see the code
-
-
+<textarea id="myTextarea04"   style="width:100%"  rows=3 NOWRAP onclick="{myTextGrow('myTextarea04', 'myButton04')}">
+click to see the code
 </textarea>
 
 <br><br><hr><br>
@@ -221,3 +205,24 @@ Github: <a href="https://github.com/hpssjellis/deeplearnjs-javascript-examples">
 Website Index: <a href="https://hpssjellis.github.io/deeplearnjs-javascript-examples/">https://hpssjellis.github.io/deeplearnjs-javascript-examples/</a><br>
 
 By Jeremy Ellis Twitter @rocksetta. Use at your own risk!
+
+
+
+
+
+
+<!--  Following is a helper functions  to grow the textareas  -->
+
+<script>
+function myTextGrow(myT, myB){
+   document.getElementById(myT).value = document.getElementById(myB).outerHTML
+   setTimeout(function() {
+      while (  document.getElementById(myT).clientHeight < document.getElementById(myT).scrollHeight){                                                                                                                                              
+          document.getElementById(myT).rows += 3; 
+      } 
+   }, 100)
+}  
+</script>  
+
+
+
