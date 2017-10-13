@@ -68,10 +68,8 @@ click to see the code
   })
 }"><br>
 
-<div id="myDiv02">...</div><br>
-<textarea cols=120 rows=20 NOWRAP onclick="{
-   this.value = document.getElementById('myButton01').outerHTML                                        
-}">
+<div id="myDiv02">...3</div><br>
+<textarea id="myTextarea01" cols=120 rows=20 NOWRAP onclick="{myTextGrow('myTextarea01')}">
 click to see the code normal
 
 </textarea>
@@ -81,10 +79,15 @@ click to see the code normal
 
 
 
-
+<!--  Following are just a few helper functions    -->
 
 <script>
 function myTextGrow(myT){
-   alert(myT)
+   document.getElementById(myT).value = document.getElementById('myButton01').outerHTML
+   setTimeout(function() {
+      while (  document.getElementById(myT).clientHeight < document.getElementById(myT).scrollHeight){                                                                                                                                              
+          document.getElementById(myT).rows += 3; 
+      } 
+   }, 100)
 }  
 </script>  
