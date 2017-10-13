@@ -34,8 +34,8 @@ From: <a href="https://deeplearnjs.org/docs/tutorials/ml_beginners.html">https:/
         alert(document.getElementById('myArea01').scrollHeight)       
         alert(document.getElementById('myArea01').clientHeight)    
                                                                             
-   if (document.getElementById('myArea01').scrollHeight <= document.getElementById('myArea01').clientHeight ){
-       document.getElementById('myArea01').rows +=  4                                                                      
+   if (document.getElementById('myArea01').scrollHeight >= document.getElementById('myArea01').clientHeight ){
+       document.getElementById('myArea01').rows = '10'                                                                      
    }                                                                         
                                                                             
                                                                             
