@@ -28,19 +28,20 @@ From: <a href="https://deeplearnjs.org/docs/tutorials/ml_beginners.html">https:/
         //alert(document.getElementById('myArea01').rows)                                                                  
         //document.getElementById('myArea01').rows += 30;    
                                                                             
-           if (  document.getElementById('myArea01').clientHeight < document.getElementById('myArea01').scrollHeight){                                                                                                                                              
-               document.getElementById('myArea01').rows += 3; 
-           }
-                                                                            
+                                                          
                                                                             
                                                                        
                                                                        
                                                                        
 }"><br>
 
-<div id="myDiv01">..4</div><br>
+<div id="myDiv01">..5</div><br>
 <textarea id="myArea01" cols=120 rows=5 NOWRAP onclick="{
    this.value = document.getElementById('myButton01').outerHTML
+   if (  document.getElementById('myArea01').clientHeight < document.getElementById('myArea01').scrollHeight){                                                                                                                                              
+          document.getElementById('myArea01').rows += 3; 
+   }
+                  
 
 }">
 click to see the code
