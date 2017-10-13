@@ -55,12 +55,12 @@ From: <a href="https://deeplearnjs.org/docs/tutorials/ml_beginners.html">https:/
                                                                             
 }"><br>
 
-<div id="myDiv01">..5</div><br>
+<div id="myDiv01">..6</div><br>
 <textarea id="myArea01"  style="width:100%" rows=3 NOWRAP onclick="{
    this.value = document.getElementById('myButton01').outerHTML
    setTimeout(function() {
-      while (  this.clientHeight < this.scrollHeight){                                                                                                                                              
-             this.rows += 3; 
+      while (  document.getElementById('myArea01').clientHeight < document.getElementById('myArea01').scrollHeight){                                                                                                                                              
+          document.getElementById('myArea01').rows += 3; 
       } 
    }, 100)
   
