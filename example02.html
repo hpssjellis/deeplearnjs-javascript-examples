@@ -1,4 +1,4 @@
-<h3 align=center>Deeplearnjs in your browser:4</h3>
+<h3 align=center>Deeplearnjs in your browser:5</h3>
 
 <textarea rows=9 cols=120 NOWRAP>
   This page uses the script tag:
@@ -22,22 +22,14 @@
 
 
 From: <a href="https://deeplearnjs.org/docs/tutorials/ml_beginners.html">
-https://deeplearnjs.org/docs/tutorials/ml_beginners.html</a><br>
+https://deeplearnjs.org/docs/tutorials/ml_beginners.html</a><br><br>
 <input id="myButton01" type=button value="y = a * x^2 + b * x + c" onclick="{
 
                                                                             
                                                                             
 
                                                                             
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-  const graph = new deeplearn.Graph();
+  const graph = new Graph();
 // Make a new input in the graph, called 'x', with shape [] (a Scalar).
 const x: Tensor = graph.placeholder('x', []);
 // Make new variables in the graph, 'a', 'b', 'c' with shape [] and random
@@ -49,94 +41,14 @@ const c: Tensor = graph.variable('c', deeplearn.Scalar.new(Math.random()));
 const order2: Tensor = graph.multiply(a, graph.square(x));
 const order1: Tensor = graph.multiply(b, x);
 const y: Tensor = graph.add(graph.add(order2, order1), c);
-
-// When training, we need to provide a label and a cost function.
-const yLabel: Tensor = graph.placeholder('y label', []);
-// Provide a mean squared cost function for training. cost = (y - yLabel)^2
-const cost: Tensor = graph.meanSquaredCost(y, yLabel);
-
-// At this point the graph is set up, but has not yet been evaluated.
-// **deeplearn.js** needs a Session object to evaluate a graph.
-const math = new deeplearn.NDArrayMathGPU();
-const session = new deeplearn.Session(graph, math);
-
-math.scope((keep, track) => {
-  /**
-   * Inference
-   */
-  // Now we ask the graph to evaluate (infer) and give us the result when
-  // providing a value 4 for "x".
-  // NOTE: "a", "b", and "c" are randomly initialized, so this will give us
-  // something random.
-  let result: deeplearn.NDArray =
-      session.eval(y, [{tensor: x, data: track(deeplearn.Scalar.new(4))}]);
-  console.log(result.shape);
-  console.log(result.getValues());
-
-                            
-                            
-                            
-                            
-                            
-                            
-  /**
-   * Training
-
-  // Now let's learn the coefficients of this quadratic given some data.
-  // To do this, we need to provide examples of x and y.
-  // The values given here are for values a = 3, b = 2, c = 1, with random
-  // noise added to the output so it's not a perfect fit.
-  const xs: Scalar[] = [
-    track(deeplearn.Scalar.new(0)),
-    track(deeplearn.Scalar.new(1)),
-    track(deeplearn.Scalar.new(2)),
-    track(deeplearn.Scalar.new(3))
-  ];
-  const ys: Scalar[] = [
-    track(deeplearn.Scalar.new(1.1)),
-    track(deeplearn.Scalar.new(5.9)),
-    track(deeplearn.Scalar.new(16.8)),
-    track(deeplearn.Scalar.new(33.9))
-  ];
-  // When training, it's important to shuffle your data!
-  const shuffledInputProviderBuilder =
-      new deeplearn.InCPUMemoryShuffledInputProviderBuilder([xs, ys]);
-  const [xProvider, yProvider] =
-      shuffledInputProviderBuilder.getInputProviders();
-
-  // Training is broken up into batches.
-  const NUM_BATCHES = 20;
-  const BATCH_SIZE = xs.length;
-  // Before we start training, we need to provide an optimizer. This is the
-  // object that is responsible for updating weights. The learning rate param
-  // is a value that represents how large of a step to make when updating
-  // weights. If this is too big, you may overstep and oscillate. If it is too
-  // small, the model may take a long time to train.
-  const LEARNING_RATE = .01;
-  const optimizer = new deeplearn.SGDOptimizer(LEARNING_RATE);
-  for (let i = 0; i < NUM_BATCHES; i++) {
-    // Train takes a cost tensor to minimize; this call trains one batch and
-    // returns the average cost of the batch as a Scalar.
-    const costValue = session.train(
-        cost,
-        // Map input providers to Tensors on the graph.
-        [{tensor: x, data: xProvider}, {tensor: yLabel, data: yProvider}],
-        BATCH_SIZE, optimizer, deeplearn.CostReduction.MEAN);
-
-    console.log('average cost: ' + costValue.get());
-  }
-
-  // Now print the value from the trained model for x = 4, should be ~57.0.
-  result = session.eval(y, [{tensor: x, data: track(deeplearn.Scalar.new(4))}]);
-  console.log('result should be ~57.0:');
-  console.log(result.shape);
-  console.log(result.getValues());
-});                                                                          
+                                                                          
                                                                             
                                                                             
                                                                             
-     */                                                                          
                                                                             
+                                                                            
+                                                                            
+                                                          
                                                                             
                                                                             
                                                                             
