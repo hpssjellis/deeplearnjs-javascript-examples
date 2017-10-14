@@ -1,4 +1,4 @@
-<h3 align=center>Deeplearnjs in your browser:3</h3>
+<h3 align=center>Deeplearnjs in your browser:4</h3>
 
 <textarea rows=9 cols=120 NOWRAP>
   This page uses the script tag:
@@ -22,15 +22,9 @@
 
 
 From: <a href="https://deeplearnjs.org/docs/tutorials/ml_beginners.html">https://deeplearnjs.org/docs/tutorials/ml_beginners.html</a>
-<input id="myButton01" type=button value="y = a * x^2 + b * x + c" onclick="{
+<input id="myButton01" type=button value="Quadratic y = a * x^2 + b * x + c" onclick="{
 
-                                                                            
-                                                                            
-
-                                                                            
-                                                                            
-
- var graph = new deeplearn.Graph();
+    var graph = new deeplearn.Graph();
     var x_1 = graph.placeholder('x', []);
     var a = graph.variable('a', deeplearn.Scalar.new(Math.random()));
     var b = graph.variable('b', deeplearn.Scalar.new(Math.random()));
@@ -39,35 +33,16 @@ From: <a href="https://deeplearnjs.org/docs/tutorials/ml_beginners.html">https:/
     var order1 = graph.multiply(b, x_1);
     var y_1 = graph.add(graph.add(order2, order1), c);
 
-
-
-
     var yLabel_1 = graph.placeholder('y label', []);
     var cost_1 = graph.meanSquaredCost(y_1, yLabel_1);
 
-
-
     var math = new deeplearn.NDArrayMathGPU();
     var session_1 = new deeplearn.Session(graph, math);
-
-
-
-
 
     math.scope(function (keep, track) {
         var result = session_1.eval(y_1, [{ tensor: x_1, data: track(deeplearn.Scalar.new(4)) }]);
         console.log(result.shape);
         console.log(result.getValues());
-
-
-
-
-
-
-
-
-
-
 
         var xs = [
             track(deeplearn.Scalar.new(0)), track(deeplearn.Scalar.new(1)), track(deeplearn.Scalar.new(2)),
@@ -93,36 +68,13 @@ From: <a href="https://deeplearnjs.org/docs/tutorials/ml_beginners.html">https:/
        // console.log(result.getValues());
         document.getElementById('myDiv01').innerHTML   =  '<br>using x = 4 the Quadratic result should be about 57.0:<br>'     
         document.getElementById('myDiv01').innerHTML   +=  result.shape + result.getValues() + '<br>'                                                                 
-                                                                            
-                                                                            
-                                                                            
+                                                                                                                                                                                                                                
     });                                                           
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
                                                                             
                                                                             
 }"><br>
 
-<div id="myDiv01">...2</div><br>
+<div id="myDiv01">...</div><br>
 <textarea id="myTextarea01"   style="width:100%"  rows=3 NOWRAP onclick="{myTextGrow('myTextarea01', 'myButton01')}">
 click to see the code
 </textarea>
