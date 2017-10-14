@@ -1,4 +1,4 @@
-<h3 align=center>Deeplearnjs in your browser:5</h3>
+<h3 align=center>Deeplearnjs in your browser:6</h3>
 
 <textarea rows=9 cols=120 NOWRAP>
   This page uses the script tag:
@@ -21,7 +21,8 @@
 
 
 
-From: <a href="https://deeplearnjs.org/docs/tutorials/ml_beginners.html">https://deeplearnjs.org/docs/tutorials/ml_beginners.html</a>
+From: <a href="https://deeplearnjs.org/docs/tutorials/ml_beginners.html">https://deeplearnjs.org/docs/tutorials/ml_beginners.html</a><br>
+
 <input id="myButton01" type=button value="Quadratic y = a * x^2 + b * x + c" onclick="{
 
     var graph = new deeplearn.Graph();
@@ -54,7 +55,7 @@ From: <a href="https://deeplearnjs.org/docs/tutorials/ml_beginners.html">https:/
         ];
         var shuffledInputProviderBuilder = new deeplearn.InCPUMemoryShuffledInputProviderBuilder([xs, ys]);
         var _a = shuffledInputProviderBuilder.getInputProviders(), xProvider = _a[0], yProvider = _a[1];
-        var NUM_BATCHES = 600;
+        var NUM_BATCHES = 20;
         var BATCH_SIZE = xs.length;
         var LEARNING_RATE = .01;
         var optimizer = new deeplearn.SGDOptimizer(LEARNING_RATE);
@@ -66,6 +67,7 @@ From: <a href="https://deeplearnjs.org/docs/tutorials/ml_beginners.html">https:/
        // console.log('result should be ~57.0:');
        // console.log(result.shape);
        // console.log(result.getValues());
+        document.getElementById('myDiv01').innerHTML   =  'Solving the Quadratic y = a * x^2 + b * x + c'                            
         document.getElementById('myDiv01').innerHTML   =  '<br>using x = 4 the Quadratic result should be about 57.0:<br>'     
         document.getElementById('myDiv01').innerHTML   +=  result.shape + result.getValues() + '<br>'                                                                 
                                                                                                                                                                                                                                 
