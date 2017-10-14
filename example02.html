@@ -1,4 +1,4 @@
-<h3 align=center>Deeplearnjs in your browser:</h3>
+<h3 align=center>Deeplearnjs in your browser:5</h3>
 
 <textarea rows=9 cols=120 NOWRAP>
   This page uses the script tag:
@@ -30,62 +30,7 @@ From: <a href="https://deeplearnjs.org/docs/tutorials/ml_beginners.html">https:/
                                                                             
                                                                             
 var deeplearn_1 = require('deeplearn');
-{
-    var math_1 = new deeplearn_1.NDArrayMathGPU();
-    math_1.scope(function (keep, track) {
-        var matrixShape = [2, 3];
-        var matrix = track(deeplearn_1.Array2D.new(matrixShape, [10, 20, 30, 40, 50, 60]));
-        var vector = track(deeplearn_1.Array1D.new([0, 1, 2]));
-        var result = math_1.matrixTimesVector(matrix, vector);
-        console.log('result shape:', result.shape);
-        console.log('result', result.getValues());
-    });
-}
-{
-    var graph = new deeplearn_1.Graph();
-    var x_1 = graph.placeholder('x', []);
-    var a = graph.variable('a', deeplearn_1.Scalar.new(Math.random()));
-    var b = graph.variable('b', deeplearn_1.Scalar.new(Math.random()));
-    var c = graph.variable('c', deeplearn_1.Scalar.new(Math.random()));
-    var order2 = graph.multiply(a, graph.square(x_1));
-    var order1 = graph.multiply(b, x_1);
-    var y_1 = graph.add(graph.add(order2, order1), c);
-    var yLabel_1 = graph.placeholder('y label', []);
-    var cost_1 = graph.meanSquaredCost(y_1, yLabel_1);
-    var math = new deeplearn_1.NDArrayMathGPU();
-    var session_1 = new deeplearn_1.Session(graph, math);
-    math.scope(function (keep, track) {
-        var result = session_1.eval(y_1, [{ tensor: x_1, data: track(deeplearn_1.Scalar.new(4)) }]);
-        console.log(result.shape);
-        console.log(result.getValues());
-        var xs = [
-            track(deeplearn_1.Scalar.new(0)), track(deeplearn_1.Scalar.new(1)), track(deeplearn_1.Scalar.new(2)),
-            track(deeplearn_1.Scalar.new(3))
-        ];
-        var ys = [
-            track(deeplearn_1.Scalar.new(1.1)), track(deeplearn_1.Scalar.new(5.9)), track(deeplearn_1.Scalar.new(16.8)),
-            track(deeplearn_1.Scalar.new(33.9))
-        ];
-        var shuffledInputProviderBuilder = new deeplearn_1.InCPUMemoryShuffledInputProviderBuilder([xs, ys]);
-        var _a = shuffledInputProviderBuilder.getInputProviders(), xProvider = _a[0], yProvider = _a[1];
-        var NUM_BATCHES = 20;
-        var BATCH_SIZE = xs.length;
-        var LEARNING_RATE = .01;
-        var optimizer = new deeplearn_1.SGDOptimizer(LEARNING_RATE);
-        for (var i = 0; i < NUM_BATCHES; i++) {
-            var costValue = session_1.train(cost_1, [{ tensor: x_1, data: xProvider }, { tensor: yLabel_1, data: yProvider }], BATCH_SIZE, optimizer, deeplearn_1.CostReduction.MEAN);
-            console.log('average cost: ' + costValue.get());
-        }
-        result = session_1.eval(y_1, [{ tensor: x_1, data: track(deeplearn_1.Scalar.new(4)) }]);
-        console.log('result should be ~57.0:');
-        console.log(result.shape);
-        console.log(result.getValues());
-    });
-}
-                                             
-                                                                            
-                                                                            
-                                                                            
+const graph = new deeplearn_1.Graph();                                                            
                                                                             
                                                                             
 }"><br>
