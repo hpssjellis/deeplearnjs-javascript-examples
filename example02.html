@@ -1,4 +1,4 @@
-<h3 align=center>Deeplearnjs in your browser:6</h3>
+<h3 align=center>Deeplearnjs in your browser:7</h3>
 
 <textarea rows=9 cols=120 NOWRAP>
   This page uses the script tag:
@@ -30,17 +30,7 @@ https://deeplearnjs.org/docs/tutorials/ml_beginners.html</a><br><br>
 
                                                                             
   const graph = new deeplearn.Graph();
-// Make a new input in the graph, called 'x', with shape [] (a Scalar).
-const x: Tensor = graph.placeholder('x', []);
-// Make new variables in the graph, 'a', 'b', 'c' with shape [] and random
-// initial values.
-const a: Tensor = graph.variable('a', deeplearn.Scalar.new(Math.random()));
-const b: Tensor = graph.variable('b', deeplearn.Scalar.new(Math.random()));
-const c: Tensor = graph.variable('c', deeplearn.Scalar.new(Math.random()));
-// Make new tensors representing the output of the operations of the quadratic.
-const order2: Tensor = graph.multiply(a, graph.square(x));
-const order1: Tensor = graph.multiply(b, x);
-const y: Tensor = graph.add(graph.add(order2, order1), c);
+
                                                                           
                                                                             
                                                                             
@@ -61,7 +51,7 @@ const y: Tensor = graph.add(graph.add(order2, order1), c);
                                                                             
 }"><br>
 
-<div id="myDiv01">...1</div><br>
+<div id="myDiv01">...</div><br>
 <textarea id="myTextarea01"   style="width:100%"  rows=3 NOWRAP onclick="{myTextGrow('myTextarea01', 'myButton01')}">
 click to see the code
 </textarea>
