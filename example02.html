@@ -1,4 +1,4 @@
-<h3 align=center>Deeplearnjs in your browser:3</h3>
+<h3 align=center>Deeplearnjs in your browser:4</h3>
 
 <textarea rows=9 cols=120 NOWRAP>
   This page uses the script tag:
@@ -30,7 +30,7 @@ https://deeplearnjs.org/docs/tutorials/ml_beginners.html</a><br><br>
 
                                                                             
   const graph = new deeplearn.Graph();
-const x: deeplearn.Tensor = graph.placeholder('x', []);
+const x: Tensor = graph.placeholder('x', deeplearn.[]);
                                                                           
                                                                             
                                                                             
@@ -67,14 +67,12 @@ click to see the code
 
 
 
-<input id="myButton02" type=button value="Use GPU math" onclick="{
-   var math = new deeplearn.NDArrayMathGPU()
-   var a = deeplearn.Array1D.new([10,20,30])
-   var b = deeplearn.Scalar.new(2.1)
-   math.scope(function() {
-      var result = math.add(a, b);
-      document.getElementById('myDiv02').innerHTML = result.getValues()     // Float32Array([3, 4, 5])
-  })
+<input id="myButton02" type=button value="Version?" onclick="{
+
+                                                                 
+   alert(deeplearn.version)                                                              
+                                                                 
+                                                                 
 }"><br>
 
 <div id="myDiv02">...</div><br>
