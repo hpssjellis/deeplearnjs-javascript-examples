@@ -1,4 +1,4 @@
-<h3 align=center>Deeplearnjs in your browser:5</h3>
+<h3 align=center>Deeplearnjs in your browser:6</h3>
 
 <textarea rows=9 cols=120 NOWRAP>
   This page uses the script tag:
@@ -29,8 +29,70 @@ From: <a href="https://deeplearnjs.org/docs/tutorials/ml_beginners.html">https:/
 
                                                                             
                                                                             
-var deeplearn_1 = require('deeplearn');
-const graph = new deeplearn_1.Graph();                                                            
+
+const graph = new deeplearn.Graph();     
+                                                                            
+ var graph = new Graph();
+// Make a new input in the graph, called 'x', with shape [] (a Scalar).
+var x_1 = graph.placeholder('x', []);
+// Make new variables in the graph, 'a', 'b', 'c' with shape [] and random
+// initial values.
+var a = graph.variable('a', deeplearn.Scalar.new(Math.random()));
+var b = graph.variable('b', deeplearn.Scalar.new(Math.random()));
+ var c = graph.variable('c', deeplearn.Scalar.new(Math.random()));
+// Make new tensors representing the output of the operations of the quadratic.
+var order2 = graph.multiply(a, graph.square(x_1));
+var order1 = graph.multiply(b, x_1);
+var y_1 = graph.add(graph.add(order2, order1), c);
+
+// When training, we need to provide a label and a cost function.
+var yLabel_1 = graph.placeholder('y label', []);
+// Provide a mean squared cost function for training. cost = (y - yLabel)^2
+var cost_1 = graph.meanSquaredCost(y_1, yLabel_1);
+
+// At this point the graph is set up, but has not yet been evaluated.
+// **deeplearn.js** needs a Session object to evaluate a graph.
+
+var math = new deeplearn.NDArrayMathGPU();
+var session_1 = new deeplearn.Session(graph, math);
+
+math.scope(function (keep, track) {
+  /**
+   * Inference
+   */
+  // Now we ask the graph to evaluate (infer) and give us the result when
+  // providing a value 4 for "x".
+  // NOTE: "a", "b", and "c" are randomly initialized, so this will give us
+  // something random.
+                            
+                            
+var result = session_1.eval(y_1, [{ tensor: x_1, data: track(deeplearn.Scalar.new(4)) }]);
+console.log(result.shape);
+console.log(result.getValues());
+                                                                           
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
                                                                             
                                                                             
 }"><br>
