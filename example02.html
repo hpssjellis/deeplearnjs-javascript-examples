@@ -1,4 +1,4 @@
-<h3 align=center>Deeplearnjs in your browser:2</h3>
+<h3 align=center>Deeplearnjs in your browser:3</h3>
 
 <textarea rows=9 cols=120 NOWRAP>
   This page uses the script tag:
@@ -58,7 +58,7 @@ const cost: Tensor = graph.meanSquaredCost(y, yLabel);
 // At this point the graph is set up, but has not yet been evaluated.
 // **deeplearn.js** needs a Session object to evaluate a graph.
 const math = new deeplearn.NDArrayMathGPU();
-const session = new Session(graph, math);
+const session = new deeplearn.Session(graph, math);
 
 math.scope((keep, track) => {
   /**
@@ -115,7 +115,7 @@ math.scope((keep, track) => {
         cost,
         // Map input providers to Tensors on the graph.
         [{tensor: x, data: xProvider}, {tensor: yLabel, data: yProvider}],
-        BATCH_SIZE, optimizer, CostReduction.MEAN);
+        BATCH_SIZE, optimizer, deeplearn.CostReduction.MEAN);
 
     console.log('average cost: ' + costValue.get());
   }
