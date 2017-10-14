@@ -1,8 +1,4 @@
-<b>My Deeplearnjs API</b>
-
-
-
-
+<b>my deeplearnjs API</b>
 <script src="https://unpkg.com/deeplearn"></script>
 
 <script >
@@ -15,9 +11,29 @@
    myCheckpointLoader  = new deeplearn.CheckpointLoader('.')
    mySession           = new deeplearn.Session(myGraph, myNDArrayMathGPU);
    myArray2D           = new deeplearn.Array2D.new([2,3], [10, 20, 30, 40, 50, 60])
-   
+   mySGDOptimizer      = new deeplearn.SGDOptimizer(.01)     
+   myGPGPUContext      = new deeplearn.GPGPUContext()
+   myGraphRunner       = new deeplearn.GraphRunner(myNDArrayMathGPU,mySession) // should also pass a GraphRunnerEventObserver ?
 
-   //myNDArray          = new deeplearn.NDArray.new()
+ 
+
+// not working but interesting
+
+ //myNDArray          = new deeplearn.NDArray.new()  // not working
+ //myArrayData         = new ArrayData(3)  // not really sure how to use types
+
+
+
+
+// working but not interesting
+
+// myConstantInitializer = new deeplearn.ConstantInitializer(3); // works but not interesting
+// myNDArrayInitializer = new deeplearn.NDArrayInitializer(myArray1D)
+// myOnesInitializer   = new deeplearn.OnesInitializer()
+
+
+
+
 
 
 
@@ -201,8 +217,8 @@ Use the first 15 buttons to decide on what words to enter for the last 5 buttons
 <input type=button value="7 myMath" onclick="{myObjectData(myMath)}">
 <input type=button value="8 " onclick="{myObjectData()}">
 <input type=button value="9 " onclick="{myObjectData()}">
-<input type=button value="10 " onclick="{myObjectData()}">
-<input type=button value="11 window.localStorage" onclick="{myObjectData(window.localStorage)}">
+<input type=button value="10 myGPGPUContext" onclick="{myObjectData(myGPGPUContext)}">
+<input type=button value="11 mySGDOptimizer" onclick="{myObjectData(mySGDOptimizer)}">
 <input type=button value="12 document.getElementById('move1').style" onclick="{myObjectData(document.getElementById('move1').style)}">
 <input type=button value="13 myArray2D" onclick="{myObjectData(myArray2D)}">
 <input type=button value="14 myNDArray not working" onclick="{myObjectData(myNDArray)}">
@@ -212,8 +228,35 @@ Use the first 15 buttons to decide on what words to enter for the last 5 buttons
 <input type=button value="18 myArray1D " onclick="{myObjectData(myArray1D)}">
 <input type=button value="19 myScalar" onclick="{myObjectData(myScalar)}">
 <input type=button value="20 myNDArrayMathGPU" onclick="{myObjectData(myNDArrayMathGPU)}">
-<br>
 
+
+<input type=button value="21 myGraphRunner" onclick="{myObjectData(myGraphRunner)}">
+<input type=button value="22 " onclick="{myObjectData()}">
+<input type=button value="23 " onclick="{myObjectData()}">
+<input type=button value="24 " onclick="{myObjectData()}">
+<input type=button value="25 " onclick="{myObjectData()}">
+<input type=button value="26 " onclick="{myObjectData()}">
+<input type=button value="27 " onclick="{myObjectData()}">
+<input type=button value="28 " onclick="{myObjectData()}">
+<input type=button value="29 " onclick="{myObjectData()}">
+<input type=button value="30 " onclick="{myObjectData()}"><br><br>
+
+
+
+<input type=button value="100 Function Math.random() " onclick="{document.myForm.myTextarea.value = Math.random()}">
+<input type=button value="101 Function deeplearn.util.arraysEqual([1, 2, 3, 6], [1, 2, 3, 6])" onclick="{document.myForm.myTextarea.value = deeplearn.util.arraysEqual([1, 2, 3, 6], [1, 2, 3, 6])}">
+<input type=button value="102 Function deeplearn.util.assertAndGetBroadcastedShape([6], [])" onclick="{document.myForm.myTextarea.value = deeplearn.util.assertAndGetBroadcastedShape([6], [])}">
+<input type=button value="103 Function " onclick="{document.myForm.myTextarea.value = ''}">
+<input type=button value="104 Function " onclick="{document.myForm.myTextarea.value = ''}">
+<input type=button value="105 Function " onclick="{document.myForm.myTextarea.value = ''}">
+<input type=button value="106 Function " onclick="{document.myForm.myTextarea.value = ''}">
+<input type=button value="107 Function " onclick="{document.myForm.myTextarea.value = ''}">
+<input type=button value="108 Function " onclick="{document.myForm.myTextarea.value = ''}">
+<input type=button value="109 Function " onclick="{document.myForm.myTextarea.value = ''}">
+<input type=button value="110 Function " onclick="{document.myForm.myTextarea.value = ''}">
+<input type=button value="111 Function " onclick="{document.myForm.myTextarea.value = ''}">
+
+<br>
 
 <textarea name="myTextarea" rows=20 cols=70 wrap></textarea>
 </form>
