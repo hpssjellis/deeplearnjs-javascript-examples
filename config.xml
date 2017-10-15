@@ -2,7 +2,7 @@
 <widget xmlns   = "http://www.w3.org/ns/widgets"
     xmlns:gap   = "http://phonegap.com/ns/1.0"
     id          = "com.yoursite.basicparticle"
-    version     = "0.3.0" >      <!-- Change this before each compile -->
+    version     = "1.0.1" >      <!-- Change this before each compile -->
 
   <name>Deeplearn-Web-App</name>
   <description>
@@ -18,10 +18,8 @@
   <plugin name="cordova-plugin-whitelist" spec="1.3.2" />
   
   <!-- all platforms -->
-    
-    
     <preference name='phonegap-version' value='cli-7.0.1' />
-    <preference name='pgb-builder-version' value='2' />
+    <preference name='pgb-builder-version' value='1' />
 
     
 
