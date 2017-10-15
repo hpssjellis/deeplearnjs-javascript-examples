@@ -1,16 +1,5 @@
-<h3 align=center>Deeplearnjs in your browser:4</h3>
+<h3 align=center>Deeplearnjs in your browser:5</h3>
 
-<textarea rows=9 cols=120 NOWRAP>
-  This page uses the script tag:
-  
-  <script src="https://unpkg.com/deeplearn"></script>
-  
-  if the examples do not work try replacing the above script tag 
-  with the following script tag that uses deeplearn version 0.3.0
-  
-  <script src="https://unpkg.com/deeplearn@0.3.0/dist/deeplearn.js"></script>
-  
-</textarea><br><br>
 
 
 
@@ -112,15 +101,25 @@ click here to see the code
 
 
 
-Try the <a href="https://github.com/PAIR-code/deeplearnjs/releases">latest version of deeplearnjs</a>:
+Try the <a href="https://github.com/PAIR-code/deeplearnjs/releases">latest version of deeplearnjs</a>:<br>
+The following select command changes your src script see example<br>
+
+
 
 <select onChange="{
-   alert(this.value)               
+    document.body.appendChild(document.createElement("script")).src = this.value;          
 }">
   <option value='deeplearn.js'>src="deeplearn.js"
   <option value='https://unpkg.com/deeplearn@0.3.0/dist/deeplearn.js'>src="https://unpkg.com/deeplearn@0.3.0/dist/deeplearn.js"
   <option value='https://unpkg.com/deeplearn'>  src="https://unpkg.com/deeplearn"
+  <option value='nothing'>  src="nothing"
 </select>    
+
+
+
+<textarea rows=3  style="width:100%"  NOWRAP>
+  <script src="https://unpkg.com/deeplearn"></script>  
+</textarea><br><br>
 
 
 
