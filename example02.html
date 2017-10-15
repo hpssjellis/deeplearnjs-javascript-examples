@@ -1,16 +1,25 @@
-<h3 align=center>Deeplearnjs in your browser:2</h3>
+<h3 align=center>Deeplearnjs in your browser:3</h3>
 
 
 
 
+Try the <a href="https://github.com/PAIR-code/deeplearnjs/releases">latest version of deeplearnjs</a>:<br>
 
 
+<!--   *******************************Start What source js file to use****************************************************   -->
 
-<div id="myScriptDiv">
+<!--   In the Github repository will be old   -->
     <script src="deeplearn.js"></script>
-</div>
 
+<!-- the newest version but all examples may not work
+<script src="https://unpkg.com/deeplearn"></script>
+-->
+  
+<!-- the online version that these examples were made with  
+<script src="https://unpkg.com/deeplearn@0.3.0/dist/deeplearn.js"></script>
+-->
 
+<!--   *******************************Stop What source js file to use****************************************************   -->
 
 From: <a href="https://deeplearnjs.org/docs/tutorials/ml_beginners.html">https://deeplearnjs.org/docs/tutorials/ml_beginners.html</a><br>
 
@@ -103,27 +112,7 @@ click here to see the code
 
 
 
-Try the <a href="https://github.com/PAIR-code/deeplearnjs/releases">latest version of deeplearnjs</a>:<br>
-The following select command changes your src script see example<br>
 
-
-
-<select onChange="{
-   
-    document.getElementById('myScriptDiv').innerHTML = '  <script src=\'https://unpkg.com/deeplearn\'></script>  '     
-    document.getElementById('myScriptText').value = document.getElementById('myScriptDiv').innerHTML                                                        
-}">
-  <option value='deeplearn.js'>src="deeplearn.js"
-  <option value='https://unpkg.com/deeplearn@0.3.0/dist/deeplearn.js'>src="https://unpkg.com/deeplearn@0.3.0/dist/deeplearn.js"
-  <option value='https://unpkg.com/deeplearn'>  src="https://unpkg.com/deeplearn"
-  <option value='https://unpkg.com/react@16.0.0/'>  src="https://unpkg.com/react@16.0.0/"
-</select>    <br><br>
-
-
-
-<textarea id="myScriptText" rows=3  style="width:100%"  NOWRAP>
-  <script src="https://unpkg.com/deeplearn"></script>  
-</textarea><br><br>
 
 
 
