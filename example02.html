@@ -1,4 +1,4 @@
-<h3 align=center>Deeplearnjs in your browser:5</h3>
+<h3 align=center>Deeplearnjs in your browser:6</h3>
 
 
 
@@ -107,17 +107,18 @@ The following select command changes your src script see example<br>
 
 
 <select onChange="{
-    document.body.appendChild(document.createElement("script")).src = this.value;          
+    document.body.appendChild(document.createElement("script")).src = this.value;     
+    document.getElementById('myScript').value = this.value                                                        
 }">
   <option value='deeplearn.js'>src="deeplearn.js"
   <option value='https://unpkg.com/deeplearn@0.3.0/dist/deeplearn.js'>src="https://unpkg.com/deeplearn@0.3.0/dist/deeplearn.js"
   <option value='https://unpkg.com/deeplearn'>  src="https://unpkg.com/deeplearn"
   <option value='nothing'>  src="nothing"
-</select>    
+</select>    <br><br>
 
 
 
-<textarea rows=3  style="width:100%"  NOWRAP>
+<textarea id="myScript" rows=3  style="width:100%"  NOWRAP>
   <script src="https://unpkg.com/deeplearn"></script>  
 </textarea><br><br>
 
