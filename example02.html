@@ -91,14 +91,77 @@ click to see the code
 
 
 
-<input id="myButton02" type=button value="Use GPU math" onclick="{
-   var math = new deeplearn.NDArrayMathGPU()
-   var a = deeplearn.Array1D.new([10,20,30])
-   var b = deeplearn.Scalar.new(2.1)
-   math.scope(function() {
-      var result = math.add(a, b);
-      document.getElementById('myDiv02').innerHTML = result.getValues()     // Float32Array([3, 4, 5])
-  })
+
+
+
+
+
+
+
+
+
+
+
+Batches:<input id="myText01" type=number value="20"><br>
+Learning Rate:<input id="myText02" type=text value=0.01><br>
+Curve fit when x=0 y=:[<input id="myText10" type=text value=1.1><br>
+Curve fit when x=1 y=:[<input id="myText11" type=text value=5.9><br>
+Curve fit when x=2 y=:[<input id="myText12" type=text value=16.8><br>
+Curve fit when x=3 y=:[<input id="myText13" type=text value=33.9><br>
+
+
+
+<input id="myButton02" type=button value="Dynamic Quadratic" onclick="{
+
+                                                                 
+    var graph = new deeplearn.Graph();
+    var x_1 = graph.placeholder('x', []);
+    var a = graph.variable('a', deeplearn.Scalar.new(Math.random()));
+    var b = graph.variable('b', deeplearn.Scalar.new(Math.random()));
+    var c = graph.variable('c', deeplearn.Scalar.new(Math.random()));
+    var order2 = graph.multiply(a, graph.square(x_1));
+    var order1 = graph.multiply(b, x_1);
+    var y_1 = graph.add(graph.add(order2, order1), c);
+    var yLabel_1 = graph.placeholder('y label', []);
+    var cost_1 = graph.meanSquaredCost(y_1, yLabel_1);
+    var math = new deeplearn.NDArrayMathGPU();
+    var session_1 = new deeplearn.Session(graph, math);
+    math.scope(function (keep, track) {
+        var result = session_1.eval(y_1, [{ tensor: x_1, data: track(deeplearn.Scalar.new(4)) }]);
+        console.log(result.shape);
+        console.log(result.getValues());
+        var xs = [
+            track(deeplearn.Scalar.new(0)), track(deeplearn.Scalar.new(1)), track(deeplearn.Scalar.new(2)),
+            track(deeplearn.Scalar.new(3))
+        ];
+        var ys = [
+            track(deeplearn.Scalar.new(document.getElementById('myText010').value)), 
+            track(deeplearn.Scalar.new(document.getElementById('myText11').value)), 
+            track(deeplearn.Scalar.new(document.getElementById('myText12').value)),
+            track(deeplearn.Scalar.new(document.getElementById('myText13').value))
+        ];
+        var shuffledInputProviderBuilder = new deeplearn.InCPUMemoryShuffledInputProviderBuilder([xs, ys]);
+        var _a = shuffledInputProviderBuilder.getInputProviders(), xProvider = _a[0], yProvider = _a[1];
+        var NUM_BATCHES = document.getElementById('myText01').value;
+        var BATCH_SIZE = xs.length;
+        var LEARNING_RATE = document.getElementById('myText02').value;
+        var optimizer = new deeplearn.SGDOptimizer(LEARNING_RATE);
+        for (var i = 0; i < NUM_BATCHES; i++) {
+            var costValue = session_1.train(cost_1, [{ tensor: x_1, data: xProvider }, { tensor: yLabel_1, data: yProvider }], BATCH_SIZE, optimizer, deeplearn.CostReduction.MEAN);
+            console.log('average cost: ' + costValue.get());
+        }
+        result = session_1.eval(y_1, [{ tensor: x_1, data: track(deeplearn.Scalar.new(4)) }]);
+       // console.log('result should be ~57.0:');
+       // console.log(result.shape);
+       // console.log(result.getValues());
+        document.getElementById('myDiv01').innerHTML   =  'Solving the Quadratic y = a * x^2 + b * x + c'                            
+        document.getElementById('myDiv01').innerHTML   =  '<br>using x = 4 the Quadratic result should be about 57.0:<br>'     
+        document.getElementById('myDiv01').innerHTML   +=  result.shape + result.getValues() + '<br>'                                                                 
+                                                                                                                                                                                                                                
+    });                                                           
+                                                                              
+                                                                 
+                                                                 
 }"><br>
 
 <div id="myDiv02">...</div><br>
