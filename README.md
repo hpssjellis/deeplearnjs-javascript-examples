@@ -1,16 +1,26 @@
 # deeplearnjs-javascript-examples
 
-Website:
+Website of this repository with all the working javascript examples
 https://hpssjellis.github.io/deeplearnjs-javascript-examples/
 
 
 
 
-Example deeplearnjs relository. Great if a few of these examples could eventually go on the main deeplearnjs repository
-
-
-
+The deeplearnjs repository.
 https://github.com/PAIR-code/deeplearnjs
+and it's website  https://deeplearnjs.org/
+
+
+
+Great review on courses for learning MachineLearning
+https://www.analyticsvidhya.com/blog/2016/12/30-top-videos-tutorials-courses-on-machine-learning-artificial-intelligence-from-2016/
+
+
+
+
+
+
+
 
 
 
