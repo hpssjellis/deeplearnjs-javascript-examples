@@ -5,12 +5,12 @@
 
 <!--   *******************************Start: What source js file to use? ****************************************************   -->
 
-<!--   In the Github repository will be old   -->
-    <script src="deeplearn.js"></script>
+<!--   In the Github repository will be old   
+    <script src="deeplearn.js"></script>   -->
 
-<!-- the newest version but all examples may not work
+<!-- the newest version but all examples may not work-->
 <script src="https://unpkg.com/deeplearn"></script>
--->
+
   
 <!-- the online version that these examples were made with  
 <script src="https://unpkg.com/deeplearn@0.3.0/dist/deeplearn.js"></script>
@@ -23,7 +23,6 @@
 From: <a href="https://deeplearnjs.org/docs/tutorials/ml_beginners.html">https://deeplearnjs.org/docs/tutorials/ml_beginners.html</a><br>
 
 <input id="myButton01" type=button value="Quadratic y = a * x^2 + b * x + c" onclick="{
-
     var graph = new deeplearn.Graph();
     var x_1 = graph.placeholder('x', []);
     var a = graph.variable('a', deeplearn.Scalar.new(Math.random()));
@@ -32,17 +31,24 @@ From: <a href="https://deeplearnjs.org/docs/tutorials/ml_beginners.html">https:/
     var order2 = graph.multiply(a, graph.square(x_1));
     var order1 = graph.multiply(b, x_1);
     var y_1 = graph.add(graph.add(order2, order1), c);
-
     var yLabel_1 = graph.placeholder('y label', []);
     var cost_1 = graph.meanSquaredCost(y_1, yLabel_1);
-
     var math = new deeplearn.NDArrayMathGPU();
     var session_1 = new deeplearn.Session(graph, math);
 
+
+    document.getElementById('myDiv01').innerHTML   =  'Solving the Quadratic y = 3x^2 + 2x + 1<br>'      
+    document.getElementById('myDiv01').innerHTML   +=  'By training the browser to work towards a given line with error<br>'   
+    document.getElementById('myDiv01').innerHTML   +=  'Defined by [0,1.1],[1,5.9],[2,16.8],[3,33.9]<br>'                        
+    document.getElementById('myDiv01').innerHTML   +=  '<br>using x = 4 the Quadratic result should be about 57.0 +- 2<br>' 
+
+
     math.scope(function (keep, track) {
         var result = session_1.eval(y_1, [{ tensor: x_1, data: track(deeplearn.Scalar.new(4)) }]);
-        console.log(result.shape);
-        console.log(result.getValues());
+       // console.log(result.shape);
+       // console.log(result.getValues());
+
+       document.getElementById('myDiv01').innerHTML   += 'Initial Guess =' + result.getValues()+'<br><br>'
 
         var xs = [
             track(deeplearn.Scalar.new(0)), track(deeplearn.Scalar.new(1)), track(deeplearn.Scalar.new(2)),
@@ -58,17 +64,19 @@ From: <a href="https://deeplearnjs.org/docs/tutorials/ml_beginners.html">https:/
         var BATCH_SIZE = xs.length;
         var LEARNING_RATE = .01;
         var optimizer = new deeplearn.SGDOptimizer(LEARNING_RATE);
-        for (var i = 0; i < NUM_BATCHES; i++) {
+       
+
+         for (var i = 0; i < NUM_BATCHES; i++) {
             var costValue = session_1.train(cost_1, [{ tensor: x_1, data: xProvider }, { tensor: yLabel_1, data: yProvider }], BATCH_SIZE, optimizer, deeplearn.CostReduction.MEAN);
-            console.log('average cost: ' + costValue.get());
+            //console.log('average cost: ' + costValue.get());
+            document.getElementById('myDiv01').innerHTML   += 'average cost: ' + costValue.get() + '<br>'
         }
         result = session_1.eval(y_1, [{ tensor: x_1, data: track(deeplearn.Scalar.new(4)) }]);
        // console.log('result should be ~57.0:');
        // console.log(result.shape);
-       // console.log(result.getValues());
-        document.getElementById('myDiv01').innerHTML   =  'Solving the Quadratic y = a * x^2 + b * x + c'                            
-        document.getElementById('myDiv01').innerHTML   +=  '<br>using x = 4 the Quadratic result should be about 57.0:<br>'     
-        document.getElementById('myDiv01').innerHTML   +=  result.shape + result.getValues() + '<br>'                                                                 
+       // console.log(result.getValues()); 
+       document.getElementById('myDiv01').innerHTML   += '<br><br>After training '+NUM_BATCHES+' batches with a learning rate of '+ LEARNING_RATE+ '<br>'                                                                 
+       document.getElementById('myDiv01').innerHTML   += 'With an input of 4 the output =' + result.getValues() + '<br>'                                                                 
                                                                                                                                                                                                                                 
     });                                                           
                                                                             
@@ -104,17 +112,16 @@ click to see the code
 
 Batches:<input id="myText01" type=number value="20"><br>
 Learning Rate:<input id="myText02" type=text value=0.01><br>
-Curve fit when x=0 y=:<input id="myText10" type=text value=1.1><br>
-Curve fit when x=1 y=:<input id="myText11" type=text value=5.9><br>
-Curve fit when x=2 y=:<input id="myText12" type=text value=16.8><br>
-Curve fit when x=3 y=:<input id="myText13" type=text value=33.9><br><br>
+Curve fit when x=<input id="myX0" type=text value=0 size=3> y=<input id="myY0" type=text value=1.1 size=3><br>
+Curve fit when x=<input id="myX1" type=text value=1 size=3> y=<input id="myY1" type=text value=5.9 size=3><br>
+Curve fit when x=<input id="myX2" type=text value=2 size=3> y=<input id="myY2" type=text value=16.8 size=3><br>
+Curve fit when x=<input id="myX3" type=text value=3 size=3> y=<input id="myY3" type=text value=33.9 size=3><br><br>
 
 Solve for x=<input id="myText14" type=text value=4><br><br><br>
 
 
 
 <input id="myButton02" type=button value="Dynamic Quadratic" onclick="{
-
                                                                  
     var graph = new deeplearn.Graph();
     var x_1 = graph.placeholder('x', []);
@@ -128,19 +135,33 @@ Solve for x=<input id="myText14" type=text value=4><br><br><br>
     var cost_1 = graph.meanSquaredCost(y_1, yLabel_1);
     var math = new deeplearn.NDArrayMathGPU();
     var session_1 = new deeplearn.Session(graph, math);
+
+
+    document.getElementById('myDiv02').innerHTML   =  'Solving the Quadratic y = ax^2 + bx + c<br>'      
+    document.getElementById('myDiv02').innerHTML   += 'By training the browser to work towards the given line above<br>'  
+    document.getElementById('myDiv02').innerHTML   += 'without any knowledge of a, b or c<br>'    
+
+
+
+
     math.scope(function (keep, track) {
         var result = session_1.eval(y_1, [{ tensor: x_1, data: track(deeplearn.Scalar.new(4)) }]);
-        console.log(result.shape);
-        console.log(result.getValues());
+        //console.log(result.shape);
+        //console.log(result.getValues());
+
+       document.getElementById('myDiv02').innerHTML   += 'Initial Guess =' + result.getValues()+'<br><br>'
+
         var xs = [
-            track(deeplearn.Scalar.new(0)), track(deeplearn.Scalar.new(1)), track(deeplearn.Scalar.new(2)),
-            track(deeplearn.Scalar.new(3))
+            track(deeplearn.Scalar.new(document.getElementById('myX0').value)), 
+            track(deeplearn.Scalar.new(document.getElementById('myX1').value)), 
+            track(deeplearn.Scalar.new(document.getElementById('myX2').value)),
+            track(deeplearn.Scalar.new(document.getElementById('myX3').value))
         ];
         var ys = [
-            track(deeplearn.Scalar.new(document.getElementById('myText10').value)), 
-            track(deeplearn.Scalar.new(document.getElementById('myText11').value)), 
-            track(deeplearn.Scalar.new(document.getElementById('myText12').value)),
-            track(deeplearn.Scalar.new(document.getElementById('myText13').value))
+            track(deeplearn.Scalar.new(document.getElementById('myY0').value)), 
+            track(deeplearn.Scalar.new(document.getElementById('myY1').value)), 
+            track(deeplearn.Scalar.new(document.getElementById('myY2').value)),
+            track(deeplearn.Scalar.new(document.getElementById('myY3').value))
         ];
         var shuffledInputProviderBuilder = new deeplearn.InCPUMemoryShuffledInputProviderBuilder([xs, ys]);
         var _a = shuffledInputProviderBuilder.getInputProviders(), xProvider = _a[0], yProvider = _a[1];
@@ -150,16 +171,17 @@ Solve for x=<input id="myText14" type=text value=4><br><br><br>
         var optimizer = new deeplearn.SGDOptimizer(LEARNING_RATE);
         for (var i = 0; i < NUM_BATCHES; i++) {
             var costValue = session_1.train(cost_1, [{ tensor: x_1, data: xProvider }, { tensor: yLabel_1, data: yProvider }], BATCH_SIZE, optimizer, deeplearn.CostReduction.MEAN);
-            console.log('average cost: ' + costValue.get());
+            //console.log('average cost: ' + costValue.get());
+           document.getElementById('myDiv02').innerHTML   += 'average cost: ' + costValue.get() + '<br>'
+
         }
         result = session_1.eval(y_1, [{ tensor: x_1, data: track(deeplearn.Scalar.new(document.getElementById('myText14').value)) }]);
        // console.log('result should be ~57.0:');
        // console.log(result.shape);
        // console.log(result.getValues());
-        document.getElementById('myDiv02').innerHTML   =  'Solving the Quadratic y = a * x^2 + b * x + c'                            
-        document.getElementById('myDiv02').innerHTML   +=  '<br>using x = 4 the Quadratic result should be about 57.0:<br>'     
-        document.getElementById('myDiv02').innerHTML   +=  result.shape + result.getValues() + '<br>'                                                                 
-                                                                                                                                                                                                                                
+       document.getElementById('myDiv02').innerHTML   += '<br><br>After training '+NUM_BATCHES+' batches with a learning rate of '+ LEARNING_RATE+ '<br>'                                                                 
+       document.getElementById('myDiv02').innerHTML   += 'With an input of '+document.getElementById('myText14').value+' the output =' + result.getValues() + '<br>'                                                                 
+                                                                                                                                                                                                                                  
     });                                                           
                                                                               
                                                                  
