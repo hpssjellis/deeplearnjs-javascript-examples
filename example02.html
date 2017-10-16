@@ -107,7 +107,9 @@ Learning Rate:<input id="myText02" type=text value=0.01><br>
 Curve fit when x=0 y=:<input id="myText10" type=text value=1.1><br>
 Curve fit when x=1 y=:<input id="myText11" type=text value=5.9><br>
 Curve fit when x=2 y=:<input id="myText12" type=text value=16.8><br>
-Curve fit when x=3 y=:<input id="myText13" type=text value=33.9><br><br><br>
+Curve fit when x=3 y=:<input id="myText13" type=text value=33.9><br><br>
+
+Solve for x=<input id="myText14" type=text value=4><br><br><br>
 
 
 
@@ -150,7 +152,7 @@ Curve fit when x=3 y=:<input id="myText13" type=text value=33.9><br><br><br>
             var costValue = session_1.train(cost_1, [{ tensor: x_1, data: xProvider }, { tensor: yLabel_1, data: yProvider }], BATCH_SIZE, optimizer, deeplearn.CostReduction.MEAN);
             console.log('average cost: ' + costValue.get());
         }
-        result = session_1.eval(y_1, [{ tensor: x_1, data: track(deeplearn.Scalar.new(4)) }]);
+        result = session_1.eval(y_1, [{ tensor: x_1, data: track(deeplearn.Scalar.new(document.getElementById('myText14').value)) }]);
        // console.log('result should be ~57.0:');
        // console.log(result.shape);
        // console.log(result.getValues());
