@@ -110,8 +110,8 @@ click to see the code
 
 
 
-Batches:<input id="myText01" type=number value="20"><br>
-Learning Rate:<input id="myText02" type=text value=0.01><br>
+Batches:<input id="myText01" type=number value="20"> Note: 100 takes a few seconds longer to train<br>
+Learning Rate:<input id="myText02" type=text value=0.01> Note: Small changes may inprove the learning<br>
 Curve fit when x=<input id="myX0" type=text value=0 size=3> y=<input id="myY0" type=text value=1.1 size=3><br>
 Curve fit when x=<input id="myX1" type=text value=1 size=3> y=<input id="myY1" type=text value=5.9 size=3><br>
 Curve fit when x=<input id="myX2" type=text value=2 size=3> y=<input id="myY2" type=text value=16.8 size=3><br>
@@ -122,6 +122,9 @@ Solve for x=<input id="myText14" type=text value=4><br><br><br>
 
 
 <input id="myButton02" type=button value="Dynamic Quadratic" onclick="{
+
+  document.getElementById('myButton02').style.backgroundColor = 'red'  
+  setTimeout(function() {
                                                                  
     var graph = new deeplearn.Graph();
     var x_1 = graph.placeholder('x', []);
@@ -182,8 +185,10 @@ Solve for x=<input id="myText14" type=text value=4><br><br><br>
        document.getElementById('myDiv02').innerHTML   += '<br><br>After training '+NUM_BATCHES+' batches with a learning rate of '+ LEARNING_RATE+ '<br>'                                                                 
        document.getElementById('myDiv02').innerHTML   += 'With an input of '+document.getElementById('myText14').value+' the output =' + result.getValues() + '<br>'                                                                 
                                                                                                                                                                                                                                   
-    });                                                           
-                                                                              
+    });  
+    
+    document.getElementById('myButton02').style.backgroundColor = 'green'                                                           
+  }, 100)                                                                            
                                                                  
                                                                  
 }"><br>
