@@ -18,7 +18,8 @@
   <plugin name="cordova-plugin-whitelist" spec="1.3.2" />
   
   <!-- all platforms -->
-  <preference name="phonegap-version" value="3.7.0" />
+
+  <preference name="phonegap-version" value="cli-6.5.0" />  
     <preference name='pgb-builder-version' value='1' />
 
     
