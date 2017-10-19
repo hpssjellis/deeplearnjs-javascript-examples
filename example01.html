@@ -22,6 +22,7 @@
 
 
 <input id="myButton01" type=button value="Use GPU math" onclick="{
+                                                                 alert(deeplearn.version)
    var math = new deeplearn.NDArrayMathGPU()
    var a = deeplearn.Array1D.new([10,20,30])
    var b = deeplearn.Scalar.new(2.1)
