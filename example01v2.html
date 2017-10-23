@@ -21,7 +21,7 @@
 
 <!--   *******************************Sto:p What source js file to use****************************************************   -->
 
-
+<div id="myDiv01Code">
 <input id="myButton01" type=button value="Use GPU math" onclick="{
                                                               
    var math = new deeplearn.NDArrayMathGPU()
@@ -32,9 +32,10 @@
       document.getElementById('myDiv01').innerHTML = result.getValues()     // Float32Array([3, 4, 5])
   })
 }"><br>
-
+       
+</div>
 <div id="myDiv01">...</div><br>
-<textarea id="myTextarea01"   style= "background-color:yellow;white-space:nowrap; width:100%"  rows=3  onclick="{myTextGrow('myTextarea01', 'myButton01')}">
+<textarea id="myTextarea01"   style= "background-color:yellow;white-space:nowrap; width:100%"  rows=3  onclick="{myTextGrow('myTextarea01', 'myDiv01Code')}">
 click to see the code 
 </textarea>
 
