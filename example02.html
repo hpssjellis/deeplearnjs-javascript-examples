@@ -1,26 +1,27 @@
-<h3 align=center>Deeplearnjs in your browser:4</h3>
+<h3 align=center>Deeplearnjs in your browser:1</h3>
 
 
 
-<!--   *******************************Start What source js file to use****************************************************   -->
+<!--   *******************************Start: What source js file to use****************************************************   -->
 
-<!--   In the Github repository will be old  
-    <script src="deeplearn.js"></script>
+<!--   In this Github repository is an old deeplearn.js file if you wish to work offline
+       Probably a good idea to update it
+       <script src="deeplearn.js"></script>
  -->
 
 
-<!-- the newest version but all examples may not work
-<script src="https://unpkg.com/deeplearn"></script>
+<!--   the newest version off deeplearn.js, but not all the examples may work with this version.
+       <script src="https://unpkg.com/deeplearn"></script>
 -->
   
-<!-- the online version that these examples were made with  -->
+<!--  the online version that these examples were made using  -->
+      <script src="https://unpkg.com/deeplearn@0.3.2/dist/deeplearn.js"></script>
 
-<script src="https://unpkg.com/deeplearn@0.3.2/dist/deeplearn.js"></script>
 
 
-<!--   *******************************Stop What source js file to use****************************************************   -->
+<!--   *******************************Sto:p What source js file to use****************************************************   -->
 
-<br><br>
+<div id="myDiv01Code">
 
 From deeplearnjs tutorial at: <a href="https://deeplearnjs.org/docs/tutorials/ml_beginners.html">https://deeplearnjs.org/docs/tutorials/ml_beginners.html</a><br><br>
 
@@ -85,8 +86,9 @@ From deeplearnjs tutorial at: <a href="https://deeplearnjs.org/docs/tutorials/ml
                                                                             
 }"><br>
 
-<div id="myDiv01">...</div><br>
-<textarea id="myTextarea01"   style= "background-color:yellow;white-space:nowrap; width:100%"   rows=3 NOWRAP onclick="{myTextGrow('myTextarea01', 'myButton01')}">
+<div id="myDiv01">...</div>
+</div>
+<textarea id="myTextarea01"   style= "background-color:yellow;white-space:nowrap; width:100%"   rows=3 NOWRAP onclick="{myTextGrow('myTextarea01', 'myDiv01Code')}">
 click to see the code
 </textarea>
 
@@ -111,7 +113,7 @@ click to see the code
 
 
 
-
+<div id="myDiv02Code">
 Batches:<input id="myText01" type=number value="20"> Note: 100 takes a few seconds longer to train<br>
 Learning Rate:<input id="myText02" type=text value=0.01> Note: Small changes may inprove the learning<br>
 Curve fit when x=<input id="myX0" type=text value=0 size=3> y=<input id="myY0" type=text value=1.1 size=3><br>
@@ -195,8 +197,9 @@ Solve for x=<input id="myText14" type=text value=4><br><br><br>
                                                                  
 }"><br>
 
-<div id="myDiv02">...</div><br>
-<textarea id="myTextarea02"    style= "background-color:yellow;white-space:nowrap; width:100%"    rows=3 NOWRAP onclick="{myTextGrow('myTextarea02', 'myButton02')}">
+<div id="myDiv02">...</div>
+</div>    
+<textarea id="myTextarea02"    style= "background-color:yellow;white-space:nowrap; width:100%"    rows=3 NOWRAP onclick="{myTextGrow('myTextarea02', 'myDiv02Code')}">
 click here to see the code
 
 </textarea>
@@ -220,11 +223,18 @@ Use at your own risk!
 
 
 
+
+
+
+
+
+
 <!--  Following is a helper functions  to grow the textareas  -->
 
 <script>
 function myTextGrow(myT, myB){
-   document.getElementById(myT).value = document.getElementById(myB).outerHTML
+   document.getElementById(myT).value = '\x3Cscript src="https://unpkg.com/deeplearn@0.3.2/dist/deeplearn.js"> \x3C/script> \n\n' + document.getElementById(myB).innerHTML 
+        
    setTimeout(function() {
       while (  document.getElementById(myT).clientHeight < document.getElementById(myT).scrollHeight){                                                                                                                                              
           document.getElementById(myT).rows += 3; 
