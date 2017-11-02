@@ -9,3 +9,6 @@ Main github at
 
 https://github.com/karpathy/convnetjs
 
+
+lots of demos on the readme page
+
