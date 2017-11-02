@@ -2,12 +2,12 @@ MLJS looks really interesting
 
 
 
-Main github site at
+Main github site at   (every repository on this site is interesting)
 
 https://github.com/mljs
 
 
-Main minified script at
+Main library at
 https://github.com/mljs/ml
 
 To include the library use this script
