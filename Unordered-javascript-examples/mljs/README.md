@@ -1,5 +1,10 @@
 MLJS looks really interesting
 
+Looks like it is a node js package
+
+try
+
+```npm install ml-js```
 
 
 Main github site at   (every repository on this site is interesting)
