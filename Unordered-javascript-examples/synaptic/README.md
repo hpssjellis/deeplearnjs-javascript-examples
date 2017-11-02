@@ -13,3 +13,11 @@ Good documentation with lots of links
 
 https://github.com/cazala/synaptic/wiki
 
+
+and a kdnuggets example of how to use it
+
+https://www.kdnuggets.com/2016/05/implementing-neural-networks-javascript.html
+
+
+
+
