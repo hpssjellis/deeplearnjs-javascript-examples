@@ -6,9 +6,9 @@ https://hpssjellis.github.io/deeplearnjs-javascript-examples/
 
 
 
-The deeplearnjs repository.
+The deeplearnjs repository
 https://github.com/PAIR-code/deeplearnjs
-and it's website  https://deeplearnjs.org/
+and it's demo website  https://deeplearnjs.org/
 
 
 
