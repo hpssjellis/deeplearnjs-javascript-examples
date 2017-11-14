@@ -23,7 +23,7 @@ Install deeplearnjs
 
 #Of the deeplearnjs demos here is the list and any information
 
-adder     DONE
+adder     [DONE](https://hpssjellis.github.io/deeplearnjs-javascript-examples/example01.html)
 
 
 
@@ -50,7 +50,7 @@ intro     DONE from the examples
 
 lstm    Cool solves PI to several places. I think it loads a Tensorflow converted model
 
-ml_beginners    Checking this
+ml_beginners   [Done](https://hpssjellis.github.io/deeplearnjs-javascript-examples/example02.html)
 
 mnist     Cool loads a tensorflow model
 
