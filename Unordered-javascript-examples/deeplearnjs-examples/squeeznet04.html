@@ -1,0 +1,58 @@
+<h1 align=center>SqueezeNet and Playground Single Page Demo</h1>
+
+<script src="https://unpkg.com/deeplearn@0.3.8/dist/deeplearn.js"></script>
+
+<script src='https://unpkg.com/deeplearn-squeezenet'></script>
+
+
+
+<script>
+
+async function myFun(){
+dl = deeplearn
+
+const catImage = document.getElementById('cat');
+
+const math = new dl.NDArrayMathGPU();
+// squeezenet is loaded from https://unpkg.com/deeplearn-squeezenet
+const squeezeNet = new squeezenet.SqueezeNet(math);
+await squeezeNet.load();
+
+// Load the image into an NDArray from the HTMLImageElement.
+const image = dl.Array3D.fromPixels(catImage);
+
+// Predict through SqueezeNet.
+const inferenceResult = await squeezeNet.predict(image);
+
+// Convert the logits to a map of class to probability of the class.
+const topClassesToProbs =
+   await squeezeNet.getTopKClasses(inferenceResult.logits, 10);
+   document.getElementById('myDivOut').innerHTML = ''   // clear the div
+for (const className in topClassesToProbs) {
+  
+
+   document.getElementById('myDivOut').innerHTML += topClassesToProbs[className].toFixed(5) + 
+     ' : '+ className + '<br>'
+
+
+}
+
+}
+</script>
+
+<body onload="myFun()">
+
+
+<img id='cat' src='https://storage.googleapis.com/learnjs-data/images/cat.jpeg' width=227 height=227 crossorigin onClick="{
+  document.getElementById('myDivOut').innerHTML = ''   // clear the div
+  myFun()
+}"><br><br>
+<input id="myFile01" type=text value='https://storage.googleapis.com/learnjs-data/images/cat.jpeg' onChange="{
+  document.getElementById('cat').src = this.value
+}"><br><br>
+
+<div id="myDivOut">...</div>
+
+
+
+
