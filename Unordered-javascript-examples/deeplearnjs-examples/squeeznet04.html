@@ -54,8 +54,10 @@ for (const className in topClassesToProbs) {
   document.getElementById('myDivOut').innerHTML = ''   // clear the div
   myFun()
 }"><br><br>
-<input id="myFile01" type=text value='https://storage.googleapis.com/learnjs-data/images/cat.jpeg' onChange="{
+<input id="myFile01" type=text size=100 value='https://storage.googleapis.com/learnjs-data/images/cat.jpeg' onChange="{
   document.getElementById('cat').src = this.value
+  document.getElementById('myDivOut').innerHTML = ''   // clear the div
+  myFun()
 }"><br><br>
 
 <div id="myDivOut">...</div>
