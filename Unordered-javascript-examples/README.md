@@ -22,3 +22,9 @@ https://hackernoon.com/machine-learning-with-javascript-part-1-9b97f3ed4fe5
 
 
 
+Some useful wikis
+
+Neural network graphs explained as activation functions
+
+https://www.wikiwand.com/en/Activation_function
+
