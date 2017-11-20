@@ -23,19 +23,25 @@
 
 
 
-
+Checkout a really good matrix math explanation site at <a href="http://www.mathsisfun.com/algebra/matrix-inverse.html">http://www.mathsisfun.com/algebra/matrix-inverse.html</a><br>
+<br><br>
 <input id="myButton01" type=button value="matrix times a vector" onclick="{
-const math = new deeplearn.NDArrayMathGPU();
+   const myMath = new deeplearn.NDArrayMathGPU();
                                                         
-math.scope((keep, track) => {
-  const matrixShape = [2, 3];  // 2 rows, 3 columns.
-  const matrix = track(deeplearn.Array2D.new(matrixShape, [10, 20, 30, 40, 50, 60]));
-  const vector = track(deeplearn.Array1D.new([0, 1, 2]));
-  const result = math.matrixTimesVector(matrix, vector);
+   var myInverseMultiplier = 1/ ( (3 * 3.6) - (3.5 * 3.2) ) 
+   var myScalar = deeplearn.Scalar.new(myInverseMultiplier)
+   var myMatrix2D = deeplearn.Array2D.new([2, 2], [3.6, -3.5, -3.2, 3]);
+   myMath.scope(function() {
+       var myResult1 = myMath.multiply( myScalar, myMatrix2D,);
+       document.getElementById('myDiv01').innerHTML = 'Intermediate Inverse Matrix shape = ' + myResult1.shape+ 'Intermediate Values = ' + myResult1.getValues() +'<br>'   
 
-  document.getElementById('myDiv03').innerHTML =    'result shape:'+ result.shape  +   ',  result :'+ result.getValues()                                                 
-                                                          
-});
+       var myVector1D = deeplearn.Array1D.new([118.4, 135.2]);
+       var myResult2 =  myMath.vectorTimesMatrix(myVector1D, myResult1);
+       document.getElementById('myDiv01').innerHTML +=   'result shape:'+ myResult2.shape  +   ',  result : '+ 
+                                      Math.round(myResult2.getValues()[0]) +' = children,  '+ Math.round(myResult2.getValues()[1])    +' = adults.'                                              
+     
+  })
+
 }"><br>
 
 
@@ -54,8 +60,10 @@ click to see the code before pressing the button
 
 This Github: <a href="https://github.com/hpssjellis/deeplearnjs-javascript-examples"> https://github.com/hpssjellis/deeplearnjs-javascript-examples </a><br>
 This Website Index: <a href="https://hpssjellis.github.io/deeplearnjs-javascript-examples/">https://hpssjellis.github.io/deeplearnjs-javascript-examples/</a><br>
+<br>
 Original Deeplearn Github <a href="https://github.com/PAIR-code/deeplearnjs">https://github.com/PAIR-code/deeplearnjs</a><br>
-Check out the <a href="https://github.com/PAIR-code/deeplearnjs/releases">latest version of deeplearnjs</a> <br> <br>
+Check out the <a href="https://github.com/PAIR-code/deeplearnjs/releases">latest version of deeplearnjs</a> <br> 
+Deeplearn API at <a href="https://deeplearnjs.org/docs/api/index.html">https://deeplearnjs.org/docs/api/index.html</a><br><br>
 By Jeremy Ellis <br>
 Twitter<a href="https://twitter.com/@rocksetta">@rocksetta</a><br>
 Use at your own risk!
@@ -77,4 +85,3 @@ function myTextGrow(myT, myB){
    }, 100)
 }  
 </script>  
-
