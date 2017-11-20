@@ -61,8 +61,10 @@ From deeplearnjs tutorial at: <a href="https://deeplearnjs.org/docs/tutorials/ml
             track(deeplearn.Scalar.new(1.1)), track(deeplearn.Scalar.new(5.9)), track(deeplearn.Scalar.new(16.8)),
             track(deeplearn.Scalar.new(33.9))
         ];
-        var shuffledInputProviderBuilder = new deeplearn.InCPUMemoryShuffledInputProviderBuilder([xs, ys]);
-        var _a = shuffledInputProviderBuilder.getInputProviders(), xProvider = _a[0], yProvider = _a[1];
+        var shuffledInputProviderBuilder = new deeplearn.InCPUMemoryShuffledInputProviderBuilder([xs, ys]);        
+        var _a = shuffledInputProviderBuilder.getInputProviders();
+        var xProvider = _a[0];
+        var yProvider = _a[1];
         var NUM_BATCHES = 20;
         var BATCH_SIZE = xs.length;
         var LEARNING_RATE = .01;
@@ -170,8 +172,10 @@ Solve for x=<input id="myText14" type=text value=4><br><br><br>
             track(deeplearn.Scalar.new(document.getElementById('myY2').value)),
             track(deeplearn.Scalar.new(document.getElementById('myY3').value))
         ];
-        var shuffledInputProviderBuilder = new deeplearn.InCPUMemoryShuffledInputProviderBuilder([xs, ys]);
-        var _a = shuffledInputProviderBuilder.getInputProviders(), xProvider = _a[0], yProvider = _a[1];
+        var shuffledInputProviderBuilder = new deeplearn.InCPUMemoryShuffledInputProviderBuilder([xs, ys]);        
+        var _a = shuffledInputProviderBuilder.getInputProviders();
+        var xProvider = _a[0];
+        var yProvider = _a[1];
         var NUM_BATCHES = document.getElementById('myText01').value;
         var BATCH_SIZE = xs.length;
         var LEARNING_RATE = document.getElementById('myText02').value;
