@@ -1,0 +1,132 @@
+<h3 align=center>Deeplearnjs in your browser:3</h3>
+
+
+
+<!--   *******************************Start What source js file to use****************************************************   -->
+
+<!--   In the Github repository will be old  
+    <script src="deeplearn.js"></script>
+ -->
+
+
+<!-- the newest version but all examples may not work 
+<script src="https://unpkg.com/deeplearn"></script> 
+-->
+
+  
+<!-- the online version that these examples were made with  -->
+
+<script src="https://unpkg.com/deeplearn@0.3.11/dist/deeplearn.js"></script>
+
+
+<!--   *******************************Stop What source js file to use****************************************************   -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<input id="myButton01" type=button value="matrix times a vector" onclick="{
+const math = new deeplearn.NDArrayMathGPU();
+                                                        
+math.scope((keep, track) => {
+  const matrixShape = [2, 3];  // 2 rows, 3 columns.
+  const matrix = track(deeplearn.Array2D.new(matrixShape, [10, 20, 30, 40, 50, 60]));
+  const vector = track(deeplearn.Array1D.new([0, 1, 2]));
+  const result = math.matrixTimesVector(matrix, vector);
+
+  document.getElementById('myDiv03').innerHTML =    'result shape:'+ result.shape  +   ',  result :'+ result.getValues()                                                 
+                                                          
+});
+}"><br>
+
+
+
+<div id="myDiv01">...</div><br>
+<textarea id="myTextarea01"     style= "background-color:yellow;white-space:nowrap; width:100%"    rows=3 NOWRAP onclick="{myTextGrow('myTextarea01', 'myButton01')}">
+click to see the code before pressing the button
+</textarea>
+
+<br><br><hr><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+This Github: <a href="https://github.com/hpssjellis/deeplearnjs-javascript-examples"> https://github.com/hpssjellis/deeplearnjs-javascript-examples </a><br>
+This Website Index: <a href="https://hpssjellis.github.io/deeplearnjs-javascript-examples/">https://hpssjellis.github.io/deeplearnjs-javascript-examples/</a><br>
+Original Deeplearn Github <a href="https://github.com/PAIR-code/deeplearnjs">https://github.com/PAIR-code/deeplearnjs</a><br>
+Check out the <a href="https://github.com/PAIR-code/deeplearnjs/releases">latest version of deeplearnjs</a> <br> <br>
+By Jeremy Ellis <br>
+Twitter<a href="https://twitter.com/@rocksetta">@rocksetta</a><br>
+Use at your own risk!
+
+
+
+
+
+
+<!--  Following is a helper functions  to grow the textareas  -->
+
+<script>
+function myTextGrow(myT, myB){
+   document.getElementById(myT).value = document.getElementById(myB).outerHTML
+   setTimeout(function() {
+      while (  document.getElementById(myT).clientHeight < document.getElementById(myT).scrollHeight){                                                                                                                                              
+          document.getElementById(myT).rows += 3; 
+      } 
+   }, 100)
+}  
+</script>  
+
