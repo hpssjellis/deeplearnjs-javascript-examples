@@ -1,4 +1,4 @@
-<h3 align=center>Deeplearnjs in your browser:4</h3>
+<h3 align=center>Deeplearnjs in your browser:6</h3>
 
 
 
@@ -32,15 +32,18 @@ class myNDArrayMathGPU extends deeplearn.NDArrayMathGPU {
        super();
     }
 
-    inverse(b)  {  
+    inverse2DSquare(b)  {  
       
-        var  myInverseMultiplier  = 1/ ( (b.getValues()[0] * b.getValues()[3]) - (b.getValues()[1] * b.getValues()[2]) )
+        var myInverseMultiplier  = 1/ ( (b.getValues()[0] * b.getValues()[3]) - (b.getValues()[1] * b.getValues()[2]) )
         var myMatrixConverted = deeplearn.Array2D.new([2, 2], [b.getValues()[3], b.getValues()[1]*-1, b.getValues()[2]*-1, b.getValues()[0]])
-       // var myResult = super.multiply( myInverseMultiplier, myMatrixConverted);
-     //          return deeplearn.Array2D.new([2, 2], [3.6, -3.5, -3.2, 3])
-      //alert(myMatrixConverted.getValues())
-      //alert(myInverseMultiplier)
-      alert(super.multiply(2.5, myMatrixConverted))
+
+                                                                          
+                                                                          
+        // var myResult = super.multiply( myInverseMultiplier, myMatrixConverted);
+        // return deeplearn.Array2D.new([2, 2], [3.6, -3.5, -3.2, 3])
+        // alert(myMatrixConverted.getValues())
+        // alert(myInverseMultiplier)
+        // alert(super.multiply(2.5, myMatrixConverted))
    }
 
 
@@ -98,12 +101,12 @@ Use at your own risk!
 
 
 
-
-<!--  Following is a helper function  to grow the textareas  -->
+<!--  Following is a helper functions  to grow the textareas  -->
 
 <script>
 function myTextGrow(myT, myB){
-   document.getElementById(myT).value = document.getElementById(myB).outerHTML
+   document.getElementById(myT).value = '\x3Cscript src="https://unpkg.com/deeplearn@0.3.11/dist/deeplearn.js"> \x3C/script> \n\n' + document.getElementById(myB).innerHTML 
+        
    setTimeout(function() {
       while (  document.getElementById(myT).clientHeight < document.getElementById(myT).scrollHeight){                                                                                                                                              
           document.getElementById(myT).rows += 3; 
