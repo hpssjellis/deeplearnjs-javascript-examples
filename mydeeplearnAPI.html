@@ -23,6 +23,7 @@
 
 
    myGraph             = new deeplearn.Graph();
+   myENV                =  new deeplearn.ENV();
    myNDArrayMathGPU    = new deeplearn.NDArrayMathGPU();
    myNDArrayMath       = new deeplearn.NDArrayMath();
    myScalar            = new deeplearn.Scalar.new(Math.random())
@@ -241,7 +242,7 @@ Use the first 15 buttons to decide on what words to enter for the last 5 buttons
 
 
 <input type=button value="5 new deeplearn.Graph() works for functions" onclick="{myObjectData(new deeplearn.Graph())}">
-<input type=button value="6 new deeplearn.ENV()" onclick="{myObjectData(new deeplearn.ENV())}">
+<input type=button value="6  myENV  " onclick="{myObjectData(myENV))}">
 <input type=button value="7 " onclick="{myObjectData()}">
 <input type=button value="8 " onclick="{myObjectData()}">
 <input type=button value="9 " onclick="{myObjectData()}">
