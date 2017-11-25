@@ -1,0 +1,62 @@
+<h1 align=center>SqueezeNet and Playground Single Page Demo</h1>
+
+<script src="https://unpkg.com/deeplearn@0.3.8/dist/deeplearn.js"></script>
+
+<script src='https://unpkg.com/deeplearn-squeezenet'></script>
+
+<script>
+
+async function myCheckImage(){
+  dl = deeplearn
+  const catImage = document.getElementById('cat');
+  const math = new dl.NDArrayMathGPU();
+  const squeezeNet = new squeezenet.SqueezeNet(math);
+  await squeezeNet.load();
+
+  const image = dl.Array3D.fromPixels(document.getElementById('cat'));
+  const inferenceResult = await squeezeNet.predict(image);
+
+  const topClassesToProbs = await squeezeNet.getTopKClasses(inferenceResult.logits, 10);
+
+  document.getElementById('myDivOut').innerHTML = ''   // clear the div
+  for (const className in topClassesToProbs) {
+    
+    document.getElementById('myDivOut').innerHTML += topClassesToProbs[className].toFixed(5) + ' : '+ className + '<br>'
+  }
+}
+</script>
+
+<body onload="myCheckImage()">
+Save an image to a folder and then drag the image onto this page.  
+
+<div id='target' ondrop="{
+
+    event.preventDefault(); 
+    event.stopPropagation();
+    document.getElementById('cat').src =  window.URL.createObjectURL(event.dataTransfer.files[0]); 
+    myCheckImage()
+
+  }" ondragover="{
+
+    event.preventDefault(); 
+    event.stopPropagation();
+    event.dataTransfer.dropEffect = 'copy';
+    document.getElementById('myDivOut').innerHTML = 'drag over'
+  }" >
+
+  <img id='cat' src='https://storage.googleapis.com/learnjs-data/images/cat.jpeg' width=227 height=227 crossorigin ><br><br>
+
+</div>
+
+<div id="myDivOut">...</div>
+
+
+
+
+
+
+
+
+
+
+
