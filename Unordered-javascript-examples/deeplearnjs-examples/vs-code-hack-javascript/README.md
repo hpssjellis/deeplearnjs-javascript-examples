@@ -19,7 +19,7 @@ yarn prep
 
 Add a file called myPage.ts with this code
 
-see code here
+[see code here](https://github.com/PAIR-code/deeplearnjs/tree/master/starter/typescript)
 
 Intellisense works great on that page when writing javascript.
 
