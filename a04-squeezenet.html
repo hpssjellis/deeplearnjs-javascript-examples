@@ -1,4 +1,4 @@
-<h3 align=center>Deeplearnjs in your browser a04-squeezenet.html   7</h3>
+<h3 align=center>Deeplearnjs in your browser a04-squeezenet.html   8</h3>
 
 <!--   *******************************Start: Which source js file to use? ****************************************************   -->
 
@@ -20,22 +20,15 @@
 <!--   *******************************Stop: Which source js file to use? ****************************************************   -->
 
 
-Check out the Deeplearnjs playground <a href="https://deeplearnjs.org/demos/playground/examples.html">https://deeplearnjs.org/demos/playground/examples.html</a>
-
-<br><br>
 <div id="myDiv01Code">
-    
-    
-    
-    
-    
-    
+        
 <h1 align=center>SqueezeNet and Playground Single Page Demo</h1>
-
-
-
 <script src='https://unpkg.com/deeplearn-squeezenet'></script>
 
+Check out the Deeplearnjs playground <a href="https://deeplearnjs.org/demos/playground/examples.html">https://deeplearnjs.org/demos/playground/examples.html</a>
+<br><br>
+
+    
 <script>
 
 async function myCheckImage(){
@@ -50,10 +43,10 @@ async function myCheckImage(){
 
   const topClassesToProbs = await squeezeNet.getTopKClasses(inferenceResult.logits, 10);
 
-  document.getElementById('myDivOut').innerHTML = ''   // clear the div
+  document.getElementById('myDiv01').innerHTML = ''   // clear the div
   for (const className in topClassesToProbs) {
     
-    document.getElementById('myDivOut').innerHTML += topClassesToProbs[className].toFixed(5) + ' : '+ className + '<br>'
+    document.getElementById('myDiv01').innerHTML += topClassesToProbs[className].toFixed(5) + ' : '+ className + '<br>'
   }
 }
 </script>
@@ -73,32 +66,12 @@ Save an image to a folder and then drag the image onto this page.
     event.preventDefault(); 
     event.stopPropagation();
     event.dataTransfer.dropEffect = 'copy';
-    document.getElementById('myDivOut').innerHTML = 'drag over'
+    document.getElementById('myDiv01').innerHTML = 'drag over'
   }" >
 
   <img id='cat' src='https://storage.googleapis.com/learnjs-data/images/cat.jpeg' width=227 height=227 crossorigin ><br><br>
 
 </div>
-
-<div id="myDivOut">...</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-    
-    
-    
     
 <div id="myDiv01">...</div><br>                 
 </div>
