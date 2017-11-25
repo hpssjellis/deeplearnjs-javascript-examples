@@ -1,6 +1,4 @@
-<h3 align=center>Deeplearnjs in your browser 1</h3>
-
-
+<h3 align=center>Deeplearnjs in your browser a04-squeezenet.html</h3>
 
 <!--   *******************************Start: Which source js file to use? ****************************************************   -->
 
@@ -22,111 +20,67 @@
 <!--   *******************************Stop: Which source js file to use? ****************************************************   -->
 
 
+Check out the Deeplearnjs playground <a href="https://deeplearnjs.org/demos/playground/examples.html">https://deeplearnjs.org/demos/playground/examples.html</a>
 
-
-Checkout a really good matrix math explanation site at <a href="http://www.mathsisfun.com/algebra/matrix-inverse.html">http://www.mathsisfun.com/algebra/matrix-inverse.html</a><br>
 <br><br>
-
 <div id="myDiv01Code">
+    
+<script src="https://unpkg.com/deeplearn@0.3.8/dist/deeplearn.js"></script>
+<script src='https://unpkg.com/deeplearn-squeezenet'></script>
 
-<input id="myButton01" type=button value="Real Life Use of Matrix Math" onclick="{
+<script>
 
-    class myNDArrayMathGPU extends deeplearn.NDArrayMathGPU {
-       inverse2DSquare(b)  {       
-          var myInverseMultiplier  = 1 / ( (b.getValues()[0] * b.getValues()[3]) - (b.getValues()[1] * b.getValues()[2]) )
-          var myMatrixConverted = deeplearn.Array2D.new([2, 2], [b.getValues()[3]*myInverseMultiplier, b.getValues()[1]*-1*myInverseMultiplier, b.getValues()[2]*-1*myInverseMultiplier, b.getValues()[0]*myInverseMultiplier])
-          return myMatrixConverted
-      }
-   }
+async function myCheckImage(){
+  dl = deeplearn
+  const catImage = document.getElementById('cat');
+  const math = new dl.NDArrayMathGPU();
+  const squeezeNet = new squeezenet.SqueezeNet(math);
+  await squeezeNet.load();
 
-   document.getElementById('myDiv01').innerHTML = 'deeplearnjs Version = ' + deeplearn.version + '<br><br>'
+  const image = dl.Array3D.fromPixels(document.getElementById('cat'));
+  const inferenceResult = await squeezeNet.predict(image);
 
-   var myMath = new myNDArrayMathGPU();
-   document.getElementById('myDiv01').innerHTML += 'Child $3.00 bus, $3.50 train, Adult $3.20 bus, $3.60 train <br>' 
-   document.getElementById('myDiv01').innerHTML += 'Total bus = $118.40, Total train = $135.20. How many Children and Adults? <br><br>' 
+  const topClassesToProbs = await squeezeNet.getTopKClasses(inferenceResult.logits, 10);
 
-   var myMatrixOriginal = deeplearn.Array2D.new([2, 2], [3, 3.5, 3.2, 3.6]);
-   var myVector1D = deeplearn.Array1D.new([118.4, 135.2]);
+  document.getElementById('mymyDiv01').innerHTML = ''   // clear the div
+  for (const className in topClassesToProbs) {
+    
+    document.getElementById('myDiv01').innerHTML += topClassesToProbs[className].toFixed(5) + ' : '+ className + '<br>'
+  }
+}
+</script>
+     
+<body onload="myCheckImage()">
+<h1 align=center>SqueezeNet and Playground Single Page Demo</h1>
+Save an image to a folder and then drag the image onto this page.      
+    
+<div id='target' ondrop="{
 
-   var myResult1 = myMath.inverse2DSquare(myMatrixOriginal)
-   document.getElementById('myDiv01').innerHTML += 'Intermediate Inverse Matrix shape = ' + myResult1.shape+ ' Intermediate Values = ' + myResult1.getValues() +'<br>'   
+    event.preventDefault(); 
+    event.stopPropagation();
+    document.getElementById('cat').src =  window.URL.createObjectURL(event.dataTransfer.files[0]); 
+    myCheckImage()
 
-   var myResult2 =  myMath.vectorTimesMatrix(myVector1D, myResult1);
-   document.getElementById('myDiv01').innerHTML +=   'Final Result shape:'+ myResult2.shape  +   ',  Train and Bus results: Children = ' + Math.round(myResult2.getValues()[0]) +   ',  Adults = '  +  Math.round(myResult2.getValues()[1])                                            
+  }" ondragover="{
 
-}"><br>
+    event.preventDefault(); 
+    event.stopPropagation();
+    event.dataTransfer.dropEffect = 'copy';
+    document.getElementById('myDiv01').innerHTML = 'drag over'
+  }" >
 
+  <img id='cat' src='https://storage.googleapis.com/learnjs-data/images/cat.jpeg' width=227 height=227 crossorigin ><br><br>
 
+</div>
 
-
-
-
-
-
-
-                                                            
-
-
-       
-
-<div id="myDiv01">...</div><br>
+                             
+<div id="myDiv01">...</div><br>                 
 </div>
 <textarea id="myTextarea01"   style= "background-color:yellow;white-space:nowrap; width:100%"  rows=3  onclick="{myTextGrow('myTextarea01', 'myDiv01Code')}">
 Click to see the code before clicking the button
 </textarea>
 
 <br><br><hr><br>
-
-
-
-
-
-
-
-
-
-
-<div id="myDiv02Code">
-
-
-<input id="myButton02" type=button value="..." onclick="{
-
-}">
-
-
-<div id="myDiv02">...</div>
-</div>
-<textarea id="myTextarea02"   style= "background-color:yellow;white-space:nowrap; width:100%"    rows=3 NOWRAP onclick="{myTextGrow('myTextarea02', 'myDiv02Code')}">
-Click to see the code before clicking the button
-</textarea>
-
-<br><br><hr><br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -140,15 +94,6 @@ Deeplearn API at <a href="https://deeplearnjs.org/docs/api/index.html">https://d
 By Jeremy Ellis <br>
 Twitter<a href="https://twitter.com/@rocksetta">@rocksetta</a><br>
 Use at your own risk!
-
-
-
-
-
-
-
-
-
 
 
 
