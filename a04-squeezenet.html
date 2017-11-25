@@ -1,4 +1,4 @@
-<h3 align=center>Deeplearnjs in your browser a04-squeezenet.html    5</h3>
+<h3 align=center>Deeplearnjs in your browser a04-squeezenet.html   7</h3>
 
 <!--   *******************************Start: Which source js file to use? ****************************************************   -->
 
@@ -25,6 +25,14 @@ Check out the Deeplearnjs playground <a href="https://deeplearnjs.org/demos/play
 <br><br>
 <div id="myDiv01Code">
     
+    
+    
+    
+    
+    
+<h1 align=center>SqueezeNet and Playground Single Page Demo</h1>
+
+
 
 <script src='https://unpkg.com/deeplearn-squeezenet'></script>
 
@@ -42,18 +50,17 @@ async function myCheckImage(){
 
   const topClassesToProbs = await squeezeNet.getTopKClasses(inferenceResult.logits, 10);
 
-  document.getElementById('mymyDiv01').innerHTML = ''   // clear the div
+  document.getElementById('myDivOut').innerHTML = ''   // clear the div
   for (const className in topClassesToProbs) {
     
-    document.getElementById('myDiv01').innerHTML += topClassesToProbs[className].toFixed(5) + ' : '+ className + '<br>'
+    document.getElementById('myDivOut').innerHTML += topClassesToProbs[className].toFixed(5) + ' : '+ className + '<br>'
   }
 }
 </script>
-     
+
 <body onload="myCheckImage()">
-<h1 align=center>SqueezeNet and Playground Single Page Demo</h1>
-Save an image to a folder and then drag the image onto this page.      
-    
+Save an image to a folder and then drag the image onto this page.  
+
 <div id='target' ondrop="{
 
     event.preventDefault(); 
@@ -66,14 +73,33 @@ Save an image to a folder and then drag the image onto this page.
     event.preventDefault(); 
     event.stopPropagation();
     event.dataTransfer.dropEffect = 'copy';
-    document.getElementById('myDiv01').innerHTML = 'drag over'
+    document.getElementById('myDivOut').innerHTML = 'drag over'
   }" >
 
   <img id='cat' src='https://storage.googleapis.com/learnjs-data/images/cat.jpeg' width=227 height=227 crossorigin ><br><br>
 
 </div>
 
-                             
+<div id="myDivOut">...</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
 <div id="myDiv01">...</div><br>                 
 </div>
 <textarea id="myTextarea01"   style= "background-color:yellow;white-space:nowrap; width:100%"  rows=3  onclick="{myTextGrow('myTextarea01', 'myDiv01Code')}">
