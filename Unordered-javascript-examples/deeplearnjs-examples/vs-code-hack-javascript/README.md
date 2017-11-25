@@ -13,13 +13,13 @@ JavaScript and TypeScript IntelliSense
 
 Not sure if any of these steps were needed, but my hack below works
 
-If you use the starter typescript folder and run
+If you use the [starter typescript](https://github.com/PAIR-code/deeplearnjs/tree/master/starter/typescript) folder and run
 
 yarn prep
 
 Add a file called myPage.ts with this code
 
-[see code here](https://github.com/PAIR-code/deeplearnjs/tree/master/starter/typescript)
+[see code here](myPage.ts)
 
 Intellisense works great on that page when writing javascript.
 
