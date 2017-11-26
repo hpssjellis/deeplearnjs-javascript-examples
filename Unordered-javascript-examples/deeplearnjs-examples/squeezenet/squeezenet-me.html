@@ -1,0 +1,38 @@
+<script src="https://unpkg.com/deeplearn@0.3.11/dist/deeplearn.js"> </script> 
+<script src="https://unpkg.com/deeplearn-squeezenet"></script>
+<script src="squeezenet-me.js"></script>
+
+
+<h2 align="center"> <a href="https://deeplearnjs.org/demos/playground/examples.html">SqueezeNet and DeeplearnJS Playground</a></h2>
+
+      
+Save an image to a folder and then drag the image onto this page. <br> 
+
+  <img onload="myCheckImage()" id="cat" src="https://storage.googleapis.com/learnjs-data/images/cat.jpeg" width="227" height="227" crossorigin="" ondrop="{
+
+    event.preventDefault(); 
+    event.stopPropagation();   
+    document.getElementById('cat').src =  window.URL.createObjectURL(event.dataTransfer.files[0]); 
+    setTimeout('myCheckImage()',100)  // oldschool async :>
+
+  }" ondragover="{
+
+    event.preventDefault(); 
+    event.stopPropagation();
+    event.dataTransfer.dropEffect = 'copy';
+    document.getElementById('myDiv01').innerHTML = 'drag over'
+  }"><br><br>
+
+
+
+<input type="button" value="Reset Output DIV" onclick="{
+   document.getElementById('myDiv01').innerHTML = '...'                                             
+}">
+
+<input type="button" value="Search SqueezeNet" onclick="{
+     myCheckImage()                                     
+}"><br><br>
+    
+<div id="myDiv01">...</div><br>                 
+
+
