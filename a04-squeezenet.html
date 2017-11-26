@@ -72,14 +72,16 @@ Save an image to a folder and then drag the image onto this page.
   <img id='cat' src='https://storage.googleapis.com/learnjs-data/images/cat.jpeg' width=227 height=227 crossorigin ><br><br>
 
 </div>
-    
+<input type=button value="Reset Output DIV" onclick="{
+   document.getElementById('myDiv01').innerHTML = '...'                                             
+}"><br>    
 <div id="myDiv01">...</div><br>                 
 </div>
+    
 <textarea id="myTextarea01"   style= "background-color:yellow;white-space:nowrap; width:100%"  rows=3  onclick="{
-   document.getElementById('myDiv01').innerHTML = '...'  // reset the output div  called myDiv01
    myTextGrow('myTextarea01', 'myDiv01Code')
 }">
-Click to see the original code that can be pasted as a functional webpage.
+Click clearDiv then click here to see the original code
 </textarea>
 
 <br><br><hr><br>
