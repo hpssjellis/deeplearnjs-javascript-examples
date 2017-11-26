@@ -51,10 +51,10 @@ async function myCheckImage(){
 }
 </script>
 
-<body onload="myCheckImage()">
+
 Save an image to a folder and then drag the image onto this page.  
 
-<div id='target' ondrop="{
+<div id='target'  onload="myCheckImage()"  ondrop="{
 
     event.preventDefault(); 
     event.stopPropagation();   
