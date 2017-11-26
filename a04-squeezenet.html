@@ -52,9 +52,11 @@ async function myCheckImage(){
 </script>
 
 
-Save an image to a folder and then drag the image onto this page.  
+Save an image to a folder and then drag the image onto this page. <br> 
 
-<div id='target'  onload="myCheckImage()"  ondrop="{
+
+
+  <img onload = "myCheckImage()" id="cat" src="https://storage.googleapis.com/learnjs-data/images/cat.jpeg" width="227" height="227" crossorigin    ondrop="{
 
     event.preventDefault(); 
     event.stopPropagation();   
@@ -67,11 +69,10 @@ Save an image to a folder and then drag the image onto this page.
     event.stopPropagation();
     event.dataTransfer.dropEffect = 'copy';
     document.getElementById('myDiv01').innerHTML = 'drag over'
-  }" >
+  }"  ><br><br>
 
-  <img id='cat' src='https://storage.googleapis.com/learnjs-data/images/cat.jpeg' width=227 height=227 crossorigin ><br><br>
 
-</div>
+
 <input type=button value="Reset Output DIV" onclick="{
    document.getElementById('myDiv01').innerHTML = '...'                                             
 }">
