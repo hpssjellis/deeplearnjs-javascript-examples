@@ -57,9 +57,9 @@ Save an image to a folder and then drag the image onto this page.
 <div id='target' ondrop="{
 
     event.preventDefault(); 
-    event.stopPropagation();
+    event.stopPropagation();   
     document.getElementById('cat').src =  window.URL.createObjectURL(event.dataTransfer.files[0]); 
-    myCheckImage()
+    setTimeout('myCheckImage()',10)  // oldschool async :>
 
   }" ondragover="{
 
