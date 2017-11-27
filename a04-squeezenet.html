@@ -40,16 +40,14 @@ async function myCheckImage(){
 
   const image = dl.Array3D.fromPixels(document.getElementById('cat'));
   const inferenceResult = await squeezeNet.predict(image);
-
   const topClassesToProbs = await squeezeNet.getTopKClasses(inferenceResult.logits, 10);
 
   document.getElementById('myDiv01').innerHTML = ''   // clear the div
-  for (const className in topClassesToProbs) {
-    
+  for (const className in topClassesToProbs) {  
     document.getElementById('myDiv01').innerHTML += topClassesToProbs[className].toFixed(5) + ' : '+ className + '<br>'
   }
 }
-</script>
+
 
 async function myLoadImage(myEvent){
     myEvent.preventDefault(); 
