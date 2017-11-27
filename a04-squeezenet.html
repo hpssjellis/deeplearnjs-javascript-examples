@@ -51,25 +51,29 @@ async function myCheckImage(){
 }
 </script>
 
+async function myLoadImage(myEvent){
+    myEvent.preventDefault(); 
+    myEvent.stopPropagation();   
+    document.getElementById('cat').src = await window.URL.createObjectURL(myEvent.dataTransfer.files[0]); 
+    setTimeout('myCheckImage()', 200)
+}
+
+
+</script>
+
 
 Save an image to a folder and then drag the image onto this page. <br> 
 
 
 
-  <img onload = "myCheckImage()" id="cat" src="https://storage.googleapis.com/learnjs-data/images/cat.jpeg" width="227" height="227" crossorigin    ondrop="{
-
-    event.preventDefault(); 
-    event.stopPropagation();   
-    document.getElementById('cat').src =  window.URL.createObjectURL(event.dataTransfer.files[0]); 
-    setTimeout('myCheckImage()',200)  // oldschool async :>
-
+  <img onload="myCheckImage()" id="cat" src="https://storage.googleapis.com/learnjs-data/images/cat.jpeg" width="227" height="227" crossorigin="" ondrop="{ 
+     myLoadImage(event)
   }" ondragover="{
-
     event.preventDefault(); 
     event.stopPropagation();
     event.dataTransfer.dropEffect = 'copy';
     document.getElementById('myDiv01').innerHTML = 'drag over'
-  }"  ><br><br>
+  }"><br><br>
 
 
 
