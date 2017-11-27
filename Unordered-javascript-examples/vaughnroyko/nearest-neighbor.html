@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>State of Nearest-neighbor Interpolation in Canvas Demo</title>
+<style>
+	canvas {
+		float: left;
+		margin-right: 4px;
+		image-rendering: optimizeSpeed;
+		image-rendering: -moz-crisp-edges;
+		image-rendering: -webkit-optimize-contrast;
+		image-rendering: optimize-contrast;
+		-ms-interpolation-mode: nearest-neighbor;
+	}
+
+	.clr {
+		clear: both;
+	}
+
+	#upscaledcss {
+		height: 120px;
+		width: 120px;
+	}
+
+	#imagedatasource {
+		display: none;
+	}
+
+	div {
+		text-align: center;
+	    width: 120px;
+	    float: left;
+	    height: 60px;
+	    margin-right: 4px;
+	    margin-bottom: 4px;
+	}
+</style>
+<script>
+var sourceImage = new Image();
+sourceImage.src = "http://vaughnroyko.com/jsfiddle/pixels.png";
+var sourceImageUpscaled = new Image();
+sourceImageUpscaled.src = "http://vaughnroyko.com/jsfiddle/pixels-large.png";
+
+sourceImageUpscaled.onload = function() {
+
+	//Upscaled via drawImage (canvas)
+	var upscaledCanvas = document.getElementById('upscaledcanvas').getContext('2d');
+	upscaledCanvas.mozImageSmoothingEnabled = false;
+	upscaledCanvas.webkitImageSmoothingEnabled = false;
+	upscaledCanvas.msImageSmoothingEnabled = false;
+	upscaledCanvas.imageSmoothingEnabled = false;
+	upscaledCanvas.drawImage(sourceImage, 0, 0, 8, 8, 0, 0, 120, 120);
+
+	//Upscaled via CSS
+	var upscaledCSS = document.getElementById('upscaledcss').getContext('2d');
+	upscaledCSS.drawImage(sourceImage, 0, 0, 8, 8);
+
+	//Upscaled via Pattern (hack)
+	var upscaledPattern = document.getElementById('upscaledpattern').getContext('2d');
+	upscaledPattern.mozImageSmoothingEnabled = false;
+	upscaledPattern.webkitImageSmoothingEnabled = false;
+	upscaledPattern.msImageSmoothingEnabled = false;
+	upscaledPattern.imageSmoothingEnabled = false;
+	upscaledPattern.scale(15, 15);
+	upscaledPattern.fillStyle = upscaledPattern.createPattern(sourceImage, 'repeat');
+	upscaledPattern.fillRect(0, 0, 120, 120);
+
+	//Upscaled via getImageData (slow)
+	var imageDataSource = document.getElementById('imagedatasource').getContext('2d');
+
+	imageDataSource.drawImage(sourceImage, 0, 0);
+	var imgData = imageDataSource.getImageData(0,0,sourceImage.width,sourceImage.height).data;
+
+	var upscaledImageData = document.getElementById('upscaledimagedata').getContext('2d');
+
+	for (var x = 0; x < sourceImage.width; ++x) {
+		for (var y = 0 ; y < sourceImage.height; ++y) {
+			var i = (y * sourceImage.width + x) * 4;
+			var r = imgData[i];
+			var g = imgData[i + 1];
+			var b = imgData[i + 2];
+			var a = imgData[i + 3];
+			upscaledImageData.fillStyle = "rgba(" + r + ", " + g + ", " + b + ", " + (a / 255) + ")";
+			upscaledImageData.fillRect(x * 15, y * 15, 15, 15);
+		}
+	}
+
+	//Upscaled via Export (fallback)
+	var upscaledCanvas = document.getElementById('upscaledexport').getContext('2d');
+	upscaledCanvas.drawImage(sourceImageUpscaled, 0, 0, 120, 120);
+
+}
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-2348518-7']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+
+<body>
+	<div>Upscaled via drawImage (canvas)</div>
+	<div>Upscaled via CSS</div>
+	<div>Upscaled via Pattern (hack)</div>
+	<div>Upscaled via getImageData (slow)</div>
+	<div>Upscaled via Export (fallback)</div>
+	<canvas class="clr" id="upscaledcanvas" width="120" height="120"></canvas>
+	<canvas id="upscaledcss" width="8" height="8"></canvas>
+	<canvas id="upscaledpattern" width="120" height="120"></canvas>
+	<canvas id="imagedatasource" width="8" height="8"></canvas>
+	<canvas id="upscaledimagedata" width="120" height="120"></canvas>
+	<canvas id="upscaledexport" width="120" height="120"></canvas>
+</body>
+
+</html>
