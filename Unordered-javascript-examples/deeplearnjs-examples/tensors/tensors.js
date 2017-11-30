@@ -4,10 +4,14 @@
 
 //import * as dl from 'deeplearn';  
 
+// div as a string, Tensor as a tensor, NumberRows as an integer, Title as a string
+async function myTensorTable(myDiv, myOutTensor, myCols, myTitle){   
 
-async function myTensorTable(myDiv, myOutTensor, myCols){   // div only as a string
+  
+ document.getElementById(myDiv).innerHTML += myTitle + '<br>'
+
  const myOutput = await myOutTensor.data()
- myTemp = '<br><table border=3><tr>'
+ myTemp = '<table border=3><tr>'
    for (myCount = 0;    myCount <= myOutTensor.size - 1;   myCount++){   
      myTemp += '<td>'+ myOutput[myCount] + '</td>'
      if (myCount % myCols == myCols-1){
@@ -28,11 +32,11 @@ async function myTest01(){
 
  //const myOutput = await my2D.data()
  document.getElementById('myDiv01').innerHTML = '<br>Printing myWeights [3, 4] [rows, columns] <br>'
- await myTensorTable('myDiv01', myWeights, 4)  
+ await myTensorTable('myDiv01', myWeights, 4, 'Weights')  
 
 
  document.getElementById('myDiv01').innerHTML += 'Printing myInputs [3, 4] [rows, columns] <br>'
- await myTensorTable('myDiv01', myInputs, 4)  
+ await myTensorTable('myDiv01', myInputs, 4, 'Inputs')  
 
 
  const myBiasOutput = await myBias.data();
@@ -54,25 +58,25 @@ async function myTest01(){
  const myMatrix1  = dl.Array2D.new([2, 2], [3, 2, 5, 4]);
  const myMatrix2 =  dl.Array2D.new([2, 2], [2, 3, 4, 5]);
 
- await myTensorTable('myDiv01', myMatrix1, 2)  
- await myTensorTable('myDiv01', myMatrix2, 2)  
+ await myTensorTable('myDiv01', myMatrix1, 2, 'Table A')  
+ await myTensorTable('myDiv01', myMatrix2, 2, 'Table B')  
 
 
  myAlgorithm.scope(function() {
   var  myProduct = myAlgorithm.matMul(myMatrix1, myMatrix2)
-  document.getElementById('myDiv01').innerHTML += ' A * B Matmul 2D = ' + myProduct.getValues()  +'<br>...<br>'   // Float32Array([3, 4, 5])
+  document.getElementById('myDiv01').innerHTML += ' A * B Matmul 2D = ' + myProduct.getValues()  +'<br>'   
 
   var  myProduct = myAlgorithm.matMul(myMatrix1, myMatrix2, 'TRANSPOSED', 'REGULAR')
-  document.getElementById('myDiv01').innerHTML += 'A^T * B Matmul 2D = ' + myProduct.getValues()  +'<br>...<br>'   // Float32Array([3, 4, 5])
+  document.getElementById('myDiv01').innerHTML += 'A^T * B Matmul 2D = ' + myProduct.getValues()  +'<br>'  
 
 
   var  myProduct = myAlgorithm.matMul(myMatrix2, myMatrix1)
-  document.getElementById('myDiv01').innerHTML += 'B * A Matmul 2D = ' + myProduct.getValues()  +'<br>...<br>'   // Float32Array([3, 4, 5])
+  document.getElementById('myDiv01').innerHTML += 'B * A Matmul 2D = ' + myProduct.getValues()  +'<br>' 
 
 
 
   var  myProduct = myAlgorithm.matMul(myMatrix2, myMatrix1, 'REGULAR', 'TRANSPOSED')
-  document.getElementById('myDiv01').innerHTML += ' B * A^T  Matmul 2D = ' + myProduct.getValues()  +'<br>...<br>'   // Float32Array([3, 4, 5])
+  document.getElementById('myDiv01').innerHTML += ' B * A^T  Matmul 2D = ' + myProduct.getValues()  +'<br><hr>'   
 
 
 
@@ -98,21 +102,23 @@ async function myTest01(){
 
 
  
- await myTensorTable('myDiv01', w, 2)  
- await myTensorTable('myDiv01', i, 2)  
+ await myTensorTable('myDiv01', w, 2, 'w')  
+ await myTensorTable('myDiv01', i, 2, 'i')  
 
+ document.getElementById('myDiv01').innerHTML += 'Bias= '+ b.getValues()  +'<br>'
+ 
  myAlgorithm.scope(function() {
    var myDot = myAlgorithm.dotProduct(w, i)
    var mySum = myAlgorithm.add(myDot, b)
    var mySig = myAlgorithm.sigmoid(mySum)
-   document.getElementById('myDiv01').innerHTML += 'easy sigmoid = '+mySig.getValues()  +'<br>...<br>'   // Float32Array([3, 4, 5])
+   document.getElementById('myDiv01').innerHTML += 'easy sigmoid = '+mySig.getValues()  +'<br>'
  })
 
  myAlgorithm.scope(function() {
     var myDot = myAlgorithm.dotProduct(w, i)
     var mySum = myAlgorithm.add(myDot, b)
     var mySig = myAlgorithm.sinh(mySum)
-    document.getElementById('myDiv01').innerHTML += 'easy sinH = '+mySig.getValues()  +'<br>...<br>'   // Float32Array([3, 4, 5])
+    document.getElementById('myDiv01').innerHTML += 'easy sinH = '+mySig.getValues()  +'<br>'
  })
 
 
@@ -123,18 +129,5 @@ async function myTest01(){
     document.getElementById('myDiv01').innerHTML += 'easy relu = '+mySig.getValues()  +'<br>...<br>'   // Float32Array([3, 4, 5])
  })
     
-
-
-
- 
-
-
-
-
-
-
-
-
- 
 
 }
