@@ -105,8 +105,8 @@ async function myTest01(){
  })
     
 // myAlgorithm.scope(function() {
-   alert('flatten 3')
-    var myFlaat = myInputs.flatten(myInputs)
+   alert('flatten 4')
+    var myFlat = myInputs.flatten(myInputs)
   //  document.getElementById('myDiv01').innerHTML += 'flatten 2D Inputs array to 1D array = '+mySig.getValues()  +'<br><br>'
 // })
    
