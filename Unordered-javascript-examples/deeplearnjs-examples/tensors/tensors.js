@@ -104,5 +104,12 @@ async function myTest01(){
     document.getElementById('myDiv01').innerHTML += 'relu(add( dot(w, i)+ b) ) = '+mySig.getValues()  +'<br><hr>'
  })
     
-
+ myAlgorithm.scope(function() {
+   alert('flatten')
+    var mySig = myAlgorithm.flatten(myInputs)
+    document.getElementById('myDiv01').innerHTML += 'flatten 2D Inputs array to 1D array = '+mySig.getValues()  +'<br><hr>'
+ })
+    
+  
+  
 }
