@@ -109,7 +109,10 @@ async function myTest01(){
     var mySig = myAlgorithm.flatten(myInputs)
     document.getElementById('myDiv01').innerHTML += 'flatten 2D Inputs array to 1D array = '+mySig.getValues()  +'<br><hr>'
  })
-    
+   
+// await myTensorTable('myDiv01', mySig, 1, 'flatten 2D Inputs array to 1D array')    
+  
+  
   
   
 }
