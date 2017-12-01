@@ -105,12 +105,12 @@ async function myTest01(){
  })
     
 // myAlgorithm.scope(function() {
-   alert('flatten 2')
-    var mySig = myInputs.flatten(myInputs)
-    document.getElementById('myDiv01').innerHTML += 'flatten 2D Inputs array to 1D array = '+mySig.getValues()  +'<br><br>'
+   alert('flatten 3')
+    var myFlaat = myInputs.flatten(myInputs)
+  //  document.getElementById('myDiv01').innerHTML += 'flatten 2D Inputs array to 1D array = '+mySig.getValues()  +'<br><br>'
 // })
    
-// await myTensorTable('myDiv01', mySig, 1, 'flatten 2D Inputs array to 1D array')    
+ await myTensorTable('myDiv01', myFlat, 1, 'flatten 2D Inputs array to 1D array')    
   
   
   
