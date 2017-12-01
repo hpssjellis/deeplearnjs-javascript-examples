@@ -36,6 +36,10 @@ async function myTest01(){
 
  await myTensorTable('myDiv01', myInputs, 3, 'Inputs [3x3]')  
 
+  
+  var myFlat = myInputs.flatten(myInputs)  
+  await myTensorTable('myDiv01', myFlat, 1, 'flatten the 2D Inputs array into a 1D array')    
+  
 
  const myBiasOutput = await myBias.data();
  document.getElementById('myDiv01').innerHTML += 'Bias Scalar = ' + myBiasOutput + ' <br><hr>'
@@ -104,14 +108,8 @@ async function myTest01(){
     document.getElementById('myDiv01').innerHTML += 'relu(add( dot(w, i)+ b) ) = '+mySig.getValues()  +'<br><hr>'
  })
     
-// myAlgorithm.scope(function() {
-   alert('flatten 4')
-    var myFlat = myInputs.flatten(myInputs)
-  //  document.getElementById('myDiv01').innerHTML += 'flatten 2D Inputs array to 1D array = '+mySig.getValues()  +'<br><br>'
-// })
-   
- await myTensorTable('myDiv01', myFlat, 1, 'flatten 2D Inputs array to 1D array')    
-  
+
+
   
   
   
