@@ -3,39 +3,11 @@
 
 <head>
 
-    <!-- Google Analytics -->
-    <script async src="https://www.google-analytics.com/analytics.js"></script>
-    <script async src="assets/plugins/autotrack.js"></script>
-    <script>
-        window.ga = window.ga || function () {
-            (ga.q = ga.q || []).push(arguments)
-        };
-        ga.l = +new Date;
-        ga('create', 'UA-108549242-1', 'auto');
-        // Replace the following lines with the plugins you want to use.
-        // ga('require', 'eventTracker');
-        // ga('require', 'outboundLinkTracker');
-        // ga('require', 'urlChangeTracker');
-        // ...
-        ga('send', 'pageview');
-    </script>
-    <!-- End Google Analytics -->
 
     <!-- Meta -->
     <title>Deeplearnjs Practice -- MNIST Digit Recognition</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="shortcut icon" href="favicon.ico">
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,400italic,300italic,300,500italic,700,700italic,900,900italic'
-        rel='stylesheet' type='text/css'>
-    <!-- Global CSS -->
-    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
-    <!-- Plugins CSS -->
-    <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
-    <!-- Theme CSS -->
-    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
 
@@ -44,11 +16,7 @@
 
 
 <style>
-    .main-wrapper {
-        background: #fff;
-        padding: 20px;
-        padding-right: 300px;
-    }
+  
     @media (max-width: 767px) {
         .main-wrapper {
             padding: 10px;
@@ -59,27 +27,7 @@
             margin-top: 5px;
         }
     }
-    .ink-panel {
-        /* display: flex; */
-        /* flex-direction: column; */
-        font-size: 14px;
-    }
-    .subtitle {
-        font-size: 15px;
-        font-weight: bold;
-    }
-    .title {
-        align-items: center;
-        /* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
-        color: black;
-        display: flex;
-        font-weight: 500;
-        height: 20px;
-        min-height: 20px;
-        padding-top: 20px;
-        padding-left: 20px;
-        text-transform: uppercase;
-    }
+   
     #dataset {
         background: #fafafa;
         border-right: 1px solid rgba(0, 0, 0, 0.1);
@@ -98,115 +46,7 @@
         display: flex;
         width: 100%;
     } */
-    #model {
-        border-right: 1px solid rgba(0, 0, 0, 0.1);
-        min-width: 200px;
-        /* position: relative; */
-    }
-    #model>div {
-        padding-left: 5px;
-        padding-right: 5px;
-    }
-    .stat {
-        display: table-row;
-    }
-    .stat-label,
-    .stat-value {
-        display: table-cell;
-        padding: 5px 15px 5px 0;
-    }
-    #upload-download-container {
-        padding-top: 15px;
-        padding-bottom: 15px;
-        border-bottom: 1px solid rgba(0, 0, 0, .1);
-    }
-    .header {
-        border-bottom: solid .5px #666666;
-        height: 56px;
-        background: slategray;
-        color: #eaeaea;
-        z-index: 999;
-        font-weight: 500;
-        font-size: 22px;
-        padding-left: 12px;
-        line-height: 56px;
-    }
-    .train-button-container {
-        margin: 12px 0;
-    }
-    .model-error {
-        padding: 12px 0;
-        color: #b80000;
-        font-style: italic;
-    }
-    .model-error-info {
-        margin-left: -8px;
-    }
-    .invalid-model {
-        display: inline-block;
-    }
-    .inference-stats-message,
-    .train-stats-message {
-        line-height: 1.67em;
-    }
-    .button {
-        background-color: #a5d6a7;
-    }
-    #button-container {
-        width: 400px;
-        margin-top: 15px;
-    }
-    #inference {
-        /* border-right: 1px solid rgba(0, 0, 0, 0.1); */
-        /* flex-grow: 2; */
-        /* position: relative; */
-        min-width: 210px;
-    }
-    #inference-container {
-        margin-top: 15px;
-    }
-    #inference>div {
-        padding-left: 5px;
-        padding-right: 5px;
-    }
-    .inference-example {
-        display: flex;
-        justify-content: flex-start;
-        margin-bottom: 10px;
-    }
-    .inference-example>* {
-        display: table-cell;
-        vertical-align: middle;
-    }
-    /* ----------------------------*/
-    .ndarray-image-visualizer {
-        flex-basis: 100px;
-    }
-    .ndarray-logits-visualizer {
-        flex-grow: 1;
-    }
-    .logit {
-        font-size: 21px;
-    }
-    .logit-label {
-        color: #414141;
-        font-size: 18px;
-        line-height: 18px;
-        margin: 4px;
-        display: inline-block;
-        width: 100px;
-    }
-    .single-logit-container {
-        display: flex;
-    }
-    .logit-viz-outer {
-        flex-grow: 1;
-    }
-    .logit-viz-inner {
-        vertical-align: middle;
-        padding: 4px;
-    }
-    /* ----------------------------*/
+    
 </style>
 
 <body onload="start()">
