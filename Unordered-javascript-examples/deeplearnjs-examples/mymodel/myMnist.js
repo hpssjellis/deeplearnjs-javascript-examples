@@ -1,13 +1,13 @@
 
 
 function myLoadDefaults(){
-   alert(0.5)
+   alert(0.6)
 }
 
 
 function myLoadMnist(){
   var myIncomingData = new deeplearn.InMemoryDataset()
-  var myDatasetName = 'https://storage.googleapis.com/learnjs-data/model-builder/mnist_images.png'
+  var myDatasetName = 'https://storage.googleapis.com/learnjs-data/model-builder/mnist_labels_uint8'
     myIncomingData.selectedDatasetName = myDatasetName;
     myIncomingData.selectedModelName = '';
     myIncomingData.dataSet = myIncomingData.dataSets[myDatasetName];
