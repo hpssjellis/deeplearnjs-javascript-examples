@@ -1,7 +1,7 @@
 
 
 function myLoadDefaults(){
-
+   alert(0.5)
 }
 
 
@@ -12,7 +12,7 @@ function myLoadMnist(){
     myIncomingData.selectedModelName = '';
     myIncomingData.dataSet = myIncomingData.dataSets[myDatasetName];
     myIncomingData.datasetDownloaded = false;
-    myIncomingData..showDatasetStats = false;
+    myIncomingData.showDatasetStats = false;
 
     myIncomingData.dataSet.fetchData().then(() => {
       myIncomingData.datasetDownloaded = true;
