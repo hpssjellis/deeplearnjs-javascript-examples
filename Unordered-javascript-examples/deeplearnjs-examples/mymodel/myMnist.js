@@ -1,12 +1,32 @@
 
 
 function myLoadDefaults(){
-  alert('This needs to load all defaults used in this MNIST model')
+
 }
 
 
 function myLoadMnist(){
-  alert('This loads a batch of MNIST images into the GPU')
+  var myIncomingData = new deeplearn.InMemoryDataset()
+  var myDatasetName = 'https://storage.googleapis.com/learnjs-data/model-builder/mnist_images.png'
+    myIncomingData.selectedDatasetName = myDatasetName;
+    myIncomingData.selectedModelName = '';
+    myIncomingData.dataSet = myIncomingData.dataSets[myDatasetName];
+    myIncomingData.datasetDownloaded = false;
+    myIncomingData..showDatasetStats = false;
+
+    myIncomingData.dataSet.fetchData().then(() => {
+      myIncomingData.datasetDownloaded = true;
+      myIncomingData.applyNormalization(myIncomingData.selectedNormalizationOption);
+      myIncomingData.setupDatasetStats();
+      if (myIncomingData.isValid) {
+        myIncomingData.createModel();
+      }
+      // Get prebuilt models.
+      //this.populateModelDropdown();
+    });
+
+    myIncomingData.inputShape = myIncomingData.dataSet.getDataShape(0);
+    myIncomingData.labelShape = myIncomingData.dataSet.getDataShape(1);
 }
 
 
