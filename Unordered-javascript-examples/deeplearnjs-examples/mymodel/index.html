@@ -23,16 +23,30 @@
 
 
 
-<input type=button value=1 onclick="{
-   alert()                                    
+<srcipt src="myMnist.js"></script>
+
+
+<input type=button value="Load Defaults" onclick="{
+   myLoadDefaults()                                    
+}">
+
+
+<input type=button value="Load MNIST batch to GPU" onclick="{
+   myLoadMnist()                                    
+}">
+
+
+<input type=button value="Train Input-flatten-fullyConnected-sofmax-label" onclick="{
+   myTrainMnist()                                    
+}">
+
+<input type=button value="Infer" onclick="{
+   myInfer()                                    
 }">
 
 
 
-
-
-
-
+<div id="myDivOut">...</div><br>
 
 
 
