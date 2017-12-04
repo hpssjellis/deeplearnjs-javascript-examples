@@ -54,15 +54,10 @@
 <hr>
 
 <div id="myDiv01Code">
-<input id="myButton01" type=button value="Use GPU math" onclick="{
-                                                              
-   var math = new deeplearn.NDArrayMathGPU()
-   var a = deeplearn.Array1D.new([10,20,30])
-   var b = deeplearn.Scalar.new(2.1)
-   math.scope(function() {
-      var result = math.add(a, b);
-      document.getElementById('myDiv01').innerHTML = result.getValues()     // Float32Array([3, 4, 5])
-  })
+<input id="myButton01" type=button value="..." onclick="{
+
+      document.getElementById('myDiv01').innerHTML = '....'
+
 }">
        
 
