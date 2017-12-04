@@ -1,0 +1,129 @@
+<h3 align=center>Deeplearnjs in your browser</h3>
+
+
+
+<!--   *******************************Start What source js file to use****************************************************   -->
+
+<!--   In the Github repository will be old  
+    <script src="deeplearn.js"></script>
+ -->
+
+
+<!-- the newest version but all examples may not work 
+<script src="https://unpkg.com/deeplearn"></script> 
+-->
+
+  
+<!-- the online version that these examples were made with  -->
+
+<script src="https://unpkg.com/deeplearn@0.3.11/dist/deeplearn.js"></script>
+
+
+<!--   *******************************Stop What source js file to use****************************************************   -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<hr>
+
+<div id="myDiv01Code">
+<input id="myButton01" type=button value="Use GPU math" onclick="{
+                                                              
+   var math = new deeplearn.NDArrayMathGPU()
+   var a = deeplearn.Array1D.new([10,20,30])
+   var b = deeplearn.Scalar.new(2.1)
+   math.scope(function() {
+      var result = math.add(a, b);
+      document.getElementById('myDiv01').innerHTML = result.getValues()     // Float32Array([3, 4, 5])
+  })
+}">
+       
+
+<div id="myDiv01">...</div><br>
+</div>
+<textarea id="myTextarea01"   style= "background-color:yellow;white-space:nowrap; width:100%"  rows=3  onclick="{myTextGrow('myTextarea01', 'myDiv01Code')}">
+click to see the code 
+</textarea>
+
+<br><br><hr><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+This Github: <a href="https://github.com/hpssjellis/deeplearnjs-javascript-examples"> https://github.com/hpssjellis/deeplearnjs-javascript-examples </a><br>
+This Website Index: <a href="https://hpssjellis.github.io/deeplearnjs-javascript-examples/">https://hpssjellis.github.io/deeplearnjs-javascript-examples/</a><br>
+Original Deeplearn Github <a href="https://github.com/PAIR-code/deeplearnjs">https://github.com/PAIR-code/deeplearnjs</a><br>
+Check out the <a href="https://github.com/PAIR-code/deeplearnjs/releases">latest version of deeplearnjs</a> <br> <br>
+By Jeremy Ellis <br>
+Twitter<a href="https://twitter.com/@rocksetta">@rocksetta</a><br>
+Use at your own risk!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Following is a helper functions  to grow the textareas  -->
+
+<script>
+function myTextGrow(myT, myB){
+   document.getElementById(myT).value = '\x3Cscript src="https://unpkg.com/deeplearn@0.3.11/dist/deeplearn.js"> \x3C/script> \n\n' + document.getElementById(myB).innerHTML 
+        
+   setTimeout(function() {
+      while (  document.getElementById(myT).clientHeight < document.getElementById(myT).scrollHeight){                                                                                                                                              
+          document.getElementById(myT).rows += 3; 
+      } 
+   }, 100)
+}  
+</script>  
+
+
