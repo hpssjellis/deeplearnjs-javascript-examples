@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+    <script async src="assets/plugins/autotrack.js"></script>
+    <script>
+        window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+        };
+        ga.l = +new Date;
+        ga('create', 'UA-108549242-1', 'auto');
+        // Replace the following lines with the plugins you want to use.
+        // ga('require', 'eventTracker');
+        // ga('require', 'outboundLinkTracker');
+        // ga('require', 'urlChangeTracker');
+        // ...
+        ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
+
+    <!-- Meta -->
+    <title>DeeplearnJS Practice -- MNIST Starter</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,400italic,300italic,300,500italic,700,700italic,900,900italic'
+        rel='stylesheet' type='text/css'>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
+
+
+</head>
+
+<style>
+    .main-wrapper {
+        background: #fff;
+        padding: 30px;
+        padding-right: 300px;
+    }
+    @media (max-width: 767px) {
+        .wrapper {
+            max-width: 95%;
+        }
+        .main-wrapper {
+            padding: 20px;
+        }
+        .main-wrapper .time {
+            position: static;
+            display: block;
+            margin-top: 10px;
+        }
+    }
+    .box {
+        width: 99%;
+        /* height: 200px; */
+        background: #FFF;
+        /* margin: 40px auto; */
+    }
+    .effect6 {
+        /* position: relative; */
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    }
+    .effect6:before,
+    .effect6:after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+        top: 50%;
+        bottom: 0;
+        left: 10px;
+        right: 10px;
+        border-radius: 100px / 10px;
+    }
+    .title {
+        align-items: center;
+        /* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
+        color: black;
+        display: flex;
+        /* font-weight: 500; */
+        /* height: 20px; */
+        /* min-height: 20px; */
+        /* padding-top: 10px; */
+        padding-bottom: 10px;
+        /* padding-left: 20px; */
+        text-transform: uppercase;
+    }
+    .subtitle {
+        font-size: 15px;
+        font-weight: bold;
+    }
+    .train-stats-message {
+        line-height: 1.67em;
+    }
+    .inference-example {
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 10px;
+    }
+    .inference-example>* {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    /* ----------------------------*/
+    .ndarray-image-visualizer {
+        flex-basis: 100px;
+    }
+    .ndarray-logits-visualizer {
+        flex-grow: 1;
+    }
+    .logit {
+        font-size: 21px;
+    }
+    .logit-label {
+        color: #414141;
+        font-size: 18px;
+        line-height: 18px;
+        margin: 4px;
+        display: inline-block;
+        width: 100px;
+    }
+    .single-logit-container {
+        display: flex;
+    }
+    .logit-viz-outer {
+        flex-grow: 1;
+    }
+    .logit-viz-inner {
+        vertical-align: middle;
+        padding: 4px;
+    }
+</style>
+
+
+
+<body onload="start()">
+
+    <!--Navigation bar-->
+    <div id="nav-placeholder">
+    </div>
+    <!--end of Navigation bar-->
+
+    <div class="wrapper" id="wrap">
+
+        <div class="sidebar-wrapper" style="min-height:600px">
+
+            <div class="contact-container container-block">
+                <div class="jumbotron">
+                    <h2>
+                        Deeplearnjs Practice</h2>
+                    <p style='font-size:1.2em'>This demo is a starter project of using deeplearnjs. It shows how to construct a simple feed forward
+                        neural network and train it in deeplearnjs.
+                    </p>
+                </div>
+                <p>Last Update: 2017-12-04</p>
+
+                <p>
+                    <a href="https://github.com/PAIR-code/deeplearnjs/blob/master/LICENSE">DeeplearnJS's Apache License</a>
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="main-wrapper" style="min-height:600px">
+
+            <div class="item row">
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <h4>ES3/ES5 MNIST Starter</h4>
+                    <p>A single hidden layer (convolutional or fully connected) feed forward neural network for MNIST digit
+                        recognition
+                    </p>
+
+                    <input class="btn btn-default btn-md paper" data-toggle="tooltip" title="Start/Stop training" id="buttontp" type="submit"
+                        value="Start Training" />
+
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="environment-dropdown">Environment</label>
+                        <select class="form-control" id="environment-dropdown">
+                            <option value="CPU">CPU</option>
+                            <option value="GPU">GPU</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="learning-rate-input" class="control-label">Learning Rate</label>
+                        <div class="controls">
+                            <div class="input-group">
+                                <input name="lri" type="text" class="form-control" id="learning-rate-input" placeholder="learning rate 0.0001 ~ 0.5 ">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" id="learningRateBtn" type="submit">Change</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+                    <br>
+
+                    <div id="egdiv"></div>
+                    <div id='accuracy'></div>
+                    <div id="inference-container"></div>
+
+                </div>
+                <div class="col-md-6 col-sm-12 col-xs-12">
+
+                    <!-- width="400" height="300" -->
+                    <canvas id="plot" width="400" height="300"></canvas>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <footer class="footer">
+        <div class="text-center">
+            <small class="copyright">&copy; 2017 Allan H. Ma</small>
+        </div>
+        <!--//container-->
+    </footer>
+
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="assets/plugins/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- custom js -->
+    <script type="text/javascript" src="assets/js/nav.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+
+
+    <script src="https://unpkg.com/deeplearn"></script>
+    <!-- detect browser support -->
+    <script src="deeplearnjs/support.js"></script>
+    <script src="deeplearnjs/utils.js"></script>
+
+
+
+    <script type="text/javascript" src="deeplearnjs/mnist_starter.js"></script>
+
+
+</body>
+
+</html>
