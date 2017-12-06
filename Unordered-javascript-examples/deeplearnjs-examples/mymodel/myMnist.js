@@ -214,12 +214,18 @@ function displayInferenceExamplesOutput(inputFeeds, inferenceOutputs) {
     for (let i = 0; i < inputFeeds.length; i++) {
         const softmaxLogits = math.softmax(logits[i]);
 
+       document.getElementById('myDivOut03').innerHTML ='Input length = ' + inputFeeds.length + 'Logits = '+ logits[i].getValues() + ', soft = ' + softmaxLogits.getValues() + '<br>'
+
+
+
+
+
+
         outputNDArrayVisualizers[i].drawLogits(
             softmaxLogits, labels[i],
             xhrDatasetConfigs[selectedDatasetName].labelClassNames);
         inputNDArrayVisualizers[i].draw();
 
-        softmaxLogits.dispose();
         
         
     
@@ -227,17 +233,34 @@ function displayInferenceExamplesOutput(inputFeeds, inferenceOutputs) {
        // document.getElementById('egdiv').innerHTML =  
    
         
+
+    
+  
+
+        
+          const mathCpu2 = new NDArrayMathCPU();
+        const labelClass2 = mathCpu2.argMax(labels[i]).get();
+
+        const topk2 = mathCpu2.topK(softmaxLogits, 10); //get 3 labels
+        const topkIndices2 = topk2.indices.getValues()
+        const topkValues2 = topk2.values.getValues()
+
+
+        document.getElementById('myDivOut04').innerHTML = 'Correct Label = ' + labelClass2 + '<br>'+
+                                                          topkIndices2[0] + ' = ' + Math.floor(topkValues2[0]*1000)/10 + '% <br>'+ 
+                                                          topkIndices2[1] + ' = ' + Math.floor(topkValues2[1]*1000)/10+ '% <br>'+ 
+                                                          topkIndices2[2] + ' = ' + Math.floor(topkValues2[2]*1000)/10 + '% <br>'+   
+                                                          topkIndices2[3] + ' = ' + Math.floor(topkValues2[3]*1000)/10 + '% <br>'+   
+                                                          topkIndices2[4] + ' = ' + Math.floor(topkValues2[4]*1000)/10 + '% <br>'+   
+                                                          topkIndices2[5] + ' = ' + Math.floor(topkValues2[5]*1000)/10 + '% <br>'+   
+                                                          topkIndices2[6] + ' = ' + Math.floor(topkValues2[6]*1000)/10 + '% <br>'+   
+                                                          topkIndices2[7] + ' = ' + Math.floor(topkValues2[7]*1000)/10 + '% <br>'+   
+                                                          topkIndices2[8] + ' = ' + Math.floor(topkValues2[8]*1000)/10 + '% <br>'+   
+                                                          topkIndices2[9] + ' = ' + Math.floor(topkValues2[9]*1000)/10 + '% <br>'    
         
         
-    }
-
-
-
-
-
-
-
-
+        softmaxLogits.dispose();
+  }
 
 
 }
@@ -534,7 +557,7 @@ function train_per() {
     //var d = document.getElementById('egdiv');
    // d.innerHTML = 'step = ' + step;
 
-    if (step % 30 === 0) {
+    if (step % 20 === 0) {
 
         chartData.push({
             x: step,
@@ -545,9 +568,9 @@ function train_per() {
        // chart.update();
 
         // Print data to console so the user can inspect.
-        document.getElementById('egdiv').innerHTML ='step = '+ step + ', cost = '+ cost + ', accuracy = '+ accuracy[0] +', Learning Rate = '+learningRate 
+        document.getElementById('egdiv').innerHTML ='Steps = '+ step + ', cost = '+ cost.toFixed(3) + ', accuracy = '+ accuracy[0].toFixed(3) +', Learning Rate = '+learningRate.toFixed(3) 
 
-        accuracyElt.innerHTML = `accuracy: ${accuracy[0].toFixed(4)*100}%`;
+        accuracyElt.innerHTML = 'Accuracy = '+ Math.floor(accuracy[0]*100) + '%';
 
        // predict(predictionTensor, inferenceFeedEntries, displayInferenceExamplesOutput);
 
