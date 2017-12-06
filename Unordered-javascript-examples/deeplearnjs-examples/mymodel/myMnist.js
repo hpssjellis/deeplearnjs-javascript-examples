@@ -441,12 +441,19 @@ function run() {
     accuracyElt = document.getElementById('accuracy');
 
     // DOM setup
-    learningRateBtn = document.getElementById("learningRateBtn");
-    learningRateBtn.addEventListener('click', () => {
+   // learningRateBtn = document.getElementById("learningRateBtn");
+   // learningRateBtn.addEventListener('click', () => {
         // Activate, deactivate hyper parameter inputs.
-        initialLearningRate = parseFloat(document.getElementById("learning-rate-input").value);
-    });
+        initialLearningRate = 0.1     //parseFloat(document.getElementById("learning-rate-input").value);
+   // });
 
+
+
+
+        math = 'mathGPU'
+
+        console.log('math =', math === mathGPU ? 'mathGPU' : 'mathCPU')
+/*
 
     function updateSelectedEnvironment(selectedEnvName) {
         math = (selectedEnvName === 'GPU') ? mathGPU : mathCPU;
@@ -462,6 +469,11 @@ function run() {
         selectedEnvName = event.target.value;
         updateSelectedEnvironment(selectedEnvName);
     });
+    
+    
+    */
+    
+    
 
     populateDatasets(buildModel);
 }
@@ -494,7 +506,7 @@ function train_per() {
        // chart.update();
 
         // Print data to console so the user can inspect.
-        document.getElementById('egdiv').innerHTML ='step = '+ step + ', cost = '+ cost + ', accuracy = '+ accuracy[0] +', Learning Rate = '+learningRate
+        document.getElementById('egdiv').innerHTML ='step = '+ step + ', cost = '+ cost + ', accuracy = '+ accuracy[0] +', Learning Rate = '+learningRate 
        // console.log('step', step, 'cost', cost, 'accuracy', accuracy[0]);
 
         // display accuracy
@@ -535,7 +547,7 @@ function monitor() {
                 train_per();
             }
 
-            document.getElementById('learning-rate-input').value = learningRate;
+         //   document.getElementById('learning-rate-input').value = learningRate;
            // document.getElementById('egdiv').innerHTML = 'step = ' + step;
 
         } else {
