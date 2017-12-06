@@ -292,6 +292,14 @@ function createChart(canvasElt, label, data, min = 0, max = null) {
 
 function buildModel() {
 
+
+//*********************
+
+
+
+
+
+
     const inferenceContainer =
         document.querySelector('#inference-container');
     inferenceContainer.innerHTML = '';
@@ -300,6 +308,9 @@ function buildModel() {
     for (let i = 0; i < INFERENCE_EXAMPLE_COUNT; i++) {
         const inferenceExampleElement = document.createElement('div');
         inferenceExampleElement.className = 'inference-example';
+
+
+
 
         // Set up the input visualizer.
 
@@ -311,6 +322,10 @@ function buildModel() {
         inputNDArrayVisualizers.push(ndarrayImageVisualizer);
         // inferenceExampleElement.appendChild(ndarrayImageVisualizer);
 
+
+
+
+
         // Set up the output ndarray visualizer.
         const ndarrayLogitsVisualizer = new NDArrayLogitsVisualizer(inferenceExampleElement, 3);
         document.createElement('ndarray-logits-visualizer');
@@ -321,6 +336,11 @@ function buildModel() {
 
         inferenceContainer.appendChild(inferenceExampleElement);
     }
+
+
+
+
+//************************
 
 
     math = mathGPU;
@@ -514,7 +534,7 @@ function train_per() {
     //var d = document.getElementById('egdiv');
    // d.innerHTML = 'step = ' + step;
 
-    if (step % 10 === 0) {
+    if (step % 30 === 0) {
 
         chartData.push({
             x: step,
@@ -529,7 +549,7 @@ function train_per() {
 
         accuracyElt.innerHTML = `accuracy: ${accuracy[0].toFixed(4)*100}%`;
 
-        predict(predictionTensor, inferenceFeedEntries, displayInferenceExamplesOutput);
+       // predict(predictionTensor, inferenceFeedEntries, displayInferenceExamplesOutput);
 
     }
 
