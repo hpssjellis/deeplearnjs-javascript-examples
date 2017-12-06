@@ -58,6 +58,47 @@ var step = 0;
 var datasetDownloaded = false;
 
 
+
+
+
+
+function myLoadDefaults(){
+   alert(0.7)
+}
+
+
+function myLoadMnist(){
+   alert('loadMinst')
+}
+
+
+function myTrainMnist()  {
+  alert('This trains a set number of images')
+}
+
+
+
+function myInfer() {
+  alert('This infers every second a testing image and shows result percentages. No graphics needed')
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function createFullyConnectedLayer(
     graph, inputLayer, layerIndex,
     outputDepth, activation = (x) => graph.relu(x), useBias = true) {
@@ -595,3 +636,11 @@ function start() {
     }
 
 }
+
+
+
+
+
+
+
+
