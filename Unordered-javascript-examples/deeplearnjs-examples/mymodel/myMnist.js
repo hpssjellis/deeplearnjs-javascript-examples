@@ -220,7 +220,25 @@ function displayInferenceExamplesOutput(inputFeeds, inferenceOutputs) {
         inputNDArrayVisualizers[i].draw();
 
         softmaxLogits.dispose();
+        
+        
+    
+        // Print data to console so the user can inspect.
+       // document.getElementById('egdiv').innerHTML =  
+   
+        
+        
+        
     }
+
+
+
+
+
+
+
+
+
 
 }
 
@@ -438,7 +456,7 @@ function run() {
        //  ga('send', 'event', 'deeplearn_mnist_starter', 'click', 'Start', 50);
     });
 
-    accuracyElt = document.getElementById('accuracy');
+
 
     // DOM setup
    // learningRateBtn = document.getElementById("learningRateBtn");
@@ -452,7 +470,8 @@ function run() {
 
         math = 'mathGPU'
 
-        console.log('math =', math === mathGPU ? 'mathGPU' : 'mathCPU')
+       // console.log('math =', math === mathGPU ? 'mathGPU' : 'mathCPU')
+       accuracyElt.innerHTML += 'math ='+ math
 /*
 
     function updateSelectedEnvironment(selectedEnvName) {
@@ -507,9 +526,7 @@ function train_per() {
 
         // Print data to console so the user can inspect.
         document.getElementById('egdiv').innerHTML ='step = '+ step + ', cost = '+ cost + ', accuracy = '+ accuracy[0] +', Learning Rate = '+learningRate 
-       // console.log('step', step, 'cost', cost, 'accuracy', accuracy[0]);
 
-        // display accuracy
         accuracyElt.innerHTML = `accuracy: ${accuracy[0].toFixed(4)*100}%`;
 
         predict(predictionTensor, inferenceFeedEntries, displayInferenceExamplesOutput);
@@ -568,7 +585,9 @@ function start() {
     btn = document.getElementById("buttontp");
 
     if (supported) {
-        console.log('device & webgl supported')
+       // console.log('device & webgl supported')
+        accuracyElt = document.getElementById('accuracy');
+       accuracyElt.innerHTML = 'device & webgl supported,   '
         btn.disabled = false;
 
         run();
