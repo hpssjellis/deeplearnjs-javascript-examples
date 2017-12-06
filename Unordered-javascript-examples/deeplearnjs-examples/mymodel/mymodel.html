@@ -1,82 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
+<h2 align=center>Easiest MNIST Javascript Model</h2>
+Refer to the amazing <a href="https://deeplearnjs.org/">Deeplearnjs</a> 
+Model Builder Demo at <a href="https://deeplearnjs.org/demos/model-builder/">https://deeplearnjs.org/demos/model-builder/</a><br>
+This page was influenced by HMA02 <a href="https://github.com/hma02/deeplearnjs-practice">Github here </a> 
+and his <a href="https://hma02.github.io/deeplearnjs-practice/deeplearn_mnist_starter.html">demo here</a><br><br>
+
+<script src="https://unpkg.com/deeplearn"></script>
+
+<script src="myMnistUtil.js"></script>
+
+<script type="text/javascript" src="myMnist.js"></script>
 
 
+<input type=button value="Load Model" onclick="{
+    start()
 
-   
-
-
-
-
+}"><br>
 
 
+<input class="btn btn-default btn-md paper" data-toggle="tooltip" title="Start/Stop training" id="buttontp" type="submit" value="Start Training" /><br>
 
 
-
-<body onload="start()">
-
-
-
-
-    <div class="wrapper" id="wrap">
-
-
-
-
-
-
-                    <input class="btn btn-default btn-md paper" data-toggle="tooltip" title="Start/Stop training" id="buttontp" type="submit"
-                        value="Start Training" />
-
-                    <br>
-                    <br>
-
-
- 
-            
-
- 
-             
-
-                    <br>
-                    <br>
-
-                    <div id="egdiv">...</div>
-                    <div id='accuracy'>....</div>
-                    <div id="inference-container">......</div>
-
-
-
-
-                    <!-- width="400" height="300" -->
-                    <canvas id="plot" width="400" height="300"></canvas>
-
-
-
-
-
-
-
-
-
-
-
-    <script src="https://unpkg.com/deeplearn"></script>
-
-    <script src="deeplearnjs/utils.js"></script>
-
-
-
-    <script type="text/javascript" src="myMnist.js"></script>
-
-
-<input type=button value=infer onclick="{
+<input type=button value=Infer onclick="{
       predict(predictionTensor, inferenceFeedEntries, displayInferenceExamplesOutput);
 
-}">
+}"><br>
 
 
 
-</body>
+<div id="egdiv">...</div>
+<div id='accuracy'>....</div>
+<div id="inference-container">......</div>
+<canvas id="plot" width="400" height="300"></canvas>
+                    
 
-</html>
