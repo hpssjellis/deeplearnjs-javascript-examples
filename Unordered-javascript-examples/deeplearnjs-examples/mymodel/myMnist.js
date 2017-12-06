@@ -58,47 +58,6 @@ var step = 0;
 var datasetDownloaded = false;
 
 
-
-
-
-
-function myLoadDefaults(){
-   alert(0.7)
-}
-
-
-function myLoadMnist(){
-   alert('loadMinst')
-}
-
-
-function myTrainMnist()  {
-  alert('This trains a set number of images')
-}
-
-
-
-function myInfer() {
-  alert('This infers every second a testing image and shows result percentages. No graphics needed')
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function createFullyConnectedLayer(
     graph, inputLayer, layerIndex,
     outputDepth, activation = (x) => graph.relu(x), useBias = true) {
@@ -418,34 +377,6 @@ function buildModel() {
     accuracyTensor = graph.argmaxEquals(predictionTensor, targetTensor);
 
 
-    // math.scope((keep, track) => {
-
-    //     var thisfeedEntries = [{
-    //             tensor: feedEntries[IMAGE_DATA_INDEX].tensor,
-    //             data: track((feedEntries[IMAGE_DATA_INDEX].data).getNextCopy(math))
-    //         },
-    //         {
-    //             tensor: feedEntries[LABEL_DATA_INDEX].tensor,
-    //             data: track((feedEntries[LABEL_DATA_INDEX].data).getNextCopy(math))
-    //         }
-    //     ]
-
-    //     res = session.eval(net1, thisfeedEntries);
-    //     console.log('net1', res.getValues(), net1.outputShape);
-    //     res = session.eval(net2, thisfeedEntries);
-    //     console.log('net2', res.getValues(), net2.outputShape);
-    //     res = session.eval(net3, thisfeedEntries);
-    //     console.log('net3', res.getValues(), net3.outputShape);
-    //     res = session.eval(predictionTensor, thisfeedEntries);
-    //     console.log('predictionTensor', res.getValues(), labelShape[0]);
-
-    //     res = session.eval(costTensor, thisfeedEntries);
-    //     console.log('costTensor', res.getValues());
-
-    //     res = session.eval(accuracyTensor, thisfeedEntries);
-    //     console.log('accuracyTensor', res.getValues());
-
-    // });
 
     batchSize = 30;
     initialLearningRate = 0.1;
@@ -490,13 +421,13 @@ function populateDatasets(callback) {
 function run() {
 
     mathGPU = new NDArrayMathGPU();
-    mathCPU = new NDArrayMathCPU();
+  //  mathCPU = new NDArrayMathCPU();
 
-    chartData = []
+  //  chartData = []
 
-    const canvasElt = document.getElementById('plot');
-    chart = createChart(canvasElt, 'cost', chartData, 0, chartData.y);
-    chart.update();
+  //  const canvasElt = document.getElementById('plot');
+   // chart = createChart(canvasElt, 'cost', chartData, 0, chartData.y);
+   // chart.update();
 
     btn.addEventListener('click', () => {
         // Activate, deactivate hyper parameter inputs.
@@ -504,7 +435,7 @@ function run() {
         if (paused == false) {
             request = true;
         }
-         ga('send', 'event', 'deeplearn_mnist_starter', 'click', 'Start', 50);
+       //  ga('send', 'event', 'deeplearn_mnist_starter', 'click', 'Start', 50);
     });
 
     accuracyElt = document.getElementById('accuracy');
@@ -549,8 +480,8 @@ function train_per() {
 
     const [cost, accuracy] = train1Batch(step % 10 === 0);
 
-    var d = document.getElementById('egdiv');
-    d.innerHTML = 'step = ' + step;
+    //var d = document.getElementById('egdiv');
+   // d.innerHTML = 'step = ' + step;
 
     if (step % 10 === 0) {
 
@@ -559,11 +490,12 @@ function train_per() {
             y: cost
         });
 
-        config.data.datasets[0].data = chartData;
-        chart.update();
+       // config.data.datasets[0].data = chartData;
+       // chart.update();
 
         // Print data to console so the user can inspect.
-        console.log('step', step, 'cost', cost, 'accuracy', accuracy[0]);
+        document.getElementById('egdiv').innerHTML ='step = '+ step + ', cost = '+ cost + ', accuracy = '+ accuracy[0] +', Learning Rate = '+learningRate
+       // console.log('step', step, 'cost', cost, 'accuracy', accuracy[0]);
 
         // display accuracy
         accuracyElt.innerHTML = `accuracy: ${accuracy[0].toFixed(4)*100}%`;
@@ -604,7 +536,7 @@ function monitor() {
             }
 
             document.getElementById('learning-rate-input').value = learningRate;
-            document.getElementById('egdiv').innerHTML = 'step = ' + step;
+           // document.getElementById('egdiv').innerHTML = 'step = ' + step;
 
         } else {
             btn.disabled = true;
@@ -619,7 +551,7 @@ function monitor() {
 
 function start() {
 
-    supported = detect_support();
+    supported = true //detect_support();
 
     btn = document.getElementById("buttontp");
 
@@ -636,11 +568,3 @@ function start() {
     }
 
 }
-
-
-
-
-
-
-
-
