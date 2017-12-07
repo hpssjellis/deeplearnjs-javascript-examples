@@ -60,29 +60,25 @@ var datasetDownloaded = false;
 
 function copyArrayToCanvas(ndarray, canvasId){
 
-
-    
 var ctx = document.getElementById(canvasId).getContext("2d");
-var h = ctx.canvas.height;
+
+// overrides whatever the canvas was on the html page
+ctx.canvas.width = ndarray.shape[0]   
+ctx.canvas.height = ndarray.shape[1]
+
+var h = ctx.canvas.height;  
 var w = ctx.canvas.width;
+
 var imgData = ctx.getImageData(0, 0, w, h);
 var data = imgData.data;
      
-       document.getElementById('myDivOut03').innerHTML = 'height = '+h
-        let pixelOffset = 0;
-       // let value=0
+      // document.getElementById('myDivOut03').innerHTML = 'height = '+h
         for (let i = 0; i < ndarray.shape[0]; i++) {
             for (let j = 0; j < ndarray.shape[1]; j++) {
-                const value = ndarray.get(i, j, 0);
-                //const value = Math.floor(ndarray.get(i, j, 0))
-                //value =40
-                //if (value >= 255){value = 0}
-                //var value = 80;
-                //if (i==9){value = 200}
-                var s = 4 * i * h + 4 * j;
-                data[s]   = value;
-                data[s+1] = value;
-                data[s+2] = value;
+                var s = 4 * i * h + 4 * j;  // for correct location
+                data[s]   =  ndarray.get(i, j, 0);
+                data[s+1] =  ndarray.get(i, j, 0);  // 1 for RGB
+                data[s+2] =  ndarray.get(i, j, 0);  // 2 for RGB
                 data[s+3] = 255;
             }
         }
@@ -272,21 +268,24 @@ function displayInferenceExamplesOutput(inputFeeds, inferenceOutputs) {
        // Plots the image
 
 
-
-        document.getElementById('myDivOut03').innerHTML = 'length ' +images[i].length+ ' shape0 = '+images[i].shape[0] + 'shape1 = '+images[i].shape[1]  +'.......'+ images[i].getValues()
         copyArrayToCanvas(images[i], 'myPlot')
-  
-
-        
+        //document.getElementById('myDivOut03').innerHTML = 'length ' +images[i].length+ ' shape0 = '+images[i].shape[0] + 'shape1 = '+images[i].shape[1]  +'.......'+ images[i].getValues()
+        //console.log('length ' +images[i].length+ ' shape0 = '+images[i].shape[0] + 'shape1 = '+images[i].shape[1]  +'.......'+ images[i].getValues())
+       
+       
         const mathCpu2 = new NDArrayMathCPU();
         const labelClass2 = mathCpu2.argMax(labels[i]).get();
 
         const topk2 = mathCpu2.topK(softmaxLogits, 10); //get 3 labels
         const topkIndices2 = topk2.indices.getValues()
         const topkValues2 = topk2.values.getValues()
-
-
-        document.getElementById('myDivOut04').innerHTML = 'Correct Label = ' + labelClass2 + '<br>'+
+        myOutString = 'Wrong'
+        myOutColor = 'red'
+        if(topkIndices2[0] == labelClass2){
+            myOutString = 'Correct!'
+            myOutColor = 'green'
+        }
+        document.getElementById('myDivOut04').innerHTML = 'Label Recorded as = ' + labelClass2 + '. Your program was <Font color=\''+myOutColor+'\'>'+myOutString + '</font><br>'+
                                                           topkIndices2[0] + ' = ' + Math.floor(topkValues2[0]*1000)/10 + '% <br>'+ 
                                                           topkIndices2[1] + ' = ' + Math.floor(topkValues2[1]*1000)/10+ '% <br>'+ 
                                                           topkIndices2[2] + ' = ' + Math.floor(topkValues2[2]*1000)/10 + '% <br>'+   
