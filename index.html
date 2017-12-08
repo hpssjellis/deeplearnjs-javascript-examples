@@ -1,5 +1,23 @@
 
 
+<!--   *******************************Start: What source js file to use? ****************************************************   -->
+
+<!--   In the Github repository will be old  
+    <script src="deeplearn.js"></script>
+ -->
+
+
+<!-- the newest version but all examples may not work 
+<script src="https://unpkg.com/deeplearn"></script> 
+-->
+
+  
+<!-- the online version that these examples were made with  -->
+
+<script src="https://unpkg.com/deeplearn@0.3.13/dist/deeplearn.js"></script>
+
+
+<!--   *******************************Stop: What source js file to use? ****************************************************   -->
 
 
 
@@ -36,7 +54,25 @@ The main github for these pages is at:
   
 <li><a href="">  </a>
   
+ 
+ <h1> Examples in the following format format</h1>
+ 
+ 
+<div id="myDiv01">...</div><br>
+<textarea id="myTextarea01"   style= "background-color:yellow;white-space:nowrap; width:100%"  rows=3  onclick="{myTextGrow('myTextarea01', 'myButton01')}">
+click to see the code 
+</textarea>
 
+<br><br><hr><br>
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
   <br><br><br><hr>
   Deeplearnjs DOCS at 
@@ -101,3 +137,23 @@ By Jeremy Ellis <br>
 Twitter<a href="https://twitter.com/@rocksetta">@rocksetta</a><br>
 Use at your own risk!
 
+ 
+ 
+ 
+ 
+
+<!--  Following is a helper functions  to grow the textareas  -->
+
+<script>
+function myTextGrow(myT, myB){
+   document.getElementById(myT).value = document.getElementById(myB).outerHTML
+   setTimeout(function() {
+      while (  document.getElementById(myT).clientHeight < document.getElementById(myT).scrollHeight){                                                                                                                                              
+          document.getElementById(myT).rows += 3; 
+      } 
+   }, 100)
+}  
+</script>  
+ 
+ 
+ 
