@@ -4,16 +4,16 @@ Model Builder Demo at <a href="https://deeplearnjs.org/demos/model-builder/">htt
 This page was influenced by HMA02 <a href="https://github.com/hma02/deeplearnjs-practice">Github here </a> 
 and his <a href="https://hma02.github.io/deeplearnjs-practice/deeplearn_mnist_starter.html">demo here</a><br><br>
 
-<script src="https://unpkg.com/deeplearn"></script>
 
 
+
+<script src="https://unpkg.com/deeplearn@0.3.11/dist/deeplearn.js"> </script> 
 
 <script type="text/javascript" src="myMnist.js"></script>
 
 
 <input type=button value="Load Model" onclick="{
     start()
-
 }"><br>
 
 
@@ -27,24 +27,14 @@ and his <a href="https://hma02.github.io/deeplearnjs-practice/deeplearn_mnist_st
 
 
 
-<div id="egdiv">...</div>
-<div id='accuracy'>....</div>
-<div id="inference-container">......</div>
+<div id="egdiv">...</div><br>
+<div id='accuracy'>....</div><br>
+<div id="inference-container">......</div><br>
 
 
+<canvas id="myPlot" style="width : 100px; height : 100px;"></canvas><br>
 
-<canvas id="myPlot" height="3" width="3"></canvas>                   
 
 <div id="myDivOut04">....</div><br>
 
 <div id="myDivOut03">...</div><br>
-
-<style>
-    
-    
-    #myPlot {
-    width: 100px;
-    height: 100px;
-    
-}
-</style>
