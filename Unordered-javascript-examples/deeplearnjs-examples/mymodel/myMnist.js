@@ -285,7 +285,7 @@ function displayInferenceExamplesOutput(inputFeeds, inferenceOutputs) {
             myOutString = 'Correct!'
             myOutColor = 'green'
         }
-        document.getElementById('myDivOut04').innerHTML = 'Label Recorded as = ' + labelClass2 + '. Your program was <Font color=\''+myOutColor+'\'>'+myOutString + '</font><br>'+
+        document.getElementById('myDivOut04').innerHTML = 'Actual Label is ' + labelClass2 + '. Your program was <Font color=\''+myOutColor+'\'>'+myOutString + '</font><br>'+
                                                           topkIndices2[0] + ' = ' + Math.floor(topkValues2[0]*1000)/10 + '% <br>'+ 
                                                           topkIndices2[1] + ' = ' + Math.floor(topkValues2[1]*1000)/10+ '% <br>'+ 
                                                           topkIndices2[2] + ' = ' + Math.floor(topkValues2[2]*1000)/10 + '% <br>'+   
@@ -303,6 +303,11 @@ function displayInferenceExamplesOutput(inputFeeds, inferenceOutputs) {
 
 
 }
+
+
+
+
+/*
 
 function createChart(canvasElt, label, data, min = 0, max = null) {
 
@@ -351,6 +356,12 @@ function createChart(canvasElt, label, data, min = 0, max = null) {
 
     return new Chart(context, config);
 }
+
+
+*/
+
+
+
 
 function buildModel() {
 
@@ -457,7 +468,8 @@ function buildModel() {
     let net = inputTensor;
     let layerIndex = 0;
 
-    let netType = 'Fully Connected';
+   // let netType = 'Fully Connected';
+    let netType = 'Convolutional';
 
     if (netType == 'Fully Connected') {
 
@@ -510,6 +522,7 @@ function populateDatasets(callback) {
 
                 inputShape = dataSet.getDataShape(IMAGE_DATA_INDEX);
                 labelShape = dataSet.getDataShape(LABEL_DATA_INDEX);
+               
             },
             error => {
                 throw new Error(`Dataset config could not be loaded: ${error}`);
