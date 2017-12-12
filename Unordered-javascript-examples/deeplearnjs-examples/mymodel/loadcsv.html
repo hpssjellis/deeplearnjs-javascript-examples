@@ -1,0 +1,108 @@
+
+<script src="https://unpkg.com/deeplearn@0.3.13/dist/deeplearn.js"></script> 
+
+
+
+<script>
+ function loadJSON(myFile, callback) {   // old fashion AJAX
+
+    var xobj = new XMLHttpRequest();
+        xobj.overrideMimeType("application/json");
+    xobj.open('GET', myFile, true); // Replace 'my_data' with the path to your file
+    xobj.onreadystatechange = function () {
+          if (xobj.readyState == 4 && xobj.status == "200") {
+            // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+            callback(xobj.responseText);
+          }
+    };
+    xobj.send(null);  
+ }
+
+
+
+
+ async function loadCsv(myFile, myCallback) {   // AJAX with Async
+
+    var xobj = new XMLHttpRequest();
+    xobj.overrideMimeType("application/json");
+    xobj.open('GET', myFile, true); 
+    
+    await xobj.onreadystatechange
+    
+    if (xobj.readyState == 4 && xobj.status == "200") {
+        // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+        myCallback(xobj.responseText);
+    }
+
+    xobj.send(null);  
+ }
+
+
+
+
+
+</script>
+
+
+
+
+
+<input type=button value="show json" onclick="{
+ //loadCsv('mnist-test-labels.csv', function(response) {
+ 
+  loadJSON('mnist-test-labels.csv', function(response) {
+ 
+ 
+ //var actual_JSON = JSON.parse(response);
+  var wow = response.split('\n')
+   cool = wow[0].split(',')
+   
+     const myInputs = deeplearn.Array2D.new([3, 3], [1, 2, 3, 4, 5, 6, 7, 8, 9]);
+     //const myInputs = deeplearn.Array3D.new([28, 28], response);
+
+   
+  // document.getElementById('myD').innerHTML = 'Specific data : '+actual_JSON.MNIST.data[0].path +'<br><br>'
+ //  document.getElementById('myD').innerHTML += 'Full response : <br>' + wow[0][0] + '<-- label.  last 783 --> ' +wow[0][787]+ '<br><br>'
+   document.getElementById('myD').innerHTML += 'cool : ' + cool + '<br><br>'
+   document.getElementById('myD').innerHTML += 'wow[0] response : ' + wow[0] + '<br><br>'
+   document.getElementById('myD').innerHTML += ' response : <br>' + response+ '<br><br>'
+  // document.getElementById('myD').innerHTML += ' myInputs[0,0] ' + myInputs.locToIndex([0,0])
+  // document.getElementById('myD').innerHTML += ' myInputs[1,0] ' + myInputs.locToIndex([1,0]) + '<br>'
+   
+  // document.getElementById('myD').innerHTML += ' myGreat.get(2,0,0) ' + myGreat.get(2,0,0) + '<br>'
+  // document.getElementById('myD').innerHTML += ' myGreat.get(0,0,7) ' + myGreat.get(0,0,7) + '<br>'
+  // document.getElementById('myD').innerHTML += ' myGreat.val(0,1,0) ' + myGreat.data([0,0,0]) + '<br>'
+   
+   
+   
+  async function myShow(){ 
+  
+  
+     const myGreat = deeplearn.Array3D.new([3, 3, 1], [1, 2, 3, 4, 5, 6, 7, 8, 9]);
+     
+     const myBias    = deeplearn.Scalar.new(2.3);
+
+     const myBiasOutput = await myBias.data();
+
+    document.getElementById('myD').innerHTML += 'Bias Scalar = ' + myBiasOutput + ' <br><hr>'
+    
+    const myGreatOut = await myGreat.get(1,2,2);
+    
+    document.getElementById('myD').innerHTML += 'Great = ' + myGreatOut + ' <br><hr>'  
+    
+    
+
+   
+}
+
+myShow()
+   
+ });
+}">
+
+<div id="myD">..</div>
+
+
+
+
+
