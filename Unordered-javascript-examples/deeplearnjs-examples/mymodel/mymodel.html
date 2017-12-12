@@ -1,0 +1,82 @@
+<h2 align=center>Easiest MNIST Javascript Model</h2>
+Refer to the amazing <a href="https://deeplearnjs.org/">Deeplearnjs</a> 
+Model Builder Demo at <a href="https://deeplearnjs.org/demos/model-builder/">https://deeplearnjs.org/demos/model-builder/</a><br>
+This page was influenced by HMA02 <a href="https://github.com/hma02/deeplearnjs-practice">Github here </a> 
+and his <a href="https://hma02.github.io/deeplearnjs-practice/deeplearn_mnist_starter.html">demo here</a><br><br>
+
+
+
+
+<script src="https://unpkg.com/deeplearn@0.3.11/dist/deeplearn.js"> </script> 
+
+<script type="text/javascript" src="myMnist.js"></script>
+
+
+<input id="myLoad" type=button value="Load Model" onclick="{
+    document.getElementById('myLoad').style.backgroundColor  = 'red'
+    document.getElementById('myLoad').value = 'Wait to Load Model'
+    start()
+}"><br><br>
+
+
+<!--<input class="btn btn-default btn-md paper" data-toggle="tooltip" title="Start/Stop training" id="buttontp" type="submit" value="Start Training" /><br>
+-->
+
+<input id="myTrain" type=button value="Train" onclick="{
+    if (document.getElementById('myTrain').value == 'Train' ){
+      document.getElementById('myTrain').value='Stop Training'
+      document.getElementById('myTrain').style.backgroundColor  = 'red'
+      paused = false
+      train_per();
+    } else {
+      paused = true
+      document.getElementById('myTrain').value='Train'
+      document.getElementById('myTrain').style.backgroundColor  = 'Green'
+    }
+    
+    
+}"><br><br> 
+<input id="myInfer" type=button value="Infer" onclick="{
+
+    if (document.getElementById('myInfer').value == 'Infer' ){
+      document.getElementById('myInfer').value='Stop Inferring'
+      document.getElementById('myInfer').style.backgroundColor  = 'red'
+      
+      myCountInfer = setInterval(function () {
+      
+           predict(predictionTensor, inferenceFeedEntries, displayInferenceExamplesOutput);
+
+      }, document.getElementById('myDelay').value);   // run the prediction every 2 seconds
+      
+    } else {
+      clearInterval(myCountInfer)
+      document.getElementById('myInfer').value='Infer'
+      document.getElementById('myInfer').style.backgroundColor  = 'Green'
+    }    
+    predict(predictionTensor, inferenceFeedEntries, displayInferenceExamplesOutput);
+
+}">
+
+<input id="myDelay" type=number value=2000  style="width : 60px;" onChange="{
+      clearInterval(myCountInfer)
+      document.getElementById('myInfer').value='Infer'
+      document.getElementById('myInfer').click()
+
+}"> ms delay 
+
+<br><br>
+
+
+
+
+<div id="egdiv">...</div><br>
+<div id='accuracy'>....</div><br>
+<div id="inference-container">......</div><br>
+
+
+<canvas id="myPlot" style="width : 100px; height : 100px;"></canvas><br>
+
+
+<div id="myDivOut04">....</div><br>
+
+<div id="myDivOut03">...</div><br>
