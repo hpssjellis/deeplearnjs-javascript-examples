@@ -4,6 +4,7 @@ let lstmKernel1, lstmBias1, lstmKernel2, lstmBias2, fullyConnectedBiases, fullyC
 
 let checkpointsLoaded = false;
 let math = new deeplearn.NDArrayMathGPU();
+console.log(deeplearn.version)
 
 const reader = new deeplearn.CheckpointLoader('./../../../models/lstm/itp/');
 reader.getAllVariables().then(vars => {
