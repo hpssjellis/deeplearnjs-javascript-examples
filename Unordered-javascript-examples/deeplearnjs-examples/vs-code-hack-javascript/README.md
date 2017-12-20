@@ -1,3 +1,12 @@
+
+
+https://youtu.be/aq4JByHZt9E
+
+
+
+
+
+
 weird hack to get Intellisense using VS code working for pure javascript embedded in a web page.
 
 VS Code complains a fair bit but it all seems to work
