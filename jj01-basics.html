@@ -22,8 +22,8 @@
 <!--   *******************************Stop What source js file to use****************************************************   -->
 
 <div id="myDiv01Code">
-<input id="myButton01" type=button value="Use GPU math" onclick="{
-                                                                 
+
+<script>
                                                                  
 async function myShow(){                                                             
    const myA = deeplearn.Array1D.new([1, 2, 3]);
@@ -31,13 +31,15 @@ async function myShow(){
    const myResult = deeplearn.ENV.math.add(myA, myB);
    document.getElementById('myDiv01').innerHTML = await myResult.data();
 }
-
-
-myShow()  
+    
+</script>    
+    
+<input id="myButton01" type=button value="Use GPU math" onclick="{  
+                                                                 
+   myShow()   
                                                                  
 }">
        
-
 <div id="myDiv01">...</div><br>
 </div>
 <textarea id="myTextarea01"   style= "background-color:yellow;white-space:nowrap; width:100%"  rows=3  onclick="{myTextGrow('myTextarea01', 'myDiv01Code')}">
