@@ -25,7 +25,7 @@
 
 <script>
                                                                  
-async function myShow(){                                                             
+async function myShow1(){                                                             
    const myA = deeplearn.Array1D.new([1, 2, 3]);
    const myB = deeplearn.Scalar.new(2);
    const myResult = deeplearn.ENV.math.add(myA, myB);
@@ -36,7 +36,7 @@ async function myShow(){
     
 <input id="myButton01" type=button value="Use GPU math" onclick="{  
                                                                  
-   myShow()   
+   myShow1()   
                                                                  
 }">
        
@@ -102,7 +102,7 @@ Possibly have a look at a good matrix math site such as : <a href="http://www.ma
     
 
 <script>
-async function myShow(){  
+async function myShow3(){  
 
   const matrixShape = [2, 3];  // 2 rows, 3 columns.
   const matrix = deeplearn.Array2D.new(matrixShape, [10, 20, 30, 40, 50, 60]);
@@ -115,7 +115,7 @@ async function myShow(){
 </script>
 
 <input id="myButton01" type="button" value="Matrix Math" onclick="{
-   myShow()                                                                 
+   myShow3()                                                                 
 }">
         
     
