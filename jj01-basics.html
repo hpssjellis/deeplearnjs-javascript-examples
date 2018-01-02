@@ -98,19 +98,29 @@ click to see the code
 
 Possibly have a look at a good matrix math site such as : <a href="http://www.mathsisfun.com/algebra/matrix-inverse.html">http://www.mathsisfun.com/algebra/matrix-inverse.html</a>
 <div id="myDiv03Code">
-<input id="myButton03" type=button value="matrix times a vector" onclick="{
-const math = new deeplearn.NDArrayMathGPU();
-                                                        
-math.scope((keep, track) => {
+
+    
+
+<script>
+async function myShow(){  
+
   const matrixShape = [2, 3];  // 2 rows, 3 columns.
-  const matrix = track(deeplearn.Array2D.new(matrixShape, [10, 20, 30, 40, 50, 60]));
-  const vector = track(deeplearn.Array1D.new([0, 1, 2]));
-  const result = math.matrixTimesVector(matrix, vector);
-  //console.log('result shape:', result.shape);
-  //console.log('result', result.getValues());
-  document.getElementById('myDiv03').innerHTML =    'result shape:'+ result.shape  +   ',  result :'+ result.getValues()                                                 
-                                                          
-});
+  const matrix = deeplearn.Array2D.new(matrixShape, [10, 20, 30, 40, 50, 60]);
+  const vector = deeplearn.Array1D.new([0, 1, 2]);
+  const myResult = deeplearn.ENV.math.matrixTimesVector(matrix, vector);
+                                                           
+  document.getElementById('myDiv01').innerHTML = 'Array shape is ' + myResult.shape + ' data is ' + await myResult.data()
+
+}
+</script>
+
+<input id="myButton01" type="button" value="Matrix Math" onclick="{
+   myShow()                                                                 
+}">
+        
+    
+    
+    
 }">
 
 
