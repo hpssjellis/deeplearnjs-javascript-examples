@@ -26,10 +26,13 @@
 <script>
                                                                  
 async function myShow1(){                                                             
-   const myA = deeplearn.Array1D.new([1, 2, 3]);
-   const myB = deeplearn.Scalar.new(2);
-   const myResult = deeplearn.ENV.math.add(myA, myB);
-   document.getElementById('myDiv01').innerHTML = await myResult.data();
+
+      const matrixShape = [2, 3];  // 2 rows, 3 columns.
+      const matrix = deeplearn.Array2D.new(matrixShape, [10, 20, 30, 40, 50, 60]);
+      const vector = deeplearn.Array1D.new([0, 1, 2]);
+      const myResult = deeplearn.ENV.math.matrixTimesVector(matrix, vector);
+                                                           
+      document.getElementById('myDiv01').innerHTML = 'Array shape is ' + myResult.shape + ' data is ' + await myResult.data()
 }
     
 </script>    
@@ -97,7 +100,7 @@ click to see the code
     
 
 
-<input id="myButton01" type="button" value=Async Arrow Funcitons" onclick="{
+<input id="myButton01" type="button" value="Async Arrow Functions" onclick="{
     
   (async () => {
 
