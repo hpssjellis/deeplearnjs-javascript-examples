@@ -34,7 +34,7 @@ async function myShow1(){
     
 </script>    
     
-<input id="myButton01" type=button value="Use GPU math" onclick="{  
+<input id="myButton01" type=button value="Typical Async Function" onclick="{  
                                                                  
    myShow1()   
                                                                  
@@ -58,9 +58,7 @@ click to see the code
 
 
 <div id="myDiv02Code">
-Array1D:<input id="myText01" type=text value="[10,20,30]"><br>
-Scalar:<input id="myText02" type=text value=2.1><br>
-result.getValues()[<input id="myText03" type=number value=2>] <= -1 to show all array values<br><br>
+
 
 <input id="myButton02" type=button value="Inline Async" onclick="{
                                                                  
@@ -94,33 +92,28 @@ click to see the code
 
 
 
-Possibly have a look at a good matrix math site such as : <a href="http://www.mathsisfun.com/algebra/matrix-inverse.html">http://www.mathsisfun.com/algebra/matrix-inverse.html</a>
 <div id="myDiv03Code">
 
     
 
-<script>
-async function myShow3(){  
 
-  const matrixShape = [2, 3];  // 2 rows, 3 columns.
-  const matrix = deeplearn.Array2D.new(matrixShape, [10, 20, 30, 40, 50, 60]);
-  const vector = deeplearn.Array1D.new([0, 1, 2]);
-  const myResult = deeplearn.ENV.math.matrixTimesVector(matrix, vector);
+<input id="myButton01" type="button" value=Async Arrow Funcitons" onclick="{
+    
+  (async () => {
+
+      const matrixShape = [2, 3];  // 2 rows, 3 columns.
+      const matrix = deeplearn.Array2D.new(matrixShape, [10, 20, 30, 40, 50, 60]);
+      const vector = deeplearn.Array1D.new([0, 1, 2]);
+      const myResult = deeplearn.ENV.math.matrixTimesVector(matrix, vector);
                                                            
-  document.getElementById('myDiv03').innerHTML = 'Array shape is ' + myResult.shape + ' data is ' + await myResult.data()
+      document.getElementById('myDiv03').innerHTML = 'Array shape is ' + myResult.shape + ' data is ' + await myResult.data()
 
-}
-</script>
-
-<input id="myButton01" type="button" value="Matrix Math" onclick="{
-   myShow3()                                                                 
+  })();       
+       
 }">
         
     
     
-    
-
-
 
 
 <div id="myDiv03">...</div><br>
