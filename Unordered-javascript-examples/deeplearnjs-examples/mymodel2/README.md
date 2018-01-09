@@ -19,7 +19,7 @@ Here is the esaiest model builder
 
 And here is an image of this page at its easiest level
 
-![](mnist_images.png)
+![](easierMNIST.png)
 
 
 
