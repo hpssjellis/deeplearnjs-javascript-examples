@@ -1,6 +1,6 @@
 
 
-Version 2 of my Easiest MNIST
+Version 2 of the mymodel.html  Easiest MNIST
 
 The actual webpage for this version is at 
 
