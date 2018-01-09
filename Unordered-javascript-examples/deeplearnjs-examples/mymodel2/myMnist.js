@@ -20,7 +20,7 @@ var xhr_dataset = dl.xhr_dataset;
 var XhrDataset = dl.XhrDataset;
 var util = dl.util;
 var conv_util = dl.conv_util;
-const DATASETS_CONFIG_JSON = 'deeplearnjs/mnist/model-builder-datasets-config.json';
+const DATASETS_CONFIG_JSON = 'model-builder-datasets-config.json';
 var xhrDatasetConfigs;
 var selectedDatasetName;
 
