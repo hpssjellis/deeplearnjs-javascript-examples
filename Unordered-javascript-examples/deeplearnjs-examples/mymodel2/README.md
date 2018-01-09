@@ -15,11 +15,11 @@ https://deeplearnjs.org/demos/model-builder/
 
 
 Here is the esaiest model builder
-[]model-builderMNIST.png
+![](model-builderMNIST.png)
 
 And here is an image of this page at its easiest level
 
-[]mnist_images.png
+![](mnist_images.png)
 
 
 
