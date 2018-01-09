@@ -11,7 +11,7 @@ This is my version of the model-builder by deeplearnjs at
 https://deeplearnjs.org/demos/model-builder/
 
 
-## The plan is to simplyfy the Model Builder so that the Javascript code is easy enough for an average javascript Programmer to understand.
+## The plan is to simplify the Model Builder so that the Javascript code is easy enough for an average javascript Programmer to understand.
 
 
 Here is an image of the the original model builder
