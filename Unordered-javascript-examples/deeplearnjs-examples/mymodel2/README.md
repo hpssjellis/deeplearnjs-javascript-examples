@@ -14,13 +14,19 @@ https://deeplearnjs.org/demos/model-builder/
 ##The plan is to simplyfy the Model Builder so that the Javascript code is easy enough for an average javascript Programmer to understand.
 
 
-Here is the esaiest model builder
+Here is an image of the the original model builder
+
+
+**********************************************************************************
 ![](model-builderMNIST.png)
+**********************************************************************************
 
-And here is an image of this page at its easiest level
+And here is an image of this site showing only the basics for the model builder
 
+
+**********************************************************************************
 ![](easierMNIST.png)
-
+**********************************************************************************
 
 
 
