@@ -1,6 +1,6 @@
 
 
-Version 2 of the mymodel.html  Easiest MNIST
+Version 2 of the mymodel.html  titled "Easiest MNIST Javascript Model"
 
 The actual webpage for this version is at 
 
