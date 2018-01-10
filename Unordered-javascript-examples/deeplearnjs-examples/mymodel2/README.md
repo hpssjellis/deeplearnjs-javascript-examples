@@ -37,6 +37,8 @@ The Original Model Build has been programmed to load information from a .json fi
 Ideally I would like to make a single function that loads the original MNIST dataset and possibly a different function that loads the CSV version of the MINST dataset. That would make this program a viable teaching framework for Javascript programmers that are not Machine Learning experts.
 
 
+The files are fairly easy to understand. myModel.html is the entry point. It calls myMnist.js which calls the JSON file model-builder-datasets-config.json which identifies the two MNIST files mnist_images.png and mnist_labels_uint8 files.
+
 Any help will be mentioned in the credits for the final youtube video tutorial.
 
 
