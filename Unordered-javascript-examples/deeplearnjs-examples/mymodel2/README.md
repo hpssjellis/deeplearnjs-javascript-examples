@@ -32,12 +32,12 @@ And here is an image of this site showing only the basics for the model builder
 
 ## Present problem:
 
-The Original Model Build has been programmed to load information from a .json file (which is awesome) but makes the javascript code a step too complex for these tutorials.
+The Original Model Build has been programmed to load information from a .json file (which is awesome and flexible) but makes the javascript code a bit too complex for these tutorials.
 
-Ideally I would like to make a single funciton that loads the original MNIST dataset and another function that loads the CSV version of the MINST dataset. That would make this program a viable teaching framework for non-Machine Learning experts.
+Ideally I would like to make a single function that loads the original MNIST dataset and possibly a different function that loads the CSV version of the MINST dataset. That would make this program a viable teaching framework for Javascript programmers that are not Machine Learning experts.
 
 
-Any help will be mentioned in the final youtube video generated.
+Any help will be mentioned in the credits for the final youtube video tutorial.
 
 
 
