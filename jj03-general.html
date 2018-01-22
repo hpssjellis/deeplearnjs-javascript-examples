@@ -25,7 +25,7 @@
 <input id="myButton01" type=button value="Use GPU math" onclick="{
                                                                  
                                                                  
-  var math = new deeplearn.NDArrayMathGPU()
+  var math = dl.ENV.math
   var a = deeplearn.Array1D.new([10,20,30])
   var b = deeplearn.Scalar.new(2.1)
   math.scope(function() {
@@ -58,7 +58,7 @@ Scalar:<input id="myText02" type=text value=2.1><br>
 result.getValues()[<input id="myText03" type=number value=2>] <= -1 to show all array values<br><br>
 
 <input id="myButton02" type=button value="Use GPU math dynamic" onclick="{
-   var math = new deeplearn.NDArrayMathGPU()
+   var math = dl.ENV.math
    var a = deeplearn.Array1D.new(eval(document.getElementById('myText01').value))
    var b = deeplearn.Scalar.new(document.getElementById('myText02').value)
    math.scope(function() {
@@ -94,15 +94,13 @@ click to see the code
 Possibly have a look at a good matrix math site such as : <a href="http://www.mathsisfun.com/algebra/matrix-inverse.html">http://www.mathsisfun.com/algebra/matrix-inverse.html</a>
 <div id="myDiv03Code">
 <input id="myButton03" type=button value="matrix times a vector" onclick="{
-const math = new deeplearn.NDArrayMathGPU();
+const math = dl.ENV.math;
                                                         
-math.scope((keep, track) => {
+math.scope((keep) => {
   const matrixShape = [2, 3];  // 2 rows, 3 columns.
-  const matrix = track(deeplearn.Array2D.new(matrixShape, [10, 20, 30, 40, 50, 60]));
-  const vector = track(deeplearn.Array1D.new([0, 1, 2]));
+  const matrix = deeplearn.Array2D.new(matrixShape, [10, 20, 30, 40, 50, 60]);
+  const vector = deeplearn.Array1D.new([0, 1, 2]);
   const result = math.matrixTimesVector(matrix, vector);
-  //console.log('result shape:', result.shape);
-  //console.log('result', result.getValues());
   document.getElementById('myDiv03').innerHTML =    'result shape:'+ result.shape  +   ',  result :'+ result.getValues()                                                 
                                                           
 });
@@ -140,21 +138,22 @@ click to see the code
 <div id="myDiv04Code">
 From <a href="https://deeplearnjs.org/docs/tutorials/intro.html">https://deeplearnjs.org/docs/tutorials/intro.html</a><br>
 <input id="myButton04" type=button value="Mean Square Difference" onclick="{
-const math = new deeplearn.NDArrayMathGPU();
+const math = dl.ENV.math
                                                           
-math.scope((keep, track) => {
-  const a = track(deeplearn.Array2D.new([2, 2], [1.0, 2.0, 3.0, 4.0]));
-  const b = track(deeplearn.Array2D.new([2, 2], [0.0, 2.0, 4.0, 6.0]));
+math.scope((keep) => {
+  const a = deeplearn.Array2D.new([2, 2], [1.0, 2.0, 3.0, 4.0]);
+  const b = deeplearn.Array2D.new([2, 2], [0.0, 2.0, 4.0, 6.0]);
+                                                                           
   // Non-blocking math calls.
   const diff = math.sub(a, b);
   const squaredDiff = math.elementWiseMul(diff, diff);
   const sum = math.sum(squaredDiff);
   const size = deeplearn.Scalar.new(a.size);
   const average = math.divide(sum, size);
+                                                                           
   // Blocking call to actually read the values from average. Waits until the
   // GPU has finished executing the operations before returning values.
   // average is a Scalar so we use .get()
-  //console.log(average.get());
   document.getElementById('myDiv04').innerHTML =  'The average = ' + average.get()
 });                                                          
 }">
