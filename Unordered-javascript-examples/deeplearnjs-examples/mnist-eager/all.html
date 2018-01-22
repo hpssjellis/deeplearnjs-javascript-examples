@@ -1,0 +1,376 @@
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://unpkg.com/deeplearn"></script>
+
+<script>
+ 
+ 
+// from Data_new.ts file 
+ 
+    
+  
+const math = dl.ENV.math;
+const TRAIN_TEST_RATIO = 5 / 6;
+const mnistConfig = {
+    'data': [
+        {
+            'name': 'images',
+            'path': 'https://storage.googleapis.com/learnjs-data/model-builder/' +
+                'mnist_images.png',
+            'dataType': 'png',
+            'shape': [28, 28, 1]
+        },
+        {
+            'name': 'labels',
+            'path': 'https://storage.googleapis.com/learnjs-data/model-builder/' +
+                'mnist_labels_uint8',
+            'dataType': 'uint8',
+            'shape': [10]
+        }
+    ],
+    modelConfigs: {}
+};
+
+
+class MnistData {
+    constructor() {
+        this.shuffledTrainIndex = 0;
+        this.shuffledTestIndex = 0;
+    }
+    nextTrainBatch(batchSize) {
+        return this.nextBatch(batchSize, this.trainingData, () => {
+            this.shuffledTrainIndex =
+                (this.shuffledTrainIndex + 1) % this.trainIndices.length;
+            return this.trainIndices[this.shuffledTrainIndex];
+        });
+    }
+    nextTestBatch(batchSize) {
+        return this.nextBatch(batchSize, this.testData, () => {
+            this.shuffledTestIndex =
+                (this.shuffledTestIndex + 1) % this.testIndices.length;
+            return this.testIndices[this.shuffledTestIndex];
+        });
+    }
+    nextBatch(batchSize, data, index) {
+        let xs = null;
+        let labels = null;
+        for (let i = 0; i < batchSize; i++) {
+            const idx = index();
+            const x = data[0][idx].reshape([1, 784]);
+            xs = concatWithNulls(xs, x);
+            const label = data[1][idx].reshape([1, 10]);
+            labels = concatWithNulls(labels, label);
+        }
+        return { xs, labels };
+    }
+    async load() {
+        this.dataset = new dl.XhrDataset(mnistConfig);
+        await this.dataset.fetchData();
+        this.dataset.normalizeWithinBounds(0, -1, 1);
+        this.trainingData = this.getTrainingData();
+        this.testData = this.getTestData();
+        this.trainIndices =
+            dl.util.createShuffledIndices(this.trainingData[0].length);
+        this.testIndices = dl.util.createShuffledIndices(this.testData[0].length);
+    }
+    getTrainingData() {
+        const [images, labels] = this.dataset.getData();
+        const end = Math.floor(TRAIN_TEST_RATIO * images.length);
+        return [images.slice(0, end), labels.slice(0, end)];
+    }
+    getTestData() {
+        const data = this.dataset.getData();
+        if (data == null) {
+            return null;
+        }
+        const [images, labels] = this.dataset.getData();
+        const start = Math.floor(TRAIN_TEST_RATIO * images.length);
+        return [images.slice(start), labels.slice(start)];
+    }
+}
+/**
+ * TODO(nsthorat): Add math.stack, similar to np.stack, which will avoid the
+ * need for us allowing concating with null values.
+ */
+function concatWithNulls(ndarray1, ndarray2) {
+    if (ndarray1 == null && ndarray2 == null) {
+        return null;
+    }
+    if (ndarray1 == null) {
+        return ndarray2;
+    }
+    else if (ndarray2 === null) {
+        return ndarray1;
+    }
+    return math.concat2D(ndarray1, ndarray2, 0);
+}
+
+
+ 
+ 
+
+// from mnist_eager.ts file 
+  
+ 
+
+
+let data;
+
+
+async function myLoad() {
+    document.getElementById('status').innerText += ' Loading...'
+    data = new MnistData();
+    await data.load();
+}
+
+
+async function myTrain() {
+    document.getElementById('status').innerText += ' Training...'
+    await train(data);
+}
+
+
+
+async function myTest() {
+    //document.getElementById('status').innerText += ' Testing...'
+    const testExamples = 50;
+    const batch = data.nextTestBatch(testExamples);
+    const predictions = predict(batch.xs);
+    const labels = classesFromLabel(batch.labels);
+    showTestResults(batch, predictions, labels);
+}
+
+
+async function myMnist() {
+    await myLoad();
+    await myTrain();
+    myTest();
+}
+
+
+
+
+
+
+
+
+
+// from model.ts  
+
+
+//import * as dl from 'deeplearn';
+
+
+// Hyperparameters.
+const LEARNING_RATE = .05;
+const BATCH_SIZE = 64;
+const TRAIN_STEPS = 100;
+// Data constants.
+const IMAGE_SIZE = 784;
+const LABELS_SIZE = 10;
+
+
+//const math = dl.ENV.math;
+
+
+const optimizer = new dl.SGDOptimizer(LEARNING_RATE);
+
+
+
+// Set up the model and loss function.
+const weights = dl.variable(dl.Array2D.randNormal([IMAGE_SIZE, LABELS_SIZE], 0, 1 / Math.sqrt(IMAGE_SIZE), 'float32'));
+
+
+const model = (xs) => {
+    return math.matMul(xs, weights);
+};
+
+
+
+const loss = (labels, ys) => {
+    return math.mean(math.softmaxCrossEntropyWithLogits(labels, ys));
+};
+
+
+
+// Train the model.
+async function train(data) {
+    const returnCost = true;
+    for (let i = 0; i < TRAIN_STEPS; i++) {
+        const cost = optimizer.minimize(() => {
+            const batch = data.nextTrainBatch(BATCH_SIZE);
+            return loss(batch.labels, model(batch.xs));
+        }, returnCost);
+        //document.getElementById('message').innerHTML = `loss[${i}]: ${cost.dataSync()}`
+        document.getElementById('message').innerHTML = 'loss[' + i + ']:' +  await cost.dataSync()
+        await dl.util.nextFrame();
+    }
+}
+
+
+
+// Tests the model on a set
+async function test(data) { }
+
+
+
+// Predict the digit number from a batch of input images.
+function predict(x) {
+    const pred = math.scope(() => {
+        const axis = 1;
+        return math.argMax(model(x), axis);
+    });
+    return Array.from(pred.dataSync());
+}
+
+
+
+
+// Given a logits or label vector, return the class indices.
+function classesFromLabel(y) {
+    const axis = 1;
+    const pred = math.argMax(y, axis);
+    return Array.from(pred.dataSync());
+}
+
+
+
+
+
+//from ui.ts
+
+
+
+//import * as dl from 'deeplearn';
+
+
+//const math = dl.ENV.math;
+
+
+
+//const statusElement = document.getElementById('status');
+//const messageElement = document.getElementById('message');
+//const imagesElement = document.getElementById('images');
+
+
+
+/*
+
+async function isTraining() {
+    statusElement.innerText = await 'Training...';
+}
+
+
+
+function trainingLog(message) {
+    messageElement.innerText = `${message}\n`;
+    console.log(message);
+}
+
+*/
+
+async function showTestResults(batch, predictions, labels) {
+    document.getElementById('status').innerText += 'Testing...';
+    var testExamples = batch.xs.shape[0];
+    var totalCorrect = 0;
+    for (var i = 0; i < testExamples; i++) {
+        var image = math.slice2D(batch.xs, [i, 0], [1, batch.xs.shape[1]]);
+        var div = document.createElement('div');
+        div.className = 'pred-container';
+        var canvas = document.createElement('canvas');
+        draw(image.flatten(), canvas);
+        var pred = document.createElement('div');
+        var prediction = predictions[i];
+        var label = labels[i];
+        var correct = prediction === label;
+        if (correct) {
+            totalCorrect++;
+        }
+        pred.className = "pred " + (correct ? 'pred-correct' : 'pred-incorrect');
+        pred.innerText = "pred: " + prediction;
+        
+        div.appendChild(pred);
+        div.appendChild(canvas);
+        document.getElementById('images').appendChild(div);
+    }
+    var accuracy = 100 * totalCorrect / testExamples;
+    var displayStr = 'Accuracy: ' + accuracy.toFixed(2) + ' % (' + totalCorrect + ' / ' + testExamples + ')';
+    document.getElementById('message').innerHTML += '<br>'+ displayStr + '<br>';
+    //console.log(displayStr);
+}
+
+
+
+function draw(image, canvas) {
+    const [width, height] = [28, 28];
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    const imageData = new ImageData(width, height);
+    const data = image.dataSync();
+    for (let i = 0; i < height * width; ++i) {
+        const j = i * 4;
+        imageData.data[j + 0] = data[i] * 255;
+        imageData.data[j + 1] = data[i] * 255;
+        imageData.data[j + 2] = data[i] * 255;
+        imageData.data[j + 3] = 255;
+    }
+    ctx.putImageData(imageData, 0, 0);
+}
+
+
+
+
+
+
+ 
+ 
+ 
+  
+    
+    
+    
+</script>
+
+
+
+
+
+<style>
+  canvas {
+    width: 100px;
+  }
+  .pred {
+    font-size: 30px;
+    width: 100px;
+  }
+  .pred-correct {
+    background-color: #00cf00;
+  }
+  .pred-incorrect {
+    background-color: red;
+  }
+  .pred-container {
+    display: inline-block;
+    width: 100px;
+    margin: 10px;
+  }
+</style>
+
+<input type=button value=run onclick="{
+   myMnist();
+}">
+
+<div id="status"></div>
+<div id="message"></div>
+<div id="images"></div>
+
