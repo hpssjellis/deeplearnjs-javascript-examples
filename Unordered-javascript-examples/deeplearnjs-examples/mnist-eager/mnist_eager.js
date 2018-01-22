@@ -6,29 +6,38 @@
 
 
 var data;
-async function load() {
-  data = new MnistData();
+async function myLoad() {
+  data = new MnistData();      //from data_new.js
+ // console.log(data)
   await data.load();
 }
 
-async function train() {
-  ui.isTraining();
-  await model.train(data, ui.trainingLog);
+async function myTrain() {
+  
+   console.log('8')
+  //ui.isTraining();                          //from ui.js
+  //trainingLog('fred')     //note: isTraining and Training log have async issues
+  document.getElementById('status').innerText = 'Training....'
+  console.log('9')
+  //await train(data, trainingLog);    //from model.js
+  await train(data);    //from model.js
+  
+   console.log('10')
 }
 
-async function test() {
+async function myTest() {
   const testExamples = 50;
   const batch = data.nextTestBatch(testExamples);
-  const predictions = model.predict(batch.xs);
-  const labels = model.classesFromLabel(batch.labels);
+  const predictions = predict(batch.xs);            // from model.js
+  const labels = classesFromLabel(batch.labels);   // from model.js
 
-  ui.showTestResults(batch, predictions, labels);
+  showTestResults(batch, predictions, labels);    //from ui.js
 }
 
-async function mnist() {
-  await load();
-  await train();
-  test();
+async function myMnist() {
+  await myLoad();
+  await myTrain();
+  myTest();
 }
 
-mnist();
+myMnist();
