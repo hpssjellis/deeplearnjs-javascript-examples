@@ -29,13 +29,15 @@
 <div id="myDiv01Code">
 
 <script>
-// To run as a webpage 
-// The comment out the import lines below. 
-// To use IntelliSense uncomment the import lines
 
-//import * as dl from 'deeplearn';  
+    
+    
 
-// div as a string, Tensor as a tensor, NumberRows as an integer, Title as a string
+ ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////       
+    
+// Helper function just formats Matricies nicely on a webpage
+
+// myDiv as a string, myOutTensor as a tensor, myCols as an integer, myTitle as a string
 async function myTensorTable(myDiv, myOutTensor, myCols, myTitle){   
 
   
@@ -54,36 +56,47 @@ async function myTensorTable(myDiv, myOutTensor, myCols, myTitle){
 }
 
 
+    
+ ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////   
+    
+    
+    
+    
+    
+    
+    
+   
 async function myTest01(){
-  dl = deeplearn 
-  const matrixShape = [2, 3];  // 2 rows, 3 columns.
+
+  const matrixShape = [2, 3];  // 2 rows, 3 columns. Could be used in the next line but I didn't
   const myWeights  = dl.Array2D.new([3, 3], [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]);
   const myInputs = dl.Array2D.new([3, 3], [1, 2, 3, 4, 5, 6, 7, 8, 9]);
-  const myBias    = dl.Scalar.new(2.3);
 
- //const myOutput = await my2D.data()
- await myTensorTable('myDiv01', myWeights, 3, 'Weights [3x3]')  
-
-
- await myTensorTable('myDiv01', myInputs, 3, 'Inputs [3x3]')  
-
-  
+  // just show what is in the 2D arrays
+  await myTensorTable('myDiv01', myWeights, 3, 'Weights [3x3]')  
+  await myTensorTable('myDiv01', myInputs, 3, 'Inputs [3x3]')  
+   
+  // lets flatten an array  
   var myFlat = myInputs.flatten(myInputs)  
   await myTensorTable('myDiv01', myFlat, 1, 'flatten the 2D Inputs array into a 1D array')    
-  
 
- const myBiasOutput = await myBias.data();
- document.getElementById('myDiv01').innerHTML += 'Bias Scalar = ' + myBiasOutput + ' <br><hr>'
+   
+  // lets try some scalars  
+  const myBias    = dl.Scalar.new(2.3);
 
+  const myBiasOutput = await myBias.data();
+  document.getElementById('myDiv01').innerHTML += 'Bias Scalar = ' + myBiasOutput + ' <br><hr>'
 
- //Generic math ability set
- var myAlgorithm = new dl.NDArrayMathGPU()
+  // Generic math ability set
+  var myAlgorithm = dl.ENV.math
 
-
+  // Try the matMul function for Matrix multiplication
   var  myProduct = myAlgorithm.matMul(myWeights, myInputs)
   await myTensorTable('myDiv01', myProduct, 3, 'Product of Weights x Inputs')  
 
 
+    
+ //  Same thing but a bit more complex 
  const myMatrix1  = dl.Array2D.new([2, 2], [3, 2, 5, 4]);
  const myMatrix2 =  dl.Array2D.new([2, 2], [2, 3, 4, 5]);
 
@@ -91,7 +104,7 @@ async function myTest01(){
  await myTensorTable('myDiv01', myMatrix2, 2, 'Table B')  
 
 
-
+ 
   var  myProduct = myAlgorithm.matMul(myMatrix1, myMatrix2)
   document.getElementById('myDiv01').innerHTML += ' A * B Matmul 2D = ' + myProduct.getValues()  +'<br>'   
 
@@ -105,9 +118,9 @@ async function myTest01(){
   document.getElementById('myDiv01').innerHTML += ' B * A^T  Matmul 2D = ' + myProduct.getValues()  +'<br><hr>'   
 
 
-  
+///////////////////////////////////////////////////////////////////////////////////////////////////////////  
 
-
+ // Now lets try some 1D arrays
  const w = new dl.Array1D.new([0.7, -0.3])
  const i = new dl.Array1D.new([0.1, 0.8])
  const b = dl.Scalar.new(2.1)
