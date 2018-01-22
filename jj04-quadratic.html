@@ -150,24 +150,24 @@ Solve for x=<input id="myText14" type=text value=4><br><br><br>
 
 
 
-    math.scope(function (keep, track) {
-        var result = session_1.eval(y_1, [{ tensor: x_1, data: track(deeplearn.Scalar.new(4)) }]);
+    math.scope(function (keep) {
+        var result = session_1.eval(y_1, [{ tensor: x_1, data: deeplearn.Scalar.new(4) }]);
         //console.log(result.shape);
         //console.log(result.getValues());
 
        document.getElementById('myDiv02').innerHTML   += 'Initial Guess =' + result.getValues()+'<br><br>'
 
         var xs = [
-            track(deeplearn.Scalar.new(document.getElementById('myX0').value)), 
-            track(deeplearn.Scalar.new(document.getElementById('myX1').value)), 
-            track(deeplearn.Scalar.new(document.getElementById('myX2').value)),
-            track(deeplearn.Scalar.new(document.getElementById('myX3').value))
+            deeplearn.Scalar.new(document.getElementById('myX0').value), 
+            deeplearn.Scalar.new(document.getElementById('myX1').value), 
+            deeplearn.Scalar.new(document.getElementById('myX2').value),
+            deeplearn.Scalar.new(document.getElementById('myX3').value)
         ];
         var ys = [
-            track(deeplearn.Scalar.new(document.getElementById('myY0').value)), 
-            track(deeplearn.Scalar.new(document.getElementById('myY1').value)), 
-            track(deeplearn.Scalar.new(document.getElementById('myY2').value)),
-            track(deeplearn.Scalar.new(document.getElementById('myY3').value))
+            deeplearn.Scalar.new(document.getElementById('myY0').value), 
+            deeplearn.Scalar.new(document.getElementById('myY1').value), 
+            deeplearn.Scalar.new(document.getElementById('myY2').value),
+            deeplearn.Scalar.new(document.getElementById('myY3').value)
         ];
         var shuffledInputProviderBuilder = new deeplearn.InCPUMemoryShuffledInputProviderBuilder([xs, ys]);        
         var _a = shuffledInputProviderBuilder.getInputProviders();
@@ -179,16 +179,11 @@ Solve for x=<input id="myText14" type=text value=4><br><br><br>
         var optimizer = new deeplearn.SGDOptimizer(LEARNING_RATE);
         for (var i = 0; i < NUM_BATCHES; i++) {
             var costValue = session_1.train(cost_1, [{ tensor: x_1, data: xProvider }, { tensor: yLabel_1, data: yProvider }], BATCH_SIZE, optimizer, deeplearn.CostReduction.MEAN);
-            //console.log('average cost: ' + costValue.get());
            document.getElementById('myDiv02').innerHTML   += 'average cost: ' + costValue.get() + '<br>'
-
         }
-        result = session_1.eval(y_1, [{ tensor: x_1, data: track(deeplearn.Scalar.new(document.getElementById('myText14').value)) }]);
-       // console.log('result should be ~57.0:');
-       // console.log(result.shape);
-       // console.log(result.getValues());
-       document.getElementById('myDiv02').innerHTML   += '<br><br>After training '+NUM_BATCHES+' batches with a learning rate of '+ LEARNING_RATE+ '<br>'                                                                 
-       document.getElementById('myDiv02').innerHTML   += 'With an input of '+document.getElementById('myText14').value+' the output =' + result.getValues() + '<br>'                                                                 
+        result = session_1.eval(y_1, [{ tensor: x_1, data: deeplearn.Scalar.new(document.getElementById('myText14').value) }]);
+        document.getElementById('myDiv02').innerHTML   += '<br><br>After training '+NUM_BATCHES+' batches with a learning rate of '+ LEARNING_RATE+ '<br>'                                                                 
+        document.getElementById('myDiv02').innerHTML   += 'With an input of '+document.getElementById('myText14').value+' the output =' + result.getValues() + '<br>'                                                                 
                                                                                                                                                                                                                                   
     });  
     
