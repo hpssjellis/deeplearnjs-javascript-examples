@@ -16,7 +16,7 @@
   
 <!-- the online version that these examples were made with  -->
 
-<script src="https://unpkg.com/deeplearn@0.3.17/dist/deeplearn.js"></script>
+<script src="https://unpkg.com/deeplearn@0.4.2/dist/deeplearn.js"></script>
 
 
 <!--   *******************************Stop: What source js file to use ****************************************************   -->
@@ -146,44 +146,6 @@ click to see the code
 
 
 
-<div id="myDiv04Code">
-From <a href="https://deeplearnjs.org/docs/tutorials/intro.html">https://deeplearnjs.org/docs/tutorials/intro.html</a><br>
-<input id="myButton04" type=button value="Mean Square Difference" onclick="{
-const math = new deeplearn.NDArrayMathGPU();
-                                                          
-math.scope((keep, track) => {
-  const a = track(deeplearn.Array2D.new([2, 2], [1.0, 2.0, 3.0, 4.0]));
-  const b = track(deeplearn.Array2D.new([2, 2], [0.0, 2.0, 4.0, 6.0]));
-  // Non-blocking math calls.
-  const diff = math.sub(a, b);
-  const squaredDiff = math.elementWiseMul(diff, diff);
-  const sum = math.sum(squaredDiff);
-  const size = deeplearn.Scalar.new(a.size);
-  const average = math.divide(sum, size);
-  // Blocking call to actually read the values from average. Waits until the
-  // GPU has finished executing the operations before returning values.
-  // average is a Scalar so we use .get()
-  //console.log(average.get());
-  document.getElementById('myDiv04').innerHTML =  'The average = ' + average.get()
-});                                                          
-}">
-
-
-
-<div id="myDiv04">...</div><br>
-</div>
-<textarea id="myTextarea04"    style= "background-color:yellow;white-space:nowrap; width:100%"    rows=3 NOWRAP onclick="{myTextGrow('myTextarea04', 'myDiv04Code')}">
-click to see the code
-</textarea>
-
-<br><br><hr><br>
-
-
-
-
-
-
-
 
 
 
@@ -237,7 +199,7 @@ Use at your own risk!
 
 <script>
 function myTextGrow(myT, myB){
-   document.getElementById(myT).value = '\x3Cscript src="https://unpkg.com/deeplearn@0.3.17/dist/deeplearn.js"> \x3C/script> \n\n' + document.getElementById(myB).innerHTML 
+   document.getElementById(myT).value = '\x3Cscript src="https://unpkg.com/deeplearn@0.4.2/dist/deeplearn.js"> \x3C/script> \n\n' + document.getElementById(myB).innerHTML 
         
    setTimeout(function() {
       while (  document.getElementById(myT).clientHeight < document.getElementById(myT).scrollHeight){                                                                                                                                              
