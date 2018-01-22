@@ -1,4 +1,4 @@
-//import * as dl from 'deeplearn';
+
 
 
 // Hyperparameters.
@@ -41,7 +41,8 @@ async function train(data) {
             const batch = data.nextTrainBatch(BATCH_SIZE);
             return loss(batch.labels, model(batch.xs));
         }, returnCost);
-        document.getElementById('message').innerHTML = `loss[${i}]: ${cost.dataSync()}`
+        //document.getElementById('message').innerHTML = `loss[${i}]: ${cost.dataSync()}`
+        document.getElementById('message').innerHTML = 'loss[' + i + ']:' +  cost.dataSync()
         await dl.util.nextFrame();
     }
 }
