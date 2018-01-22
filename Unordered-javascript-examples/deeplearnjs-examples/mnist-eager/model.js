@@ -42,7 +42,7 @@ async function train(data) {
             return loss(batch.labels, model(batch.xs));
         }, returnCost);
         //document.getElementById('message').innerHTML = `loss[${i}]: ${cost.dataSync()}`
-        document.getElementById('message').innerHTML = 'loss[' + i + ']:' +  cost.dataSync()
+        document.getElementById('message').innerHTML = 'loss[' + i + ']:' +  await cost.dataSync()
         await dl.util.nextFrame();
     }
 }
