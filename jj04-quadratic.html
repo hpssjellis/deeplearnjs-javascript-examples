@@ -47,9 +47,8 @@ From deeplearnjs tutorial at: <a href="https://deeplearnjs.org/docs/tutorials/ml
 
 
     math.scope(function (keep) {
-        var result = session_1.eval(y_1, [{ tensor: x_1, data: track(deeplearn.Scalar.new(4)) }]);
-       // console.log(result.shape);
-       // console.log(result.getValues());
+        var result = session_1.eval(y_1, [{ tensor: x_1, data: deeplearn.Scalar.new(4) }]);
+
 
        document.getElementById('myDiv01').innerHTML   += 'Initial Guess =' + result.getValues()+'<br><br>'
 
@@ -76,7 +75,7 @@ From deeplearnjs tutorial at: <a href="https://deeplearnjs.org/docs/tutorials/ml
 
             document.getElementById('myDiv01').innerHTML   += 'average cost: ' + costValue.get() + '<br>'
         }
-        result = session_1.eval(y_1, [{ tensor: x_1, data: track(deeplearn.Scalar.new(4)) }]);
+        result = session_1.eval(y_1, [{ tensor: x_1, data: deeplearn.Scalar.new(4) }]);
 
        document.getElementById('myDiv01').innerHTML   += '<br><br>After training '+NUM_BATCHES+' batches with a learning rate of '+ LEARNING_RATE+ '<br>'                                                                 
        document.getElementById('myDiv01').innerHTML   += 'With an input of 4 the output =' + result.getValues() + '<br>'                                                                 
