@@ -212,7 +212,7 @@ async function train(data) {
         }, returnCost);
         //document.getElementById('message').innerHTML = `loss[${i}]: ${cost.dataSync()}`
         document.getElementById('message').innerHTML = 'loss[' + i + ']:' +  cost.dataSync()
-        dl.util.nextFrame();
+        await dl.util.nextFrame();
     }
 }
 
