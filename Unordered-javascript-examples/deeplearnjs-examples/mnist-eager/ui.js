@@ -1,4 +1,4 @@
-//import * as dl from 'deeplearn';
+
 
 
 //const math = dl.ENV.math;
@@ -51,8 +51,8 @@ async function showTestResults(batch, predictions, labels) {
         document.getElementById('images').appendChild(div);
     }
     var accuracy = 100 * totalCorrect / testExamples;
-    var displayStr = "accuracy: " + accuracy.toFixed(2) + "% (" + totalCorrect + " / " + testExamples + ")";
-   // document.getElementById('messages').innerHTML = displayStr + "\n";
+    var displayStr = 'Accuracy: ' + accuracy.toFixed(2) + ' % (' + totalCorrect + ' / ' + testExamples + ')';
+    document.getElementById('message').innerHTML += '<br>'+ displayStr + '<br>';
     //console.log(displayStr);
 }
 
