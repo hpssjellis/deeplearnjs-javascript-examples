@@ -1,20 +1,26 @@
 
 
-//const math = dl.ENV.math;
+const mathUi = dl.ENV.math;
 
 const statusElement = document.getElementById('status');
 const messageElement = document.getElementById('message');
 const imagesElement = document.getElementById('images');
+
+/*
 
 function isTraining() {
   statusElement.innerText = 'Training...';
 }
 
 
-function trainingLog(message) {
-  messageElement.innerText = message + "\n";
- console.log(message);
+async function trainingLog(message) {
+  messageElement.innerText = await message + "\n";
+ console.log(await message);
 }
+
+
+
+*/
 
 
 function showTestResults(batch, predictions, labels) {
@@ -22,7 +28,7 @@ function showTestResults(batch, predictions, labels) {
     var testExamples = batch.xs.shape[0];
     var totalCorrect = 0;
     for (var i = 0; i < testExamples; i++) {
-        var image = math.slice2D(batch.xs, [i, 0], [1, batch.xs.shape[1]]);
+        var image = mathUi.slice2D(batch.xs, [i, 0], [1, batch.xs.shape[1]]);
         var div = document.createElement('div');
         div.className = 'pred-container';
         var canvas = document.createElement('canvas');
