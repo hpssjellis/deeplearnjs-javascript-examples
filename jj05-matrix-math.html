@@ -17,7 +17,7 @@
   
 <!-- the online version that these examples were made with  -->
 
-<script src="https://unpkg.com/deeplearn@0.3.14/dist/deeplearn.js"></script>
+<script src="https://unpkg.com/deeplearn@0.4.2/dist/deeplearn.js"></script>
 
 
 <!--   *******************************Stop: Which source js file to use? ****************************************************   -->
@@ -32,22 +32,22 @@ Checkout a really good matrix math explanation site at <a href="http://www.maths
 
 <input id="myButton01" type=button value="Real Life Use of Matrix Math" onclick="{
 
-    class myNDArrayMathGPU extends deeplearn.NDArrayMathGPU {
+    class myNDArrayMath extends dl.NDArrayMath {
        inverse2DSquare(b)  {       
           var myInverseMultiplier  = 1 / ( (b.getValues()[0] * b.getValues()[3]) - (b.getValues()[1] * b.getValues()[2]) )
-          var myMatrixConverted = deeplearn.Array2D.new([2, 2], [b.getValues()[3]*myInverseMultiplier, b.getValues()[1]*-1*myInverseMultiplier, b.getValues()[2]*-1*myInverseMultiplier, b.getValues()[0]*myInverseMultiplier])
+          var myMatrixConverted = dl.Array2D.new([2, 2], [b.getValues()[3]*myInverseMultiplier, b.getValues()[1]*-1*myInverseMultiplier, b.getValues()[2]*-1*myInverseMultiplier, b.getValues()[0]*myInverseMultiplier])
           return myMatrixConverted
       }
    }
 
-   document.getElementById('myDiv01').innerHTML = 'deeplearnjs Version = ' + deeplearn.version + '<br><br>'
+   document.getElementById('myDiv01').innerHTML = 'deeplearnjs Version = ' + dl.version + '<br><br>'
 
-   var myMath = new myNDArrayMathGPU();
+   var myMath = dl.ENV.math;
    document.getElementById('myDiv01').innerHTML += 'Child $3.00 bus, $3.50 train, Adult $3.20 bus, $3.60 train <br>' 
    document.getElementById('myDiv01').innerHTML += 'Total bus = $118.40, Total train = $135.20. How many Children and Adults? <br><br>' 
 
-   var myMatrixOriginal = deeplearn.Array2D.new([2, 2], [3, 3.5, 3.2, 3.6]);
-   var myVector1D = deeplearn.Array1D.new([118.4, 135.2]);
+   var myMatrixOriginal = dl.Array2D.new([2, 2], [3, 3.5, 3.2, 3.6]);
+   var myVector1D = dl.Array1D.new([118.4, 135.2]);
 
    var myResult1 = myMath.inverse2DSquare(myMatrixOriginal)
    document.getElementById('myDiv01').innerHTML += 'Intermediate Inverse Matrix shape = ' + myResult1.shape+ ' Intermediate Values = ' + myResult1.getValues() +'<br>'   
@@ -58,18 +58,6 @@ Checkout a really good matrix math explanation site at <a href="http://www.maths
 }"><br>
 
 
-
-
-
-
-
-
-
-                                                            
-
-
-       
-
 <div id="myDiv01">...</div><br>
 </div>
 <textarea id="myTextarea01"   style= "background-color:yellow;white-space:nowrap; width:100%"  rows=3  onclick="{myTextGrow('myTextarea01', 'myDiv01Code')}">
@@ -77,27 +65,6 @@ Click to see the code before clicking the button
 </textarea>
 
 <br><br><hr><br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -124,21 +91,11 @@ Use at your own risk!
 
 
 
-
-
-
-
-
-
-
-
-
-
 <!--  Following is a helper functions  to grow the textareas  -->
 
 <script>
 function myTextGrow(myT, myB){
-   document.getElementById(myT).value = '\x3Cscript src="https://unpkg.com/deeplearn@0.3.14/dist/deeplearn.js"> \x3C/script> \n\n' + document.getElementById(myB).innerHTML 
+   document.getElementById(myT).value = '\x3Cscript src="https://unpkg.com/deeplearn@0.4.2/dist/deeplearn.js"> \x3C/script> \n\n' + document.getElementById(myB).innerHTML 
         
    setTimeout(function() {
       while (  document.getElementById(myT).clientHeight < document.getElementById(myT).scrollHeight){                                                                                                                                              
