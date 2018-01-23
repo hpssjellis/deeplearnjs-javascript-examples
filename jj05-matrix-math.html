@@ -42,7 +42,7 @@ Checkout a really good matrix math explanation site at <a href="http://www.maths
 
    document.getElementById('myDiv01').innerHTML = 'deeplearnjs Version = ' + dl.version + '<br><br>'
 
-   var myMath = dl.ENV.math;
+   //var myMath = dl.ENV.math;
    var myClass = new myNDArrayMath()                                                                           
    document.getElementById('myDiv01').innerHTML += 'Child $3.00 bus, $3.50 train, Adult $3.20 bus, $3.60 train <br>' 
    document.getElementById('myDiv01').innerHTML += 'Total bus = $118.40, Total train = $135.20. How many Children and Adults? <br><br>' 
@@ -53,7 +53,7 @@ Checkout a really good matrix math explanation site at <a href="http://www.maths
    var myResult1 = myClass.inverse2DSquare(myMatrixOriginal)
    document.getElementById('myDiv01').innerHTML += 'Intermediate Inverse Matrix shape = ' + myResult1.shape+ ' Intermediate Values = ' + myResult1.getValues() +'<br>'   
 
-   var myResult2 =  myMath.vectorTimesMatrix(myVector1D, myResult1);
+   var myResult2 =  myClass.vectorTimesMatrix(myVector1D, myResult1);
    document.getElementById('myDiv01').innerHTML +=   'Final Result shape:'+ myResult2.shape  +   ',  Train and Bus results: Children = ' + Math.round(myResult2.getValues()[0]) +   ',  Adults = '  +  Math.round(myResult2.getValues()[1])                                            
 
 }"><br>
