@@ -25,32 +25,22 @@
 
 
 
-
 <script>
- 
- 
-// from Data_new.ts file 
- 
-    
+
   
-const math = dl.ENV.math;
-
-//let data;
-let data;
-
 const TRAIN_TEST_RATIO = 5 / 6;
-
-// Hyperparameters.
 const LEARNING_RATE = .05;
 const BATCH_SIZE = 64;
 const TRAIN_STEPS = 100;
-// Data constants.
 const IMAGE_SIZE = 784;
 const LABELS_SIZE = 10;
 
-// Set up the weights
-const weights = dl.variable(dl.Array2D.randNormal([IMAGE_SIZE, LABELS_SIZE], 0, 1 / Math.sqrt(IMAGE_SIZE), 'float32'));
 
+const myMath = dl.ENV.math;
+
+var myData;
+
+const weights = dl.variable(dl.Array2D.randNormal([IMAGE_SIZE, LABELS_SIZE], 0, 1 / Math.sqrt(IMAGE_SIZE), 'float32'));
 
 const optimizer = new dl.SGDOptimizer(LEARNING_RATE);
 
@@ -77,7 +67,7 @@ const mnistConfig = {
 
 
 
-///////////////////////////////////////////////////////////////////////////
+///////////////////////// End Initilizations //////////////////////////////////////////////////
 
 // Main class that is used
 class MnistData {   
@@ -107,14 +97,14 @@ class MnistData {
     
     
     
-    nextBatch(batchSize, data, index) {
+    nextBatch(batchSize, myData, index) {
         let xs = null;
         let labels = null;
         for (let i = 0; i < batchSize; i++) {
             const idx = index();
-            const x = data[0][idx].reshape([1, 784]);
+            const x = myData[0][idx].reshape([1, 784]);
             xs = concatWithNulls(xs, x);
-            const label = data[1][idx].reshape([1, 10]);
+            const label = myData[1][idx].reshape([1, 10]);
             labels = concatWithNulls(labels, label);
         }
         return { xs, labels };
@@ -140,17 +130,14 @@ class MnistData {
     
     
     getTestData() {
-        const data = this.dataset.getData();
-        if (data == null) { return null; }
+        const myData = this.dataset.getData();
+        if (myData == null) { return null; }
         const [images, labels] = this.dataset.getData();
         const start = Math.floor(TRAIN_TEST_RATIO * images.length);
         return [images.slice(start), labels.slice(start)];
     }
     
 }  // end of class MnistData  definition
-
-
-
 
 
 // A helper for the NextBatch function above
@@ -164,24 +151,24 @@ function concatWithNulls(ndarray1, ndarray2) {
     else if (ndarray2 === null) {
         return ndarray1;
     }
-    return math.concat2D(ndarray1, ndarray2, 0);
+    return myMath.concat2D(ndarray1, ndarray2, 0);
 }
 
 
  
-////////////////////////////////////////////////////////////////////////// 
+/////////////////////////// End of the Class Definition and Helper function ///////////////
 
 
  
 
 
 // Train the model.
-async function train(data) {
+async function train(myData) {
     const returnCost = true;
     for (let i = 0; i < TRAIN_STEPS; i++) {
         const cost = optimizer.minimize(() => {
-            const batch = data.nextTrainBatch(BATCH_SIZE);
-            return math.mean(math.softmaxCrossEntropyWithLogits(batch.labels, math.matMul(batch.xs, weights)));
+            const batch = myData.nextTrainBatch(BATCH_SIZE);
+            return myMath.mean(myMath.softmaxCrossEntropyWithLogits(batch.labels, myMath.matMul(batch.xs, weights)));
         }, returnCost);
         document.getElementById('message').innerHTML = 'loss[' + i + ']:' +  cost.dataSync()
         await dl.util.nextFrame();
@@ -191,22 +178,27 @@ async function train(data) {
 
 
 
+
+/////////////////////////////////// End Training the Machine /////////////////////////////////////////////////////////////
+
+
+
+
 // Predict the digit number from a batch of input images.
 function predict(x) {
-    const pred = math.scope(() => {
+    const pred = myMath.scope(() => {
         const axis = 1;
-        return math.argMax(math.matMul(x, weights), axis);
+        return myMath.argMax(myMath.matMul(x, weights), axis);
     });
     return Array.from(pred.dataSync());
 }
 
 
 async function showTestResults(batch, predictions, labels) {
-    document.getElementById('status').innerText += 'Testing...';
     var testExamples = batch.xs.shape[0];
     var totalCorrect = 0;
     for (var i = 0; i < testExamples; i++) {
-        var image = math.slice2D(batch.xs, [i, 0], [1, batch.xs.shape[1]]);
+        var image = myMath.slice2D(batch.xs, [i, 0], [1, batch.xs.shape[1]]);
         var div = document.createElement('div');
         div.className = 'pred-container';
         var canvas = document.createElement('canvas');
@@ -239,46 +231,52 @@ function draw(image, canvas) {
     canvas.height = height;
     const ctx = canvas.getContext('2d');
     const imageData = new ImageData(width, height);
-    const data = image.dataSync();
+    const myData = image.dataSync();
     for (let i = 0; i < height * width; ++i) {
         const j = i * 4;
-        imageData.data[j + 0] = data[i] * 255;
-        imageData.data[j + 1] = data[i] * 255;
-        imageData.data[j + 2] = data[i] * 255;
+        imageData.data[j + 0] = myData[i] * 255;
+        imageData.data[j + 1] = myData[i] * 255;
+        imageData.data[j + 2] = myData[i] * 255;
         imageData.data[j + 3] = 255;
     }
     ctx.putImageData(imageData, 0, 0);
 }
 
-/////////////////////////////////////////////////////////////////
+/////////////////////////// End Drawing the Images //////////////////////////////////////
 
 
 // Main Entry point
 async function myMnist() {
     
     // Load Mnist Dataset
-    document.getElementById('status').innerText += ' Loading...'
-    data = new MnistData(); 
-    await data.load();      
+    document.getElementById('status').innerText = ' Loading...'
+    myData = new MnistData(); 
+    await myData.load();      
     
     // Train the network
     document.getElementById('status').innerText += ' Training...'
-    await train(data);
+    await train(myData);
     
     // Make some predictions, testing the network
+    
+    document.getElementById('images').innerText = ''  
+    document.getElementById('status').innerText += ' Testing...';
     const testExamples = 50;
-    const batch = data.nextTestBatch(testExamples);
+    const batch = myData.nextTestBatch(testExamples);
     const predictions = predict(batch.xs);
 
     // Given a logits or label vector, return the class indices.
     const axis = 1;
-    const pred = math.argMax(batch.labels, axis);
+    const pred = myMath.argMax(batch.labels, axis);
     const labels = Array.from(pred.dataSync());
     
+    
+    document.getElementById('status').innerText += ' Predicting...';
     showTestResults(batch, predictions, labels);
 }  // End of Main program
 
 
+/////////////////////// End main Program /////////////////////////////////
 
 </script>
 
@@ -309,24 +307,27 @@ async function myMnist() {
 
 
 
+<!- Main part of the webpage -->
 
 
-
-<h2 align=center>Easiest Model Builder in Pure Javascript</h2>
+<h2 align=center>Easiest Model Builder Using <a href="http://deeplearnjs.org">Deepearnjs</a> in Pure Javascript</h2>
 See original at <a href="https://deeplearnjs.org/demos/model-builder/">https://deeplearnjs.org/demos/model-builder/</a>
-and try to build the easiest version of that model builder. Delete all layers until you only have:
+and try to build the easiest version of a model. Delete all layers until you only have:
 Flattened, Fully Connected, Softmax, Label. That is what is working here.<br><br>
 
+
+<!- The only button webpage -->
 
 <input type="button" value="run" onclick="{
    myMnist();
 }">
 
-<div id="status"></div>
-<div id="message"></div>
-<div id="images"></div>
 
+<!- A few Div's to communicate with the webpage -->
 
+<div id="status">Status Here</div>
+<div id="message">Messages Here</div>
+<div id="images">The Images Here</div>
 
 
 
