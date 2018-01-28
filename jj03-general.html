@@ -26,8 +26,8 @@
                                                                  
                                                                  
   var math = dl.ENV.math
-  var a = deeplearn.Array1D.new([10,20,30])
-  var b = deeplearn.Scalar.new(2.1)
+  var a = dl.Array1D.new([10,20,30])
+  var b = dl.Scalar.new(2.1)
   math.scope(function() {
      var result = math.add(a, b);
      document.getElementById('myDiv01').innerHTML = result.getValues()    
