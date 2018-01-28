@@ -59,8 +59,8 @@ result.getValues()[<input id="myText03" type=number value=2>] <= -1 to show all 
 
 <input id="myButton02" type=button value="Use GPU math dynamic" onclick="{
    var math = dl.ENV.math
-   var a = deeplearn.Array1D.new(eval(document.getElementById('myText01').value))
-   var b = deeplearn.Scalar.new(document.getElementById('myText02').value)
+   var a = dl.Array1D.new(eval(document.getElementById('myText01').value))
+   var b = dl.Scalar.new(document.getElementById('myText02').value)
    math.scope(function() {
       var result = math.add(a, b);
       var mySize = document.getElementById('myText03').value  
