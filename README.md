@@ -29,6 +29,17 @@ https://github.com/hma02/deeplearnjs-practice
 
 
 
+https://www.youtube.com/playlist?list=PL57Dnr1H_egukaDgFqwEnDVStd7Jktg1E
+
+
+
+
+[![Joe Javascript Machine Learning Tutorials using Deeplearnjs](http://img.youtube.com/vi/cUI6VozmVgQ/0.jpg)](https://www.youtube.com/playlist?list=PL57Dnr1H_egukaDgFqwEnDVStd7Jktg1E)
+
+
+
+
+
 
 
 
