@@ -25,7 +25,7 @@ https://github.com/hma02/deeplearnjs-practice
 
 
 
-
+The playlist is up and running. Link to it and not the individual videos since the videos may change as things get deprecated. Don't forget to subscribe and share with your social media.
 
 
 
@@ -40,6 +40,12 @@ https://www.youtube.com/playlist?list=PL57Dnr1H_egukaDgFqwEnDVStd7Jktg1E
 
 
 
+By Jeremy Ellis
 
+Maker of http://rocksetta.com
+
+twitter @rocksetta
+
+Use at your own risk!
 
 
