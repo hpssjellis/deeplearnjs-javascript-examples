@@ -1,3 +1,11 @@
+Version 2 of information at 
+
+https://github.com/hpssjellis/deeplearnjs-javascript-examples/tree/master/Unordered-javascript-examples/deeplearnjs-examples/version2
+
+
+
+
+
 Any examples that work with deeplearnjs should go in this folder
 
 It is a nodejs package
