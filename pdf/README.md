@@ -140,10 +140,80 @@ with Kenneth Fricklas. January 2018; ISBN 9781617293870; 272 pages; printed in b
 
 
 
+pdf machine learning python
+
+
+
+https://pythonizame.s3.amazonaws.com/media/Book/machine-learning-python-essential-techniques-predictive-analysis/file/008c0aac-9784-11e5-964d-04015fb6ba01.pdf
+
+This book focuses on Python because it offers a good blend of functionality and specialized packages containing machine learning algorithms.
+
+
+
+ftp://ftp.cea.fr/pub/unati/people/educhesnay/pystatml/StatisticsMachineLearningPythonDraft.pdf
+
+Machine learning covers two main types of data analysis: 1. Exploratory analysis: Unsupervised learning. Discover the structure within the data. E.g.: Experience (in years in a company) and salary are correlated.
+
+
+https://in.pycon.org/2011/static/files/talks/11/Introduction_To_ML_Partial_2.pdf
+
+1. Introduction/Definition. 2. Where and Why ML is used. 3. Types of Learning. 4. Supervised Learning – Linear Regression & Gradient. Descent. 5. Code Example. 6. Unsupervised Learning – Clustering and K-Means. 7. Code Example. 8. Neural Networks. 9. Code Example. 10. Introduction to Scikit-Learn 
+
+
+
+http://www2.ift.ulaval.ca/~chaib/IFT-4102-7025/public_html/Fichiers/Machine_Learning_in_Action.pdf
+
+1.1 What is machine learning? 5. Sensors and the data deluge 6 □. Machine learning will be more important in the future 7. 1.2 Key terminology 7. 1.3 Key tasks of machine learning 10. 1.4 How to choose the right algorithm 11. 1.5 Steps in developing a machine learning application 11. 1.6 Why Python? 
+
+
+http://ibpsa.fr/jdownloads/Simurex/2015/Presentations/30_03_atelierdatamining.pdf
+
+Machine Learning with Python/Scikit-Learn. - Application to the Estimation of Occupancy and Human Activities -. Tutorial proposed by: manar.amayri@g-scop.grenoble-inp.fr stephane.ploix@g-scop.grenoble-
 
 
 
 
+https://www.packtpub.com/packt/free-ebook/python-machine-learning-algorithms
+
+Download Building Machine Learning Systems with Python from Packt and start learning Python for programming your machine learning systems. 
+
+
+
+http://totoharyanto.staff.ipb.ac.id/files/2012/10/Building-Machine-Learning-Systems-with-Python-Richert-Coelho.pdf
+
+
+
+pdf machine learning javascript
+
+https://peerj.com/articles/cs-11.pdf
+
+Subjects Data Mining and Machine Learning, Emerging Technologies, Mobile and Ubiquitous. Computing, World ... existing JavaScript implementation (Karpathy, 2014), modified only slightly for MLitB
+
+
+https://cdn.sisense.com/wp-content/uploads/Machine-Learning-with-Javascript.pdf
+
+Why I am interested in this? • Why you should be interested in this. • What is ML? • Why JS developers should tackle ML. • Examples. • Other ML JS Libraries. • What's next for you? Page 3. Why am I interested in this? • I work here: • Javascript Background. •
+
+
+http://cs229.stanford.edu/proj2014/David%20Frankl,Machine%20Learning%20In%20JavaScript.pdf
+
+The web is ubiquitous, yet many machine learning algoriths cannot be readily found and applied in. JavaScript. An inherent downside to machine learning in JavaScript is lack of speed. However, as the language becomes increasingly more popular, the need for machine learning algorithms steadily rises.
+
+
+https://openreview.net/pdf?id=r1xUYDYgg
+
+ machine learning techniques have required hand-crafted features specialized to a particular domain such as image or voice. In contrast, deep learning has a hugely important benefit that can illustrate data flow from raw data to an objective value in a single neural network and can train thor- oughly using those data.
+ 
+ http://www2.ift.ulaval.ca/~chaib/IFT-4102-7025/public_html/Fichiers/Machine_Learning_in_Action.pdf
+ 
+ 1 Machine learning basics 3. 1.1 What is machine learning? 5. Sensors and the data deluge 6 □. Machine learning will be more important in the future 7. 1.2 Key terminology 7. 1.3 Key tasks of machine learning 10. 1.4 How to choose the right algorithm 11. 1.5 Steps in developing a machine learning application 11.
+ 
+ 
+ https://pdfs.semanticscholar.org/22cc/3ecdee7042f54bd7e08c49fc9f7450b62e8e.pdf
+ 
+  detect and classify malicious JavaScript code statically using machine learning methods [10, 11, 12]. ... neering and a machine learning classifier to detect obfuscated scripts. Background. Machine ... attacks based on multimedia, attacks targeting Adobe PDF reader, ma- licious redirecting attacks, an
+  
+  
 
 
 
