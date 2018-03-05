@@ -143,6 +143,13 @@ with Kenneth Fricklas. January 2018; ISBN 9781617293870; 272 pages; printed in b
 pdf machine learning python
 
 
+https://www.researchgate.net/profile/Vincent_Dubourg/publication/51969319_Scikit-learn_Machine_Learning_in_Python/links/0fcfd5087eb7bb8f93000000/Scikit-learn-Machine-Learning-in-Python.pdf?origin=publication_detail
+
+Scikit-learn is a Python module integrating a wide range of state-of-the-art machine learning algorithms for medium-scale supervised and unsupervised problems. This package focuses on bringing machine learning to non-specialists using a general-purpose high-level language. Emphasis is put on ease of use, performance, documentation, and API consistency. It has minimal dependencies and is distributed under the simplified BSD license, encouraging its use in both academic and commercial settings. Source code, binaries, and documentation can be downloaded from http://scikit-learn.sourceforge.net. 
+
+
+
+
 
 https://pythonizame.s3.amazonaws.com/media/Book/machine-learning-python-essential-techniques-predictive-analysis/file/008c0aac-9784-11e5-964d-04015fb6ba01.pdf
 
