@@ -225,5 +225,16 @@ https://openreview.net/pdf?id=r1xUYDYgg
 
 
 
+Courses
+
+http://cs229.stanford.edu/materials/CS229-DeepLearning.pdf
+
+Adam Coates, Yoshua Bengio, Tom Dean, Jeff Dean, Nando de. Freitas, Jeff Hawkins, Geoff Hinton, Quoc Le, Yann LeCun,. Honglak Lee, Tommy Poggio, Ruslan Salakhutdinov, Yoram. Singer, Josh Tenenbaum, Kai Yu, Tong Zhang, …. 
+
+
+
+
+https://see.stanford.edu/course/cs229
+
 
 
