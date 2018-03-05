@@ -230,11 +230,33 @@ Courses
 http://cs229.stanford.edu/materials/CS229-DeepLearning.pdf
 
 Adam Coates, Yoshua Bengio, Tom Dean, Jeff Dean, Nando de. Freitas, Jeff Hawkins, Geoff Hinton, Quoc Le, Yann LeCun,. Honglak Lee, Tommy Poggio, Ruslan Salakhutdinov, Yoram. Singer, Josh Tenenbaum, Kai Yu, Tong Zhang, …. 
-
-
-
-
 https://see.stanford.edu/course/cs229
+
+
+
+FROM UBC
+https://www.cs.ubc.ca/~murphyk/MLbook/pml-intro-22may12.pdf
+
+Machine Learning. A Probabilistic Perspective. Kevin P. Murphy. The MIT Press. Cambridge, Massachusetts. London, England ... In machine learning, uncertainty comes in many forms: what is the best prediction about the future given 
+
+http://www.ai.mit.edu/courses/6.867-f04/lectures/lecture-1.pdf
+pdf slides, 6 per page. Mon 9/20, Lecture 4: statistical regression, uncertainty, active learning pdf slides, 6 per page. Wed 9/22, Lecture 5: from regression to classification, decision theory, logistic regression pdf slides, 6 per page. Mon 9/27, Lecture 6
+
+
+
+
+http://www.acad.bg/ebook/ml/The.MIT.Press.Dataset.Shift.in.Machine.Learning.Feb.2009.eBook-DDU.pdf
+
+Dataset Shift in Machine Learning. Joaquin Qui˜nonero-Candela. Masashi Sugiyama. Anton Schwaighofer. 
+
+
+
+https://www.seas.harvard.edu/courses/cs281/
+
+Prof. Ryan Adams (OH: Mon 2:30-3:30pm in MD 233) TF: Eyal Dechter (OH: Thu 1pm in MD 1st Floor Lounge; Section: Thu 2:30-3:30pm in MD 319) TF: Scott Linderman (OH: Thu 10am in MD 2nd Floor Lounge; Section: Thu 9-10am in MD 
+
+
+
 
 
 
