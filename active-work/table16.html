@@ -43,7 +43,7 @@ class myTensor extends dl.Tensor {
                console.log('rank 3')
                var myTemp = '<table border=1><tr>'
                for (var my3D=0; my3D <= this.shape[2]-1; my3D++){  // 3D part table of tables in each row
-                     myTemp += '<td><table border=1><td>'
+                     myTemp += '<td><table border=1><tr>'
                   for (var myRow=0; myRow <= this.shape[0]-1; myRow++){
                      for (var myCol=0; myCol <= this.shape[1]-1; myCol++){ 
                          //console.log(my3D+', '+myRow+', '+myCol);
@@ -56,7 +56,7 @@ class myTensor extends dl.Tensor {
                      }
                      myTemp += '</tr><tr>'
                   }
-                  myTemp += '</table></td></table><table border=1><td>'
+                  myTemp += '</tr></table><table border=1><tr>'
                } 
                myTemp += '</tr></table>'
                console.log(myTemp)
