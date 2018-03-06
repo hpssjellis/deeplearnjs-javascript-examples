@@ -24,7 +24,7 @@ class myTensor extends dl.Tensor {
           console.log('Out as table')
 
        } else {      // end table output start flattened textarea output 
-            var myTemp = '<textarea rows=10 cols=70>' + myOutput[0]
+            var myTemp = '<textarea rows=10 cols=70>'
             for (var myCount = 0;    myCount <= this.size - 1;   myCount++){ 
                 if (myFixedDecimal >=0){
                    myTemp += myOutput[myCount].toFixed(myFixedDecimal) + ', ' 
@@ -47,7 +47,7 @@ class myTensor extends dl.Tensor {
 
    myWeights.print()
 
-   myWeights.htmlPrint('myDiv01',  'Weights [2x2x2]', false, 3)
+   myWeights.htmlPrint('myDiv01',  'Weights [2x2x2]', false, -1)
 
 
 
