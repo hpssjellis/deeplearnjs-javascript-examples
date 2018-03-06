@@ -47,8 +47,8 @@ class myTensor extends dl.Tensor {
            if (this.rank==3){
                console.log('Rank 3')
                var myCount = 0;
-               var myChart =  parseInt(this.shape[1])*parseInt(this.shape[0])
-               var myTotal = 0 ////////////////////////////////
+               var myChart =  parseInt(this.shape[2])*parseInt(this.shape[1])
+               var myTotal = parseInt(this.shape[0]) * parseInt(this.shape[1]) * parseInt(this.shape[2])
                var myTemp = '<table border=1>\n<tr><td>\n'
                myTemp += '<table border=1 width=100%>\n<tr>'
                for (var myRow=0; myRow <= this.shape[0]-1; myRow++){  
