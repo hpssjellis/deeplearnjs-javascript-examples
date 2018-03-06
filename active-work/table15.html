@@ -23,12 +23,14 @@ class myTensor extends dl.Tensor {
           var myTotalOutput = ''
           //console.log('Out as table')
           if (this.rank==2){
-        
+               var myTemp = ''
                for (var myRow=0; myRow <= this.shape[0]-1; myRow++){
                   for (var myCol=0; myCol <= this.shape[1]-1; myCol++){
-                         console.log(myRow+', '+myCol)  
+                         //console.log(myRow+', '+myCol)  
+                       mytemp += myOutput[this.locToIndex([myRow, myCol])])  
                   }
                }
+              document.getElementById(myDiv).innerHTML += myTemp + '<br>'
               }
            
            
