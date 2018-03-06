@@ -12,7 +12,7 @@
 class myTensor extends dl.Tensor {
     async htmlPrint(myDiv, myTitle='', myTableBoolean=true, myFixedDecimal=-1)  {
            
-       document.getElementById(myDiv).innerHTML += '<b>'+myTitle + '</b><br>'
+       document.getElementById(myDiv).innerHTML = '<b>'+myTitle + '</b><br>'
        const myOutput =  await this.data()
        //console.log('?? = '+this.indexToLoc(4))
        //console.log('?? = '+ myOutput[this.locToIndex([1,1,0])])
