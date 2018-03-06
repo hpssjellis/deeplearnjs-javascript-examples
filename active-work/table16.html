@@ -42,15 +42,15 @@ class myTensor extends dl.Tensor {
            if (this.rank==3){
                console.log('rank 3')
                var myTemp = '<table border=1><td>'
-               for (var my3D=0; my3D <= this.shape[2]-2; my3D++){  // 3D part table of tables in each row
+               for (var my3D=0; my3D <= this.shape[2]-1; my3D++){  // 3D part table of tables in each row
                      myTemp += '<table border=1><tr>'
                   for (var myRow=0; myRow <= this.shape[0]-1; myRow++){
                      for (var myCol=0; myCol <= this.shape[1]-1; myCol++){ 
                          //console.log(my3D+', '+myRow+', '+myCol);
                           if (myFixedDecimal >=0){
-                             myTemp += '<td>'+myOutput[this.locToIndex([myRow, myCol, my3D])].toFixed(myFixedDecimal) +'</td>'   
+                             myTemp += '<td>'+myOutput[this.locToIndex([my3D, myRow, myCol])].toFixed(myFixedDecimal) +'</td>'   
                           } else {
-                            myTemp += '<td>'+myOutput[this.locToIndex([myRow, myCol, my3D])] +'</td>'  
+                            myTemp += '<td>'+myOutput[this.locToIndex([my3D, myRow, myCol])] +'</td>'  
                           } 
                          //console.log(myTemp)
                      }
