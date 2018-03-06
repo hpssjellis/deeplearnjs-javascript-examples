@@ -21,7 +21,7 @@ class myTensor extends dl.Tensor {
        
        if (myTableBoolean){           
           var myTotalOutput = ''
-          console.log('Out as table')
+          //console.log('Out as table')
            
            
            
@@ -48,14 +48,14 @@ class myTensor extends dl.Tensor {
     
 </script>
 
-
+Decimal <input id="myText01" type=text value=-1>
 <input type="button" value="tensor.htmlPrint()" onclick="{
 
    const myWeights  = new myTensor([3,3,1],'float32',[0.134334, 0.232452, 0.323234, 0.4234523, 0.523523, 0.6234234, 0.7234523, 0.823423,0.92342345]);
 
    myWeights.print()
-
-   myWeights.htmlPrint('myDiv01',  'Weights [2x2x2]', false, 2)
+   myDec = document.getElementById('myText01').value
+   myWeights.htmlPrint('myDiv01',  'Weights [2x2x2]', false, myDec)
 
 
 
