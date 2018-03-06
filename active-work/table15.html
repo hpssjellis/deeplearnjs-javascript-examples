@@ -25,9 +25,12 @@ class myTensor extends dl.Tensor {
           if (this.rank==2){
                var myTemp = '<table border=1><tr>'
                for (var myRow=0; myRow <= this.shape[0]-1; myRow++){
-                  for (var myCol=0; myCol <= this.shape[1]-1; myCol++){
-                         //console.log(myRow+', '+myCol)  
-                       myTemp += '<td>'+myOutput[this.locToIndex([myRow, myCol])] +'</td>'  
+                  for (var myCol=0; myCol <= this.shape[1]-1; myCol++){       
+                       if (myFixedDecimal >=0){
+                             myTemp += '<td>'+myOutput[this.locToIndex([myRow, myCol])].toFixed(myFixedDecimal) +'</td>'   
+                       } else {
+                            myTemp += '<td>'+myOutput[this.locToIndex([myRow, myCol])] +'</td>'  
+                       } 
                   }
                    myTemp += '</tr><tr>'
                }
