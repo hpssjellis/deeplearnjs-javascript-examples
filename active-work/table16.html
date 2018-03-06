@@ -1,0 +1,80 @@
+<script src="https://unpkg.com/deeplearn@0.5.0/dist/deeplearn.js"> </script> 
+
+<script>
+
+// Class myTensor.htmlPrint parameters    
+    
+// myDiv : HTML div tag id to put table or textarea into, 
+// myTitle : optional string table title. Default no title, 
+// myTableBoolean : optional boolean true print as a table, false print flattened in a textarea. Default true,
+// myFixedDecimal : optiona  integer print to fixed decimal places Default -1 no effect.   
+        
+class myTensor extends dl.Tensor {
+    async htmlPrint(myDiv, myTitle='', myTableBoolean=true, myFixedDecimal=-1)  {
+           
+       document.getElementById(myDiv).innerHTML = '<b>'+myTitle + '</b><br>'
+       const myOutput =  await this.data()
+       //console.log('?? = '+this.indexToLoc(4))
+       //console.log('?? = '+ myOutput[this.locToIndex([1,1,0])])
+
+       
+       
+       if (myTableBoolean){           
+          var myTotalOutput = ''
+          //console.log('Out as table')
+          if (this.rank==2){
+               var myTemp = '<table border=1><tr>'
+               for (var myRow=0; myRow <= this.shape[0]-1; myRow++){
+                  for (var myCol=0; myCol <= this.shape[1]-1; myCol++){       
+                       if (myFixedDecimal >=0){
+                             myTemp += '<td>'+myOutput[this.locToIndex([myRow, myCol])].toFixed(myFixedDecimal) +'</td>'   
+                       } else {
+                            myTemp += '<td>'+myOutput[this.locToIndex([myRow, myCol])] +'</td>'  
+                       } 
+                  }
+                   myTemp += '</tr><tr>'
+               }
+              myTemp += '</table>'
+              document.getElementById(myDiv).innerHTML += myTemp + '<br>'
+              }
+           
+           
+           
+           
+           
+           
+           
+
+       } else {      // end table output start flattened textarea output 
+            var myTemp = '<textarea rows=10 cols=70>'
+            for (var myCount = 0;    myCount <= this.size - 1;   myCount++){ 
+                if (myFixedDecimal >=0){
+                   myTemp += myOutput[myCount].toFixed(myFixedDecimal) + ', ' 
+                } else {
+                    myTemp += myOutput[myCount] +', '
+                }     
+            } 
+            myTemp += '</textarea>'
+            document.getElementById(myDiv).innerHTML += myTemp + '<br>'
+       }    // end myTableBoolean else
+    }       // end htmlPrint
+}           // end myTensor class
+    
+</script>
+
+toFixed <input id="myText01" type=text size=2 value=-1> less than 0 to ignore<br>
+<input type="button" value="tensor.htmlPrint()" onclick="{
+
+   const myWeights  = new myTensor([3,2],'float32',[1,2,3.4554,4,5,6]);
+
+   myWeights.print()
+   myDec = document.getElementById('myText01').value
+   myWeights.htmlPrint('myDiv01',  'Weights [3x2]', true, myDec)
+
+
+
+}"><br>
+
+
+
+<div id="myDiv01"></div><br>
