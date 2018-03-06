@@ -21,7 +21,7 @@ class myTensor extends dl.Tensor {
        
        if (myTableBoolean){           
           var myTotalOutput = ''
-          //console.log('Out as table')
+          console.log('shape2'+this.shape[2])
           if (this.rank==2){
                var myTemp = '<table border=1><tr>'
                for (var myRow=0; myRow <= this.shape[0]-1; myRow++){
