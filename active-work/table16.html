@@ -45,12 +45,13 @@ class myTensor extends dl.Tensor {
                      myTemp = '<td><table border=1><tr>'
                   for (var myRow=0; myRow <= this.shape[0]-1; myRow++){
                      for (var myCol=0; myCol <= this.shape[1]-1; myCol++){ 
-                         console.log(my3D+', '+myRow+', '+myCol);
+                         //console.log(my3D+', '+myRow+', '+myCol);
                           if (myFixedDecimal >=0){
                              myTemp += '<td>'+myOutput[this.locToIndex([myRow, myCol])].toFixed(myFixedDecimal) +'</td>'   
                           } else {
                             myTemp += '<td>'+myOutput[this.locToIndex([myRow, myCol])] +'</td>'  
                           } 
+                         console.log(myTemp)
                      }
                      myTemp += '</tr><tr>'
                   }
