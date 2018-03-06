@@ -1,0 +1,56 @@
+<script src="https://unpkg.com/deeplearn@0.5.0/dist/deeplearn.js"> </script> 
+
+<script>
+
+class myTensor extends dl.Tensor {
+    async htmlTable(myDiv, myTitle)  {      
+       document.getElementById(myDiv).innerHTML += myTitle + '<br>'
+
+       const myOutput =  await this.data()
+       console.log('rank = '+this.rank)
+ 
+       var myTotalOutput = ''
+       var myEnd = 0
+       var myAdjust = 0
+       for (var myOuter=1; myOuter <= this.rank-1; myOuter++ ){
+          var myStart = myEnd
+          var myEnd = myStart + this.shape[1]+1
+
+          if (myStart % 2 == 0){myAdjust = 0 } else {myAdjust = 1 }
+
+          var myTemp = '<table border=1><tr>'
+          for (var myCount = myStart;    myCount <= myEnd;   myCount++){   
+             myTemp += '<td>'+ myOutput[myCount] + '</td>'
+
+             if (myCount % this.shape[1] == 0+myAdjust){       //this.shape[1]+1
+                myTemp += '</tr><tr>'
+             }
+          } 
+          myTemp += '</tr></table>'
+          myTotalOutput += myTemp
+       }
+
+       document.getElementById(myDiv).innerHTML += myTotalOutput 
+
+   }
+
+
+
+
+}    
+    
+</script>
+
+
+<input type="button" value="tensor.htmlTable()" onclick="{
+
+   const myWeights  = new myTensor([2,2,2],'float32',[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]);
+   myWeights.print()
+   myWeights.htmlTable('myDiv01',  'Weights [2x2x2]')
+
+
+}"><br>
+
+
+
+<div id="myDiv01">...</div><br>
