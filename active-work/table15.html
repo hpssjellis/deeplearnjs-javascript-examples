@@ -1,0 +1,75 @@
+<script src="https://unpkg.com/deeplearn@0.5.0/dist/deeplearn.js"> </script> 
+
+<script>
+
+// myDiv:div to put table into, myTitle : optional table title, myFlatten : optional boolean to flatten tensor
+
+class myTensor extends dl.Tensor {
+    async htmlTable(myDiv, myTitle, myFlatten)  {   
+
+  
+       document.getElementById(myDiv).innerHTML += myTitle + '<br>'
+
+       const myOutput =  await this.data()
+       //console.log('?? = '+this.indexToLoc(4))
+       console.log('?? = '+ myOutput[this.locToIndex([1,1,0])])
+
+
+       if (myFlatten){
+          var myTemp = '<table border=1><tr>'
+          for (var myCount = 0;    myCount <= this.size - 1;   myCount++){   
+             myTemp += '<td>'+ myOutput[myCount] + '</td>'
+             if (myCount % this.shape[1] == this.shape[1]-1){
+                myTemp += '</tr><tr>'
+             }
+          } 
+          myTemp += '</tr></table>'
+          document.getElementById(myDiv).innerHTML += myTemp + '<br>'
+      } else {
+     // not flattened so regular rank
+
+     var myTotalOutput = ''
+     for(var my1D=0; my1D<=this.shape[0]-1; my1D++){
+        //console.log('1='+my1D)
+        var myTemp1D = '<table border=1><tr>'
+        for(var my2D=0; my2D<=this.shape[1]-1; my2D++){
+           //console.log('2='+my2D)
+           for(var my3D=0; my3D<=this.shape[2]-1; my3D++){     
+               //console.log('3='+my3D)
+               for(var my4D=0; my4D<=this.shape[2]-1; my4D++){
+                  //console.log('4='+my4D)  
+ 
+               }  // end 4D optional
+            }     // end 3D optional
+        }         // end 2D optional  
+        myTemp1D += '</tr></table>'
+     }            // end 1D
+
+
+      
+     }
+   }  // end htmlTable
+
+}    // end myTensor class
+    
+</script>
+
+
+<input type="button" value="tensor.htmlTable()" onclick="{
+
+   const myWeights  = new myTensor([3,3,1],'float32',[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8,0.9]);
+
+   //myWeights.print()
+   //console.log('wow '+myWeights.indexToLoc(4))
+   //console.log('wow2 '+myWeights.locToIndex([0,0,0]))
+   myWeights.htmlTable('myDiv01',  'Weights [2x2x2]', false)
+
+console.log(dl.tensor([1.1,2.2,3.3,4.4],[2,2]).indexToLoc(3))
+console.log(dl.tensor([1.1,2.2,3.3,4.4],[2,2]).locToIndex([1,1]))
+
+
+}"><br>
+
+
+
+<div id="myDiv01"></div><br>
