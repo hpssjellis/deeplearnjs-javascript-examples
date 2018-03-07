@@ -20,9 +20,6 @@ class myTensor extends dl.Tensor {
        if (myTableBoolean){           
           var myTotalOutput = ''
           //console.log('shape2'+this.shape[2])
-
-
-
           if (this.rank==2){
               console.log('Rank 2')
                var myTemp = '<table border=1><tr>'
@@ -39,15 +36,12 @@ class myTensor extends dl.Tensor {
               myTemp += '</table>'
               document.getElementById(myDiv).innerHTML += myTemp + '<br>'
             }
-
-
-
-
            
            if (this.rank==3){
                console.log('Rank 3')
                var myCount = 0;
-               var myChart =  parseInt(this.shape[2])*parseInt(this.shape[1])
+               var myRowEnd = parseInt(this.shape[1])
+               var myChart =  parseInt(this.shape[0])*parseInt(this.shape[1])
                var myTotal = parseInt(this.shape[0]) * parseInt(this.shape[1]) * parseInt(this.shape[2])
                var myTemp = '<table border=1>\n<tr><td>\n'
                myTemp += '<table border=1 width=100%>\n<tr>'
@@ -67,20 +61,19 @@ class myTensor extends dl.Tensor {
                           //console.log(myCount)
                           
                      }
-                     if (myCount % parseInt(this.shape[1]) == 0 ){
+                     if (myCount % myRowEnd == 0 ){
                         //console.log('end row')
                         myTemp += '</tr>\n<tr>'
                      }
                      if (myCount % myChart == 0 ){
-                        //console.log('end table')
-                        myTemp += '</tr>\n</table>\n</td><td>\n<table border=1 width=100%>\n<tr>'
+                        
+                        if (myCount == myTotal){
+                           myTemp += '\n</table>\n'
+                        } else {
+                           myTemp += '</tr>\n</table>\n</td><td>\n<table border=1 width=100%>\n<tr>'
+                        }
                      }
-
                   }  
-
-
-
-
                   
                } 
                myTemp += '</tr>\n</table>'
@@ -90,11 +83,6 @@ class myTensor extends dl.Tensor {
              
            
  
-
-
-
-
-
           
            
            
