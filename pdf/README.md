@@ -1,7 +1,62 @@
 Links to downloadable PDF's about machine learning
 
 
+These ones seem interesting
 
+
+
+ftp://ftp.cea.fr/pub/unati/people/educhesnay/pystatml/StatisticsMachineLearningPythonDraft.pdf
+
+Machine learning covers two main types of data analysis: 1. Exploratory analysis: Unsupervised learning. Discover the structure within the data. E.g.: Experience (in years in a company) and salary are correlated.
+
+
+http://www.dam.brown.edu/people/mmcguirl/ML_presentation.pdf
+
+An Introduction to Machine Learning
+Research Group Meeting 2017
+Melissa R. McGuirl
+February 22, 2017
+
+
+
+http://www.cs.ubbcluj.ro/~gabis/ml/ml-books/McGrawHill%20-%20Machine%20Learning%20-Tom%20Mitchell.pdf
+
+Machine Learning
+Tom M. Mitchell 
+
+
+
+https://www.gartner.com/binaries/content/assets/events/keywords/catalyst/catus8/preparing_and_architecting_for_machine_learning.pdf
+.
+Preparing and Architecting for Machine
+Learning
+Published: 17 January 2017 ID: G00317328
+Analyst(s): Carlton E. Sapp
+
+.
+
+.http://cs.du.edu/~mitchell/mario_books/Introduction_to_Machine_Learning_-_2e_-_Ethem_Alpaydin.pdf
+
+Adaptive Computation and Machine Learning
+Thomas Dietterich, Editor
+Christopher Bishop, David Heckerman, Michael Jordan, and Michael
+Kearns, Associate Editors
+
+
+
+
+
+.
+.
+.
+
+.
+.
+.
+.
+.
+
+Lots of links below. Not really organised
 
 http://alex.smola.org/drafts/thebook.pdf
 
@@ -156,10 +211,6 @@ https://pythonizame.s3.amazonaws.com/media/Book/machine-learning-python-essentia
 This book focuses on Python because it offers a good blend of functionality and specialized packages containing machine learning algorithms.
 
 
-
-ftp://ftp.cea.fr/pub/unati/people/educhesnay/pystatml/StatisticsMachineLearningPythonDraft.pdf
-
-Machine learning covers two main types of data analysis: 1. Exploratory analysis: Unsupervised learning. Discover the structure within the data. E.g.: Experience (in years in a company) and salary are correlated.
 
 
 https://in.pycon.org/2011/static/files/talks/11/Introduction_To_ML_Partial_2.pdf
