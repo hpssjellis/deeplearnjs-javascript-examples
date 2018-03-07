@@ -6,16 +6,17 @@
 // myDiv : HTML div tag id to put table or textarea into, 
 // myTitle : optional string table title. Default no title, 
 // myTableBoolean : optional boolean true print as a table, false print flattened in a textarea. Default true,
-// myFixedDecimal : optiona  integer print to fixed decimal places Default -1 no effect.   
+// myFixedDecimal : optiona  integer print to fixed decimal places Default -1 no effect. 
+// myConsoleBoolean : optional print the HTML to the console. Default false  
         
 class myTensor extends dl.Tensor {
-    async htmlPrint(myDiv, myTitle='', myTableBoolean=true, myFixedDecimal=-1)  {
+    async htmlPrint(myDiv, myTitle='', myTableBoolean=true, myFixedDecimal=-1, myConsoleBoolean = false)  {
     
     // Matricies with a shape of 1 messes up the chart
     var myRealRank = 0
-    for (var myRank=0; myRank <= this.rank; myRank++){
+    for (var myRank=0; myRank <= this.rank-1; myRank++){
        if (this.shape[myRank] != 1){myRealRank += 1}
-       console.log(myRank', '+this.shape[myRank]+', '+myRealRank)
+       //console.log(myRank+', '+this.shape[myRank]+', '+myRealRank)
     }
     
            
@@ -33,10 +34,12 @@ class myTensor extends dl.Tensor {
           var my3dEnd = parseInt(this.shape[0]) * parseInt(this.shape[1]) * parseInt(this.shape[2])
           var my4dEnd = parseInt(this.shape[0]) * parseInt(this.shape[1]) * parseInt(this.shape[2])* parseInt(this.shape[3])
 
-          console.log(myRowEnd+', '+myChartEnd+', '+my3dEnd+', '+my4dEnd)
+          // console.log(myRowEnd+', '+myChartEnd+', '+my3dEnd+', '+my4dEnd)
 
-          if (this.rank==1){
-              console.log('Rank 1')
+          if (myRealRank==1){
+             if (myConsoleBoolean){
+                console.log('Rank = 1')
+              }  
               myCount = 0;
               var myTemp = '<table border=1>\n<tr>'
               for (var myLoop=0; myLoop <= this.size-1; myLoop++){
@@ -50,15 +53,19 @@ class myTensor extends dl.Tensor {
                      myTemp += '</tr>\n</table>'
                   }                         
                }
-              console.log(myTemp)
+              if (myConsoleBoolean ){
+                 console.log(myTemp)
+              }
               document.getElementById(myDiv).innerHTML += myTemp + '<br>'
             }
            
 
 
 
-          if (this.rank==2){
-              console.log('Rank 2')
+          if (myRealRank==2){
+             if (myConsoleBoolean){
+                console.log('Rank = 2')
+              }  
               myCount = 0;
 
               var myTemp = '<table border=1>\n<tr>'
@@ -77,15 +84,19 @@ class myTensor extends dl.Tensor {
                      } 
                   }              
                }
-              console.log(myTemp)
+              if (myConsoleBoolean ){
+                 console.log(myTemp)
+              }
               document.getElementById(myDiv).innerHTML += myTemp + '<br>'
             }
            
 
 
 
-          if (this.rank==3){
-              console.log('Rank 3')
+          if (myRealRank==3){
+             if (myConsoleBoolean){
+                console.log('Rank = 3')
+              }  
               myCount = 0;
 
               var myTemp = '<table border=1>\n<tr><td>\n<table border=1 width="100%">\n<tr>'
@@ -108,7 +119,9 @@ class myTensor extends dl.Tensor {
                     } 
                  }             
                }
-              console.log(myTemp)
+              if (myConsoleBoolean ){
+                 console.log(myTemp)
+              }
               document.getElementById(myDiv).innerHTML += myTemp + '<br>'
             }
              
@@ -118,8 +131,10 @@ class myTensor extends dl.Tensor {
 
 
 
-          if (this.rank==4){
-              console.log('Rank 4')
+          if (myRealRank==4){
+             if (myConsoleBoolean){
+                console.log('Rank = 4')
+              }  
               myCount = 0;
 
               var myTemp = '<table border=1>\n<tr><td>\n<table border=1 width="100%">\n<tr>'
@@ -152,7 +167,9 @@ class myTensor extends dl.Tensor {
                     } 
                  }             
                }
-              console.log(myTemp)
+              if (myConsoleBoolean ){
+                 console.log(myTemp)
+              }
               document.getElementById(myDiv).innerHTML += myTemp + '<br>'
             }
              
@@ -160,11 +177,13 @@ class myTensor extends dl.Tensor {
 
   
 
-          if (this.rank > 4){
-              console.log('Rank > 4')
+          if (myRealRank > 4){
+             if (myConsoleBoolean){
+                console.log('Rank > 4')
+              }             
               myCount = 0;
               var myStartEachLoop = 0
-          for (var myBig=0; myBig <= this.rank-3; myBig++){
+          for (var myBig=0; myBig <= myRealRank-1; myBig++){
              myStartEachLoop = myBig * my4dEnd 
 
               var myTemp = '<table border=1>\n<tr><td>\n<table border=1 width="100%">\n<tr>'
@@ -198,7 +217,9 @@ class myTensor extends dl.Tensor {
                     } 
                  }             
                }
-              console.log(myTemp)
+              if (myConsoleBoolean ){
+                 console.log(myTemp)
+              }
               document.getElementById(myDiv).innerHTML += myTemp + '<br>'
             }
              
@@ -220,6 +241,10 @@ class myTensor extends dl.Tensor {
             } 
             myTemp += '</textarea>'
             document.getElementById(myDiv).innerHTML += myTemp + '<br>'
+            if (myConsoleBoolean ){
+                 console.log(myTemp)
+            }
+
        }    // end myTableBoolean else
     }       // end htmlPrint
 }           // end myTensor class
@@ -229,36 +254,37 @@ class myTensor extends dl.Tensor {
 Fixed decimal places: <input id="myText01" type=text size=2 value=-1 placeholder="-1"> Enter less than 0 to ignore<br>
 <input type="button" value="tensor.htmlPrint()" onclick="{
    const myWeights  = new myTensor([2,6,6],'float32',[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72]);
-   myWeights.print()
+   //myWeights.print()
 
-   myWeights.htmlPrint('myDiv01',  'Weights [2,6,6]', true, -1)
+   myWeights.htmlPrint('myDiv01',  'Weights [2,6,6]', true, -1, false)
 }"><br>
 
 
 
-<div id="myDiv01"></div><br>
+<div id="myDiv01"></div><br><br><br><br>
 
-
+[<input id="myArg" type=text value="2,2" placeholder="6,4,3,1" >]
+[<input id="myFlat" type=text value="1,2,3,4" placeholder="1,2,3,4" >]
 Fixed decimal places: <input id="myText01" type=text size=2 value=-1 placeholder="-1"> Enter less than 0 to ignore<br>
 <input type="button" value="tensor.htmlPrint()" onclick="{
 
-   var my1 = [2,6,6]
+   my1 = document.getElementById('myArg').value.split(',')
    my2 = 'float32'
-   my3 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72]
+    my3 = document.getElementById('myFlat').value.split(',')
    my4 = 'myDiv02'
-   my5 = 'Weights [2,6,6]'
+   my5 = 'Weights [6,4,3,1]'
    my6 = true
    my7 = -1
+   my8 = false
 
 
-   const myWeights  = new myTensor(my1,my2,my3);
-   myWeights.print()
+   const myWeights  = new myTensor(my1, my2, my3);
+   //myWeights.print()
 
-   myWeights.htmlPrint(my4, my5 , my6, my7)
+   myWeights.htmlPrint(my4, my5 , my6, my7, my8)
 }"><br>
 
 
 
 
 <div id="myDiv02"></div><br>
-
