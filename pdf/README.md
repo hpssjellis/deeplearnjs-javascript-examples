@@ -1,7 +1,26 @@
 Links to downloadable PDF's about machine learning
 
+Not PDF's but actual webistes:
+
+https://medium.mybridge.co/learn-to-build-a-machine-learning-application-from-top-articles-of-2017-cdd5638453fc
+
+Interesting site
+
+https://www.kdnuggets.com/2017/10/top-10-machine-learning-algorithms-beginners.html
+
+The study of ML algorithms has gained immense traction post the Harvard Business Review article terming a ‘Data Scientist’ as the ‘Sexiest job of the 21st century’. So, for those starting out in the field of ML, we decided to do a reboot of our immensely popular Gold blog The 10 Algorithms Machine Learning Engineers need to know - albeit this post is targetted towards beginners.
+
+
+
+https://www.analyticsvidhya.com/blog/2017/09/common-machine-learning-algorithms/
+
+Good basics about the different algorithms
+
+
+
 
 These ones seem interesting
+
 
 
 
