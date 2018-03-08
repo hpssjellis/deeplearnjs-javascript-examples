@@ -45,9 +45,9 @@ class myTensor extends dl.Tensor {
               for (var myLoop=0; myLoop <= this.size-1; myLoop++){
                   myCount += 1
                   if (myFixedDecimal >=0){
-                     myTemp +=  '<td title='+myLoop+'>'+myOutput[myLoop].toFixed(myFixedDecimal) +'</td>'
+                     myTemp +=  '<td title='+this.indexToLoc(myLoop)+'>'+myOutput[myLoop].toFixed(myFixedDecimal) +'</td>'
                   } else {
-                     myTemp +=  '<td title='+myLoop+'>'+myOutput[myLoop] +'</td>'
+                     myTemp +=  '<td title='+this.indexToLoc(myLoop)+'>'+myOutput[myLoop] +'</td>'
                   }  
                   if (myCount == my1dEnd){
                      myTemp += '</tr>\n</table>'
@@ -72,9 +72,9 @@ class myTensor extends dl.Tensor {
               for (var myLoop=0; myLoop <= this.size-1; myLoop++){
                   myCount +=1
                   if (myFixedDecimal >=0){
-                     myTemp +=  '<td title='+myLoop+'>'+myOutput[myLoop].toFixed(myFixedDecimal) +'</td>'
+                     myTemp +=  '<td title='+this.indexToLoc(myLoop)+'>'+myOutput[myLoop].toFixed(myFixedDecimal) +'</td>'
                   } else {
-                     myTemp +=  '<td title='+myLoop+'>'+myOutput[myLoop] +'</td>'
+                     myTemp +=  '<td title='+this.indexToLoc(myLoop)+'>'+myOutput[myLoop] +'</td>'
                   } 
                   if(myCount % myRowEnd == 0){
                      if (myCount == myChartEnd){
@@ -103,9 +103,9 @@ class myTensor extends dl.Tensor {
               for (var myLoop=0; myLoop <= this.size-1; myLoop++){
                   myCount +=1
                   if (myFixedDecimal >=0){
-                     myTemp +=  '<td>'+myOutput[myLoop].toFixed(myFixedDecimal) +'</td>'
+                     myTemp +=  '<td title='+this.indexToLoc(myLoop)+'>'+myOutput[myLoop].toFixed(myFixedDecimal) +'</td>'
                   } else {
-                     myTemp +=  '<td>'+myOutput[myLoop] +'</td>'
+                     myTemp +=  '<td title='+this.indexToLoc(myLoop)+'>'+myOutput[myLoop] +'</td>'
                   } 
                 if (myCount % my3dEnd==0){
                      myTemp += '</tr>\n</table>\n</td></tr>\n</table>\n'
@@ -141,12 +141,10 @@ class myTensor extends dl.Tensor {
               for (var myLoop=0; myLoop <= this.size-1; myLoop++){
                   myCount +=1
                   if (myFixedDecimal >=0){
-                     myTemp +=  '<td>'+myOutput[myLoop].toFixed(myFixedDecimal) +'</td>'
+                     myTemp +=  '<td title='+this.indexToLoc(myLoop)+'>'+myOutput[myLoop].toFixed(myFixedDecimal) +'</td>'
                   } else {
-                     myTemp +=  '<td>'+myOutput[myLoop] +'</td>'
+                     myTemp +=  '<td title='+this.indexToLoc(myLoop)+'>'+myOutput[myLoop] +'</td>'
                   } 
- 
-               
                 if (myCount == my4dEnd){
                      myTemp += '</tr>\n</table>\n</td></tr>\n</table>\n'
                 } else {
@@ -191,12 +189,10 @@ class myTensor extends dl.Tensor {
 
                   myCount +=1
                   if (myFixedDecimal >=0){
-                     myTemp +=  '<td>'+myOutput[myLoop].toFixed(myFixedDecimal) +'</td>'
+                     myTemp +=  '<td title='+this.indexToLoc(myLoop)+'>'+myOutput[myLoop].toFixed(myFixedDecimal) +'</td>'
                   } else {
-                     myTemp +=  '<td>'+myOutput[myLoop] +'</td>'
+                     myTemp +=  '<td title='+this.indexToLoc(myLoop)+'>'+myOutput[myLoop] +'</td>'
                   } 
- 
-               
                 if (myCount % my4dEnd==0){
                      myTemp += '</tr>\n</table>\n</td></tr>\n</table>\n'
                 } else {
@@ -268,7 +264,7 @@ Passing the variables: TheDiv, TheTitle, Table or Flattened, Fixed Decimals, Pri
    //myWeights.print()
 
    myWeights.htmlPrint('myDiv01',  'Weights [2,6,3,2]', true, 3, false)
-}"><br>
+}"><br><br>
 
 
 
@@ -278,16 +274,16 @@ Passing the variables: TheDiv, TheTitle, Table or Flattened, Fixed Decimals, Pri
 <h3>Setup a Dynamic Tensor </h3>
 
 
-const myWeights  = new myTensor([<input id="myArg" type=text value="2,3,2,2" placeholder="2,3,2,2" >],
-<select id="myType" size=1><option value='float32'>float32<option value='int32'>int32<option value=bool>bool</select>,
-[<input id="myFlat" type=text value="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24" size=90 placeholder="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24" >])<br><br> 
+const myWeights  = new myTensor([<input id="myArg" Title="Define Matrix Shape"   type=text value="2,3,2,2" placeholder="2,3,2,2" >],
+<select id="myType" Title="Define Matrix Type" size=1><option value='float32'>float32<option value='int32'>int32<option value=bool>bool</select>,
+[<input id="myFlat" Title="Define Matrix Values" type=text value="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24" size=90 placeholder="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24" >])<br><br> 
 
 Then HTML Print Tensor<br> 
 
-myWeights.htmlPrint('myDiv02',<input id="myTitle2" type=text value="myWeights[2,3,2,2]" placeholder="myWeights[2,3,2,2]" >
-<select id="mySel" size=1><option value=true>true<option value=false>false</select>, 
-<select id="myDec" size=1><option value=-1>-1<option value=0>0<option value=1>1<option value=2>2<option value=3>3<option value=4>4<option value=5>5<option value=6>6<option value=7>7<option value=8>8<option value=9>9</select>,
-<select id="myShow" size=1><option value=false>false<option value=true>true</select> )<br><br> 
+myWeights.htmlPrint(<span title="The Div the information gets sent to">'myDiv02'</span>,<input id="myTitle2" Title="Define the Matrix Title" type=text value="myWeights[2,3,2,2]" placeholder="myWeights[2,3,2,2]" >
+<select id="mySel" Title="Print as a table or flattened in a textarea" size=1><option value=true>true<option value=false>false</select>, 
+<select id="myDec" Title="-1 for no effect, else Fixed Decimal Places" size=1><option value=-1>-1<option value=0>0<option value=1>1<option value=2>2<option value=3>3<option value=4>4<option value=5>5<option value=6>6<option value=7>7<option value=8>8<option value=9>9</select>,
+<select id="myShow" Title="Show HTML code in console" size=1><option value=false>false<option value=true>true</select> )<br><br> 
 
 
 <input type="button" value="Dynamic tensor.htmlPrint()" onclick="{
@@ -307,7 +303,7 @@ myWeights.htmlPrint('myDiv02',<input id="myTitle2" type=text value="myWeights[2,
    myWeights.htmlPrint(my4, my5, my6, my7, my8)
 
 
-}"><br>
+}"><br><br>
 
 
 
