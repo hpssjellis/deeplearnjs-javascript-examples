@@ -278,13 +278,13 @@ Passing the variables: TheDiv, TheTitle, Table or Flattened, Fixed Decimals, Pri
 <h3>Setup a Dynamic Tensor </h3>
 
 
-const myWeights  = new myTensor([<input id="myArg" type=text value="2,2" placeholder="2,2" >],
+const myWeights  = new myTensor([<input id="myArg" type=text value="2,3,2,2" placeholder="2,3,2,2" >],
 <select id="myType" size=1><option value='float32'>float32<option value='int32'>int32<option value=bool>bool</select>,
-[<input id="myFlat" type=text value="1,2,3,4" placeholder="1,2,3,4" >])<br><br> 
+[<input id="myFlat" type=text value="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24" size=90 placeholder="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24" >])<br><br> 
 
 Then HTML Print Tensor<br> 
 
-myWeights.htmlPrint('myDiv02',<input id="myTitle2" type=text value="myWeights[2,2]" placeholder="myWeights[2,2]" >
+myWeights.htmlPrint('myDiv02',<input id="myTitle2" type=text value="myWeights[2,3,2,2]" placeholder="myWeights[2,3,2,2]" >
 <select id="mySel" size=1><option value=true>true<option value=false>false</select>, 
 <select id="myDec" size=1><option value=-1>-1<option value=0>0<option value=1>1<option value=2>2<option value=3>3<option value=4>4<option value=5>5<option value=6>6<option value=7>7<option value=8>8<option value=9>9</select>,
 <select id="myShow" size=1><option value=false>false<option value=true>true</select> )<br><br> 
@@ -313,3 +313,7 @@ myWeights.htmlPrint('myDiv02',<input id="myTitle2" type=text value="myWeights[2,
 
 
 <div id="myDiv02"></div><br>
+
+
+
+
