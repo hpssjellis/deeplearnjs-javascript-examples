@@ -12,9 +12,16 @@ class myTensor extends dl.Tensor {
 </script>
 
 <input type="button" value="Extend Tensor Class" onclick="{   
-   const myWeights  = new myTensor(dl.tensor([1, 2.97, 3, 4], [2, 2]));
-   myWeights.myMethod()
+   const myExtended  = new myTensor(dl.tensor([1, 2.97, 3, 4], [2, 2]));
+   myExtended.myMethod()
 }"><br>
+
+
+<input type="button" value="Normal" onclick="{   
+   const myNormal  = new dl.tensor([1, 2.97, 3, 4], [2, 2])
+   myNormal.print()
+}"><br>
+
 
 When I extend a tensor class, can I use<br><br>
 
