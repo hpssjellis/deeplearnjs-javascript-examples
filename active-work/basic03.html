@@ -2,7 +2,10 @@
 
 <script>
         
-class myTensor extends dl.Tensor {
+class myTensor extends dl.ArrayOps {
+        constructor(){
+           
+       }
     async myMethod()  {
        const myOutput =  await this.data()
        alert(myOutput)
