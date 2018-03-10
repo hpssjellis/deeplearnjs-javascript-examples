@@ -9,11 +9,11 @@
  -->
 
 
-<!-- the newest version but all examples may not work 
+<!-- the newest version but all examples may not work -->
 <script src="https://unpkg.com/deeplearn"></script> 
 
 
-note: another method is also available
+<!-- note: another method is also available
 
 <script src="https://cdn.jsdelivr.net/npm/deeplearn"></script>
 
@@ -23,13 +23,20 @@ note: another method is also available
 -->
 
   
-<!-- the online version that these examples were made with  -->
+<!-- the online version that these examples were made with  
 
 <script src="https://unpkg.com/deeplearn@0.4.2/dist/deeplearn.js"></script>
-
+-->
 
 
 <!--   *******************************Stop: What source js file to use? ****************************************************   -->
+
+
+
+
+<body onload="{              
+   document.getElementById('myVerDiv').innerHTML = 'Active Deeplearnjs version = '+ dl.version
+}">
 
 
 
@@ -44,23 +51,34 @@ note: another method is also available
 The main github for these pages is at:
 <a href="https://github.com/hpssjellis/deeplearnjs-javascript-examples"> https://github.com/hpssjellis/deeplearnjs-javascript-examples </a>
  
-<br><br>Following is the main list of examples: (Each example page should eventually end up with a corresponding video.)<br><br>
-  
+<br><br><h2 align=center> Following is the main table of examples:<br> 
 
-<li><a href="">  </a>
-  
-<li><a href="jj01-functions.html"> jj01-functions.html </a>
+<div style="color:green" id="myVerDiv">...</div></h2>
 
-<li><a href="jj02-basics.html">jj02-basics.html</a>
-  
-<li><a href="jj03-general.html"> jj03-general.html </a>
-<li><a href="jj04-quadratic.html"> jj04-quadratic.html </a>
-<li><a href="jj05-matrix-math.html"> jj05-matrix-math.html </a>
-<li><a href="jj06-squeezenet.html"> jj06-squeezenet.html </a>
-<li><a href="jj07-mnist.html"> jj07-mnist.html </a>
-<li><a href="">  </a>
-<li><a href="">  </a>
-    
+<table border=1>
+
+
+
+<tr><th >Web Page </th><th> Video </th><th> Deprecated at Version </th></tr>
+
+<tr><td><a href="jj01-functions.html"> jj01-functions.html </a></td><td><a href="https://www.youtube.com/watch?v=7Vnn7hNk120&index=1&list=PL57Dnr1H_egukaDgFqwEnDVStd7Jktg1E&t=1s"> video </a></td><td>0.6.0</td></tr>
+<tr><td><a href="jj02-basics.html">jj02-basics.html</a></td><td><a href="https://www.youtube.com/watch?v=4ThtkKarQp0&index=2&list=PL57Dnr1H_egukaDgFqwEnDVStd7Jktg1E"> video </a></td><td >0.6.0</td></tr>
+<tr><td><a href="jj03-general.html"> jj03-general.html </a></td><td><a href="https://www.youtube.com/watch?v=5akj3mKQX5A&index=3&list=PL57Dnr1H_egukaDgFqwEnDVStd7Jktg1E"> video </a></td><td>0.6.0</td></tr>
+<tr><td><a href="jj04-quadratic.html"> jj04-quadratic.html </a></td><td><a href="https://www.youtube.com/watch?v=-0lrWm5bXuc&list=PL57Dnr1H_egukaDgFqwEnDVStd7Jktg1E&index=4"> video </a></td><td>0.6.0</td></tr>
+<tr><td><a href="jj05-matrix-math.html"> jj05-matrix-math.html </a></td><td><a href="https://www.youtube.com/watch?v=MZomMmG5G0Q&list=PL57Dnr1H_egukaDgFqwEnDVStd7Jktg1E&index=5"> video </a></td><td>0.6.0</td></tr>
+<tr><td><a href="jj06-squeezenet.html"> jj06-squeezenet.html </a></td><td><a href="https://www.youtube.com/watch?v=DBF_sTTkDZw&list=PL57Dnr1H_egukaDgFqwEnDVStd7Jktg1E&index=6"> video </a></td><td style="color:red">0.3.13</td></tr>
+<tr><td><a href="jj07-mnist.html"> jj07-mnist.html </a></td><td><a href="https://www.youtube.com/watch?v=cUI6VozmVgQ&list=PL57Dnr1H_egukaDgFqwEnDVStd7Jktg1E&index=7"> video </a></td><td >0.6.0 </td></tr>
+<tr><th colspan=3 align=center>Deeplearnjs Version 0.5.0</th></tr>
+<tr><td><a href="jj08-htmlPrint.html">jj08-htmlPrint.html</a></td><td></td><td style="color:green">Active</td></tr>
+<tr><td></td><td></td><td>.</td></tr>
+<tr><td></td><td></td><td>.</td></tr>
+
+
+</table>
+
+
+
+
     
     
     
@@ -178,7 +196,7 @@ Use at your own risk!
 
 <script>
 function myTextGrow(myT, myB){
-   document.getElementById(myT).value = '\x3Cscript src="https://unpkg.com/deeplearn@0.4.2/dist/deeplearn.js"> \x3C/script> \n\n' + document.getElementById(myB).innerHTML 
+   document.getElementById(myT).value = '\x3Cscript src="https://unpkg.com/deeplearn"> \x3C/script> \n\n' + document.getElementById(myB).innerHTML 
         
    setTimeout(function() {
       while (  document.getElementById(myT).clientHeight < document.getElementById(myT).scrollHeight){                                                                                                                                              
@@ -189,3 +207,4 @@ function myTextGrow(myT, myB){
 </script>  
  
  
+</body>
