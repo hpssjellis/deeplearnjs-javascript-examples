@@ -1,4 +1,4 @@
-<script src="https://unpkg.com/deeplearn"> </script> 
+<script src="https://unpkg.com/deeplearn@0.5.1/dist/deeplearn.js"> </script> 
 
 <script>
         
@@ -19,11 +19,13 @@ class myTensor extends dl.Tensor {
 
 </script>
 
-Click button with console open. Alert presents data from the extended tensor<br>
+To extend the Tensor class while using the dl.tensor constructor, and to allow dl.print to work,
+ click the button with console open. Alert presents data from the extended tensor<br><br>
 
 <input type="button" value="Extended Tensor Class with dl.tensor constructor" onclick="{   
    const myExtended  = new myTensor([1, 2.97, 3, 4], [2, 2]);
    myExtended.myMethod()
    myExtended.print('verbose')
 }"><br>
+
 
