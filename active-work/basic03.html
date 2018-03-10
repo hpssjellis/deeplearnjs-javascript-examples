@@ -2,37 +2,27 @@
 
 <script>
         
-class myTensor extends dl.ArrayOps {
-        constructor(){
-           
-       }
-    async myMethod()  {
-       const myOutput =  await this.data()
-       alert(myOutput)
-    }  
-}      
-    
+class myTensor extends dl.Tensor {
+    constructor(a,b) {
+        const t = dl.tensor(a,b)
+   
+        t.myMethod = async function() {
+            const myOutput =  await this.data()
+            alert(myOutput)
+        }
+
+       // add more methods here
+
+       return t;
+      } // end constructor
+}       // end extended class
+
 </script>
 
-<input type="button" value="Extend Tensor Class" onclick="{   
-   const myExtended  = new myTensor(tensor([1, 2.97, 3, 4], [2, 2]));
+<input type="button" value="Extended Tensor Class with dl.tensor constructor" onclick="{   
+   const myExtended  = new myTensor([1, 2.97, 3, 4], [2, 2]);
    myExtended.myMethod()
+   myExtended.print('verbose')
 }"><br>
-
-
-<input type="button" value="Normal" onclick="{   
-   const myNormal  = new dl.tensor([1, 2.97, 3, 4], [2, 2])
-   myNormal.print()
-}"><br>
-
-
-When I extend a tensor class, can I use<br><br>
-
-dl.tensor([1, 2.97, 3, 4], [2, 2]) <br><br>
-
-to call my extended class. Looks like I have to use the original class format that 
-has the shape declared before the values.<br><br>
-
-new myTensor([2,2],'float32',[1, 2.97, 3, 4]);
 
 
