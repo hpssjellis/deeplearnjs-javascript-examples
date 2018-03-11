@@ -54,9 +54,9 @@ Open the console using ctrl-shift-i<br>
 
 <input type=button value=run onclick="{
                                       
-  document.getElementById('myDiv01').innerHTML = myNetwork.activate([0,0])+'<br>'
-  document.getElementById('myDiv01').innerHTML += myNetwork.activate([0,1])+'<br>'
-  document.getElementById('myDiv01').innerHTML += myNetwork.activate([1,0])+'<br>'
-  document.getElementById('myDiv01').innerHTML += myNetwork.activate([1,1])+'<br>'
+  document.getElementById('myDiv01').innerHTML = 'xOR [0,0]'+myNetwork.activate([0,0])+'<br>'
+  document.getElementById('myDiv01').innerHTML += 'xOR [0,1]'+myNetwork.activate([0,1])+'<br>'
+  document.getElementById('myDiv01').innerHTML += 'xOR [1,0]'+myNetwork.activate([1,0])+'<br>'
+  document.getElementById('myDiv01').innerHTML += 'xOR [1,1]'+myNetwork.activate([1,1])+'<br>'
 }">
 <div id="myDiv01">...</div>
