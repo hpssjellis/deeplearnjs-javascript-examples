@@ -51,13 +51,12 @@ console.log(myNetwork.activate([1,1])); // [0.012950087641929467]
 
 Open the console using ctrl-shift-i<br>
 
-Open the console using ctrl-shift-i<br>
 
 <input type=button value=run onclick="{
                                       
-  document.getElementBuid('myDiv01').innerHTML = myNetwork.activate([0,0])+'<br>'
-  document.getElementBuid('myDiv01').innerHTML += myNetwork.activate([0,1])+'<br>'
-  document.getElementBuid('myDiv01').innerHTML += myNetwork.activate([1,0])+'<br>'
-  document.getElementBuid('myDiv01').innerHTML += myNetwork.activate([1,1])+'<br>'
+  document.getElementById('myDiv01').innerHTML = myNetwork.activate([0,0])+'<br>'
+  document.getElementById('myDiv01').innerHTML += myNetwork.activate([0,1])+'<br>'
+  document.getElementById('myDiv01').innerHTML += myNetwork.activate([1,0])+'<br>'
+  document.getElementById('myDiv01').innerHTML += myNetwork.activate([1,1])+'<br>'
 }">
 <div "myDiv01">...</div>
