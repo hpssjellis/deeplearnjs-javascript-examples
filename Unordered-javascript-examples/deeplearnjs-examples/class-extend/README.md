@@ -5,7 +5,7 @@ Demos at
 
 
 
-myTensor
+myTensor.html
 
 https://hpssjellis.github.io/deeplearnjs-javascript-examples/Unordered-javascript-examples/deeplearnjs-examples/class-extend/myTensor.html
 
