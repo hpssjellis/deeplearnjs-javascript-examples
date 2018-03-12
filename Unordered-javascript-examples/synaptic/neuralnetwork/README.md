@@ -36,3 +36,4 @@ more:
 https://stackoverflow.com/questions/22492274/neural-network-in-javascript-not-learning-properly
 
 
+https://stevenmiller888.github.io/mind-how-to-build-a-neural-network/
