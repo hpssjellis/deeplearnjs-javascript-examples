@@ -3,7 +3,7 @@ my xor.html demo at
 
 https://hpssjellis.github.io/deeplearnjs-javascript-examples/Unordered-javascript-examples/synaptic/neuralnetwork/xor01.html
 
-both need the console open I use ctrl-shift-i
+
 
 
 
