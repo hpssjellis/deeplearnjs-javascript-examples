@@ -28,3 +28,11 @@ https://medium.freecodecamp.org/how-to-create-a-neural-network-in-javascript-in-
 
 
 https://medium.com/@karpathy/software-2-0-a64152b37c35
+
+
+
+more:
+
+https://stackoverflow.com/questions/22492274/neural-network-in-javascript-not-learning-properly
+
+
