@@ -4,19 +4,15 @@
 const EPSILON = dl.scalar(1e-7);
 const HIDDEN_UNITS = 10;
 const one = dl.scalar(1);
-
 const input = [[0, 0], [0, 1], [1, 0], [1, 1]];
 const target = [[0], [1], [1], [0]];
 const inputTensor = dl.tensor2d(input, [4, 2]);
-
 const targetTensor = dl.tensor2d(target, [4, 1]);
 const fullyConnectedWeights1 = dl.variable(initializeWeights([2, HIDDEN_UNITS], 2));
 const fullyConnectedBias1 = dl.variable(dl.scalar(0));
-
 const fullyConnectedWeights2 = dl.variable(initializeWeights([HIDDEN_UNITS, 1], HIDDEN_UNITS));
 const fullyConnectedBias2 = dl.variable(dl.scalar(0));
 const optimizer = new dl.SGDOptimizer(0.1);
-
 
 const getRandomIntegerInRange = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -52,27 +48,19 @@ async function train(iterations) {
             return calculateCost(targetTensor, model(inputTensor));
         }, returnCost);
         if (i % 100 === 0) {
-           // console.log(`loss[${i}]: ${cost.getValues()}`);
           document.getElementById('myDiv01').innerHTML += 'Loss['+i+']: '+ cost.getValues()+'<br>'
-
-
         }
         await dl.nextFrame();
     }
     return cost.dataSync();
 }
 
-
-
-
 learnXOR = async () => {
     const iterations = getRandomIntegerInRange(800, 1000);
     const timeStart = performance.now();
     const result = [];
     const loss = await train(iterations);
-    /**
-     * Test the model
-     */
+    //Test the model
     for (let i = 0; i < 4; i += 1) {
         const inputData = dl.tensor2d([input[i]], [1, 2]);
         const expectedOutput = dl.tensor1d(target[i]);
@@ -86,13 +74,10 @@ learnXOR = async () => {
     const timeEnd = performance.now();
     const time = timeEnd - timeStart;
 
-   console.log(' ')
+    console.log(iterations);console.log(loss[0]);console.log(time);console.log(result)
 
-   console.log(iterations)
-   console.log(loss[0])
-   console.log(time)
-   console.log(result)
 
+    document.getElementById('myDiv02').innerHTML += 'Loss['+iterations+']: '+ loss[0]+'<br>'
     document.getElementById('myDiv02').innerHTML += 'Duration : '+time+' milliseconds</br><br>'
     document.getElementById('myDiv02').innerHTML += 'Duration : '+Math.floor(time/1000)+' seconds</br><br>'
 
@@ -100,30 +85,13 @@ learnXOR = async () => {
     document.getElementById('myDiv02').innerHTML += 'Expecting 1 for xOR [0,1] = '+result[1].output+'<br>'
     document.getElementById('myDiv02').innerHTML += 'Expecting 1 for xOR [1,0] = '+result[2].output+'<br>'
     document.getElementById('myDiv02').innerHTML += 'Expecting 0 for xOR [1,1] = '+result[3].output+'<br>'
-
-
-
-
     return { iterations, loss: loss[0], time, result };
-
-
 };
 </script>
 
-
-
-
-<input type=button value=run onclick="{
- 
-myOut = learnXOR()
-
-
-
-
-
+<input type=button value=run onclick="{ 
+   myOut = learnXOR()
 }">
-
-
 
 <div id="myDiv01">Loss<br></div>
 
