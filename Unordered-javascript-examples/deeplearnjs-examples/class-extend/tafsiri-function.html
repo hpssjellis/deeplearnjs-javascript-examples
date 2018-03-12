@@ -2,8 +2,7 @@
 
 <script>
         
-funciton myTensor  {
-    constructor(a,b) {
+funciton myTensor(a,b)  {
         const t = dl.tensor(a,b)
    
         t.myMethod = async function() {
@@ -12,9 +11,7 @@ funciton myTensor  {
         }
 
        // add more methods here
-
        return t;
-      } // end constructor
 }       // end extended class
 
 </script>
