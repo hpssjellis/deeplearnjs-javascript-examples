@@ -49,7 +49,7 @@ function model(xs){
 }
 
 // Train the model.
-export async function train(iterations: number) {
+async function train(iterations: number) {
   const returnCost = true;
   let cost;
 
@@ -68,7 +68,7 @@ export async function train(iterations: number) {
   return cost.dataSync();
 }
 
-export const learnXOR = async () => {
+const learnXOR = async () => {
   const iterations = getRandomIntegerInRange(800, 1000);
   const timeStart = performance.now();
   const result = [];
