@@ -28,3 +28,9 @@ Neural network graphs explained as activation functions
 
 https://www.wikiwand.com/en/Activation_function
 
+
+
+review at
+
+https://www.linkedin.com/pulse/machine-learning-javascript-rahulkumar-gaddam
+
