@@ -16,7 +16,8 @@ const fullyConnectedBias1 = dl.variable(dl.scalar(0));
 const fullyConnectedWeights2 = dl.variable(initializeWeights([HIDDEN_UNITS, 1], HIDDEN_UNITS));
 const fullyConnectedBias2 = dl.variable(dl.scalar(0));
 
-const optimizer = new dl.SGDOptimizer(0.1);
+const optimizer = dl.train.sgd(0.1);
+
 
 function initializeWeights(shape, prevLayerSize) {
     return dl.randomNormal(shape).mul(dl.scalar(Math.sqrt(2.0 / prevLayerSize)));
