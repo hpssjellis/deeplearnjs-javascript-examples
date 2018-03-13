@@ -18,17 +18,13 @@ const fullyConnectedBias2 = dl.variable(dl.scalar(0));
 
 const optimizer = new dl.SGDOptimizer(0.1);
 
-
-
 function initializeWeights(shape, prevLayerSize) {
     return dl.randomNormal(shape).mul(dl.scalar(Math.sqrt(2.0 / prevLayerSize)));
 }
 
-
 function calculateCost(y, output) {
     return dl.add(y.mul(output.add(EPSILON).log()), one.sub(y).mul(one.sub(output).add(EPSILON).log())).sum().neg();
 }
-
 
 function model(xs) {
     const hiddenLayer = dl.tidy( function ()  {
@@ -36,10 +32,6 @@ function model(xs) {
     });
     return hiddenLayer.matMul(fullyConnectedWeights2).add(fullyConnectedBias2).sigmoid();
 }
-
-
-
-// Train the model.
 
 async function train(iterations) {
     const returnCost = true;
@@ -56,15 +48,11 @@ async function train(iterations) {
     return cost.dataSync();
 }
 
-
-
-
 async function learnXor() {
     const timeStart = performance.now();
     const iterations = Math.floor(Math.random()*200+400); // a random number between 400 and 600
     document.getElementById('myDiv01').innerHTML += '<br>Total Training Iterations: '+iterations+'<br><br>'
 
-    const result = [];
     const loss = await train(iterations);
     const time = performance.now() - timeStart;
 
@@ -93,7 +81,6 @@ Click the button to train the network. Pull down the select box to test<br>
 
 }">
 
-
 <div id="myDiv01">Loss<br></div>
 
 <hr>
@@ -106,7 +93,6 @@ Click the button to train the network. Pull down the select box to test<br>
 <option value=2>Expecting ~1 for xOR [0,1] </option>
 <option value=3>Expecting ~0 for xOR [1,1] </option>
 </select>
-
 
 <div id="myDiv02"><br>Results<br></div>
 
