@@ -10,3 +10,16 @@ https://hpssjellis.github.io/deeplearnjs-javascript-examples/Unordered-javascrip
 
 
 
+Interesting links
+
+
+https://github.com/alfonsogoberjr/knearest
+
+
+http://burakkanber.com/blog/machine-learning-in-js-k-nearest-neighbor-part-1/
+
+
+
+https://hackernoon.com/machine-learning-with-javascript-part-2-da994c17d483
+
+
