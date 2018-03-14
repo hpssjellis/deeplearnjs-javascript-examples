@@ -1,5 +1,5 @@
 <script src="https://unpkg.com/deeplearn@0.5.1/dist/deeplearn.js"> </script> 
-Version 1 <br>
+Version 2 <br>
 
 Given [1.0, 2.0, 5.0, 7.0] <br> and [3.5] <br>
 <input id="myButton01" type="button" value="Mean Square Difference" onclick="{
@@ -28,13 +28,19 @@ Given [1.0, 2.0, 5.0, 7.0] <br> and [3.5] <br>
   (async function (){
      const myData = dl.tensor1d([1.0, 2.0, 5.0, 7.0]);
      const myLabels = dl.tensor1d([ 0, 0, 1, 1 ]);
+     const mySqrt = dl.tensor1d([0.5, 0.5, 0.5, 0.5]);                                                                             
      const myUnknown = dl.tensor1d([3.5]);
     
       const myDiff = dl.sub(myData, myUnknown);   
       const mySquaredDiff = dl.mul(myDiff, myDiff);
+      const myKNN = mySquaredDiff.pow(mySqrt)                                                                             
+                                                                                   
+                                                                                   
+                                                                                   
      // const mySum = dl.sum(mySquaredDiff) 
      // const myKnn = Math.sqrt(await mySum.data())
      // document.getElementById('myDiv02').innerHTML +=  'The average = ' +  myKnn.toFixed(3)
+                                                                                   
      
      
       document.getElementById('myDiv02').innerHTML +=  'The KNN tensor is ' + await mySquaredDiff.data()
