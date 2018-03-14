@@ -13,7 +13,7 @@ From <a href="https://deeplearnjs.org/docs/tutorials/intro.html">https://deeplea
    const diff = dl.sub(myData, myUnknown);   
    const squaredDiff = dl.mul(diff, diff);
    const sum = dl.sum(squaredDiff); 
-   const size = dl.scalar(a.size); 
+   const size = dl.scalar(myData.size); 
    const average = dl.div(sum, size); 
     
   // Non-blocking math calls.
