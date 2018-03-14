@@ -10,10 +10,10 @@ math.scope((keep) => {
   const myLabels = dl.tensor1D([4], [0,0,1,1]);
   const myUnknown = dl.tensor1D([1], [7.0]);
     
-   const diff = dl.sub(a, b);   
+   const diff = dl.sub(myData, myUnknown);   
    const squaredDiff = dl.mul(diff, diff);
    const sum = dl.sum(squaredDiff); 
-   const size = dl.Scalar.new(a.size); 
+   const size = dl.scalar(a.size); 
    const average = dl.div(sum, size); 
     
   // Non-blocking math calls.
