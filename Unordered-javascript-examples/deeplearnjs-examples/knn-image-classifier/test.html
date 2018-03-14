@@ -36,7 +36,7 @@ Unknown Label: Use KNN to classify this image<br>
     knn.addImage(dog1Pixels, 1);
     resultElement.innerText = 'Predicting...';
     const prediction = await knn.predictClass(dog2Pixels);
-    resultElement.innerText = 'Predicted to be class '+(prediction.classIndex+1) + '('+myTypes[prediction.classIndex]+')'
+    resultElement.innerText = 'Predicted to be class '+(prediction.classIndex+1) + ' ('+myTypes[prediction.classIndex]+')'
     
   };
 </script>
