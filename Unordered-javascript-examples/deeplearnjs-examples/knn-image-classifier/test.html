@@ -1,18 +1,21 @@
 <script src="https://unpkg.com/deeplearn@0.5.1/dist/deeplearn.js"></script>
 <script src="https://unpkg.com/deeplearn-knn-image-classifier"></script>
 
-
-<h2>Training images</h2>
-Label Class 1:<br>
+<h2 align=center>K Nearest Neighbor (KNN) Image Classifier</h2>
+<h3>Training images</h3>
+Label Class 1: (Cat)<br>
 <img id="cat" src="images/cat.jpg"></img><br>
-Label Class 2:<br>
+Label Class 2: (Dog)<br>
 <img id="dog1" src="images/dog1.jpg"></img><br>
-<h2>Input image</h2>
+<h3>Input image</h3>
 Unknown Label: Use KNN to classify this image<br>
 <img id="dog2"  src="images/dog2.jpg"></img>
 <div id="result"></div>
 
 <script>
+  const myTypes = new Array()
+  myTypes[0] = 'Cat'
+  myTypes[1] = 'Dog'
   const cat = document.getElementById('cat');
   const dog1 = document.getElementById('dog1');
   const dog2 = document.getElementById('dog2');
@@ -33,6 +36,7 @@ Unknown Label: Use KNN to classify this image<br>
     knn.addImage(dog1Pixels, 1);
     resultElement.innerText = 'Predicting...';
     const prediction = await knn.predictClass(dog2Pixels);
-    resultElement.innerText = 'Predicted to be class '+(prediction.classIndex+1);
+    resultElement.innerText = 'Predicted to be class '+(prediction.classIndex+1) + '('+myTypes[prediction.classIndex]+')'
+    
   };
 </script>
