@@ -32,10 +32,10 @@
       const myDiff = dl.sub(myData, myUnknown);   
       const mySquaredDiff = dl.mul(myDiff, myDiff);
       const mySum = dl.sum(mySquaredDiff) 
-      const mySize = dl.scalar(myData.size) 
-      const myAverage = dl.div(mySum, mySize)
-   
-      document.getElementById('myDiv02').innerHTML =  'The average = ' + await myAverage.data()
+      //const mySize = dl.scalar(myData.size) 
+      //const myAverage = dl.div(mySum, mySize)
+      const myKnn = await Math.sqrt(mySum)
+      document.getElementById('myDiv02').innerHTML =  'The average = ' + myKnn.data()
    })()
                                                         
 }">
