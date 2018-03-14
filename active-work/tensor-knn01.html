@@ -1,0 +1,38 @@
+<script src="https://unpkg.com/deeplearn@0.4.2/dist/deeplearn.js"> </script> 
+
+
+From <a href="https://deeplearnjs.org/docs/tutorials/intro.html">https://deeplearnjs.org/docs/tutorials/intro.html</a><br>
+<input id="myButton04" type="button" value="Mean Square Difference" onclick="{
+
+                                                          
+math.scope((keep) => {
+  const myData = dl.tensor1D([4], [1.0, 2.0, 5.0, 7.0]);
+  const myLabels = dl.tensor1D([4], [0,0,1,1]);
+  const myUnknown = dl.tensor1D([1], [7.0]);
+    
+   const diff = dl.sub(a, b);   
+   const squaredDiff = dl.mul(diff, diff);
+   const sum = dl.sum(squaredDiff); 
+   const size = dl.Scalar.new(a.size); 
+   const average = dl.div(sum, size); 
+    
+  // Non-blocking math calls.
+  //const diff = math.sub(a, b);
+  //const squaredDiff = math.elementWiseMul(diff, diff);
+  //const sum = math.sum(squaredDiff);
+  //const size = dl.Scalar.new(a.size);
+  //const average = math.divide(sum, size);
+                                                                           
+  // Blocking call to actually read the values from average. Waits until the
+  // GPU has finished executing the operations before returning values.
+  // average is a Scalar so we use .get()
+  
+  
+  
+  document.getElementById('myDiv04').innerHTML =  'The average = ' + average.data()
+});                                                          
+}">
+
+
+
+<div id="myDiv04">...</div><br>
