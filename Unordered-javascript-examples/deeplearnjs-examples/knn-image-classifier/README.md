@@ -12,3 +12,10 @@ From deeplearnjs models knn-image-classifier
 https://github.com/PAIR-code/deeplearnjs/tree/master/models/knn_image_classifier
 
 
+
+
+Issues topic #841
+
+https://github.com/PAIR-code/deeplearnjs/issues/841
+
+
