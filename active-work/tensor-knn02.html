@@ -5,7 +5,7 @@
 From <a href="https://deeplearnjs.org/docs/tutorials/intro.html">https://deeplearnjs.org/docs/tutorials/intro.html</a><br>
 <input id="myButton04" type="button" value="Mean Square Difference" onclick="{
                                                           
-math.scope((keep) => {
+
   const myData = dl.tensor2D([2, 2], [1.0, 2.0, 3.0, 4.0]);
   const myLabels = dl.tensor1D([4], [0,0,1,1]);
   const myUnknown = dl.tensor2D([2, 2], [0.0, 2.0, 4.0, 6.0]);
@@ -30,7 +30,7 @@ math.scope((keep) => {
   
   
   document.getElementById('myDiv04').innerHTML =  'The average = ' + average.data()
-});                                                          
+                                                        
 }">
 
 
