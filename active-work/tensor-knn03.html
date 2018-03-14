@@ -8,9 +8,9 @@
  // const myUnknown = dl.tensor1D([1], [7.0]);
                                                           
   (async function (){
-     const myData = dl.tensor2d([1.0, 2.0, 3.0, 4.0], [2, 2]);
+     const myData = dl.tensor1d([1.0, 2.0, 5.0, 7.0]);
      const myLabels = dl.tensor1d([ 0, 0, 1, 1 ]);
-     const myUnknown = dl.tensor2d([0.0, 2.0, 4.0, 6.0], [2, 2]);
+     const myUnknown = dl.tensor1d([3.5]);
     
       const myDiff = dl.sub(myData, myUnknown);   
       const mySquaredDiff = dl.mul(myDiff, myDiff);
