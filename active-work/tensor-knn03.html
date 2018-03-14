@@ -1,11 +1,7 @@
                                                                              
 <script src="https://unpkg.com/deeplearn@0.5.1/dist/deeplearn.js"> </script> 
 
-<input id="myButton04" type="button" value="Mean Square Difference" onclick="{
-
- // const myData = dl.tensor1D([4], [1.0, 2.0, 5.0, 7.0]);
-
- // const myUnknown = dl.tensor1D([1], [7.0]);
+<input id="myButton01" type="button" value="Mean Square Difference" onclick="{
                                                           
   (async function (){
      const myData = dl.tensor1d([1.0, 2.0, 5.0, 7.0]);
@@ -18,11 +14,32 @@
       const mySize = dl.scalar(myData.size) 
       const myAverage = dl.div(mySum, mySize)
    
-      document.getElementById('myDiv04').innerHTML =  'The average = ' + await myAverage.data()
+      document.getElementById('myDiv01').innerHTML =  'The average = ' + await myAverage.data()
+   })()
+                                                        
+}">
+
+<div id="myDiv01">...</div><br>
+
+
+<input id="myButton02" type="button" value="Mean Square Difference" onclick="{
+                                                          
+  (async function (){
+     const myData = dl.tensor1d([1.0, 2.0, 5.0, 7.0]);
+     const myLabels = dl.tensor1d([ 0, 0, 1, 1 ]);
+     const myUnknown = dl.tensor1d([3.5]);
+    
+      const myDiff = dl.sub(myData, myUnknown);   
+      const mySquaredDiff = dl.mul(myDiff, myDiff);
+      const mySum = dl.sum(mySquaredDiff) 
+      const mySize = dl.scalar(myData.size) 
+      const myAverage = dl.div(mySum, mySize)
+   
+      document.getElementById('myDiv02').innerHTML =  'The average = ' + await myAverage.data()
    })()
                                                         
 }">
 
 
 
-<div id="myDiv04">...</div><br>
+<div id="myDiv02">...</div><br>
