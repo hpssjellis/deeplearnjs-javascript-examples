@@ -1,3 +1,7 @@
+This batch of files starter on March 12, 2018
+
+
+
 Presently working on K Nearest Neighbor, a reasonably easy classifier that is not a neural network. This allows baseline estimation of other Machine Learning algorithms.
 
 The plan is to input a csv file like the IRIS or any other CSV
