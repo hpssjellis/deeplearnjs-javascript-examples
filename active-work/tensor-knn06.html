@@ -17,11 +17,11 @@ The unknown: <input id="myText01" type=text value="3.5" placeholder="4.2, 5.1, 8
   (async function (){
    myData = dl.tensor1d(document.getElementById('myArea01').value.split(',')); 
    myUnknown = dl.tensor1d(document.getElementById('myText01').value.split(',')); 
-   const myLength = document.getElementById('myText02').value.split(',').length
-   myLabels = dl.tensor1d(document.getElementById('myText02').value.split(',')); 
+   myLabelsArray = document.getElementById('myText02').value.split(',')
+                                                   
  
       document.getElementById('myDiv02').innerHTML +=  'myData tensor is [' + await myData.data() +']<br>'   
-      document.getElementById('myDiv02').innerHTML +=  'Length '+myLength+', myLabels tensor is [' + await myLabels.data() +']<br>'   
+      document.getElementById('myDiv02').innerHTML +=  'Length ' + myLabelsArray.length + ', myLabels tensor is [' + myLabelsArray +']<br>'   
       document.getElementById('myDiv02').innerHTML +=  'myUnknown tensor is [' + await myUnknown.data() +']<br><br>'  
    })()                                                                                                           
 }">
