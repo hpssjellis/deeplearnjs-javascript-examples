@@ -7,8 +7,8 @@ myArray[2] = ['med','big','small','med','small','big','big','small']
 </script>
 
 <input type=button value=sort onclick="{
-myArrayBig = myArray[1]
+myArrayBig = myArray.sort(function(a,b){return a[1] - b[1];});
                                        
-alert(myArrayBig.sort())
+alert(myArrayBig)
 alert(myArray)
 }">
