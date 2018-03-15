@@ -22,7 +22,7 @@ https://hpssjellis.github.io/deeplearnjs-javascript-examples/active-work/csv-to-
 
 Next taking a tensor and doing KNN (Kind of working, need to coordinate K value with labels)
 
-https://hpssjellis.github.io/deeplearnjs-javascript-examples/active-work/tensor-knn06.html
+https://hpssjellis.github.io/deeplearnjs-javascript-examples/active-work/tensor-knn08.html
 
 
 
