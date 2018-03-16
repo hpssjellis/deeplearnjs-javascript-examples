@@ -24,6 +24,8 @@ Next taking a tensor and doing KNN (Kind of working, need to coordinate K value 
 
 https://hpssjellis.github.io/deeplearnjs-javascript-examples/active-work/tensor-knn08.html
 
+https://hpssjellis.github.io/deeplearnjs-javascript-examples/active-work/tensor-knn09.html
+
 
 
 Next sorting an array
