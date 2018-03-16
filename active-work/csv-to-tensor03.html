@@ -1,4 +1,4 @@
-version 1
+version 2
 
 
 <textarea id="myArea01" rows=10 cols=70 nowrap placeholder="length,width,height,label&#10;2,3,4,small&#10;4,6,7,big">
@@ -18,7 +18,9 @@ for (myLoop=1; myLoop <= myIncoming.length-1; myLoop++){
   myData[myLoop] = myIncoming[myLoop].split(',')
 }
 
-alert(myHeadings+', '+myData+', '+mySetLength)
+myOut = '['+myData[0]+'],['+myData[1]+']'                                       
+   alert(myOut)                                    
+//alert(myHeadings+', '+myData+', '+mySetLength)
 }">
 
 
