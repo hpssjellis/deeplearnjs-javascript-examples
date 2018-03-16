@@ -15,9 +15,9 @@ Most examples of K Nearest Neighbor use only 2 points and graph the results, but
 
 Next taking a tensor and doing KNN (Kind of working, need to coordinate K value with labels)
 
-https://hpssjellis.github.io/deeplearnjs-javascript-examples/active-work/tensor-knn17.html
+https://hpssjellis.github.io/deeplearnjs-javascript-examples/active-work/tensor-knn19.html
 
-https://hpssjellis.github.io/deeplearnjs-javascript-examples/active-work/tensor-knn18.html
+https://hpssjellis.github.io/deeplearnjs-javascript-examples/active-work/tensor-knn20.html
 
 my Final webpage should be at 
 
