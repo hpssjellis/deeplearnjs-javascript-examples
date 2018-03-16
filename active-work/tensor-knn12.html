@@ -1,5 +1,5 @@
 <script src="https://unpkg.com/deeplearn@0.5.1/dist/deeplearn.js"> </script> 
-Version 4 <br><br>
+Version 5 <br><br>
 <h2 align=center>CSV to K Nearest Neighbor (KNN) Classifier</h2>
 
 
@@ -120,12 +120,22 @@ The K value: <input id="myKvalue" type=text value="3" placeholder="5"><br>
 myJoinedArray.sort(function(a,b){
     return a[0] - b[0];
 });
+                                            
+// extrac info from sorted joined array                                            
+                                            
 //alert(myJoinedArray)    
 //alert(myMainArray)
 myTemp=''
+myLabelAverage = ''   
+myGood = 0
+myOther = 0                                            
 for (c=0;  c <= parseInt(document.getElementById('myKvalue').value)-1;   c++){
    myTemp += myMainArray[myJoinedArray[c][2]] +', '                                            
     //alert(myJoinedArray[c][2])
+    if (c==0){myLabelAverage = myJoinedArray[c][1]; myGood++   }   
+    if (c>0){ if (  myLabelAverage !=  myJoinedArray[c][1]){ myOther++ }  
+       if (myOther > myGood){myLabelAverage =  myJoinedArray[c][1]; myGood = 0; myOther = 0; alert('switch')     }                                     
+    }                                     
   }                                            
 
  alert(myTemp)                                                 
