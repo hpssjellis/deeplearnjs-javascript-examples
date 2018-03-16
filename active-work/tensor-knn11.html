@@ -1,5 +1,5 @@
 <script src="https://unpkg.com/deeplearn@0.5.1/dist/deeplearn.js"> </script> 
-Version 1 <br><br>
+Version 2 <br><br>
 <h2 align=center>CSV to K Nearest Neighbor (KNN) Classifier</h2>
 
 
@@ -42,7 +42,9 @@ The K value: <input id="myKvalue" type=text value="3" placeholder="5"><br>
   (async function (){
    myMainArray = document.getElementById('myText01').value.split(',')
                                                     
-   myUnknown = dl.tensor1d(myMainArray); 
+   myData = dl.tensor1d(myMainArray); 
+   myUnknown = dl.tensor1d(document.getElementById('myText01').value.split(',')); 
+                                           
    myHeadingsArray = document.getElementById('myText03').value.split(',')
    myLabelsArray = document.getElementById('myText02').value.split(',')
    
