@@ -1,5 +1,6 @@
-version 3<br>
+version 4<br>
 
+<script src="https://unpkg.com/deeplearn@0.5.1/dist/deeplearn.js"> </script> 
 
 <textarea id="myArea01" rows=10 cols=70 nowrap placeholder="length,width,height,label&#10;2,3,4,small&#10;4,6,7,big">
 length,width,height,label
@@ -21,6 +22,10 @@ for (myLoop=1; myLoop <= myIncoming.length-1; myLoop++){
 myOut = '['+myData[1]+'],['+myData[2]+']'                                       
    alert(myOut)                                    
 //alert(myHeadings+', '+myData+', '+mySetLength)
+                                       
+ myWow = dl.tensor(myOut)                                      
+                                       
+                                       
 }">
 
 
