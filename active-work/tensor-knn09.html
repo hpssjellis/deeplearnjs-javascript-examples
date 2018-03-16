@@ -69,11 +69,15 @@ The unknown: <input id="myText01" type=text value="3.5" placeholder="4.2, 5.1, 8
       const myDiff = dl.sub(myData, myUnknown);   
       const mySquaredDiff = dl.mul(myDiff, myDiff);
       const myKNN = mySquaredDiff.pow(mySqrt) 
-      myKnnData = await myKNN.data()                                                                            
+      myKnnArray = await myKNN.data()                                                                            
                                                                                        
-      document.getElementById('myDiv02').innerHTML +=  'The KNN tensor is [' + myKnnData +']<br>'
+      document.getElementById('myDiv02').innerHTML +=  'The KNN tensor is [' + myKnnArray +']<br>'
 
-      myKnnArray = await myKNN.buffer()
+      //myKnnArray = await myKNN.buffer()
+      
+                                                                    
+                                                                    
+                                                                    
 
       myJoinedArray = myKnnArray.map(function(value, index){
             return [myKnnArray[index], myLabelsArray[index], myOriginalLoc[index]];
