@@ -19,6 +19,9 @@ https://hpssjellis.github.io/deeplearnjs-javascript-examples/active-work/tensor-
 
 https://hpssjellis.github.io/deeplearnjs-javascript-examples/active-work/tensor-knn20.html
 
+(The above files may be the same, the larger number may be presently woring on and may not work)
+
+
 my Final webpage should be at 
 
 https://hpssjellis.github.io/deeplearnjs-javascript-examples/active-work/knn-final01.html
