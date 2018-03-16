@@ -76,55 +76,33 @@ The unknown: <input id="myText01" type=text value="3.5" placeholder="4.2, 5.1, 8
       //myKnnArray = await myKNN.buffer()
       
                                                                     
-       alert(myKnnArray[2])                                                             
+       //alert(myKnnArray)                                           
+      // alert(myLabelsArray)                                           
+      // alert(myOriginalLoc)                                                             
                                                                     
+      myJoinedArray = new Array(myLabelsArray.length)
+      myJoinedArray[0] = new Array(myLabelsArray.length)
+      myJoinedArray[1] = new Array(myLabelsArray.length)
+      myJoinedArray[2] = new Array(myLabelsArray.length)
 
-      myJoinedArray = myKnnArray.map(function(value, index){
+
+      myJoinedArray = myJoinedArray.map(function(value, index){
             return [myKnnArray[index], myLabelsArray[index], myOriginalLoc[index]];
          })
 
-
+                                   
+       alert(myJoinedArray[2]+', '+myJoinedArray[3])      
     
    })()
                                                         
 }">
 
-<input  type="button" value="Merge two arrays" onclick="{
-  
-var arrFirst = [0,1,2,3,4],
-    arrSecond = [5,6,7,8,9];
-    arrThird = ['a','b','c','d','e'];
-
-joined = arrFirst.map(function(value, index){
-            return [arrFirst[index], arrSecond[index], arrThird[index]];
-         })
-
-
-
-            
-
-   alert(joined[0]+', '+joined[1])
-                                                  
-
-                                                        
-}">
 
 
 
 
 
-<input  type="button" value="Make array of indicies" onclick="{
-  myArrayLength = 6
-  myShow = new Array(myArrayLength)
-  for (x=0;  x <= myArrayLength-1; x++ ){
-    myShow[x] = x
-  }          
 
-   alert(myShow)
-                                                  
-
-                                                        
-}">
 
 
 <input  type="button" value="Sort" onclick="{
