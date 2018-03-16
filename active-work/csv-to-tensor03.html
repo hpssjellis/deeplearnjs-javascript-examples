@@ -1,10 +1,10 @@
-version 2<br>
+version 3<br>
 
 
 <textarea id="myArea01" rows=10 cols=70 nowrap placeholder="length,width,height,label&#10;2,3,4,small&#10;4,6,7,big">
 length,width,height,label
-2,3,4,small
-4,2,7,big
+2,3,4
+4,2,7
 </textarea><br>
 
 <input type=button value=asdf onclick="{
@@ -18,7 +18,7 @@ for (myLoop=1; myLoop <= myIncoming.length-1; myLoop++){
   myData[myLoop] = myIncoming[myLoop].split(',')
 }
 
-myOut = '['+myData[0]+'],['+myData[1]+']'                                       
+myOut = '['+myData[1]+'],['+myData[2]+']'                                       
    alert(myOut)                                    
 //alert(myHeadings+', '+myData+', '+mySetLength)
 }">
