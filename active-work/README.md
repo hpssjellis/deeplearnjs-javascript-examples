@@ -13,26 +13,11 @@ auto adjust to the number of variables. Then enter an unknown value and use K Ne
 Most examples of K Nearest Neighbor use only 2 points and graph the results, but we should be able to do multiple points and just show the results for the nearest values.
 
 
-Demo to for taking a CSV file and putting it into a tensor (not yet working))
-
-https://hpssjellis.github.io/deeplearnjs-javascript-examples/active-work/csv-to-tensor02.html
-
-
-
-
 Next taking a tensor and doing KNN (Kind of working, need to coordinate K value with labels)
-
-https://hpssjellis.github.io/deeplearnjs-javascript-examples/active-work/tensor-knn16.html
 
 https://hpssjellis.github.io/deeplearnjs-javascript-examples/active-work/tensor-knn17.html
 
-
-
-Next sorting an array
-https://hpssjellis.github.io/deeplearnjs-javascript-examples/active-work/sort01.html
-
-
-
+https://hpssjellis.github.io/deeplearnjs-javascript-examples/active-work/tensor-knn18.html
 
 my Final webpage should be at 
 
