@@ -81,9 +81,12 @@ The unknown: <input id="myText01" type=text value="3.5" placeholder="4.2, 5.1, 8
       // alert(myOriginalLoc)                                                             
                                                                     
       myJoinedArray = new Array(myLabelsArray.length)
-      myJoinedArray[0] = new Array(myLabelsArray.length)
-      myJoinedArray[1] = new Array(myLabelsArray.length)
-      myJoinedArray[2] = new Array(myLabelsArray.length)
+
+      for (y=0; y <= myLabelsArray.length-1; y++){
+         myJoinedArray[y] = new Array(3)
+      }
+
+
 
 
       myJoinedArray = myJoinedArray.map(function(value, index){
@@ -91,7 +94,7 @@ The unknown: <input id="myText01" type=text value="3.5" placeholder="4.2, 5.1, 8
          })
 
                                    
-       alert(myJoinedArray[2]+', '+myJoinedArray[3])      
+       alert(myJoinedArray)      
     
    })()
                                                         
