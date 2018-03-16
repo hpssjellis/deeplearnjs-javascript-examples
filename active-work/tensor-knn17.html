@@ -40,29 +40,33 @@ sepal_length,sepal_width,petal_length,petal_width,species
 
 
 
+<table border=1>
+<tr><th colsspan=2>Headings:</th><td></td></tr>
+<tr>
+<td >
+
+<input id="myText03" size=70 type=text value="Size" placeholder="length, width, height">
 
 
+</td><td></td></tr>
 
-The Headings: <input id="myText03" size=70 type=text value="Size" placeholder="legnth, width, height"><br>
+<tr><th>Data:</th><th>Labels</th></tr>
 
-
-Data: <br><textarea id="myArea01" rows=10 cols=70 nowrap placeholder="length,width,height,label&#10;2,3,4,small&#10;4,6,7,big">
+<tr><td><textarea id="myArea01" rows=10 cols=70 nowrap placeholder="length,width,height,label&#10;2,3,4,small&#10;4,6,7,big">
 1.0
 9.8
 5.0
 2.3
-12.1
-</textarea><br>
+12.1</textarea></td><td>
 
 
-The Labels: <textarea id="myText02" rows=10 cols=20 nowrap placeholder="length,width,height,label&#10;2,3,4,small&#10;4,6,7,big">
+<textarea id="myText02" rows=10 cols=20 nowrap placeholder="length,width,height,label&#10;2,3,4,small&#10;4,6,7,big">
 small
 big
 medium
 small
-big
-</textarea><br>
-
+big</textarea></td></tr>
+</table>
 
 The K value: <input id="myKvalue" type=text value="3" placeholder="5"><br>
 The unknown: <input id="myText01" type=text value="3.5" placeholder="4.2, 5.1, 8.6"><br>
@@ -89,14 +93,14 @@ The unknown: <input id="myText01" type=text value="3.5" placeholder="4.2, 5.1, 8
   // check K value less than amount of data
     if (document.getElementById('myKvalue').value > myLabelsArray.length){
         alert('Forcing K value to less than data points')
-        document.getElementById('myKvalue').value = myLabelsArray.length-1
+        document.getElementById('myKvalue').value = myLabelsArray.length
      }
 
                                                   
  
       document.getElementById('myDiv02').innerHTML =  'myData tensor is [' + await myData.data() +']<br>'   
       document.getElementById('myDiv02').innerHTML +=  'Length ' + myLabelsArray.length + ', myLabels tensor is [' + myLabelsArray +']<br>'   
-      document.getElementById('myDiv02').innerHTML +=  'myUnknown tensor is [' + await myUnknown.data() +']<br><br>'  
+      document.getElementById('myDiv02').innerHTML +=  'myUnknown tensor is [' + await myUnknown.data() +']<br>'  
 
 
   
@@ -189,7 +193,8 @@ for (c=0;  c <= parseInt(document.getElementById('myKvalue').value)-1;   c++){
 
 
 
-  document.getElementById('myDiv02').innerHTML +=  '<br>K Nearest Neighbors : '+myTemp+' Best Label = '+myUniqueLables[findIndexOfGreatest(myCount)] +'<br>'   
+  document.getElementById('myDiv02').innerHTML +=  '<br>For the unknown: <font color=green>'+document.getElementById('myText01').value+
+        '</font> the K-Nearest-Neighbors : <font color=blue>'+myTemp+'</font> Best Label = <font color=blue>'+myUniqueLables[findIndexOfGreatest(myCount)] +'</font><br>'   
     
 
     
