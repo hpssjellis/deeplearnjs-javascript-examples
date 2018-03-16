@@ -24,7 +24,7 @@ Next taking a tensor and doing KNN (Kind of working, need to coordinate K value 
 
 https://hpssjellis.github.io/deeplearnjs-javascript-examples/active-work/tensor-knn10.html
 
-https://hpssjellis.github.io/deeplearnjs-javascript-examples/active-work/tensor-knn11.html
+https://hpssjellis.github.io/deeplearnjs-javascript-examples/active-work/tensor-knn12.html
 
 
 
