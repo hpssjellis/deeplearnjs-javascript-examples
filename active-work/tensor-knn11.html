@@ -1,5 +1,5 @@
 <script src="https://unpkg.com/deeplearn@0.5.1/dist/deeplearn.js"> </script> 
-Version 5 <br><br>
+Version 1 <br><br>
 <h2 align=center>CSV to K Nearest Neighbor (KNN) Classifier</h2>
 
 
@@ -35,11 +35,14 @@ The Headings: <input id="myText03" size=70 type=text value="Size" placeholder="l
 The Labels: <input id="myText02" size=70 type=text value="'small','big','medium','small','big'" placeholder="4.2, 5.1, 8.6"><br>
 The unknown: <input id="myText01" type=text value="3.5" placeholder="4.2, 5.1, 8.6"><br>
 
+The K value: <input id="myKvalue" type=text value="3" placeholder="5"><br>
+
 
 <input  type="button" value="Enter Tensor" onclick="{
   (async function (){
-   myData = dl.tensor1d(document.getElementById('myArea01').value.split(',')); 
-   myUnknown = dl.tensor1d(document.getElementById('myText01').value.split(',')); 
+   myMainArray = document.getElementById('myText01').value.split(',')
+                                                    
+   myUnknown = dl.tensor1d(myMainArray); 
    myHeadingsArray = document.getElementById('myText03').value.split(',')
    myLabelsArray = document.getElementById('myText02').value.split(',')
    
@@ -94,7 +97,7 @@ The unknown: <input id="myText01" type=text value="3.5" placeholder="4.2, 5.1, 8
          })
 
                                    
-       alert(myJoinedArray)      
+       //alert(myJoinedArray)      
     
    })()
                                                         
@@ -110,17 +113,19 @@ The unknown: <input id="myText01" type=text value="3.5" placeholder="4.2, 5.1, 8
 
 <input  type="button" value="Sort" onclick="{
 
+// sort the triple array of KNN, label, location in original array                                            
+                                            
 myJoinedArray.sort(function(a,b){
     return a[0] - b[0];
 });
-alert(myJoinedArray)                                        
+//alert(myJoinedArray)    
 
-                                                        
+myTemp=''
+for (c=0;  c <= parseInt(document.getElementById('myKvalue').value)-1;   c++){
+   myTemp += myMainArray[myJoinedArray[c][2]] +', '                                            
+}                                            
+
+ alert(myTemp)                                                 
 }">
-
-
-
-
-
 
 <div id="myDiv02">...<br></div><br>
