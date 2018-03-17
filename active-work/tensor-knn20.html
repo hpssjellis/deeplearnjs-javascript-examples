@@ -143,17 +143,21 @@ The unknown: <input id="myText01" type=text value="3.5, 56" placeholder="4.2, 5.
 
 
 
-//alert(myLabelsArray.length)
-//alert(myHeadingsArray.length)
+      //alert(myLabelsArray.length)
+      //alert(myHeadingsArray.length)
+      myMainShape = new Array(2)
+      myMainShape[0] =myLabelsArray.length  
+      myMainShape[1] = myHeadingsArray.length
+      //alert(JSON.stringify(myMainShape))
   
       //const mySqrt = dl.tensor1d([0.5, 0.5, 0.5, 0.5, 0.5]);                                                                             
       //const mySqrt = dl.fill([myLabelsArray.length], 0.5)                                                             
-      const mySqrt = dl.fill([5,2], 0.5)
+      const mySqrt = dl.fill(myMainShape, 0.5)
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////// How to get shape
  
-//mySqrt.print('verbose')
+mySqrt.print('verbose')
     
       const myDiff = dl.sub(myData, myUnknown);   
       const mySquaredDiff = dl.mul(myDiff, myDiff);
