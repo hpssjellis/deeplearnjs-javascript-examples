@@ -1,7 +1,7 @@
 
 <script src="https://unpkg.com/deeplearn@0.5.1/dist/deeplearn.js"> </script> 
 
-version 1<br>
+version 2<br>
 
 
 <input type=button value=asdf onclick="{
@@ -40,7 +40,8 @@ alert(myArray)
 
 
 <input type=button value=pow2 onclick="{
-myWow3= myWow2.pow(myWow)
+const mySqrt = dl.tensor1d([0.5, 0.5, 0.5, 0.5, 0.5]);     
+myWow3= myWow2.pow(mySqrt)
 
 myWow3.print('verbose')
                                        
