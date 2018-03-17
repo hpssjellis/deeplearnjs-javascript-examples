@@ -54,18 +54,18 @@ sepal_length,sepal_width,petal_length,petal_width,species
 <tr>
 <td >
 <textarea id="myText03" rows=1 cols=70 nowrap placeholder="length, width, height">
-Size</textarea>
+Size, Weight</textarea>
 
 </td><td></td></tr>
 
 <tr><th>Data:</th><th>Labels</th></tr>
 
 <tr><td><textarea id="myArea01" rows=10 cols=70 nowrap placeholder="length,width,height,label&#10;2,3,4,small&#10;4,6,7,big">
-1.0
-9.8
-5.0
-2.3
-12.1</textarea></td><td>
+1.0, 34
+9.8, 56
+5.0, 67
+2.3, 89
+12.1, 99</textarea></td><td>
 
 
 <textarea id="myText02" rows=10 cols=20 nowrap placeholder="length,width,height,label&#10;2,3,4,small&#10;4,6,7,big">
@@ -104,20 +104,22 @@ The unknown: <input id="myText01" type=text value="3.5" placeholder="4.2, 5.1, 8
      
    }
 
-   //alert(myDataArray)
+ alert(JSON.stringify(myDataArray))
 
-   myData = dl.tensor1d(flatten(myDataArray),'float32', [5,2]); 
+   //myData = dl.tensor1d(flatten(myDataArray),'float32', [5,2]); 
+   myData = dl.tensor(myDataArray); 
 
 
 //////////////////////////////////////////////////////////////
 
  
 
-   myData.print()
+
 
    myLabelsArray = document.getElementById('myText02').value.split(/\r\n|\n/);
    
-   myLabelsArray.length
+   //myLabelsArray.length
+
    myOriginalLoc = new Array(myLabelsArray.length)
    for (x=0;  x <= myLabelsArray.length-1; x++ ){
       myOriginalLoc[x] = x
@@ -131,17 +133,21 @@ The unknown: <input id="myText01" type=text value="3.5" placeholder="4.2, 5.1, 8
      }
 
                                                   
- 
+ myData.print('verbose')
       document.getElementById('myDiv02').innerHTML =  'myData tensor is [' + await myData.data() +']<br>'   
       document.getElementById('myDiv02').innerHTML +=  'Length ' + myLabelsArray.length + ', myLabels tensor is [' + myLabelsArray +']<br>'   
       document.getElementById('myDiv02').innerHTML +=  'myUnknown tensor is [' + await myUnknown.data() +']<br>'  
 
-
+//alert(myData.shape())
   
       //const mySqrt = dl.tensor1d([0.5, 0.5, 0.5, 0.5, 0.5]);                                                                             
-      const mySqrt = dl.fill([myLabelsArray.length], 0.5)
+      //const mySqrt = dl.fill([myLabelsArray.length], 0.5)                                                             
+      const mySqrt = dl.fill([5,2], 0.5)
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////// How to get shape
  
-mySqrt.print()
+//mySqrt.print('verbose')
     
       const myDiff = dl.sub(myData, myUnknown);   
       const mySquaredDiff = dl.mul(myDiff, myDiff);
