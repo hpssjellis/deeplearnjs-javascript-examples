@@ -2,6 +2,7 @@
 
 
 
+
 <script src="https://unpkg.com/deeplearn@0.5.1/dist/deeplearn.js"> </script> 
 Version 1 <br><br>
 <h2 align=center>CSV to K Nearest Neighbor (KNN) Classifier</h2>
@@ -77,7 +78,7 @@ big</textarea></td></tr>
 </table>
 
 The K value: <input id="myKvalue" type=text value="3" placeholder="5"><br>
-The unknown: <input id="myText01" type=text value="3.5" placeholder="4.2, 5.1, 8.6"><br>
+The unknown: <input id="myText01" type=text value="3.5, 56" placeholder="4.2, 5.1, 8.6"><br>
 
 
 <input  type="button" value="Solve K-Nearest-Neigbor" onclick="{
@@ -104,7 +105,7 @@ The unknown: <input id="myText01" type=text value="3.5" placeholder="4.2, 5.1, 8
      
    }
 
- alert(JSON.stringify(myDataArray))
+ //alert(JSON.stringify(myDataArray))  // shows javascript array with squarebrackets
 
    //myData = dl.tensor1d(flatten(myDataArray),'float32', [5,2]); 
    myData = dl.tensor(myDataArray); 
@@ -117,7 +118,9 @@ The unknown: <input id="myText01" type=text value="3.5" placeholder="4.2, 5.1, 8
 
 
    myLabelsArray = document.getElementById('myText02').value.split(/\r\n|\n/);
-   
+ 
+
+
    //myLabelsArray.length
 
    myOriginalLoc = new Array(myLabelsArray.length)
@@ -138,7 +141,10 @@ The unknown: <input id="myText01" type=text value="3.5" placeholder="4.2, 5.1, 8
       document.getElementById('myDiv02').innerHTML +=  'Length ' + myLabelsArray.length + ', myLabels tensor is [' + myLabelsArray +']<br>'   
       document.getElementById('myDiv02').innerHTML +=  'myUnknown tensor is [' + await myUnknown.data() +']<br>'  
 
-//alert(myData.shape())
+
+
+//alert(myLabelsArray.length)
+//alert(myHeadingsArray.length)
   
       //const mySqrt = dl.tensor1d([0.5, 0.5, 0.5, 0.5, 0.5]);                                                                             
       //const mySqrt = dl.fill([myLabelsArray.length], 0.5)                                                             
@@ -252,5 +258,4 @@ for (c=0;  c <= parseInt(document.getElementById('myKvalue').value)-1;   c++){
 
 
 <div id="myDiv02">...<br></div><br>
-
 
