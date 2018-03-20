@@ -3,7 +3,7 @@
 
 
 <script src="https://unpkg.com/deeplearn@0.5.1/dist/deeplearn.js"> </script> 
-Version 27<br><br>
+Version 28<br><br>
 <h2 align=center>CSV to K Nearest Neighbor (KNN) Classifier</h2>
 
 
@@ -39,7 +39,7 @@ sepal_length,sepal_width,petal_length,petal_width,species
 5.1,3.5,1.4,0.2,setosa
 4.9,3,1.4,0.2,setosa
 4.7,3.2,1.3,0.2,setosa
-</textarea><br>
+</textarea><br><br>
 
 <input type=button value="Seperate Data and Labels" onclick="{
  
@@ -92,13 +92,13 @@ sepal_length,sepal_width,petal_length,petal_width,species
                                                              
                                                              
     for(var j=1;  j<=myIncoming.length-1; j++ ){  
-      Lab2 =     myInSplit[j].pop()                                                        
-                                                             
- document.getElementById('myText02').value    +=  Lab2+'\n'  
-  document.getElementById('myArea01').value  +=   myInSplit[j]+'\n'                                                         
+      Lab2 =     myInSplit[j].pop()                                                                                                                     
+     document.getElementById('myText02').value    +=  Lab2+'\n'  
+     document.getElementById('myArea01').value  +=   myInSplit[j]+'\n'                                                         
                                                              
  }
-                                                             
+       document.getElementById('myArea01').value.trim()
+       document.getElementById('myText02').value.trim()                                                      
                                                              
    //for(var k=1;  k<=myInSplit.length-1; k++ ){                                                           
                                                              
