@@ -3,7 +3,7 @@
 
 
 <script src="https://unpkg.com/deeplearn@0.5.1/dist/deeplearn.js"> </script> 
-Version 20<br><br>
+Version 21<br><br>
 <h2 align=center>CSV to K Nearest Neighbor (KNN) Classifier</h2>
 
 
@@ -63,21 +63,21 @@ sepal_length,sepal_width,petal_length,petal_width,species
    myInSplit =    new Array(myIncoming.length)                                                       
  for(var t=0;  t <= myIncoming.length-1; t++){
        myInSplit[t] =  myIncoming[t].split(',')                                                   
-       myLabelsTemp[t]  = myInSplit[t].shift()                                                    
+     //  myLabelsTemp[t]  = myInSplit[t].shift()                                                    
 }                                                                                                                        
       
 // alert()                                                          
                                                              
-alert( myInSplit[0])  
+//alert( myInSplit[0])  
                                                              
-alert(myLabelsTemp)     /*                                                        
+//alert(myLabelsTemp)                                                          
                                                              
                                                                                                           
                                                              
  document.getElementById('myLabelsSpot').innerHTML =  myLabelsTemp[0] 
  //shift(myLabelsTemp)  
     for(var j=1;  j<=myIncoming.length-1; j++ ){                                  
- document.getElementById('myText02').value    =  myLabelsTemp[j]+'\n'  
+ document.getElementById('myText02').value    +=  myLabelsTemp[j]+'\n'  
  }
                                                              
                                                              
@@ -86,9 +86,9 @@ alert(myLabelsTemp)     /*
      //}       
                                                              
                                       
- document.getElementById('myText03').value =  myInSplit[0]                                                         
+ //document.getElementById('myText03').value =  myInSplit[0]                                                         
                                                              
-  */                                                           
+                                                            
                                                              
 }"><br><br>
 
