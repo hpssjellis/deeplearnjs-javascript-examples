@@ -43,10 +43,19 @@ sepal_length,sepal_width,petal_length,petal_width,species
 
 <input type=button value="Seperate Data and Labels" onclick="{
  
-  alert('not yet ready\nUsing the testing data below') 
+  //alert('not yet ready\nUsing the testing data below') 
                                                              
  myIncoming = document.getElementById('myArea02').split(/\r\n|\n/)                                                    
  
+  myLabelsTemp = new Array(myIncoming.length)
+   myInSplit =    new Array(myIncoming.length)                                                       
+ for(t=0;  t<=myIncoming.length-1; t++ ){
+       myInSplit(t) =  myIncoming[t].split(',')                                                   
+       myLabelsTemp[t]  = pop(myInSplit(t))                                                    
+}                                                              }                                                            
+                                                             
+  alert( myLabelsTemp)                                                          
+                                                             
  document.getElementsById('myLabelsSpot').innerHTML = 'wow'                                                    
                                                              
                                                              
