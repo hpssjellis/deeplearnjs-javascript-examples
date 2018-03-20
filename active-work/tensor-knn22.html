@@ -3,7 +3,7 @@
 
 
 <script src="https://unpkg.com/deeplearn@0.5.1/dist/deeplearn.js"> </script> 
-Version 7<br><br>
+Version 8<br><br>
 <h2 align=center>CSV to K Nearest Neighbor (KNN) Classifier</h2>
 
 
@@ -43,10 +43,10 @@ sepal_length,sepal_width,petal_length,petal_width,species
 
 <input type=button value="Seperate Data and Labels" onclick="{
  
-   document.getElementsById('myText01').value = 'wow' 
-   document.getElementsById('myText02').value = 'wow' 
-   document.getElementsById('myText03').value = 'wow' 
-   document.getElementsById('myLabelsSpot').innerHTML = 'wow'                                                          
+   document.getElementById('myText01').value = 'wow' 
+   document.getElementById('myText02').value = 'wow' 
+   document.getElementById('myText03').value = 'wow' 
+   document.getElementById('myLabelsSpot').innerHTML = 'wow'                                                          
                                                                                                               
                                                                                                               
                                                                                                               
@@ -67,10 +67,10 @@ sepal_length,sepal_width,petal_length,petal_width,species
                                                              
  // alert( myLabelsTemp)                                                          
                                                              
- document.getElementsById('myLabelsSpot').innerHTML =  myLabelsTemp[0] 
+ document.getElementById('myLabelsSpot').innerHTML =  myLabelsTemp[0] 
  //shift(myLabelsTemp)  
     for(var j=1;  j<=myIncoming.length-1; j++ ){                                  
- document.getElementsById('myText02').value    =  myLabelsTemp[j]+'\n'  
+ document.getElementById('myText02').value    =  myLabelsTemp[j]+'\n'  
  }
                                                              
                                                              
@@ -79,7 +79,7 @@ sepal_length,sepal_width,petal_length,petal_width,species
      //}       
                                                              
                                       
- document.getElementsById('myText03').value =  myIncoming[0]                                                         
+ document.getElementById('myText03').value =  myIncoming[0]                                                         
                                                              
                                                              
                                                              
