@@ -3,7 +3,7 @@
 
 
 <script src="https://unpkg.com/deeplearn@0.5.1/dist/deeplearn.js"> </script> 
-Version 1<br><br>
+Version 2<br><br>
 <h2 align=center>CSV to K Nearest Neighbor (KNN) Classifier</h2>
 
 
@@ -55,9 +55,9 @@ sepal_length,sepal_width,petal_length,petal_width,species
                                                              
                                                              
 //  alert('not yet ready\nUsing the testing data below') 
-  myIncoming = new Array()                                                           
+  //myIncoming = new Array()                                                           
  myIncoming = document.getElementById('myArea02').value.split(/\r\n|\n/)                                                    
- alert(myIncoming)    
+ alert(myIncoming)    /*
                                                              
   myLabelsTemp = new Array(myIncoming.length)
    myInSplit =    new Array(myIncoming.length)                                                       
@@ -66,7 +66,7 @@ sepal_length,sepal_width,petal_length,petal_width,species
        myLabelsTemp[t]  = pop(myInSplit(t))                                                    
 }                                                              }                                                            
                                                              
- alert( myLabelsTemp)           /*                                              
+ alert( myLabelsTemp)                                                       
                                                              
  document.getElementById('myLabelsSpot').innerHTML =  myLabelsTemp[0] 
  //shift(myLabelsTemp)  
