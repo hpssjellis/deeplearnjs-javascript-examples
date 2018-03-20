@@ -3,7 +3,7 @@
 
 
 <script src="https://unpkg.com/deeplearn@0.5.1/dist/deeplearn.js"> </script> 
-Version 5<br><br>
+Version 6<br><br>
 <h2 align=center>CSV to K Nearest Neighbor (KNN) Classifier</h2>
 
 
@@ -43,10 +43,10 @@ sepal_length,sepal_width,petal_length,petal_width,species
 
 <input type=button value="Seperate Data and Labels" onclick="{
  
-   document.getElementById('myArea01').value = '' 
-   document.getElementById('myText02').value = '' 
-   document.getElementById('myText03').value = '' 
-   document.getElementById('myLabelsSpot').innerHTML = ''                                                          
+   document.getElementById('myArea01').value = 'wow' 
+   document.getElementById('myText02').value = 'wow' 
+   document.getElementById('myText03').value = 'wow' 
+   document.getElementById('myLabelsSpot').innerHTML = 'wow'                                                          
                                                                                                               
                                                                                                            
                                                                                                               
@@ -63,14 +63,12 @@ sepal_length,sepal_width,petal_length,petal_width,species
    myInSplit =    new Array(myIncoming.length)                                                       
  for(var t=0;  t <= myIncoming.length-1; t++){
        myInSplit(t) =  myIncoming[t].split(',')                                                   
-      
-                                                             
-                                                             
-                                                         myLabelsTemp[t]  = myInSplit(t).pop()                                                    
+       myLabelsTemp[t]  = myInSplit(t).pop()                                                    
 }                                                              }                                                            
                                                              
- //alert( myInSplit)    
-  alert(                                                           
+// alert( myInSplit)  
+                                                             
+   alert(myLabelsTemp)                                                             
                                                              
                                                              /*                                              
                                                              
