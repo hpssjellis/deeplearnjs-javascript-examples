@@ -5,7 +5,7 @@
 
 
 <script src="https://unpkg.com/deeplearn@0.5.1/dist/deeplearn.js"> </script> 
-Version 6<br><br>
+Version 7<br><br>
 <h2 align=center>CSV to K Nearest Neighbor (KNN) Classifier</h2>
 
 
@@ -37,7 +37,11 @@ function findIndexOfGreatest(array) {
 <br>
 <input type=button value=test onclick="{
  
-   document.getElementById('myArea01').value = '99'                                     
+ my5 =  document.getElementById('myArea01').value  
+  
+ if (my5[my5.length] == '\n'){
+        my5 = 'wow'                               
+ }                                      
  
 }">
 
