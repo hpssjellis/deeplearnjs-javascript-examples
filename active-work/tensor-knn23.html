@@ -5,7 +5,7 @@
 
 
 <script src="https://unpkg.com/deeplearn@0.5.1/dist/deeplearn.js"> </script> 
-Version 20<br><br>
+Version 21<br><br>
 <h2 align=center>CSV to K Nearest Neighbor (KNN) Classifier</h2>
 
 
@@ -13,28 +13,22 @@ Version 20<br><br>
 <script>
 
 function myRemoveLineBreak(myBox){
-  alert(myBox)
+ // alert(myBox)
+  
+    
   
   
-  if ((myBox[myBox.length-1]  == '\n' )   || (myBox[myBox.length-1]  == '\r\n' )  )   {
-        alert('yes')
-    myBox.pop()
-     }     
+  while ( (myBox[myBox.length-1]  == '\n' )   || (myBox[myBox.length-1]  == '\r\n' )  )   {
+    myBox.pop()     
+ }
   
-  
-  if ((myBox[myBox.length-1]  == '\n' )   || (myBox[myBox.length-1]  == '\r\n' )  )   {
-        alert('yes')
-     }            
+
   
   return myBox
   
   
                
-  //while (i < 5) {
-  //  text += "<br>The number is " + i;
-   
-   //}
-  
+ 
   
 }
 
