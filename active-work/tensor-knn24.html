@@ -7,7 +7,7 @@
 
 
 <script src="https://unpkg.com/deeplearn@0.5.1/dist/deeplearn.js"> </script> 
-Version 5<br><br>
+Version 6<br><br>
 <h2 align=center>CSV to K Nearest Neighbor (KNN) Classifier</h2>
 
 
@@ -247,10 +247,12 @@ sepal_length,sepal_width,petal_length,petal_width,species
 // alert(myIncoming.length)    
                                                             
   myLabelsTemp = new Array(myIncoming.length)
-   myInSplit =    new Array(myIncoming.length)                                                       
+   myInSplit =    new Array(myIncoming.length)   
+   
+                                                      
  for(var t=0;  t <= myIncoming.length-1; t++){
-       myInSplit[t] =  myIncoming[t].split(',')                                                   
-     //  myLabelsTemp[t]  = myInSplit[t].shift()                                                    
+    myInSplit[t] =  myIncoming[t].split(',')                                                   
+                                                 
 }                                                                                                                        
       
 // alert()                                                          
@@ -276,13 +278,18 @@ sepal_length,sepal_width,petal_length,petal_width,species
  //shift(myLabelsTemp)  
                                                              
 
-                                                             
+                                                        
+  // randomly pick an unknown                                                           
+  myRand = Math.floor(Math.random() * myIncoming.length-1)                                                      
+                                                                         
                                                              
     for(var j=1;  j<=myIncoming.length-1; j++ ){  
       Lab2 =     myInSplit[j].pop()                                                                                                                     
      document.getElementById('myText02').value    +=  Lab2+'\n'  
      document.getElementById('myArea01').value  +=   myInSplit[j]+'\n'                                                         
-                                                             
+        if ( myRand == j ){
+        document.getElementById('myText01').value  =    myInSplit[j]                                               
+    }                                                                  
  }
        document.getElementById('myArea01').value.trim()
        document.getElementById('myText02').value.trim()                                                      
@@ -412,9 +419,10 @@ The unknown: <input id="myText01" type=text value="3.5, 56" placeholder="4.2, 5.
 
                                                   
 // myData.print('verbose')
-    //  document.getElementById('myDiv02').innerHTML =  'myData tensor is [' + await myData.data() +']<br>'   
-      document.getElementById('myDiv02').innerHTML =  'Length ' + myLabelsArray.length + ', myLabels tensor is [' + myLabelsArray +']<br>'   
-      document.getElementById('myDiv02').innerHTML +=  'myUnknown tensor is [' + await myUnknown.data() +']<br>'  
+    //  document.getElementById('myDiv02').innerHTML =  'The Data tensor is [' + await myData.data() +']<br>'   
+      document.getElementById('myDiv02').innerHTML =  'The Groups Length ' + myLabelsArray.length + '<br>'  
+  //   document.getElementById('myDiv02').innerHTML =  ', myLabels tensor is [' + myLabelsArray +']<br>'   
+     document.getElementById('myDiv02').innerHTML +=  'The Unknown tensor is [' + await myUnknown.data() +']<br>'  
 
 
       // Got to grab the shape to setup a pow sqrt tensor       
