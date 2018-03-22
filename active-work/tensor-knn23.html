@@ -5,7 +5,7 @@
 
 
 <script src="https://unpkg.com/deeplearn@0.5.1/dist/deeplearn.js"> </script> 
-Version 14<br><br>
+Version 15<br><br>
 <h2 align=center>CSV to K Nearest Neighbor (KNN) Classifier</h2>
 
 
@@ -42,7 +42,9 @@ myBox = document.getElementById('myArea01').value
   //alert(document.getElementById('myArea01').value)                                   
   alert(myBox[myBox.length-3])
                                        
-    alert(myBox[myBox.length-2])                                     
+    if (myBox[myBox.length-2]  == '\n' )   {
+        alert('yes')
+     }                                 
                                        
    alert(myBox[myBox.length-1])                                      
                                        
