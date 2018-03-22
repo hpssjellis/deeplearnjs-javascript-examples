@@ -5,7 +5,7 @@
 
 
 <script src="https://unpkg.com/deeplearn@0.5.1/dist/deeplearn.js"> </script> 
-Version 24<br><br>
+Version 25<br><br>
 <h2 align=center>CSV to K Nearest Neighbor (KNN) Classifier</h2>
 
 
@@ -93,7 +93,8 @@ sepal_length,sepal_width,petal_length,petal_width,species
    document.getElementById('myLabelsSpot').innerHTML = ''                                                          
                                                                                                               
                                                                                                            
-                                                                                                              
+   document.getElementById('myArea02').value = myRemoveLineBreak(document.getElementById('myArea02').value)
+                                                                                                                                  
                                                              
                                                              
                                                              
@@ -193,6 +194,21 @@ The unknown: <input id="myText01" type=text value="3.5, 56" placeholder="4.2, 5.
 <input  type="button" value="Solve K-Nearest-Neigbor" onclick="{
 
   (async function (){
+                                                               
+    document.getElementById('myArea01').value = myRemoveLineBreak(document.getElementById('myArea01').value)
+     
+    document.getElementById('myText01').value = myRemoveLineBreak(document.getElementById('myText02').value)
+    document.getElementById('myText02').value = myRemoveLineBreak(document.getElementById('myText02').value)
+    document.getElementById('myText03').value = myRemoveLineBreak(document.getElementById('myText02').value)
+                                                                                 
+                                                                                          
+                                                                                          
+                                                               
+                                                               
+                                                               
+                                                               
+                                                               
+                                                               
    myMainArray = document.getElementById('myArea01').value.split(/\r\n|\n/);  // split at end of line
                                                     
    //myData = dl.tensor1d(myMainArray); 
