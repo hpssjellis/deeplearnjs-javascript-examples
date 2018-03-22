@@ -7,7 +7,7 @@
 
 
 <script src="https://unpkg.com/deeplearn@0.5.1/dist/deeplearn.js"> </script> 
-Version 6<br><br>
+Version 7<br><br>
 <h2 align=center>CSV to K Nearest Neighbor (KNN) Classifier</h2>
 
 
@@ -512,8 +512,8 @@ The unknown: <input id="myText01" type=text value="3.5, 56" placeholder="4.2, 5.
 
                                     
 for (c=0;  c <= parseInt(document.getElementById('myKvalue').value)-1;   c++){
-   myTemp += myMainArray[myJoinedArray[c][2]] +'<br>'                                            
-    alert(myJoinedArray[c][0]+', '+myJoinedArray[c][1])
+   myTemp += myMainArray[myJoinedArray[c][2]] + ' label = '+ myJoinedArray[c][1] +'<br>'                                            
+  //  alert(myJoinedArray[c][0]+', '+myJoinedArray[c][1])
                                             
 
           for (h=0;  h<= myUniqueLables.length-1; h++){
@@ -533,7 +533,7 @@ for (c=0;  c <= parseInt(document.getElementById('myKvalue').value)-1;   c++){
 
 
   document.getElementById('myDiv02').innerHTML +=  '<br>For the unknown: <font color=green>'+document.getElementById('myText01').value+
-        '</font> the K-Nearest-Neighbors :<br> <font color=blue>'+myTemp+'</font> Best Label = <font color=blue>'+myUniqueLables[findIndexOfGreatest(myCount)] +'</font><br>'   
+        '</font>  <br>The K-Nearest-Neighbors :<br> <font color=blue>'+myTemp+'</font> Best Label = <font color=blue>'+myUniqueLables[findIndexOfGreatest(myCount)] +'</font><br>'   
     
 
     
