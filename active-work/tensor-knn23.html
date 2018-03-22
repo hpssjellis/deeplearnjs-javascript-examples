@@ -5,14 +5,17 @@
 
 
 <script src="https://unpkg.com/deeplearn@0.5.1/dist/deeplearn.js"> </script> 
-Version 15<br><br>
+Version 17<br><br>
 <h2 align=center>CSV to K Nearest Neighbor (KNN) Classifier</h2>
 
 
 
 <script>
 
-
+function myRemoveLineBreak(myBox){
+  alert()
+  
+  }
 
 // helper function for very last step
 
@@ -42,7 +45,7 @@ myBox = document.getElementById('myArea01').value
   //alert(document.getElementById('myArea01').value)                                   
   alert(myBox[myBox.length-3])
                                        
-    if (myBox[myBox.length-2]  == '\n' )   {
+    if ((myBox[myBox.length-2]  == '\n' )   || (myBox[myBox.length-2]  == '\r\n' )  )   {
         alert('yes')
      }                                 
                                        
@@ -52,7 +55,10 @@ myBox = document.getElementById('myArea01').value
  //my5 = 'wow'
  //if (my5[my5.length-1] == '\n'){
  //       my5 = 'wow'                               
-// }  else { alert(0) }                                  
+// }  else { alert(0) }    
+                                       
+                                       
+//   /\r\n|\n/)
  
 }">
 
