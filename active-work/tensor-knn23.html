@@ -5,7 +5,7 @@
 
 
 <script src="https://unpkg.com/deeplearn@0.5.1/dist/deeplearn.js"> </script> 
-Version 21<br><br>
+Version 22<br><br>
 <h2 align=center>CSV to K Nearest Neighbor (KNN) Classifier</h2>
 
 
@@ -19,12 +19,13 @@ function myRemoveLineBreak(myBox){
   
   
   while ( (myBox[myBox.length-1]  == '\n' )   || (myBox[myBox.length-1]  == '\r\n' )  )   {
-    myBox.pop()     
+   // myBox.pop()  
+   myBox2 = myBox.slice(0, -1);
  }
   
 
   
-  return myBox
+  return myBox2
   
   
                
