@@ -5,7 +5,7 @@
 
 
 <script src="https://unpkg.com/deeplearn@0.5.1/dist/deeplearn.js"> </script> 
-Version 19<br><br>
+Version 20<br><br>
 <h2 align=center>CSV to K Nearest Neighbor (KNN) Classifier</h2>
 
 
@@ -26,7 +26,7 @@ function myRemoveLineBreak(myBox){
         alert('yes')
      }            
   
-  
+  return myBox
   
   
                
@@ -61,7 +61,7 @@ function findIndexOfGreatest(array) {
 <br>
 <input type=button value=test onclick="{
  
-   myRemoveLineBreak(document.getElementById('myArea01').value)
+  document.getElementById('myArea01').value = myRemoveLineBreak(document.getElementById('myArea01').value)
                                    
                                        
                                        
