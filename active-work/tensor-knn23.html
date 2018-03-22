@@ -5,7 +5,7 @@
 
 
 <script src="https://unpkg.com/deeplearn@0.5.1/dist/deeplearn.js"> </script> 
-Version 17<br><br>
+Version 18<br><br>
 <h2 align=center>CSV to K Nearest Neighbor (KNN) Classifier</h2>
 
 
@@ -13,9 +13,17 @@ Version 17<br><br>
 <script>
 
 function myRemoveLineBreak(myBox){
-  alert()
+  alert(myBox)
   
-  }
+  
+  if ((myBox[myBox.length-1]  == '\n' )   || (myBox[myBox.length-1]  == '\r\n' )  )   {
+        alert('yes')
+     }                                 
+               
+  
+  
+  
+}
 
 // helper function for very last step
 
@@ -40,16 +48,21 @@ function findIndexOfGreatest(array) {
 <br>
 <input type=button value=test onclick="{
  
-myBox = document.getElementById('myArea01').value
+   myRemoveLineBreak(document.getElementById('myArea01').value)
+                                   
+                                       
+                                       
+                                       
+//myBox = document.getElementById('myArea01').value
  
   //alert(document.getElementById('myArea01').value)                                   
-  alert(myBox[myBox.length-3])
+ // alert(myBox[myBox.length-3])
                                        
-    if ((myBox[myBox.length-2]  == '\n' )   || (myBox[myBox.length-2]  == '\r\n' )  )   {
-        alert('yes')
-     }                                 
+  //  if ((myBox[myBox.length-2]  == '\n' )   || (myBox[myBox.length-2]  == '\r\n' )  )   {
+  //      alert('yes')
+  //   }                                 
                                        
-   alert(myBox[myBox.length-1])                                      
+  // alert(myBox[myBox.length-1])                                      
                                        
                                        
  //my5 = 'wow'
