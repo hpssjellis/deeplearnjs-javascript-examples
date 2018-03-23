@@ -1,10 +1,10 @@
 
-Version 4 <br>
+Version 5 <br>
 
 
 <input type=button value="2D Array Sort" onclick="{
                                        
-    var arr = [[45, 'AAA'], [2, 'BBB'], [12, 'CCC'],[28, 'DDD'], [18, 'CCC'],[12, 'DDD'],[14, 'CCC'],[23, 'DDD'],[28, 'DDD'],[58, 'BBB'],[68, 'BBB'],[78, 'BBB']];
+    var arr = [[45, 'AAA'], [2, 'BBB'], [12, 'CCC'],[28, 'DDD']];
     alert(JSON.stringify(arr))
 
     arr.sort(function(a,b) {
@@ -20,9 +20,9 @@ Version 4 <br>
 
 <input type=button value="2D Buffer Sort" onclick="{
                                        
-    var arrSet = [[45, 28], [2, 36], [12, 47],[28, 3], [18, 89],[12, 34],[14, 78],[23, 14],[28, 45],[58, 67],[68, 89],[78, 9]];
-    buf = dl.buffer(arrSet);
-    arr = Array.from(buf)                                            
+    let arrSet = [[45, 28], [2, 36], [12, 47],[28, 3]];
+    let buf = dl.buffer(arrSet);
+    let arr = Array.from(buf)                                            
     alert(JSON.stringify(arr))
 
     arr.sort(function(a,b) {
