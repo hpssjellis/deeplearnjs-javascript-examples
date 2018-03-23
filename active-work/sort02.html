@@ -1,5 +1,5 @@
 
-Version 3 <br>
+Version 4 <br>
 
 
 <input type=button value="2D Array Sort" onclick="{
@@ -21,8 +21,8 @@ Version 3 <br>
 <input type=button value="2D Buffer Sort" onclick="{
                                        
     var arrSet = [[45, 28], [2, 36], [12, 47],[28, 3], [18, 89],[12, 34],[14, 78],[23, 14],[28, 45],[58, 67],[68, 89],[78, 9]];
-    arr = dl.buffer(arrSet);
-                                                   
+    buf = dl.buffer(arrSet);
+    arr = Array.from(buf)                                            
     alert(JSON.stringify(arr))
 
     arr.sort(function(a,b) {
