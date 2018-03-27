@@ -1,6 +1,13 @@
 This batch of files started on March 12, 2018
 
 
+next look at
+
+https://beta.observablehq.com/@nstrayer/reptile-meta-learning-example
+
+
+
+
 
 Presently working on K Nearest Neighbor, a reasonably easy classifier that is not a neural network. This allows baseline estimation of other Machine Learning algorithms.
 
