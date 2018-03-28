@@ -1,0 +1,270 @@
+// This is straight from the main observable and will not run
+//https://beta.observablehq.com/@nstrayer/reptile-meta-learning-example
+
+
+
+
+innerstepsize = 0.02
+
+innerepochs = 1
+
+outerstepsize = 0.1
+
+niterations = 30
+
+ntrain = 10
+
+
+
+
+
+
+model = {
+  const hiddenNodes = 64
+  
+  // set up all our weights layer by layer
+  const w1_init_var = 2/(1 + hiddenNodes);
+  const W1 = dl.variable(dl.randomNormal([1,hiddenNodes], 0, Math.sqrt(w1_init_var)));
+  const b1 = dl.variable(dl.zeros([1,hiddenNodes])); 
+  
+  const w2_init_var = 2/(hiddenNodes + 1);
+  const W2 = dl.variable(dl.randomNormal([hiddenNodes,hiddenNodes], 0, Math.sqrt(w2_init_var)));
+  const b2 = dl.variable(dl.zeros([1,1]));
+  
+  const W3 = dl.variable(dl.randomNormal([hiddenNodes,1], 0, Math.sqrt(w2_init_var)));
+  const b3 = dl.variable(dl.zeros([1,1]));
+
+  // the model itself
+  const model = xs => dl.tidy(() => 
+    xs.mul(W1).add(b1).tanh()
+      .matMul(W2).add(b2).tanh()
+      .matMul(W3).add(b3).asScalar()
+   )
+  
+  const loss = (ypred, y) => ypred.sub(y).square().mean()
+  
+  const optimizer = dl.train.adam();
+  
+  // Updates gradient with passed data.
+  async function train_on_batch(x, y){
+    const size_of_batch = x.shape[0];
+    for(let i=0; i<size_of_batch; i++){
+      optimizer.minimize(() => loss(
+        model(extractObs(x, i)), 
+        extractObs(y, i)
+      ));
+    }
+  }
+  
+  async function predict(x){
+    const size_of_batch = x.shape[0];
+    const prediction = new Array(size_of_batch);
+    for(let i=0; i<size_of_batch; i++){
+      prediction[i] = (await model(extractObs(x, i)).data())[0]
+    }
+    return prediction
+  }
+  
+  return {model, train_on_batch, predict, weights:{W1, b1, W2, b2, W3, b3}}
+}
+
+
+
+
+
+
+
+
+gen_task = () => {
+  const phase = dl.scalar(d3.randomUniform(0, 2*Math.PI)())
+  const amplitude = dl.scalar(d3.randomUniform(0.1, 5)())
+  return (x) => x.add(phase).sin().mul(amplitude)
+}
+
+
+
+
+
+
+x_all = linspace(-5, 5, 50)
+
+x_all_plain = x_all.data()
+
+f_plot = gen_task()
+
+
+xtrain_plot = sample(x_all.dataSync(), ntrain)
+
+
+ytrain_plot = f_plot(xtrain_plot)
+
+
+
+
+
+
+
+plot_data = {
+  const weightnames = ['W1', 'b1', 'W2', 'b2', 'W3', 'b3'];
+
+  for(let iteration = 2; iteration < niterations+1; iteration++){
+    const weights_before = {};
+    weightnames.forEach(name => {
+      weights_before[name] = model.weights[name].clone()
+    });
+
+    // generate task
+    const f = gen_task()
+    const y_all = f(x_all)
+
+    // do sgd on the current task
+    for(let i = 0; i < innerepochs; i++){
+      await model.train_on_batch(x_all, y_all)
+    }
+
+    // compute stepsize for this iteration
+    const currentstepsize = outerstepsize * (1 - iteration / niterations);
+
+    const weights_after = model.weights;
+
+    // update the weights. 
+    weightnames.forEach(name => {
+      model.weights[name] = dl.variable(
+        weights_before[name].add(
+          weights_after[name].sub(weights_before[name])
+        ).mul(dl.scalar(currentstepsize))
+      )
+    })
+
+    // every few iterations try retraining the few-shot model
+    if(iteration%updateFrequency == 0){
+      // save snapshot of weights again before training on smaller data
+      const weights_before_2 = {};
+      weightnames.forEach(name => {
+        weights_before_2[name] = model.weights[name].clone()
+      })
+
+      let tuning_preds;
+      // let preds_by_iteration = true_curve;
+      let preds_by_iteration = [];
+      // inner tuning iteration loop
+      for(let j = 0; j < 33; j++){
+        if(j > 0){ // skip training for 0th iteration.
+          await model.train_on_batch(xtrain_plot, ytrain_plot)
+        }
+        
+        if(j%16 === 0){
+          tuning_preds = (await model.predict(x_all)).map((d,i) => ({
+            x: x_all_plain[i],
+            pred: d,
+            iteration: j,
+          }));
+
+          preds_by_iteration = [...preds_by_iteration, ...tuning_preds]
+        }
+      }
+
+      // restore weights 
+      weightnames.forEach(name => {
+        model.weights[name] = dl.variable(weights_before_2[name])
+      })
+      // predict with the untuned model
+      yield {iteration, predictions: preds_by_iteration}
+    }
+  }
+}
+
+
+
+
+
+
+
+
+{ 
+  const predictionLine = {
+    mark: "line",
+    encoding: {
+      x: {"field": "x", "type": "quantitative"},
+      y: {"field": "pred", "type": "quantitative"},
+      color: {
+        "field": "iteration", 
+        "type": "nominal",
+      	"legend":{title: "Inner Iteration"},
+      },
+      size: {"value": 3}
+    }
+  };
+  
+  const trueLine = {
+    data: {values: true_curve},
+    mark: "line",
+    encoding: {
+      x: {field: "x", type: "quantitative"},
+      y: {field: "pred", type: "quantitative"},
+      color: {value: 'darkgrey'},
+      opacity: {value: 0.5}
+    }
+  }
+  const trainPoints = {
+    data: {values: [...ytrain_plain].map((y,i) => ({x: xtrain_plain[i], y, iteration: 'truth'}))},
+    mark: {"type": "square", "filled": true},
+    encoding: {
+      x: {field: "x", type: "quantitative"},
+      y: {field: "y", type: "quantitative"},
+      size: {value: 85},
+      color: {value: 'darkgrey'},
+    }
+  };
+ 
+  return vegalite({
+    width: width*.8,
+    height: 300,
+    data: {values:plot_data.predictions},
+    title: `Outer Iteration #${plot_data.iteration}`,
+    layer:[trueLine, trainPoints, predictionLine]
+   
+  })
+}
+
+
+
+
+
+ytrain_plain = ytrain_plot.data()
+
+xtrain_plain = xtrain_plot.data()
+
+true_curve = [...f_plot(x_all).dataSync()].map((d,i) => ({
+  x: x_all_plain[i],
+  pred: d,
+  iteration: 'truth'
+}))
+
+
+updateFrequency = 5
+
+sample = (x, size) => {
+  const x_plain = [...x];
+  const result = [];
+  for(let i = 0; i<size; i++){
+    const desired_index = Math.floor(Math.random() * x_plain.length);
+    const value = x_plain.splice(desired_index,1)[0];
+    result.push(value)
+  }
+  return dl.tensor(result)
+}
+
+extractObs = (tensor, i) => tensor.slice([i],[1])
+
+linspace = (start, stop, steps) => dl.tensor(d3.range(start, stop, (stop-start)/steps))
+
+
+// d3 = require('d3')  // must make this a script file
+
+// dl = require('deeplearn')
+
+//vegalite = require("@observablehq/vega-lite@0.1")
+
+
+
