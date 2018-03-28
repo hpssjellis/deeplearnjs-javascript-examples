@@ -1,8 +1,22 @@
 This batch of files started on March 27, 2018
 
+While putting of some boring chores I thought I would look into extracting Javascript frokm Observables
 
-next look at
+This by Nick Strayer looks interesting
 
 https://beta.observablehq.com/@nstrayer/reptile-meta-learning-example
 
 
+This first file is just the code taken from the observable, not made to run just getting the Javascript. 
+
+https://github.com/hpssjellis/deeplearnjs-javascript-examples/blob/master/active-work/reptile-meta-learning-example01.html
+
+First issue is correctly grapping the included code for deeplearn, d3 and vega.
+
+Here is the first demo attempt. Increase the number for latest versions
+
+https://hpssjellis.github.io/deeplearnjs-javascript-examples/active-work/reptile-meta-learning-example02.html
+
+
+
+Any help would be appreciated my twitter is @rocksetta
