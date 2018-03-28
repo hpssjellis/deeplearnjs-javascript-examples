@@ -1,6 +1,6 @@
 This batch of files started on March 27, 2018
 
-While putting of some boring chores I thought I would look into extracting Javascript frokm Observables
+While putting off some chores I thought I would look into extracting Javascript frokm Observables
 
 This by Nick Strayer looks interesting
 
