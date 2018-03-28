@@ -34,6 +34,7 @@ model = {
   const W3 = dl.variable(dl.randomNormal([hiddenNodes,1], 0, Math.sqrt(w2_init_var)));
   const b3 = dl.variable(dl.zeros([1,1]));
 
+
   // the model itself
   const model = xs => dl.tidy(() => 
     xs.mul(W1).add(b1).tanh()
