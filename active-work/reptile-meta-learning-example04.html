@@ -191,9 +191,28 @@ async function plot_data() {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
+  var vlSpec = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+    "data": {
+      "values": [
+        {"a": "C", "b": 2}, {"a": "C", "b": 7}, {"a": "C", "b": 4},
+        {"a": "D", "b": 1}, {"a": "D", "b": 2}, {"a": "D", "b": 6},
+        {"a": "E", "b": 8}, {"a": "E", "b": 4}, {"a": "E", "b": 7}
+      ]
+    },
+    "mark": "bar",
+    "encoding": {
+      "y": {"field": "a", "type": "nominal"},
+      "x": {
+        "aggregate": "average", "field": "b", "type": "quantitative",
+        "axis": {
+          "title": "Average of b"
+        }
+      }
+    }
+  };
 
-
-var vlSpec = { 
+var vlSpec2 = { 
   const predictionLine = {
     mark: "line",
     encoding: {
@@ -282,7 +301,7 @@ linspace = (start, stop, steps) => dl.tensor(d3.range(start, stop, (stop-start)/
 
 
 
-version 6 <br>
+version 7 <br>
 
 This batch of files started on March 27, 2018<br><br>
 
