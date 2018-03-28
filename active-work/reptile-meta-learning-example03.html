@@ -188,10 +188,10 @@ class = plot_data() {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
-// The following does not make sense. Is it a class? how does it work with vegalite?
 
 
-{ 
+
+var vlSpec = { 
   const predictionLine = {
     mark: "line",
     encoding: {
@@ -299,29 +299,31 @@ Here is the first demo attempt. Increase the number for latest versions<br>
 
 <br><br>
 
-
-
-<input type=button value="Demo" onclick="{
-                                         
-   myChart = new plot_data()                                      
-}">
-
-
-<div id="myDiv01">...</div>
-
-
-
 <b>
 Not knowing D3 or Vega is not making this easier. I am not sure how vega puts it's graph into a div. I have a div setup called myDiv01 but need to assign it to vega somehow.
 
 </b>
 
 
+Any help would be appreciated my twitter is <a href="https://twitter.com/rocksetta"> @rocksetta </a>  <br><br><br><br>
 
 
 
 
-Any help would be appreciated my twitter is <a href="https://twitter.com/rocksetta"> @rocksetta </a>  <br>
+<input type=button value="Demo" onclick="{
+                                         
+                                  
+}">
+
+
+  <div id="myDiv01"></div>
+
+  <script>  
+     vegaEmbed("#myDiv01", vlSpec);
+  </script>
+
+
+
 
 
 
