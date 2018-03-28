@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<head>
-  <title>Vega Lite Bar Chart</title>
-  <meta charset="utf-8">
+
 
   <script src="https://cdn.jsdelivr.net/npm/vega@3.2.1/build/vega.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@2.3.1/build/vega-lite.js"></script>
@@ -13,22 +10,13 @@
       margin-right: 5px;
     }
   </style>
-  
-  
-  
-  
-  
-  
-</head>
-<body>
-version 1
-  <h1>Template for Embedding Vega-Lite Visualization.</h1>
 
-  
-  
+  <h1>Template for Embedding Vega-Lite Visualization.</h1>
+  <!-- Container for the visualization -->
+  <div id="myDiv01"></div>
 
   <script>
-
+  // Assign the specification to a local variable vlSpec.
   var vlSpec = {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
     "data": {
@@ -49,14 +37,6 @@ version 1
       }
     }
   };
-
+  // Embed the visualization in the container with id `vis`
   vegaEmbed("#myDiv01", vlSpec);
   </script>
-  
-  
-  
-  <div id="myDiv01"></div>
-  
-  
-</body>
-</html>
