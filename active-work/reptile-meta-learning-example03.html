@@ -28,7 +28,7 @@ ntrain = 10
 
 
 
-function = model() {
+class = model() {
   const hiddenNodes = 64
   
   // set up all our weights layer by layer
@@ -113,7 +113,7 @@ ytrain_plot = f_plot(xtrain_plot)
 
 
 
-plot_data = {
+class = plot_data() {
   const weightnames = ['W1', 'b1', 'W2', 'b2', 'W3', 'b3'];
 
   for(let iteration = 2; iteration < niterations+1; iteration++){
