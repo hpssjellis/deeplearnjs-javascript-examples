@@ -14,7 +14,7 @@ First issue is correctly grapping the included code for deeplearn, d3 and vega.
 
 Here is the first demo attempt. Increase the number for latest versions
 
-https://hpssjellis.github.io/deeplearnjs-javascript-examples/active-work/reptile-meta-learning-example03.html
+https://hpssjellis.github.io/deeplearnjs-javascript-examples/active-work/reptile-meta-learning-example04.html
 
 
 
