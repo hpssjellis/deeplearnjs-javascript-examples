@@ -12,11 +12,13 @@
   </style>
 
   <h1>Template for Embedding Vega-Lite Visualization.</h1>
-  <!-- Container for the visualization -->
+
+
+
   <div id="myDiv01"></div>
 
   <script>
-  // Assign the specification to a local variable vlSpec.
+
   var vlSpec = {
     "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
     "data": {
@@ -37,6 +39,7 @@
       }
     }
   };
-  // Embed the visualization in the container with id `vis`
+
+    
   vegaEmbed("#myDiv01", vlSpec);
   </script>
