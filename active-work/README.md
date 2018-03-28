@@ -9,13 +9,12 @@ https://beta.observablehq.com/@nstrayer/reptile-meta-learning-example
 
 This first file is just the code taken from the observable, not made to run just getting the Javascript. 
 
-https://github.com/hpssjellis/deeplearnjs-javascript-examples/blob/master/active-work/reptile-meta-learning-example01.html
 
 First issue is correctly grapping the included code for deeplearn, d3 and vega.
 
 Here is the first demo attempt. Increase the number for latest versions
 
-https://hpssjellis.github.io/deeplearnjs-javascript-examples/active-work/reptile-meta-learning-example02.html
+https://hpssjellis.github.io/deeplearnjs-javascript-examples/active-work/reptile-meta-learning-example03.html
 
 
 
