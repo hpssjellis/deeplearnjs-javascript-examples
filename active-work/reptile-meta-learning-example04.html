@@ -172,7 +172,8 @@ async function plot_data() {
             iteration: j,
           }));
 
-          preds_by_iteration = [...preds_by_iteration, ...tuning_preds]
+         // preds_by_iteration = [...preds_by_iteration, ...tuning_preds]
+          preds_by_iteration = [preds_by_iteration, tuning_preds]
         }
       }
 
@@ -181,6 +182,7 @@ async function plot_data() {
         model.weights[name] = dl.variable(weights_before_2[name])
       })
       // predict with the untuned model
+     // yield {iteration, predictions: preds_by_iteration}
       yield {iteration, predictions: preds_by_iteration}
     }
   }
@@ -237,8 +239,11 @@ var vlSpec2 = {
       opacity: {value: 0.5}
     }
   }
+  
+  //data: {values: [...ytrain_plain].map((y,i) => ({x: xtrain_plain[i], y, iteration: 'truth'}))},
+  
   const trainPoints = {
-    data: {values: [...ytrain_plain].map((y,i) => ({x: xtrain_plain[i], y, iteration: 'truth'}))},
+    data: {values: [ytrain_plain].map((y,i) => ({x: xtrain_plain[i], y, iteration: 'truth'}))},
     mark: {"type": "square", "filled": true},
     encoding: {
       x: {field: "x", type: "quantitative"},
@@ -266,7 +271,8 @@ ytrain_plain = ytrain_plot.data()
 
 xtrain_plain = xtrain_plot.data()
 
-true_curve = [...f_plot(x_all).dataSync()].map((d,i) => ({
+//true_curve = [...f_plot(x_all).dataSync()].map((d,i) => ({
+true_curve = [f_plot(x_all).dataSync()].map((d,i) => ({
   x: x_all_plain[i],
   pred: d,
   iteration: 'truth'
@@ -276,7 +282,8 @@ true_curve = [...f_plot(x_all).dataSync()].map((d,i) => ({
 updateFrequency = 5
 
 sample = (x, size) => {
-  const x_plain = [...x];
+  //const x_plain = [...x];
+  const x_plain = [x];
   const result = [];
   for(let i = 0; i<size; i++){
     const desired_index = Math.floor(Math.random() * x_plain.length);
@@ -301,7 +308,7 @@ linspace = (start, stop, steps) => dl.tensor(d3.range(start, stop, (stop-start)/
 
 
 
-version 7 <br>
+version 10 <br>
 
 This batch of files started on March 27, 2018<br><br>
 
