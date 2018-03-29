@@ -10,34 +10,6 @@
 
 
 
-<script>
-
-///////////// trying to get my brain around embedding VegaLite. Will remove the following code when it starts working.
-  
-  
-  var vlSpec = {
-    "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
-    "data": {
-      "values": [
-        {"a": "C", "b": 2}, {"a": "C", "b": 7}, {"a": "C", "b": 4},
-        {"a": "D", "b": 1}, {"a": "D", "b": 2}, {"a": "D", "b": 6},
-        {"a": "E", "b": 8}, {"a": "E", "b": 4}, {"a": "E", "b": 7}
-      ]
-    },
-    "mark": "bar",
-    "encoding": {
-      "y": {"field": "a", "type": "nominal"},
-      "x": {
-        "aggregate": "average", "field": "b", "type": "quantitative",
-        "axis": {
-          "title": "Average of b"
-        }
-      }
-    }
-  };
-  
-  
-</script>
 
 
 <script>
@@ -54,7 +26,7 @@ ntrain = 10
 
 
 
-//class model() {
+
 async function model() {
   const hiddenNodes = 64
   
@@ -140,7 +112,7 @@ ytrain_plot = f_plot(xtrain_plot)
 
 
 
-//class plot_data() {
+
 async function plot_data() {
   const weightnames = ['W1', 'b1', 'W2', 'b2', 'W3', 'b3'];
 
@@ -305,12 +277,40 @@ linspace = (start, stop, steps) => dl.tensor(d3.range(start, stop, (stop-start)/
 
 
 
+<script>
+
+///////////// trying to get my brain around embedding VegaLite. Will remove the following code when it starts working.
+  
+  
+  var vlSpec = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+    "data": {
+      "values": [
+        {"a": "C", "b": 2}, {"a": "C", "b": 7}, {"a": "C", "b": 4},
+        {"a": "D", "b": 1}, {"a": "D", "b": 2}, {"a": "D", "b": 6},
+        {"a": "E", "b": 8}, {"a": "E", "b": 4}, {"a": "E", "b": 7}
+      ]
+    },
+    "mark": "bar",
+    "encoding": {
+      "y": {"field": "a", "type": "nominal"},
+      "x": {
+        "aggregate": "average", "field": "b", "type": "quantitative",
+        "axis": {
+          "title": "Average of b"
+        }
+      }
+    }
+  };
+  
+  
+</script>
 
 
 
 
 
-version 19 <br>
+version 20 <br>
 
 This batch of files started on March 27, 2018<br><br>
 
