@@ -240,10 +240,9 @@ var vlSpec2 = {
     }
   }
   
-  //data: {values: [...ytrain_plain].map((y,i) => ({x: xtrain_plain[i], y, iteration: 'truth'}))},
   
   const trainPoints = {
-    data: {values: [ytrain_plain].map((y,i) => ({x: xtrain_plain[i], y, iteration: 'truth'}))},
+    data: {values: [...ytrain_plain].map((y,i) => ({x: xtrain_plain[i], y, iteration: 'truth'}))},
     mark: {"type": "square", "filled": true},
     encoding: {
       x: {field: "x", type: "quantitative"},
@@ -271,8 +270,7 @@ ytrain_plain = ytrain_plot.data()
 
 xtrain_plain = xtrain_plot.data()
 
-//true_curve = [...f_plot(x_all).dataSync()].map((d,i) => ({
-true_curve = [f_plot(x_all).dataSync()].map((d,i) => ({
+true_curve = [...f_plot(x_all).dataSync()].map((d,i) => ({
   x: x_all_plain[i],
   pred: d,
   iteration: 'truth'
@@ -282,8 +280,7 @@ true_curve = [f_plot(x_all).dataSync()].map((d,i) => ({
 updateFrequency = 5
 
 sample = (x, size) => {
-  //const x_plain = [...x];
-  const x_plain = [x];
+  const x_plain = [...x];
   const result = [];
   for(let i = 0; i<size; i++){
     const desired_index = Math.floor(Math.random() * x_plain.length);
