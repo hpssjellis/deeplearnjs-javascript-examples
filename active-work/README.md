@@ -19,3 +19,15 @@ https://hpssjellis.github.io/deeplearnjs-javascript-examples/active-work/reptile
 
 
 Any help would be appreciated my twitter is @rocksetta
+
+
+
+.
+
+
+
+.
+
+
+
+Remember that all of this is about learning deeplearnjs. My main webpage is at https://hpssjellis.github.io/deeplearnjs-javascript-examples/
