@@ -1,0 +1,113 @@
+
+  <script src="https://cdn.jsdelivr.net/npm/vega@3.2.1/build/vega.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@2.3.1/build/vega-lite.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@3.2.0/build/vega-embed.js"></script>
+
+
+<script>
+const vlSpec2 = { 
+  const predictionLine = {
+    mark: "line",
+    encoding: {
+      x: {"field": "x", "type": "quantitative"},
+      y: {"field": "pred", "type": "quantitative"},
+      color: {
+        "field": "iteration", 
+        "type": "nominal",
+      	"legend":{title: "Inner Iteration"},
+      },
+      size: {"value": 3}
+    }
+  };
+  
+  const trueLine = {
+    data: {values: true_curve},
+    mark: "line",
+    encoding: {
+      x: {field: "x", type: "quantitative"},
+      y: {field: "pred", type: "quantitative"},
+      color: {value: 'darkgrey'},
+      opacity: {value: 0.5}
+    }
+  }
+  
+  
+  const trainPoints = {
+    data: {values: [...ytrain_plain].map((y,i) => ({x: xtrain_plain[i], y, iteration: 'truth'}))},
+    mark: {"type": "square", "filled": true},
+    encoding: {
+      x: {field: "x", type: "quantitative"},
+      y: {field: "y", type: "quantitative"},
+      size: {value: 85},
+      color: {value: 'darkgrey'},
+    }
+  };
+ 
+  return vegalite({
+    width: width*.8,
+    height: 300,
+    data: {values:plot_data.predictions},
+    title: `Outer Iteration #${plot_data.iteration}`,
+    layer:[trueLine, trainPoints, predictionLine]
+   
+  })
+}
+
+
+</script>
+
+
+
+<script>
+
+spec = ({
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+  "description": "A simple bar chart with embedded data.",
+  "width": 360,
+  "data": {
+    "values": [
+      {"a": "A","b": 28}, {"a": "B","b": 55}, {"a": "C","b": 43},
+      {"a": "D","b": 91}, {"a": "E","b": 81}, {"a": "F","b": 53},
+      {"a": "G","b": 19}, {"a": "H","b": 87}, {"a": "I","b": 52}
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "a", "type": "ordinal"},
+    "y": {"field": "b", "type": "quantitative"}
+  }
+})
+</script>
+
+
+  <script>
+  var vlSpec = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+    "data": {
+      "values": [
+        {"a": "C", "b": 2}, {"a": "C", "b": 7}, {"a": "C", "b": 4},
+        {"a": "D", "b": 1}, {"a": "D", "b": 2}, {"a": "D", "b": 6},
+        {"a": "E", "b": 8}, {"a": "E", "b": 4}, {"a": "E", "b": 7}
+      ]
+    },
+    "mark": "bar",
+    "encoding": {
+      "y": {"field": "a", "type": "nominal"},
+      "x": {
+        "aggregate": "average", "field": "b", "type": "quantitative",
+        "axis": {
+          "title": "Average of b"
+        }
+      }
+    }
+  };
+  </script>
+
+
+
+
+  <div id="myDiv01"></div>
+
+  <script>  
+     vegaEmbed("#myDiv01", spec);
+  </script>
