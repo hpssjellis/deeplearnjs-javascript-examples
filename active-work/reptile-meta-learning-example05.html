@@ -27,7 +27,8 @@ const ntrain = 10
 
 
 
-const model =  {
+async function model() {
+
   const hiddenNodes = 64
   
   // set up all our weights layer by layer
@@ -112,8 +113,8 @@ ytrain_plot = f_plot(xtrain_plot)
 
 
 
+async function plot_data() {
 
-const plot_data = {
   const weightnames = ['W1', 'b1', 'W2', 'b2', 'W3', 'b3'];
 
   for(let iteration = 2; iteration < niterations+1; iteration++){
@@ -193,7 +194,7 @@ const plot_data = {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-const vlSpec2 = { 
+async function vegaTry() {
   const predictionLine = {
     mark: "line",
     encoding: {
@@ -316,6 +317,16 @@ linspace = (start, stop, steps) => dl.tensor(d3.range(start, stop, (stop-start)/
 
 
 
+
+  <div id="myDiv01"></div>
+
+  <script>  
+     vegaEmbed("#myDiv01", vegaTry());
+  </script>
+
+
+
+
 version 25 <br>
 
 This batch of files started on March 27, 2018<br><br>
@@ -345,12 +356,4 @@ Any help would be appreciated my twitter is <a href="https://twitter.com/rockset
 
 
 
-
-
-
-  <div id="myDiv01"></div>
-
-  <script>  
-     vegaEmbed("#myDiv01", vlSpec);
-  </script>
 
