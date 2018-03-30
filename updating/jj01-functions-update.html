@@ -1,6 +1,7 @@
 <h3 align=center>Deeplearnjs Multiple Types of Functions</h3>
 Tutorial video at: <a href="https://www.youtube.com/watch?v=7Vnn7hNk120&list=PL57Dnr1H_egukaDgFqwEnDVStd7Jktg1E">https://www.youtube.com/watch?v=7Vnn7hNk120&list=PL57Dnr1H_egukaDgFqwEnDVStd7Jktg1E</a> 
 <br><br>
+v1  <br>
 
 
 <!--   *******************************Start: What source js file to use ****************************************************   -->
@@ -32,9 +33,9 @@ Tutorial video at: <a href="https://www.youtube.com/watch?v=7Vnn7hNk120&list=PL5
 async function myShow1(){                                                             
 
       const matrixShape = [2, 3];  // 2 rows, 3 columns.
-      const matrix = dl.Array2D.new(matrixShape, [10, 20, 30, 40, 50, 60]);
-      const vector = dl.Array1D.new([0, 1, 2]);
-      const myResult = dl.ENV.math.matrixTimesVector(matrix, vector);
+      const matrix = dl.tensor([10, 20, 30, 40, 50, 60], matrixShape );
+      const vector = dl.tensor1D([0, 1, 2]);
+      const myResult = dl.matrixTimesVector(matrix, vector);
                                                            
       document.getElementById('myDiv01').innerHTML = 'Array shape is ' + myResult.shape + ' data is ' + await myResult.data()
 }
