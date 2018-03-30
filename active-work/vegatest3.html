@@ -5,54 +5,11 @@
 
 
 <script>
-const vlSpec2 = { 
-  const predictionLine = {
-    mark: "line",
-    encoding: {
-      x: {"field": "x", "type": "quantitative"},
-      y: {"field": "pred", "type": "quantitative"},
-      color: {
-        "field": "iteration", 
-        "type": "nominal",
-      	"legend":{title: "Inner Iteration"},
-      },
-      size: {"value": 3}
-    }
-  };
-  
-  const trueLine = {
-    data: {values: true_curve},
-    mark: "line",
-    encoding: {
-      x: {field: "x", type: "quantitative"},
-      y: {field: "pred", type: "quantitative"},
-      color: {value: 'darkgrey'},
-      opacity: {value: 0.5}
-    }
-  }
-  
-  
-  const trainPoints = {
-    data: {values: [...ytrain_plain].map((y,i) => ({x: xtrain_plain[i], y, iteration: 'truth'}))},
-    mark: {"type": "square", "filled": true},
-    encoding: {
-      x: {field: "x", type: "quantitative"},
-      y: {field: "y", type: "quantitative"},
-      size: {value: 85},
-      color: {value: 'darkgrey'},
-    }
-  };
- 
-  return vegalite({
-    width: width*.8,
-    height: 300,
-    data: {values:plot_data.predictions},
-    title: `Outer Iteration #${plot_data.iteration}`,
-    layer:[trueLine, trainPoints, predictionLine]
-   
-  })
-}
+function myTry(){
 
+  return spec
+
+}
 
 </script>
 
@@ -104,10 +61,10 @@ spec = ({
   </script>
 
 
-
+version 2
 
   <div id="myDiv01"></div>
 
   <script>  
-     vegaEmbed("#myDiv01", spec);
+     vegaEmbed("#myDiv01", myTry());
   </script>
