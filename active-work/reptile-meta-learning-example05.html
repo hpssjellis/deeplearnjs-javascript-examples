@@ -181,7 +181,7 @@ async function plot_data() {
       })
       // predict with the untuned model
      // yield {iteration, predictions: preds_by_iteration}
-      yield {iteration, predictions: preds_by_iteration}
+      yield iteration, predictions: preds_by_iteration
     }
   }
 }
@@ -327,7 +327,7 @@ linspace = (start, stop, steps) => dl.tensor(d3.range(start, stop, (stop-start)/
 
 
 
-version 26 <br>
+version 27 <br>
 
 This batch of files started on March 27, 2018<br><br>
 
