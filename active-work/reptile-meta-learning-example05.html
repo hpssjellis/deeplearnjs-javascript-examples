@@ -1,7 +1,6 @@
 
 
 <script src="https://unpkg.com/deeplearn@0.5.1/dist/deeplearn.js"> </script> 
-
 <script src="https://unpkg.com/d3@5.0.0/dist/d3.js"> </script> 
 
 <script src="https://cdn.jsdelivr.net/npm/vega@3.2.1/build/vega.js"></script>
@@ -84,7 +83,7 @@ async function model() {
 
 
 
-gen_task = function() {
+const gen_task = function() {
   const phase = dl.scalar(d3.randomUniform(0, 2*Math.PI)())
   const amplitude = dl.scalar(d3.randomUniform(0.1, 5)())
   return (x) => x.add(phase).sin().mul(amplitude)
@@ -95,17 +94,17 @@ gen_task = function() {
 
 
 
-x_all = linspace(-5, 5, 50)
+const x_all = linspace(-5, 5, 50)
 
-x_all_plain = x_all.data()
+const x_all_plain = x_all.data()
 
-f_plot = gen_task()
-
-
-xtrain_plot = sample(x_all.dataSync(), ntrain)
+const f_plot = gen_task()
 
 
-ytrain_plot = f_plot(xtrain_plot)
+const xtrain_plot = sample(x_all.dataSync(), ntrain)
+
+
+const ytrain_plot = f_plot(xtrain_plot)
 
 
 
@@ -252,20 +251,20 @@ async function vegaTry() {
 
 
 
-ytrain_plain = ytrain_plot.data()
+const ytrain_plain = ytrain_plot.data()
 
-xtrain_plain = xtrain_plot.data()
+const xtrain_plain = xtrain_plot.data()
 
-true_curve = [...f_plot(x_all).dataSync()].map((d,i) => ({
+const true_curve = [...f_plot(x_all).dataSync()].map((d,i) => ({
   x: x_all_plain[i],
   pred: d,
   iteration: 'truth'
 }))
 
 
-updateFrequency = 5
+const updateFrequency = 5
 
-sample = (x, size) => {
+const sample = (x, size) => {
   const x_plain = [...x];
   const result = [];
   for(let i = 0; i<size; i++){
@@ -276,9 +275,9 @@ sample = (x, size) => {
   return dl.tensor(result)
 }
 
-extractObs = (tensor, i) => tensor.slice([i],[1])
+const extractObs = (tensor, i) => tensor.slice([i],[1])
 
-linspace = (start, stop, steps) => dl.tensor(d3.range(start, stop, (stop-start)/steps))
+const linspace = (start, stop, steps) => dl.tensor(d3.range(start, stop, (stop-start)/steps))
 
 
 </script>
@@ -329,7 +328,7 @@ linspace = (start, stop, steps) => dl.tensor(d3.range(start, stop, (stop-start)/
 
 
 
-version 28 <br>
+version 30 <br>
 
 This batch of files started on March 27, 2018<br><br>
 
