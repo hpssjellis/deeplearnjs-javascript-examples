@@ -101,7 +101,7 @@ const x_all =  (async function() {  await linspace(-5, 5, 50)     })();
 
 
 
-const x_all_plain =(async function() {  x_all.data())     })(); 
+const x_all_plain =(async function() {  x_all.data()     })(); 
 
 const f_plot =  (async function() {  gen_task()   })();
 
@@ -140,7 +140,7 @@ const sample = (x, size) => {
 
 const extractObs = (tensor, i) => tensor.slice([i],[1])
 
-const linspace = (start, stop, steps) => dl.tensor(d3.range(start, stop, (stop-start)/steps))
+const linspace =  (async function() {  (start, stop, steps) => dl.tensor(d3.range(start, stop, (stop-start)/steps))    })();
 
 
 
@@ -337,7 +337,7 @@ async function vegaTry() {
 
 
 
-version 34 <br>
+version 35 <br>
 
 This batch of files started on March 27, 2018<br><br>
 
