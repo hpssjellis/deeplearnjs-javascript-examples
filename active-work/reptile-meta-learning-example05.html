@@ -101,22 +101,22 @@ const x_all =  (async function() {  await linspace(-5, 5, 50)     })();
 
 
 
-const x_all_plain = x_all.data()
+const x_all_plain =(async function() {  x_all.data())     })(); 
 
-const f_plot = gen_task()
-
-
-const xtrain_plot = sample(x_all.dataSync(), ntrain)
+const f_plot =  (async function() {  gen_task()   })();
 
 
-const ytrain_plot = f_plot(xtrain_plot)
+const xtrain_plot = (async function() {  sample(x_all.dataSync(), ntrain)  })();
+
+
+const ytrain_plot = (async function() {  f_plot(xtrain_plot)  })();
 
 
 
 
-const ytrain_plain = ytrain_plot.data()
+const ytrain_plain = (async function() {  ytrain_plot.data()  })();
 
-const xtrain_plain = xtrain_plot.data()
+const xtrain_plain = (async function() {  xtrain_plot.data()  })();
 
 const true_curve = [...f_plot(x_all).dataSync()].map((d,i) => ({
   x: x_all_plain[i],
@@ -337,7 +337,7 @@ async function vegaTry() {
 
 
 
-version 33 <br>
+version 34 <br>
 
 This batch of files started on March 27, 2018<br><br>
 
