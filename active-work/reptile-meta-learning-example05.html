@@ -87,7 +87,7 @@ const gen_task = function() {
   const phase = dl.scalar(d3.randomUniform(0, 2*Math.PI)())
   const amplitude = dl.scalar(d3.randomUniform(0.1, 5)())
  // return (x) => x.add(phase).sin().mul(amplitude)
-  return (x) => dl.add(phase).sin().mul(amplitude)
+  return (x) => x.add(phase).sin().mul(amplitude)
 }
 
 
