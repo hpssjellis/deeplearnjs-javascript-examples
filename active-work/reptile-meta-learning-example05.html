@@ -193,7 +193,8 @@ plot_data = {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-var vlSpec2 = { 
+\\var vlSpec2 = { 
+{ 
   const predictionLine = {
     mark: "line",
     encoding: {
@@ -231,7 +232,7 @@ var vlSpec2 = {
     }
   };
  
-  return vegalite({
+  return vlSpec2({
     width: width*.8,
     height: 300,
     data: {values:plot_data.predictions},
@@ -316,7 +317,7 @@ linspace = (start, stop, steps) => dl.tensor(d3.range(start, stop, (stop-start)/
 
 
 
-version 22 <br>
+version 24 <br>
 
 This batch of files started on March 27, 2018<br><br>
 
