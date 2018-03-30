@@ -109,6 +109,38 @@ const ytrain_plot = f_plot(xtrain_plot)
 
 
 
+const ytrain_plain = ytrain_plot.data()
+
+const xtrain_plain = xtrain_plot.data()
+
+const true_curve = [...f_plot(x_all).dataSync()].map((d,i) => ({
+  x: x_all_plain[i],
+  pred: d,
+  iteration: 'truth'
+}))
+
+
+const updateFrequency = 5
+
+const sample = (x, size) => {
+  const x_plain = [...x];
+  const result = [];
+  for(let i = 0; i<size; i++){
+    const desired_index = Math.floor(Math.random() * x_plain.length);
+    const value = x_plain.splice(desired_index,1)[0];
+    result.push(value)
+  }
+  return dl.tensor(result)
+}
+
+const extractObs = (tensor, i) => tensor.slice([i],[1])
+
+const linspace = (start, stop, steps) => dl.tensor(d3.range(start, stop, (stop-start)/steps))
+
+
+
+
+
 
 
 
@@ -251,34 +283,6 @@ async function vegaTry() {
 
 
 
-const ytrain_plain = ytrain_plot.data()
-
-const xtrain_plain = xtrain_plot.data()
-
-const true_curve = [...f_plot(x_all).dataSync()].map((d,i) => ({
-  x: x_all_plain[i],
-  pred: d,
-  iteration: 'truth'
-}))
-
-
-const updateFrequency = 5
-
-const sample = (x, size) => {
-  const x_plain = [...x];
-  const result = [];
-  for(let i = 0; i<size; i++){
-    const desired_index = Math.floor(Math.random() * x_plain.length);
-    const value = x_plain.splice(desired_index,1)[0];
-    result.push(value)
-  }
-  return dl.tensor(result)
-}
-
-const extractObs = (tensor, i) => tensor.slice([i],[1])
-
-const linspace = (start, stop, steps) => dl.tensor(d3.range(start, stop, (stop-start)/steps))
-
 
 </script>
 
@@ -328,7 +332,7 @@ const linspace = (start, stop, steps) => dl.tensor(d3.range(start, stop, (stop-s
 
 
 
-version 30 <br>
+version 31 <br>
 
 This batch of files started on March 27, 2018<br><br>
 
