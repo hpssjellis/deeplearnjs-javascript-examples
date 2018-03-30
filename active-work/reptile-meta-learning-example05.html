@@ -94,7 +94,7 @@ const gen_task = function() {
 
 
 
-const x_all = linspace(-5, 5, 50)
+const x_all = await linspace(-5, 5, 50)
 
 const x_all_plain = x_all.data()
 
@@ -243,7 +243,7 @@ async function vegaTry() {
   };
   
   const trueLine = {
-    data: {values: true_curve},
+    data: {values: await true_curve},
     mark: "line",
     encoding: {
       x: {field: "x", type: "quantitative"},
@@ -332,7 +332,7 @@ async function vegaTry() {
 
 
 
-version 31 <br>
+version 32 <br>
 
 This batch of files started on March 27, 2018<br><br>
 
