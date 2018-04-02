@@ -1,5 +1,53 @@
 # deeplearnjs-javascript-examples
 
+
+
+DEPRECATED SINCE APRIL 29, 2018.
+
+New site at https://hpssjellis.github.io/beginner-tensorflowjs-examples-in-javascript/
+.
+
+
+.
+
+
+.
+
+
+
+.
+
+
+.
+
+
+.
+
+
+.
+
+
+.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Website of this repository with all the working javascript examples and instructions
 https://hpssjellis.github.io/deeplearnjs-javascript-examples/
 
